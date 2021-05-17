@@ -29,26 +29,13 @@ namespace ChapeauUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.SuspendLayout();
-            // 
-            // guna2GradientPanel1
-            // 
-            this.guna2GradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
-            this.guna2GradientPanel1.BorderColor = System.Drawing.Color.Black;
-            this.guna2GradientPanel1.BorderThickness = 1;
-            this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.ShadowDecoration.Parent = this.guna2GradientPanel1;
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(768, 102);
-            this.guna2GradientPanel1.TabIndex = 0;
             // 
             // TakingOrderForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(768, 1024);
-            this.Controls.Add(this.guna2GradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TakingOrderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -58,7 +45,5 @@ namespace ChapeauUI
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
     }
 }
