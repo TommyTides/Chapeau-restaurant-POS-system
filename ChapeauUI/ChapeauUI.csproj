@@ -99,5 +99,19 @@
   <ItemGroup>
     <None Include="Resources\logo chapeau.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChapeauLogic\ChapeauLogic.csproj">
+      <Project>{b439505a-392d-49b3-a4f5-e9b8bcaab49f}</Project>
+      <Name>ChapeauLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChapeauModel\ChapeauModel.csproj">
+      <Project>{aaec11aa-2ead-43e9-a3c0-f38da1bee92b}</Project>
+      <Name>ChapeauModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChapeauuDAL\ChapeauDAL.csproj">
+      <Project>{d18ba611-101b-45a6-a10a-65952ba8a57b}</Project>
+      <Name>ChapeauDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

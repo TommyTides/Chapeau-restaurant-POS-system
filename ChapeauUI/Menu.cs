@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace ChapeauUI
 {
     public partial class Menu : Form
     {
+        private MenuItemService menuItemService;
         public Menu()
         {
             InitializeComponent();
@@ -26,6 +22,7 @@ namespace ChapeauUI
             pictureBox3.BackColor = Color.Transparent;
 
             HideAllPanels();
+            menuItemService = new MenuItemService();
         }
 
         private void HideAllPanels() // Will hide all panels when called
@@ -100,7 +97,7 @@ namespace ChapeauUI
 
         private void LunchMenuPanel()
         {
-
+            
         }
     }
 }
