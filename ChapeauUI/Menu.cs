@@ -15,12 +15,10 @@ namespace ChapeauUI
         public Menu()
         {
             InitializeComponent();
-            //////// test
-            //// this is abhishek
+
             this.Text = $"Menu options";
             lblApplicationState.Text = "";
             lblApplicationSubState.Text = "";
-
             // Code below makes the background tranparant on the picture behind it.
             pictureBox2.Controls.Add(pictureBox1);
             pictureBox2.Controls.Add(pictureBox3);
@@ -29,7 +27,7 @@ namespace ChapeauUI
 
             pnlHamburger.Visible = false;
         }
-
+        
         private void pictureBox1_Click(object sender, EventArgs e) // to open the menu strip
         {
             if (pnlHamburger.Visible == false)
@@ -73,6 +71,7 @@ namespace ChapeauUI
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Will exit the application
             Application.Exit();
         }
     }
