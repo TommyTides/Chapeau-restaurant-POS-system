@@ -25,7 +25,14 @@ namespace ChapeauUI
             pictureBox1.BackColor = Color.Transparent;
             pictureBox3.BackColor = Color.Transparent;
 
+            HideAllPanels();
+        }
+
+        private void HideAllPanels() // Will hide all panels when called
+        {
             pnlHamburger.Visible = false;
+            pnlMenuOptions.Visible = false;
+            pnlLunchMenu.Visible = false;
         }
         
         private void pictureBox1_Click(object sender, EventArgs e) // to open the menu strip
@@ -42,26 +49,35 @@ namespace ChapeauUI
 
         private void lblHome_Click(object sender, EventArgs e)
         {
+            HideAllPanels();
             lblApplicationState.Text = "Home";
             lblApplicationSubState.Text = "";
+            pnlHamburger.Visible = false;
         }
 
         private void lblTableView_Click(object sender, EventArgs e)
         {
+            HideAllPanels();
             lblApplicationState.Text = "Table view";
             lblApplicationSubState.Text = "Select a table";
+            pnlHamburger.Visible = false;
         }
 
         private void lblMenuOptions_Click(object sender, EventArgs e)
         {
+            HideAllPanels();
+            pnlMenuOptions.Visible = true;
             lblApplicationState.Text = "Menu options";
             lblApplicationSubState.Text = "Select a menu";
+            pnlHamburger.Visible = false;
         }
 
         private void lblOrderCart_Click(object sender, EventArgs e)
         {
+            HideAllPanels();
             lblApplicationState.Text = "Order cart";
             lblApplicationSubState.Text = "view your orders";
+            pnlHamburger.Visible = false;
         }
 
         private void Menu_Load(object sender, EventArgs e)
@@ -73,6 +89,18 @@ namespace ChapeauUI
         {
             // Will exit the application
             Application.Exit();
+        }
+
+        private void btnLunchMenu_Click(object sender, EventArgs e)
+        {
+            HideAllPanels();
+            pnlLunchMenu.Visible = true;
+            LunchMenuPanel();
+        }
+
+        private void LunchMenuPanel()
+        {
+
         }
     }
 }
