@@ -1,20 +1,22 @@
-﻿using System;
+﻿using ChapeauLogic;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
+using MenuItem = ChapeauModel.MenuItem;
 
 namespace ChapeauUI
 {
     public partial class Menu : Form
     {
+        MenuItemService menuItemService;
+
         public Menu()
         {
             InitializeComponent();
+
+            menuItemService = new MenuItemService();
 
             this.Text = $"Menu options";
             lblApplicationState.Text = "";
@@ -100,7 +102,16 @@ namespace ChapeauUI
 
         private void LunchMenuPanel()
         {
+            List<MenuItem> menuItems = menuItemService.GetAllMenuItems();
 
+            foreach (MenuItem item in menuItems)
+            {
+                if (item.item_type == "lunch main")
+                {
+                    listBoxLunchMain.Items.Add(item.item_name);
+                    listBoxLunchMainPrice.Items.Add(item.item_price);
+                }             
+            }
         }
     }
 }
