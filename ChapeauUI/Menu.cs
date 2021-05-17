@@ -46,7 +46,7 @@ namespace ChapeauUI
             else
             {
                 pnlHamburger.Visible = false;
-            }                        
+            }      
         }
 
         private void lblHome_Click(object sender, EventArgs e)
@@ -102,16 +102,27 @@ namespace ChapeauUI
 
         private void LunchMenuPanel()
         {
-            List<MenuItem> menuItems = menuItemService.GetAllMenuItems();
+            List<MenuItem> menuItems = menuItemService.GetAllMenuItems(); // Gets list of menuItems form database
 
-            foreach (MenuItem item in menuItems)
+            foreach (MenuItem item in menuItems) // Adding items tot the listboxes
             {
                 if (item.item_type == "lunch main")
                 {
                     listBoxLunchMain.Items.Add(item.item_name);
                     listBoxLunchMainPrice.Items.Add(item.item_price);
-                }             
+                }
+                else if (item.item_type == "specials")
+                {
+                    listBoxLunchSpecials.Items.Add(item.item_name);
+                    listBoxLunchSpecialsPrice.Items.Add(item.item_price);
+                }
+                else if (item.item_type == "bites")
+                {
+                    listBoxLunchBites.Items.Add(item.item_name);
+                    listBoxLunchBitesPrice.Items.Add(item.item_price);
+                }
             }
+
         }
     }
 }

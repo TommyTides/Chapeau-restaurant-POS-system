@@ -428,7 +428,7 @@ namespace ChapeauUI
             this.listBoxLunchBitesPrice.ItemHeight = 17;
             this.listBoxLunchBitesPrice.Location = new System.Drawing.Point(475, 419);
             this.listBoxLunchBitesPrice.Name = "listBoxLunchBitesPrice";
-            this.listBoxLunchBitesPrice.Size = new System.Drawing.Size(40, 89);
+            this.listBoxLunchBitesPrice.Size = new System.Drawing.Size(40, 72);
             this.listBoxLunchBitesPrice.TabIndex = 12;
             // 
             // listBoxLunchSpecialsPrice
@@ -438,7 +438,7 @@ namespace ChapeauUI
             this.listBoxLunchSpecialsPrice.ItemHeight = 17;
             this.listBoxLunchSpecialsPrice.Location = new System.Drawing.Point(475, 257);
             this.listBoxLunchSpecialsPrice.Name = "listBoxLunchSpecialsPrice";
-            this.listBoxLunchSpecialsPrice.Size = new System.Drawing.Size(40, 89);
+            this.listBoxLunchSpecialsPrice.Size = new System.Drawing.Size(40, 72);
             this.listBoxLunchSpecialsPrice.TabIndex = 11;
             // 
             // listBoxLunchMainPrice
@@ -480,7 +480,7 @@ namespace ChapeauUI
             this.listBoxLunchBites.ItemHeight = 17;
             this.listBoxLunchBites.Location = new System.Drawing.Point(19, 419);
             this.listBoxLunchBites.Name = "listBoxLunchBites";
-            this.listBoxLunchBites.Size = new System.Drawing.Size(280, 89);
+            this.listBoxLunchBites.Size = new System.Drawing.Size(280, 72);
             this.listBoxLunchBites.TabIndex = 7;
             // 
             // listBoxLunchSpecials
@@ -490,7 +490,7 @@ namespace ChapeauUI
             this.listBoxLunchSpecials.ItemHeight = 17;
             this.listBoxLunchSpecials.Location = new System.Drawing.Point(19, 257);
             this.listBoxLunchSpecials.Name = "listBoxLunchSpecials";
-            this.listBoxLunchSpecials.Size = new System.Drawing.Size(280, 89);
+            this.listBoxLunchSpecials.Size = new System.Drawing.Size(280, 72);
             this.listBoxLunchSpecials.TabIndex = 6;
             // 
             // listBoxLunchMain
