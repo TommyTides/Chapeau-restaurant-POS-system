@@ -11,6 +11,8 @@ namespace ChapeauDAL
 {
     class OrderDAO : BaseDao
     {
+        public int test;
+        //needs to be edited
         // This method passes the query to the ExecuteSelectQuery METHOD
         public List<MenuItem> GetAllMenuItems()
         {
