@@ -15,7 +15,7 @@ namespace ChapeauUI
         public Menu()
         {
             InitializeComponent();
-
+            //////// test
             this.Text = $"Menu options";
             lblApplicationState.Text = "";
             lblApplicationSubState.Text = "";
