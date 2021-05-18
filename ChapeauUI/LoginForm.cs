@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChapeauModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,14 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChapeauLogic;
 
 namespace ChapeauUI
 {
     public partial class LoginForm : Form
     {
+        EmployeeService employeeService = new EmployeeService();
         public LoginForm()
         {
             InitializeComponent();
+            txtlogincode.PasswordChar = '*';
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -22,9 +26,59 @@ namespace ChapeauUI
             WinAPI.AnimateWindow(this.Handle, 2000, WinAPI.BLEND);
         }
 
+        private void KeypadButton_Click(object sender, EventArgs e)
+        {
+            txtlogincode.AppendText(((Button)sender).Text);
+
+            if (txtlogincode.TextLength == 4)
+            {
+                GetEmployeeByLogin();
+            }
+        }
+
+        private void GetEmployeeByLogin()
+        {
+            Employee employee = employeeService.GetEmployeeByCode(int.Parse(txtlogincode.Text));
+
+            string[] management = new string[] { "Waiter", "Manager" };
+
+            string[] kitchen = new string[] { "Chef", "Barman" };
+
+
+            // if employee not null and role is valid
+            if (employee != null && (management.Contains(employee.Role) || kitchen.Contains(employee.Role)))
+            {
+                this.Hide();
+                if (management.Contains(employee.Role))
+                {
+                    // the table view page will go here 
+                    Menu mainMenu = new Menu();
+                    mainMenu.ShowDialog();
+
+                }
+                else if (kitchen.Contains(employee.Role))
+                {
+                    /*
+                      The kitchen and bar view page will go here 
+                    */
+                }
+                this.Close();
+            }
+            else
+            {
+                txtlogincode.Text = "";
+                MessageBox.Show("Password Entered is Incorrect");
+            }
+        }
+
         private void exitbtn_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btndelete_Click(object sender, EventArgs e)
+        {
+            txtlogincode.Text = txtlogincode.Text.Substring(0, (txtlogincode.TextLength - 1));
         }
     }
 }
