@@ -124,5 +124,10 @@ namespace ChapeauUI
             }
 
         }
+
+        private void btnExitGunaUI_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
