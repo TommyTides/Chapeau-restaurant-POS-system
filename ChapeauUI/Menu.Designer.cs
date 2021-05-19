@@ -46,27 +46,27 @@ namespace ChapeauUI
             this.btnDinnerMenu = new System.Windows.Forms.Button();
             this.btnDrinksNonAlcMenu = new System.Windows.Forms.Button();
             this.btnLunchMenu = new System.Windows.Forms.Button();
-            this.pnlLunchMenu = new System.Windows.Forms.Panel();
             this.pnlLunchMenuInside = new System.Windows.Forms.Panel();
-            this.listBoxLunchBitesPrice = new System.Windows.Forms.ListBox();
-            this.listBoxLunchSpecialsPrice = new System.Windows.Forms.ListBox();
-            this.listBoxLunchMainPrice = new System.Windows.Forms.ListBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.listBoxLunchBites = new System.Windows.Forms.ListBox();
-            this.listBoxLunchSpecials = new System.Windows.Forms.ListBox();
-            this.listBoxLunchMain = new System.Windows.Forms.ListBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.listBoxLunchMain = new System.Windows.Forms.ListBox();
+            this.listBoxLunchSpecials = new System.Windows.Forms.ListBox();
+            this.listBoxLunchBites = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.listBoxLunchMainPrice = new System.Windows.Forms.ListBox();
+            this.listBoxLunchSpecialsPrice = new System.Windows.Forms.ListBox();
+            this.listBoxLunchBitesPrice = new System.Windows.Forms.ListBox();
+            this.pnlLunchMenu = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlHamburger.SuspendLayout();
             this.pnlMenuOptions.SuspendLayout();
-            this.pnlLunchMenu.SuspendLayout();
             this.pnlLunchMenuInside.SuspendLayout();
+            this.pnlLunchMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox3
@@ -153,7 +153,7 @@ namespace ChapeauUI
             this.lblOrderCart.ForeColor = System.Drawing.Color.White;
             this.lblOrderCart.Location = new System.Drawing.Point(30, 189);
             this.lblOrderCart.Name = "lblOrderCart";
-            this.lblOrderCart.Size = new System.Drawing.Size(142, 31);
+            this.lblOrderCart.Size = new System.Drawing.Size(176, 39);
             this.lblOrderCart.TabIndex = 3;
             this.lblOrderCart.Text = "Order Cart";
             this.lblOrderCart.Click += new System.EventHandler(this.lblOrderCart_Click);
@@ -165,7 +165,7 @@ namespace ChapeauUI
             this.lblMenuOptions.ForeColor = System.Drawing.Color.White;
             this.lblMenuOptions.Location = new System.Drawing.Point(30, 135);
             this.lblMenuOptions.Name = "lblMenuOptions";
-            this.lblMenuOptions.Size = new System.Drawing.Size(182, 31);
+            this.lblMenuOptions.Size = new System.Drawing.Size(228, 39);
             this.lblMenuOptions.TabIndex = 2;
             this.lblMenuOptions.Text = "Menu Options";
             this.lblMenuOptions.Click += new System.EventHandler(this.lblMenuOptions_Click);
@@ -177,7 +177,7 @@ namespace ChapeauUI
             this.lblTableView.ForeColor = System.Drawing.Color.White;
             this.lblTableView.Location = new System.Drawing.Point(30, 78);
             this.lblTableView.Name = "lblTableView";
-            this.lblTableView.Size = new System.Drawing.Size(148, 31);
+            this.lblTableView.Size = new System.Drawing.Size(187, 39);
             this.lblTableView.TabIndex = 1;
             this.lblTableView.Text = "Table View";
             this.lblTableView.Click += new System.EventHandler(this.lblTableView_Click);
@@ -189,7 +189,7 @@ namespace ChapeauUI
             this.lblHome.ForeColor = System.Drawing.Color.White;
             this.lblHome.Location = new System.Drawing.Point(30, 23);
             this.lblHome.Name = "lblHome";
-            this.lblHome.Size = new System.Drawing.Size(86, 31);
+            this.lblHome.Size = new System.Drawing.Size(108, 39);
             this.lblHome.TabIndex = 0;
             this.lblHome.Text = "Home";
             this.lblHome.Click += new System.EventHandler(this.lblHome_Click);
@@ -202,7 +202,7 @@ namespace ChapeauUI
             this.lblApplicationState.ForeColor = System.Drawing.Color.White;
             this.lblApplicationState.Location = new System.Drawing.Point(294, 9);
             this.lblApplicationState.Name = "lblApplicationState";
-            this.lblApplicationState.Size = new System.Drawing.Size(117, 42);
+            this.lblApplicationState.Size = new System.Drawing.Size(148, 54);
             this.lblApplicationState.TabIndex = 6;
             this.lblApplicationState.Text = "Home";
             this.lblApplicationState.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -215,7 +215,7 @@ namespace ChapeauUI
             this.lblApplicationSubState.ForeColor = System.Drawing.Color.White;
             this.lblApplicationSubState.Location = new System.Drawing.Point(297, 51);
             this.lblApplicationSubState.Name = "lblApplicationSubState";
-            this.lblApplicationSubState.Size = new System.Drawing.Size(62, 24);
+            this.lblApplicationSubState.Size = new System.Drawing.Size(78, 29);
             this.lblApplicationSubState.TabIndex = 7;
             this.lblApplicationSubState.Text = "Home";
             this.lblApplicationSubState.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -281,15 +281,6 @@ namespace ChapeauUI
             this.btnLunchMenu.UseVisualStyleBackColor = false;
             this.btnLunchMenu.Click += new System.EventHandler(this.btnLunchMenu_Click);
             // 
-            // pnlLunchMenu
-            // 
-            this.pnlLunchMenu.BackColor = System.Drawing.Color.White;
-            this.pnlLunchMenu.Controls.Add(this.pnlLunchMenuInside);
-            this.pnlLunchMenu.Location = new System.Drawing.Point(-2, 94);
-            this.pnlLunchMenu.Name = "pnlLunchMenu";
-            this.pnlLunchMenu.Size = new System.Drawing.Size(686, 894);
-            this.pnlLunchMenu.TabIndex = 9;
-            // 
             // pnlLunchMenuInside
             // 
             this.pnlLunchMenuInside.BackColor = System.Drawing.Color.White;
@@ -311,87 +302,35 @@ namespace ChapeauUI
             this.pnlLunchMenuInside.Size = new System.Drawing.Size(542, 742);
             this.pnlLunchMenuInside.TabIndex = 0;
             // 
-            // listBoxLunchBitesPrice
+            // label1
             // 
-            this.listBoxLunchBitesPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxLunchBitesPrice.FormattingEnabled = true;
-            this.listBoxLunchBitesPrice.ItemHeight = 17;
-            this.listBoxLunchBitesPrice.Location = new System.Drawing.Point(475, 419);
-            this.listBoxLunchBitesPrice.Name = "listBoxLunchBitesPrice";
-            this.listBoxLunchBitesPrice.Size = new System.Drawing.Size(40, 72);
-            this.listBoxLunchBitesPrice.TabIndex = 12;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Name";
             // 
-            // listBoxLunchSpecialsPrice
+            // label2
             // 
-            this.listBoxLunchSpecialsPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxLunchSpecialsPrice.FormattingEnabled = true;
-            this.listBoxLunchSpecialsPrice.ItemHeight = 17;
-            this.listBoxLunchSpecialsPrice.Location = new System.Drawing.Point(475, 257);
-            this.listBoxLunchSpecialsPrice.Name = "listBoxLunchSpecialsPrice";
-            this.listBoxLunchSpecialsPrice.Size = new System.Drawing.Size(40, 72);
-            this.listBoxLunchSpecialsPrice.TabIndex = 11;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(471, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 25);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Price";
             // 
-            // listBoxLunchMainPrice
+            // label3
             // 
-            this.listBoxLunchMainPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxLunchMainPrice.FormattingEnabled = true;
-            this.listBoxLunchMainPrice.ItemHeight = 17;
-            this.listBoxLunchMainPrice.Location = new System.Drawing.Point(475, 98);
-            this.listBoxLunchMainPrice.Name = "listBoxLunchMainPrice";
-            this.listBoxLunchMainPrice.Size = new System.Drawing.Size(40, 72);
-            this.listBoxLunchMainPrice.TabIndex = 10;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(15, 376);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 24);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Bites";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(15, 211);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 24);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Specials";
-            // 
-            // listBoxLunchBites
-            // 
-            this.listBoxLunchBites.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxLunchBites.FormattingEnabled = true;
-            this.listBoxLunchBites.ItemHeight = 17;
-            this.listBoxLunchBites.Location = new System.Drawing.Point(19, 419);
-            this.listBoxLunchBites.Name = "listBoxLunchBites";
-            this.listBoxLunchBites.Size = new System.Drawing.Size(280, 72);
-            this.listBoxLunchBites.TabIndex = 7;
-            // 
-            // listBoxLunchSpecials
-            // 
-            this.listBoxLunchSpecials.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxLunchSpecials.FormattingEnabled = true;
-            this.listBoxLunchSpecials.ItemHeight = 17;
-            this.listBoxLunchSpecials.Location = new System.Drawing.Point(19, 257);
-            this.listBoxLunchSpecials.Name = "listBoxLunchSpecials";
-            this.listBoxLunchSpecials.Size = new System.Drawing.Size(280, 72);
-            this.listBoxLunchSpecials.TabIndex = 6;
-            // 
-            // listBoxLunchMain
-            // 
-            this.listBoxLunchMain.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxLunchMain.FormattingEnabled = true;
-            this.listBoxLunchMain.ItemHeight = 17;
-            this.listBoxLunchMain.Location = new System.Drawing.Point(19, 98);
-            this.listBoxLunchMain.Name = "listBoxLunchMain";
-            this.listBoxLunchMain.Size = new System.Drawing.Size(280, 72);
-            this.listBoxLunchMain.TabIndex = 5;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(351, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 25);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Quantity";
             // 
             // label4
             // 
@@ -400,39 +339,100 @@ namespace ChapeauUI
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(15, 56);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 24);
+            this.label4.Size = new System.Drawing.Size(135, 29);
             this.label4.TabIndex = 3;
             this.label4.Text = "Lunch Main";
             // 
-            // label3
+            // listBoxLunchMain
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(351, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Quantity";
+            this.listBoxLunchMain.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxLunchMain.FormattingEnabled = true;
+            this.listBoxLunchMain.ItemHeight = 21;
+            this.listBoxLunchMain.Location = new System.Drawing.Point(19, 98);
+            this.listBoxLunchMain.Name = "listBoxLunchMain";
+            this.listBoxLunchMain.Size = new System.Drawing.Size(280, 67);
+            this.listBoxLunchMain.TabIndex = 5;
             // 
-            // label2
+            // listBoxLunchSpecials
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(471, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Price";
+            this.listBoxLunchSpecials.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxLunchSpecials.FormattingEnabled = true;
+            this.listBoxLunchSpecials.ItemHeight = 21;
+            this.listBoxLunchSpecials.Location = new System.Drawing.Point(19, 257);
+            this.listBoxLunchSpecials.Name = "listBoxLunchSpecials";
+            this.listBoxLunchSpecials.Size = new System.Drawing.Size(280, 67);
+            this.listBoxLunchSpecials.TabIndex = 6;
             // 
-            // label1
+            // listBoxLunchBites
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
+            this.listBoxLunchBites.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxLunchBites.FormattingEnabled = true;
+            this.listBoxLunchBites.ItemHeight = 21;
+            this.listBoxLunchBites.Location = new System.Drawing.Point(19, 419);
+            this.listBoxLunchBites.Name = "listBoxLunchBites";
+            this.listBoxLunchBites.Size = new System.Drawing.Size(280, 67);
+            this.listBoxLunchBites.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(15, 211);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(106, 29);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Specials";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(15, 376);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 29);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Bites";
+            // 
+            // listBoxLunchMainPrice
+            // 
+            this.listBoxLunchMainPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxLunchMainPrice.FormattingEnabled = true;
+            this.listBoxLunchMainPrice.ItemHeight = 21;
+            this.listBoxLunchMainPrice.Location = new System.Drawing.Point(475, 98);
+            this.listBoxLunchMainPrice.Name = "listBoxLunchMainPrice";
+            this.listBoxLunchMainPrice.Size = new System.Drawing.Size(40, 67);
+            this.listBoxLunchMainPrice.TabIndex = 10;
+            // 
+            // listBoxLunchSpecialsPrice
+            // 
+            this.listBoxLunchSpecialsPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxLunchSpecialsPrice.FormattingEnabled = true;
+            this.listBoxLunchSpecialsPrice.ItemHeight = 21;
+            this.listBoxLunchSpecialsPrice.Location = new System.Drawing.Point(475, 257);
+            this.listBoxLunchSpecialsPrice.Name = "listBoxLunchSpecialsPrice";
+            this.listBoxLunchSpecialsPrice.Size = new System.Drawing.Size(40, 67);
+            this.listBoxLunchSpecialsPrice.TabIndex = 11;
+            // 
+            // listBoxLunchBitesPrice
+            // 
+            this.listBoxLunchBitesPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxLunchBitesPrice.FormattingEnabled = true;
+            this.listBoxLunchBitesPrice.ItemHeight = 21;
+            this.listBoxLunchBitesPrice.Location = new System.Drawing.Point(475, 419);
+            this.listBoxLunchBitesPrice.Name = "listBoxLunchBitesPrice";
+            this.listBoxLunchBitesPrice.Size = new System.Drawing.Size(40, 67);
+            this.listBoxLunchBitesPrice.TabIndex = 12;
+            // 
+            // pnlLunchMenu
+            // 
+            this.pnlLunchMenu.BackColor = System.Drawing.Color.White;
+            this.pnlLunchMenu.Controls.Add(this.pnlLunchMenuInside);
+            this.pnlLunchMenu.Location = new System.Drawing.Point(-2, 94);
+            this.pnlLunchMenu.Name = "pnlLunchMenu";
+            this.pnlLunchMenu.Size = new System.Drawing.Size(686, 894);
+            this.pnlLunchMenu.TabIndex = 9;
             // 
             // Menu
             // 
@@ -458,9 +458,9 @@ namespace ChapeauUI
             this.pnlHamburger.ResumeLayout(false);
             this.pnlHamburger.PerformLayout();
             this.pnlMenuOptions.ResumeLayout(false);
-            this.pnlLunchMenu.ResumeLayout(false);
             this.pnlLunchMenuInside.ResumeLayout(false);
             this.pnlLunchMenuInside.PerformLayout();
+            this.pnlLunchMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -484,21 +484,21 @@ namespace ChapeauUI
         private System.Windows.Forms.Button btnDinnerMenu;
         private System.Windows.Forms.Button btnDrinksNonAlcMenu;
         private System.Windows.Forms.Button btnLunchMenu;
-        private System.Windows.Forms.Panel pnlLunchMenu;
+        private Guna.UI2.WinForms.Guna2Button btnExitGunaUI;
         private System.Windows.Forms.Panel pnlLunchMenuInside;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox listBoxLunchBitesPrice;
+        private System.Windows.Forms.ListBox listBoxLunchSpecialsPrice;
+        private System.Windows.Forms.ListBox listBoxLunchMainPrice;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListBox listBoxLunchBites;
         private System.Windows.Forms.ListBox listBoxLunchSpecials;
         private System.Windows.Forms.ListBox listBoxLunchMain;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ListBox listBoxLunchBitesPrice;
-        private System.Windows.Forms.ListBox listBoxLunchSpecialsPrice;
-        private System.Windows.Forms.ListBox listBoxLunchMainPrice;
-        private Guna.UI2.WinForms.Guna2Button btnExitGunaUI;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnlLunchMenu;
     }
 }
 
