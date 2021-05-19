@@ -16,7 +16,21 @@ namespace ChapeauModel
         public double order_price { get; set; }
         public int order_status { get; set; }
         public int employee_code { get; set; }
+        public MenuItem menu { get; set; }
 
+        public Order()
+        {
+
+        }
+        public Order(MenuItem menu, int quantity)
+        {
+            this.menu = menu;
+            this.quantity = quantity;
+        }
+        public Order(MenuItem menu)
+        {
+            this.menu = menu;
+        }
         public Order(int order_id, int item_code, int table_code, int quantity, DateTime order_time, double order_price, int order_status, int employee_code)
         {
             this.order_id = order_id;

@@ -19,26 +19,21 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public List<Order> GetALLOrdersBar()
+        //public List<MenuItem> GetAllOrdersBar()
+        //{
+        //    string query = "m.menu_type, m.item_name,o.quantity,o.order_status FROM [ORDER] as o" +
+        //        "JOIN [MENU_ITEM] as m ON o.item_code=m.item_id" +
+        //        "where m.menu_type = 'drinks'" +
+        //        "ORDER BY o.order_time desc;";
+        //    SqlParameter[] sqlParameters = new SqlParameter[0];
+        //    return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        //}
+
+        public List<Order> GetAllOrdersKitchen()
         {
-
-
-            string query = "m.menu_type, m.item_name,o.quantity FROM [ORDER] as o" +
-                "JOIN [MENU_ITEM] as m ON o.item_code=m.item_id" +
-                "where m.menu_type = 'drinks'" +
-                "ORDER BY o.order_time desc;";
+            string query = "select m.menu_type, m.item_name,o.quantity,o.order_time,o.order_status from [ORDER] as o JOIN [MENU_ITEM] as m ON o.item_code=m.item_id where m.menu_type = 'lunch' OR m.menu_type = 'dinner' ORDER BY o.order_time desc;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-        }
-
-        public List<Order> GetALLOrdersChef()
-        {
-            string query = "m.menu_type, m.item_name,o.quantity FROM [ORDER] as o" +
-                "JOIN [MENU_ITEM] as m ON o.item_code=m.item_id" +
-                "where m.menu_type = 'lunch' OR where ='dinner'" +
-                "ORDER BY o.order_time desc;";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadKitchen(ExecuteSelectQuery(query, sqlParameters));
         }
 
 
@@ -63,6 +58,28 @@ namespace ChapeauDAL
                orders.Add(order);
             }
             return orders;
+        }
+        //
+        private List<Order> ReadKitchen(DataTable dataTable)
+        {
+            List<Order> Kitchen = new List<Order>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                //string menu_type = (string)dr["menu_type"];
+                //string item_name = (string)dr["item_name"];
+                MenuItem item = new MenuItem();             
+
+                item.menu_type = (string)dr["menu_type"];
+                item.item_name = (string)dr["item_name"];
+                Order kitchenorder = new Order(item, (int)dr["quantity"]);                
+
+                //kitchenorders.menu_type = (string)dr["menu_type"];
+                //kitchenorders.item_name = (string)dr["item_name"];
+                Kitchen.Add(kitchenorder);
+                //huilen 
+            }
+            return Kitchen;
         }
     }
 }

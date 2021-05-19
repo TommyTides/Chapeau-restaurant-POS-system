@@ -32,6 +32,12 @@ namespace ChapeauUI
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlLunchMenu = new System.Windows.Forms.Panel();
+            this.listViewKitch = new System.Windows.Forms.ListView();
+            this.menu_type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.item_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.quantityv2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.order_timev2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.order_statusv2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
             this.btnReady = new System.Windows.Forms.Button();
             this.listViewOrder = new System.Windows.Forms.ListView();
@@ -80,6 +86,7 @@ namespace ChapeauUI
             // pnlLunchMenu
             // 
             this.pnlLunchMenu.BackColor = System.Drawing.Color.White;
+            this.pnlLunchMenu.Controls.Add(this.listViewKitch);
             this.pnlLunchMenu.Controls.Add(this.label4);
             this.pnlLunchMenu.Controls.Add(this.btnReady);
             this.pnlLunchMenu.Controls.Add(this.listViewOrder);
@@ -90,12 +97,53 @@ namespace ChapeauUI
             this.pnlLunchMenu.Size = new System.Drawing.Size(686, 894);
             this.pnlLunchMenu.TabIndex = 13;
             // 
+            // listViewKitch
+            // 
+            this.listViewKitch.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.menu_type,
+            this.item_name,
+            this.quantityv2,
+            this.order_timev2,
+            this.order_statusv2});
+            this.listViewKitch.HideSelection = false;
+            this.listViewKitch.Location = new System.Drawing.Point(62, 350);
+            this.listViewKitch.Name = "listViewKitch";
+            this.listViewKitch.Size = new System.Drawing.Size(370, 217);
+            this.listViewKitch.TabIndex = 15;
+            this.listViewKitch.UseCompatibleStateImageBehavior = false;
+            this.listViewKitch.View = System.Windows.Forms.View.Details;
+            // 
+            // menu_type
+            // 
+            this.menu_type.Text = "menu_type";
+            this.menu_type.Width = 66;
+            // 
+            // item_name
+            // 
+            this.item_name.Text = "item_name";
+            this.item_name.Width = 74;
+            // 
+            // quantityv2
+            // 
+            this.quantityv2.Text = "quantity";
+            this.quantityv2.Width = 67;
+            // 
+            // order_timev2
+            // 
+            this.order_timev2.Text = "order_time";
+            this.order_timev2.Width = 77;
+            // 
+            // order_statusv2
+            // 
+            this.order_statusv2.Text = "order_status";
+            this.order_statusv2.Width = 105;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(276, 40);
+            this.label4.Location = new System.Drawing.Point(292, 44);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 24);
             this.label4.TabIndex = 14;
@@ -127,7 +175,7 @@ namespace ChapeauUI
             this.listViewOrder.HideSelection = false;
             this.listViewOrder.Location = new System.Drawing.Point(44, 95);
             this.listViewOrder.Name = "listViewOrder";
-            this.listViewOrder.Size = new System.Drawing.Size(594, 509);
+            this.listViewOrder.Size = new System.Drawing.Size(613, 171);
             this.listViewOrder.TabIndex = 11;
             this.listViewOrder.UseCompatibleStateImageBehavior = false;
             this.listViewOrder.View = System.Windows.Forms.View.Details;
@@ -181,7 +229,7 @@ namespace ChapeauUI
             this.btnRefresh.TabIndex = 10;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.button2_Click);
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // pictureBox1
             // 
@@ -272,5 +320,11 @@ namespace ChapeauUI
         private System.Windows.Forms.Button btnReady;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblApplicationState;
+        private System.Windows.Forms.ListView listViewKitch;
+        private System.Windows.Forms.ColumnHeader menu_type;
+        private System.Windows.Forms.ColumnHeader item_name;
+        private System.Windows.Forms.ColumnHeader quantityv2;
+        private System.Windows.Forms.ColumnHeader order_timev2;
+        private System.Windows.Forms.ColumnHeader order_statusv2;
     }
 }

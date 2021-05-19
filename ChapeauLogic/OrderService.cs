@@ -20,8 +20,20 @@ namespace ChapeauLogic
       
         public List<Order> GetAllOrders()
         {
-            List<Order> orders = orderDAO.GetAllOrders();
-            return orders;
+             
+            return orderDAO.GetAllOrders();
         }
+
+        public List<Order> GetAllKitchen()
+        {
+            List<Order> kitchen = orderDAO.GetAllOrdersKitchen();
+            return kitchen;
+        }
+
+        //public List<MenuItem> GetAllBar()
+        //{
+          
+        //    return orderDAO.GetAllOrdersBar();
+        //}
     }
 }

@@ -22,17 +22,16 @@ namespace ChapeauUI
         private void OrderForm_Load(object sender, EventArgs e)
         {
             WinAPI.AnimateWindow(this.Handle, 2000, WinAPI.BLEND);
+          
+
             ListViewOrder();
-
+            ListViewKitchen();
+            pictureBox4.Controls.Add(pictureBox1);
+            pictureBox4.Controls.Add(pictureBox3);
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox3.BackColor = Color.Transparent;
 
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            listViewOrder.Clear();
-        }
-
-      
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -60,5 +59,29 @@ namespace ChapeauUI
 
             }
         }
+
+        private void ListViewKitchen()
+        {
+            OrderService orderService = new OrderService();
+            List<Order> orders = orderService.GetAllKitchen();
+            foreach (Order I in orders)
+            {
+                ListViewItem li = new ListViewItem(I.menu.menu_type);
+                li.SubItems.Add(I.menu.item_name);
+                li.SubItems.Add(I.quantity.ToString());
+                li.SubItems.Add(I.order_time.ToString());
+                li.SubItems.Add(I.order_status.ToString());
+                listViewKitch.Items.Add(li);
+
+            }
+
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            listViewOrder.Clear();
+        }
+
+
     }
 }
