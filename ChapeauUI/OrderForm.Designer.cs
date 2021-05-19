@@ -32,7 +32,8 @@ namespace ChapeauUI
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlLunchMenu = new System.Windows.Forms.Panel();
-            this.Orders = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnReady = new System.Windows.Forms.Button();
             this.listViewOrder = new System.Windows.Forms.ListView();
             this.order_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.item_code = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -46,7 +47,7 @@ namespace ChapeauUI
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.btnReady = new System.Windows.Forms.Button();
+            this.lblApplicationState = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlLunchMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -68,19 +69,19 @@ namespace ChapeauUI
             this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnExit.Location = new System.Drawing.Point(587, 748);
+            this.btnExit.Location = new System.Drawing.Point(574, 726);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(96, 39);
             this.btnExit.TabIndex = 9;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.button1_Click);
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // pnlLunchMenu
             // 
             this.pnlLunchMenu.BackColor = System.Drawing.Color.White;
+            this.pnlLunchMenu.Controls.Add(this.label4);
             this.pnlLunchMenu.Controls.Add(this.btnReady);
-            this.pnlLunchMenu.Controls.Add(this.Orders);
             this.pnlLunchMenu.Controls.Add(this.listViewOrder);
             this.pnlLunchMenu.Controls.Add(this.btnRefresh);
             this.pnlLunchMenu.Controls.Add(this.btnExit);
@@ -89,13 +90,28 @@ namespace ChapeauUI
             this.pnlLunchMenu.Size = new System.Drawing.Size(686, 894);
             this.pnlLunchMenu.TabIndex = 13;
             // 
-            // Orders
+            // label4
             // 
-            this.Orders.Location = new System.Drawing.Point(235, 34);
-            this.Orders.Name = "Orders";
-            this.Orders.Size = new System.Drawing.Size(163, 35);
-            this.Orders.TabIndex = 12;
-            this.Orders.Text = "Orders";
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(276, 40);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 24);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Orders";
+            // 
+            // btnReady
+            // 
+            this.btnReady.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnReady.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReady.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnReady.Location = new System.Drawing.Point(44, 625);
+            this.btnReady.Name = "btnReady";
+            this.btnReady.Size = new System.Drawing.Size(96, 39);
+            this.btnReady.TabIndex = 13;
+            this.btnReady.Text = "Ready";
+            this.btnReady.UseVisualStyleBackColor = false;
             // 
             // listViewOrder
             // 
@@ -115,7 +131,6 @@ namespace ChapeauUI
             this.listViewOrder.TabIndex = 11;
             this.listViewOrder.UseCompatibleStateImageBehavior = false;
             this.listViewOrder.View = System.Windows.Forms.View.Details;
-            this.listViewOrder.SelectedIndexChanged += new System.EventHandler(this.listViewOrder_SelectedIndexChanged);
             // 
             // order_id
             // 
@@ -160,7 +175,7 @@ namespace ChapeauUI
             this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefresh.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRefresh.Location = new System.Drawing.Point(14, 748);
+            this.btnRefresh.Location = new System.Drawing.Point(44, 726);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(96, 39);
             this.btnRefresh.TabIndex = 10;
@@ -197,22 +212,24 @@ namespace ChapeauUI
             this.pictureBox3.TabIndex = 12;
             this.pictureBox3.TabStop = false;
             // 
-            // btnReady
+            // lblApplicationState
             // 
-            this.btnReady.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnReady.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReady.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnReady.Location = new System.Drawing.Point(44, 625);
-            this.btnReady.Name = "btnReady";
-            this.btnReady.Size = new System.Drawing.Size(96, 39);
-            this.btnReady.TabIndex = 13;
-            this.btnReady.Text = "Ready";
-            this.btnReady.UseVisualStyleBackColor = false;
+            this.lblApplicationState.AutoSize = true;
+            this.lblApplicationState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
+            this.lblApplicationState.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApplicationState.ForeColor = System.Drawing.Color.White;
+            this.lblApplicationState.Location = new System.Drawing.Point(341, 24);
+            this.lblApplicationState.Name = "lblApplicationState";
+            this.lblApplicationState.Size = new System.Drawing.Size(132, 42);
+            this.lblApplicationState.TabIndex = 15;
+            this.lblApplicationState.Text = "Orders";
+            this.lblApplicationState.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // OrderForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(752, 985);
+            this.Controls.Add(this.lblApplicationState);
             this.Controls.Add(this.pnlLunchMenu);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox1);
@@ -225,10 +242,12 @@ namespace ChapeauUI
             this.Load += new System.EventHandler(this.OrderForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlLunchMenu.ResumeLayout(false);
+            this.pnlLunchMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -242,7 +261,6 @@ namespace ChapeauUI
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.ListView listViewOrder;
-        private System.Windows.Forms.Label Orders;
         private System.Windows.Forms.ColumnHeader order_id;
         private System.Windows.Forms.ColumnHeader item_code;
         private System.Windows.Forms.ColumnHeader table_code;
@@ -252,5 +270,7 @@ namespace ChapeauUI
         private System.Windows.Forms.ColumnHeader order_status;
         private System.Windows.Forms.ColumnHeader employee_code;
         private System.Windows.Forms.Button btnReady;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblApplicationState;
     }
 }
