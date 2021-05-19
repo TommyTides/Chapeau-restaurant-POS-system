@@ -17,7 +17,7 @@ namespace ChapeauLogic
             paymentdb = new PaymentDAO();
         }
 
-        public List<Payment> GetPayments()
+        public List<Payment> GetAllPayments()
         {
             List<Payment> payments = paymentdb.GetAllPayments();
             return payments;

@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Globalization;
 using MenuItem = ChapeauModel.MenuItem;
+using ChapeauModel;
 
 namespace ChapeauUI
 {
@@ -12,7 +13,7 @@ namespace ChapeauUI
     {
         MenuItemService menuItemService;
 
-        public Menu()
+        public Menu(Employee employee)
         {
             InitializeComponent();
 
@@ -28,6 +29,8 @@ namespace ChapeauUI
             pictureBox3.BackColor = Color.Transparent;
 
             HideAllPanels();
+            // welcome message displaying firstname, lastname and employeerole.
+            
         }
 
         private void HideAllPanels() // Will hide all panels when called
@@ -128,6 +131,15 @@ namespace ChapeauUI
         private void btnExitGunaUI_Click(object sender, EventArgs e)
         {
             Application.Exit();
+            
         }
+        /*
+        private void btnlogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
+        }
+         */
     }
 }

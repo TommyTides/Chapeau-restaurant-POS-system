@@ -52,7 +52,7 @@ namespace ChapeauUI
                 if (management.Contains(employee.Role))
                 {
                     // the table view page will go here 
-                    Menu mainMenu = new Menu();
+                    Menu mainMenu = new Menu(employee);
                     mainMenu.ShowDialog();
 
                 }

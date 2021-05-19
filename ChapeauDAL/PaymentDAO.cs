@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System;
+using System.Globalization;
 
 namespace ChapeauDAL
 {
@@ -10,7 +11,7 @@ namespace ChapeauDAL
     {
         public List<Payment> GetAllPayments()
         {
-            string query = "SELECT payment_id, orderitem_code, paymentStatus, paymentMethod, payment_date FROM PAYMENT";
+            string query = "SELECT payment_id, orderitem_code, payment_method, payment_status, payment_date FROM PAYMENT";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -25,8 +26,8 @@ namespace ChapeauDAL
                 {
                     PaymentID = (int)dr["payment_id"],
                     OrderitemCode = (int)dr["orderitem_code"],
-                    paymentMethod = (Payment.PaymentMethod)dr["paymentMethod"],
-                    paymentStatus = (Payment.PaymentStatus)dr["paymentStatus"],
+                    paymentMethod = (PaymentMethod)dr["payment_method"],
+                    paymentStatus = (PaymentStatus)dr["payment_status"],
                     PaymentDate = (DateTime)dr["payment_date"]
                 };
                 payments.Add(payment);
