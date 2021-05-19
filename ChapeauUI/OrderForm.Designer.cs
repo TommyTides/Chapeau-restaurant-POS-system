@@ -30,12 +30,25 @@ namespace ChapeauUI
         private void InitializeComponent()
         {
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.pnlLunchMenu = new System.Windows.Forms.Panel();
+            this.Orders = new System.Windows.Forms.Label();
+            this.listViewOrder = new System.Windows.Forms.ListView();
+            this.order_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.item_code = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.table_code = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.quantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.order_time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.order_price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.order_status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.employee_code = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnReady = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pnlLunchMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -50,25 +63,110 @@ namespace ChapeauUI
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
-            // button1
+            // btnExit
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(658, 858);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 39);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnExit.Location = new System.Drawing.Point(587, 748);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(96, 39);
+            this.btnExit.TabIndex = 9;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.button1_Click);
             // 
             // pnlLunchMenu
             // 
             this.pnlLunchMenu.BackColor = System.Drawing.Color.White;
+            this.pnlLunchMenu.Controls.Add(this.btnReady);
+            this.pnlLunchMenu.Controls.Add(this.Orders);
+            this.pnlLunchMenu.Controls.Add(this.listViewOrder);
+            this.pnlLunchMenu.Controls.Add(this.btnRefresh);
+            this.pnlLunchMenu.Controls.Add(this.btnExit);
             this.pnlLunchMenu.Location = new System.Drawing.Point(-2, 92);
             this.pnlLunchMenu.Name = "pnlLunchMenu";
             this.pnlLunchMenu.Size = new System.Drawing.Size(686, 894);
             this.pnlLunchMenu.TabIndex = 13;
+            // 
+            // Orders
+            // 
+            this.Orders.Location = new System.Drawing.Point(235, 34);
+            this.Orders.Name = "Orders";
+            this.Orders.Size = new System.Drawing.Size(163, 35);
+            this.Orders.TabIndex = 12;
+            this.Orders.Text = "Orders";
+            // 
+            // listViewOrder
+            // 
+            this.listViewOrder.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.order_id,
+            this.item_code,
+            this.table_code,
+            this.quantity,
+            this.order_time,
+            this.order_price,
+            this.order_status,
+            this.employee_code});
+            this.listViewOrder.HideSelection = false;
+            this.listViewOrder.Location = new System.Drawing.Point(44, 95);
+            this.listViewOrder.Name = "listViewOrder";
+            this.listViewOrder.Size = new System.Drawing.Size(594, 509);
+            this.listViewOrder.TabIndex = 11;
+            this.listViewOrder.UseCompatibleStateImageBehavior = false;
+            this.listViewOrder.View = System.Windows.Forms.View.Details;
+            this.listViewOrder.SelectedIndexChanged += new System.EventHandler(this.listViewOrder_SelectedIndexChanged);
+            // 
+            // order_id
+            // 
+            this.order_id.Text = "order_id";
+            // 
+            // item_code
+            // 
+            this.item_code.Text = "item_code";
+            this.item_code.Width = 69;
+            // 
+            // table_code
+            // 
+            this.table_code.Text = "table_code";
+            this.table_code.Width = 69;
+            // 
+            // quantity
+            // 
+            this.quantity.Text = "quantity";
+            // 
+            // order_time
+            // 
+            this.order_time.Text = "order_time";
+            this.order_time.Width = 70;
+            // 
+            // order_price
+            // 
+            this.order_price.Text = "order_price";
+            this.order_price.Width = 82;
+            // 
+            // order_status
+            // 
+            this.order_status.Text = "order_status";
+            this.order_status.Width = 85;
+            // 
+            // employee_code
+            // 
+            this.employee_code.Text = "employee_code";
+            this.employee_code.Width = 105;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnRefresh.Location = new System.Drawing.Point(14, 748);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(96, 39);
+            this.btnRefresh.TabIndex = 10;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.button2_Click);
             // 
             // pictureBox1
             // 
@@ -99,11 +197,22 @@ namespace ChapeauUI
             this.pictureBox3.TabIndex = 12;
             this.pictureBox3.TabStop = false;
             // 
+            // btnReady
+            // 
+            this.btnReady.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnReady.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReady.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnReady.Location = new System.Drawing.Point(44, 625);
+            this.btnReady.Name = "btnReady";
+            this.btnReady.Size = new System.Drawing.Size(96, 39);
+            this.btnReady.TabIndex = 13;
+            this.btnReady.Text = "Ready";
+            this.btnReady.UseVisualStyleBackColor = false;
+            // 
             // OrderForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(752, 985);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlLunchMenu);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox1);
@@ -115,6 +224,7 @@ namespace ChapeauUI
             this.Text = "OrderForm";
             this.Load += new System.EventHandler(this.OrderForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.pnlLunchMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -125,10 +235,22 @@ namespace ChapeauUI
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel pnlLunchMenu;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.ListView listViewOrder;
+        private System.Windows.Forms.Label Orders;
+        private System.Windows.Forms.ColumnHeader order_id;
+        private System.Windows.Forms.ColumnHeader item_code;
+        private System.Windows.Forms.ColumnHeader table_code;
+        private System.Windows.Forms.ColumnHeader quantity;
+        private System.Windows.Forms.ColumnHeader order_time;
+        private System.Windows.Forms.ColumnHeader order_price;
+        private System.Windows.Forms.ColumnHeader order_status;
+        private System.Windows.Forms.ColumnHeader employee_code;
+        private System.Windows.Forms.Button btnReady;
     }
 }
