@@ -25,8 +25,8 @@ namespace ChapeauDAL
                 {
                     PaymentID = (int)dr["payment_id"],
                     OrderitemCode = (int)dr["orderitem_code"],
-                    paymentMethod = (PaymentMethod)dr["paymentMethod"],
-                    paymentStatus = (PaymentStatus)dr["paymentStatus"],
+                    paymentMethod = (Payment.PaymentMethod)dr["paymentMethod"],
+                    paymentStatus = (Payment.PaymentStatus)dr["paymentStatus"],
                     PaymentDate = (DateTime)dr["payment_date"]
                 };
                 payments.Add(payment);

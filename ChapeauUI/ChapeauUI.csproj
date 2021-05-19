@@ -75,6 +75,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TakingOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +142,9 @@
       <Project>{9a797780-9901-40d8-9ba2-beb386978bf7}</Project>
       <Name>ChapeauModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hamburger_menu1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
