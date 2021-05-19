@@ -231,7 +231,6 @@ namespace ChapeauUI
             this.gunBtnHome.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.gunBtnHome.TextOffset = new System.Drawing.Point(50, 0);
             this.gunBtnHome.UseTransparentBackground = true;
-            this.gunBtnHome.Click += new System.EventHandler(this.guna2GradientButton2_Click);
             // 
             // gunBtnTableView
             // 

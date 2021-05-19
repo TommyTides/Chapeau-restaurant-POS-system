@@ -47,19 +47,31 @@ namespace ChapeauUI
             this.btnDrinksNonAlcMenu = new System.Windows.Forms.Button();
             this.btnLunchMenu = new System.Windows.Forms.Button();
             this.pnlLunchMenuInside = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.listBoxLunchMain = new System.Windows.Forms.ListBox();
-            this.listBoxLunchSpecials = new System.Windows.Forms.ListBox();
-            this.listBoxLunchBites = new System.Windows.Forms.ListBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.listBoxLunchMainPrice = new System.Windows.Forms.ListBox();
-            this.listBoxLunchSpecialsPrice = new System.Windows.Forms.ListBox();
+            this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.listBoxLunchBitesPrice = new System.Windows.Forms.ListBox();
+            this.listBoxLunchSpecialsPrice = new System.Windows.Forms.ListBox();
+            this.listBoxLunchMainPrice = new System.Windows.Forms.ListBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.listBoxLunchBites = new System.Windows.Forms.ListBox();
+            this.listBoxLunchSpecials = new System.Windows.Forms.ListBox();
+            this.listBoxLunchMain = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlLunchMenu = new System.Windows.Forms.Panel();
+            this.guna2ComboBox3 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2ComboBox5 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2ComboBox4 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2ComboBox6 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2ComboBox7 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2ComboBox8 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2ComboBox9 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2ComboBox10 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2ComboBox11 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2ComboBox12 = new Guna.UI2.WinForms.Guna2ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -130,7 +142,7 @@ namespace ChapeauUI
             this.btnExitGunaUI.ShadowDecoration.Parent = this.btnExitGunaUI;
             this.btnExitGunaUI.Size = new System.Drawing.Size(114, 45);
             this.btnExitGunaUI.TabIndex = 26;
-            this.btnExitGunaUI.Text = "Exit";
+            this.btnExitGunaUI.Text = "Log out";
             this.btnExitGunaUI.Click += new System.EventHandler(this.btnExitGunaUI_Click);
             // 
             // button1
@@ -138,9 +150,9 @@ namespace ChapeauUI
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(121, 855);
+            this.button1.Location = new System.Drawing.Point(121, 858);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 39);
+            this.button1.Size = new System.Drawing.Size(96, 36);
             this.button1.TabIndex = 8;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = false;
@@ -153,7 +165,7 @@ namespace ChapeauUI
             this.lblOrderCart.ForeColor = System.Drawing.Color.White;
             this.lblOrderCart.Location = new System.Drawing.Point(30, 189);
             this.lblOrderCart.Name = "lblOrderCart";
-            this.lblOrderCart.Size = new System.Drawing.Size(176, 39);
+            this.lblOrderCart.Size = new System.Drawing.Size(142, 31);
             this.lblOrderCart.TabIndex = 3;
             this.lblOrderCart.Text = "Order Cart";
             this.lblOrderCart.Click += new System.EventHandler(this.lblOrderCart_Click);
@@ -165,7 +177,7 @@ namespace ChapeauUI
             this.lblMenuOptions.ForeColor = System.Drawing.Color.White;
             this.lblMenuOptions.Location = new System.Drawing.Point(30, 135);
             this.lblMenuOptions.Name = "lblMenuOptions";
-            this.lblMenuOptions.Size = new System.Drawing.Size(228, 39);
+            this.lblMenuOptions.Size = new System.Drawing.Size(182, 31);
             this.lblMenuOptions.TabIndex = 2;
             this.lblMenuOptions.Text = "Menu Options";
             this.lblMenuOptions.Click += new System.EventHandler(this.lblMenuOptions_Click);
@@ -177,7 +189,7 @@ namespace ChapeauUI
             this.lblTableView.ForeColor = System.Drawing.Color.White;
             this.lblTableView.Location = new System.Drawing.Point(30, 78);
             this.lblTableView.Name = "lblTableView";
-            this.lblTableView.Size = new System.Drawing.Size(187, 39);
+            this.lblTableView.Size = new System.Drawing.Size(148, 31);
             this.lblTableView.TabIndex = 1;
             this.lblTableView.Text = "Table View";
             this.lblTableView.Click += new System.EventHandler(this.lblTableView_Click);
@@ -189,7 +201,7 @@ namespace ChapeauUI
             this.lblHome.ForeColor = System.Drawing.Color.White;
             this.lblHome.Location = new System.Drawing.Point(30, 23);
             this.lblHome.Name = "lblHome";
-            this.lblHome.Size = new System.Drawing.Size(108, 39);
+            this.lblHome.Size = new System.Drawing.Size(86, 31);
             this.lblHome.TabIndex = 0;
             this.lblHome.Text = "Home";
             this.lblHome.Click += new System.EventHandler(this.lblHome_Click);
@@ -202,7 +214,7 @@ namespace ChapeauUI
             this.lblApplicationState.ForeColor = System.Drawing.Color.White;
             this.lblApplicationState.Location = new System.Drawing.Point(294, 9);
             this.lblApplicationState.Name = "lblApplicationState";
-            this.lblApplicationState.Size = new System.Drawing.Size(148, 54);
+            this.lblApplicationState.Size = new System.Drawing.Size(117, 42);
             this.lblApplicationState.TabIndex = 6;
             this.lblApplicationState.Text = "Home";
             this.lblApplicationState.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -215,7 +227,7 @@ namespace ChapeauUI
             this.lblApplicationSubState.ForeColor = System.Drawing.Color.White;
             this.lblApplicationSubState.Location = new System.Drawing.Point(297, 51);
             this.lblApplicationSubState.Name = "lblApplicationSubState";
-            this.lblApplicationSubState.Size = new System.Drawing.Size(78, 29);
+            this.lblApplicationSubState.Size = new System.Drawing.Size(62, 24);
             this.lblApplicationSubState.TabIndex = 7;
             this.lblApplicationSubState.Text = "Home";
             this.lblApplicationSubState.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -285,6 +297,18 @@ namespace ChapeauUI
             // 
             this.pnlLunchMenuInside.BackColor = System.Drawing.Color.White;
             this.pnlLunchMenuInside.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlLunchMenuInside.Controls.Add(this.guna2ComboBox9);
+            this.pnlLunchMenuInside.Controls.Add(this.guna2ComboBox10);
+            this.pnlLunchMenuInside.Controls.Add(this.guna2ComboBox11);
+            this.pnlLunchMenuInside.Controls.Add(this.guna2ComboBox12);
+            this.pnlLunchMenuInside.Controls.Add(this.guna2ComboBox4);
+            this.pnlLunchMenuInside.Controls.Add(this.guna2ComboBox6);
+            this.pnlLunchMenuInside.Controls.Add(this.guna2ComboBox7);
+            this.pnlLunchMenuInside.Controls.Add(this.guna2ComboBox8);
+            this.pnlLunchMenuInside.Controls.Add(this.guna2ComboBox3);
+            this.pnlLunchMenuInside.Controls.Add(this.guna2ComboBox5);
+            this.pnlLunchMenuInside.Controls.Add(this.guna2ComboBox2);
+            this.pnlLunchMenuInside.Controls.Add(this.guna2ComboBox1);
             this.pnlLunchMenuInside.Controls.Add(this.listBoxLunchBitesPrice);
             this.pnlLunchMenuInside.Controls.Add(this.listBoxLunchSpecialsPrice);
             this.pnlLunchMenuInside.Controls.Add(this.listBoxLunchMainPrice);
@@ -299,38 +323,161 @@ namespace ChapeauUI
             this.pnlLunchMenuInside.Controls.Add(this.label1);
             this.pnlLunchMenuInside.Location = new System.Drawing.Point(113, 75);
             this.pnlLunchMenuInside.Name = "pnlLunchMenuInside";
-            this.pnlLunchMenuInside.Size = new System.Drawing.Size(542, 742);
+            this.pnlLunchMenuInside.Size = new System.Drawing.Size(553, 783);
             this.pnlLunchMenuInside.TabIndex = 0;
+            this.pnlLunchMenuInside.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlLunchMenuInside_Paint);
             // 
-            // label1
+            // guna2ComboBox2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
+            this.guna2ComboBox2.Animated = true;
+            this.guna2ComboBox2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox2.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox2.FocusedState.Parent = this.guna2ComboBox2;
+            this.guna2ComboBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox2.HoverState.Parent = this.guna2ComboBox2;
+            this.guna2ComboBox2.ItemHeight = 30;
+            this.guna2ComboBox2.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.guna2ComboBox2.ItemsAppearance.Parent = this.guna2ComboBox2;
+            this.guna2ComboBox2.Location = new System.Drawing.Point(318, 144);
+            this.guna2ComboBox2.Name = "guna2ComboBox2";
+            this.guna2ComboBox2.ShadowDecoration.Parent = this.guna2ComboBox2;
+            this.guna2ComboBox2.Size = new System.Drawing.Size(140, 36);
+            this.guna2ComboBox2.TabIndex = 14;
             // 
-            // label2
+            // guna2ComboBox1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(471, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 25);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Price";
+            this.guna2ComboBox1.Animated = true;
+            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox1.FocusedState.Parent = this.guna2ComboBox1;
+            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox1.HoverState.Parent = this.guna2ComboBox1;
+            this.guna2ComboBox1.ItemHeight = 30;
+            this.guna2ComboBox1.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.guna2ComboBox1.ItemsAppearance.Parent = this.guna2ComboBox1;
+            this.guna2ComboBox1.Location = new System.Drawing.Point(318, 98);
+            this.guna2ComboBox1.Name = "guna2ComboBox1";
+            this.guna2ComboBox1.ShadowDecoration.Parent = this.guna2ComboBox1;
+            this.guna2ComboBox1.Size = new System.Drawing.Size(140, 36);
+            this.guna2ComboBox1.TabIndex = 13;
             // 
-            // label3
+            // listBoxLunchBitesPrice
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(351, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 25);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Quantity";
+            this.listBoxLunchBitesPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxLunchBitesPrice.FormattingEnabled = true;
+            this.listBoxLunchBitesPrice.ItemHeight = 17;
+            this.listBoxLunchBitesPrice.Location = new System.Drawing.Point(475, 564);
+            this.listBoxLunchBitesPrice.Name = "listBoxLunchBitesPrice";
+            this.listBoxLunchBitesPrice.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxLunchBitesPrice.Size = new System.Drawing.Size(55, 174);
+            this.listBoxLunchBitesPrice.TabIndex = 12;
+            // 
+            // listBoxLunchSpecialsPrice
+            // 
+            this.listBoxLunchSpecialsPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxLunchSpecialsPrice.FormattingEnabled = true;
+            this.listBoxLunchSpecialsPrice.ItemHeight = 17;
+            this.listBoxLunchSpecialsPrice.Location = new System.Drawing.Point(475, 325);
+            this.listBoxLunchSpecialsPrice.Name = "listBoxLunchSpecialsPrice";
+            this.listBoxLunchSpecialsPrice.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxLunchSpecialsPrice.Size = new System.Drawing.Size(55, 174);
+            this.listBoxLunchSpecialsPrice.TabIndex = 11;
+            // 
+            // listBoxLunchMainPrice
+            // 
+            this.listBoxLunchMainPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxLunchMainPrice.FormattingEnabled = true;
+            this.listBoxLunchMainPrice.ItemHeight = 17;
+            this.listBoxLunchMainPrice.Location = new System.Drawing.Point(475, 98);
+            this.listBoxLunchMainPrice.Name = "listBoxLunchMainPrice";
+            this.listBoxLunchMainPrice.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxLunchMainPrice.Size = new System.Drawing.Size(55, 174);
+            this.listBoxLunchMainPrice.TabIndex = 10;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(15, 521);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 24);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Bites";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(15, 279);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(81, 24);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Specials";
+            // 
+            // listBoxLunchBites
+            // 
+            this.listBoxLunchBites.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxLunchBites.FormattingEnabled = true;
+            this.listBoxLunchBites.ItemHeight = 17;
+            this.listBoxLunchBites.Location = new System.Drawing.Point(19, 564);
+            this.listBoxLunchBites.Name = "listBoxLunchBites";
+            this.listBoxLunchBites.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxLunchBites.Size = new System.Drawing.Size(280, 174);
+            this.listBoxLunchBites.TabIndex = 7;
+            // 
+            // listBoxLunchSpecials
+            // 
+            this.listBoxLunchSpecials.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxLunchSpecials.FormattingEnabled = true;
+            this.listBoxLunchSpecials.ItemHeight = 17;
+            this.listBoxLunchSpecials.Location = new System.Drawing.Point(19, 325);
+            this.listBoxLunchSpecials.Name = "listBoxLunchSpecials";
+            this.listBoxLunchSpecials.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxLunchSpecials.Size = new System.Drawing.Size(280, 174);
+            this.listBoxLunchSpecials.TabIndex = 6;
+            // 
+            // listBoxLunchMain
+            // 
+            this.listBoxLunchMain.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.listBoxLunchMain.FormattingEnabled = true;
+            this.listBoxLunchMain.ItemHeight = 17;
+            this.listBoxLunchMain.Location = new System.Drawing.Point(19, 98);
+            this.listBoxLunchMain.Name = "listBoxLunchMain";
+            this.listBoxLunchMain.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxLunchMain.Size = new System.Drawing.Size(280, 174);
+            this.listBoxLunchMain.TabIndex = 5;
             // 
             // label4
             // 
@@ -339,91 +486,39 @@ namespace ChapeauUI
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(15, 56);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(135, 29);
+            this.label4.Size = new System.Drawing.Size(109, 24);
             this.label4.TabIndex = 3;
             this.label4.Text = "Lunch Main";
             // 
-            // listBoxLunchMain
+            // label3
             // 
-            this.listBoxLunchMain.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxLunchMain.FormattingEnabled = true;
-            this.listBoxLunchMain.ItemHeight = 21;
-            this.listBoxLunchMain.Location = new System.Drawing.Point(19, 98);
-            this.listBoxLunchMain.Name = "listBoxLunchMain";
-            this.listBoxLunchMain.Size = new System.Drawing.Size(280, 67);
-            this.listBoxLunchMain.TabIndex = 5;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(351, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 20);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Quantity";
             // 
-            // listBoxLunchSpecials
+            // label2
             // 
-            this.listBoxLunchSpecials.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxLunchSpecials.FormattingEnabled = true;
-            this.listBoxLunchSpecials.ItemHeight = 21;
-            this.listBoxLunchSpecials.Location = new System.Drawing.Point(19, 257);
-            this.listBoxLunchSpecials.Name = "listBoxLunchSpecials";
-            this.listBoxLunchSpecials.Size = new System.Drawing.Size(280, 67);
-            this.listBoxLunchSpecials.TabIndex = 6;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(471, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Price";
             // 
-            // listBoxLunchBites
+            // label1
             // 
-            this.listBoxLunchBites.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxLunchBites.FormattingEnabled = true;
-            this.listBoxLunchBites.ItemHeight = 21;
-            this.listBoxLunchBites.Location = new System.Drawing.Point(19, 419);
-            this.listBoxLunchBites.Name = "listBoxLunchBites";
-            this.listBoxLunchBites.Size = new System.Drawing.Size(280, 67);
-            this.listBoxLunchBites.TabIndex = 7;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(15, 211);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 29);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Specials";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(15, 376);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 29);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Bites";
-            // 
-            // listBoxLunchMainPrice
-            // 
-            this.listBoxLunchMainPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxLunchMainPrice.FormattingEnabled = true;
-            this.listBoxLunchMainPrice.ItemHeight = 21;
-            this.listBoxLunchMainPrice.Location = new System.Drawing.Point(475, 98);
-            this.listBoxLunchMainPrice.Name = "listBoxLunchMainPrice";
-            this.listBoxLunchMainPrice.Size = new System.Drawing.Size(40, 67);
-            this.listBoxLunchMainPrice.TabIndex = 10;
-            // 
-            // listBoxLunchSpecialsPrice
-            // 
-            this.listBoxLunchSpecialsPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxLunchSpecialsPrice.FormattingEnabled = true;
-            this.listBoxLunchSpecialsPrice.ItemHeight = 21;
-            this.listBoxLunchSpecialsPrice.Location = new System.Drawing.Point(475, 257);
-            this.listBoxLunchSpecialsPrice.Name = "listBoxLunchSpecialsPrice";
-            this.listBoxLunchSpecialsPrice.Size = new System.Drawing.Size(40, 67);
-            this.listBoxLunchSpecialsPrice.TabIndex = 11;
-            // 
-            // listBoxLunchBitesPrice
-            // 
-            this.listBoxLunchBitesPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxLunchBitesPrice.FormattingEnabled = true;
-            this.listBoxLunchBitesPrice.ItemHeight = 21;
-            this.listBoxLunchBitesPrice.Location = new System.Drawing.Point(475, 419);
-            this.listBoxLunchBitesPrice.Name = "listBoxLunchBitesPrice";
-            this.listBoxLunchBitesPrice.Size = new System.Drawing.Size(40, 67);
-            this.listBoxLunchBitesPrice.TabIndex = 12;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Name";
             // 
             // pnlLunchMenu
             // 
@@ -433,6 +528,326 @@ namespace ChapeauUI
             this.pnlLunchMenu.Name = "pnlLunchMenu";
             this.pnlLunchMenu.Size = new System.Drawing.Size(686, 894);
             this.pnlLunchMenu.TabIndex = 9;
+            // 
+            // guna2ComboBox3
+            // 
+            this.guna2ComboBox3.Animated = true;
+            this.guna2ComboBox3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox3.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox3.FocusedState.Parent = this.guna2ComboBox3;
+            this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox3.HoverState.Parent = this.guna2ComboBox3;
+            this.guna2ComboBox3.ItemHeight = 30;
+            this.guna2ComboBox3.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.guna2ComboBox3.ItemsAppearance.Parent = this.guna2ComboBox3;
+            this.guna2ComboBox3.Location = new System.Drawing.Point(318, 236);
+            this.guna2ComboBox3.Name = "guna2ComboBox3";
+            this.guna2ComboBox3.ShadowDecoration.Parent = this.guna2ComboBox3;
+            this.guna2ComboBox3.Size = new System.Drawing.Size(140, 36);
+            this.guna2ComboBox3.TabIndex = 17;
+            // 
+            // guna2ComboBox5
+            // 
+            this.guna2ComboBox5.Animated = true;
+            this.guna2ComboBox5.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox5.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox5.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox5.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox5.FocusedState.Parent = this.guna2ComboBox5;
+            this.guna2ComboBox5.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox5.HoverState.Parent = this.guna2ComboBox5;
+            this.guna2ComboBox5.ItemHeight = 30;
+            this.guna2ComboBox5.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.guna2ComboBox5.ItemsAppearance.Parent = this.guna2ComboBox5;
+            this.guna2ComboBox5.Location = new System.Drawing.Point(318, 194);
+            this.guna2ComboBox5.Name = "guna2ComboBox5";
+            this.guna2ComboBox5.ShadowDecoration.Parent = this.guna2ComboBox5;
+            this.guna2ComboBox5.Size = new System.Drawing.Size(140, 36);
+            this.guna2ComboBox5.TabIndex = 16;
+            // 
+            // guna2ComboBox4
+            // 
+            this.guna2ComboBox4.Animated = true;
+            this.guna2ComboBox4.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox4.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox4.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox4.FocusedState.Parent = this.guna2ComboBox4;
+            this.guna2ComboBox4.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox4.HoverState.Parent = this.guna2ComboBox4;
+            this.guna2ComboBox4.ItemHeight = 30;
+            this.guna2ComboBox4.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.guna2ComboBox4.ItemsAppearance.Parent = this.guna2ComboBox4;
+            this.guna2ComboBox4.Location = new System.Drawing.Point(318, 463);
+            this.guna2ComboBox4.Name = "guna2ComboBox4";
+            this.guna2ComboBox4.ShadowDecoration.Parent = this.guna2ComboBox4;
+            this.guna2ComboBox4.Size = new System.Drawing.Size(140, 36);
+            this.guna2ComboBox4.TabIndex = 21;
+            // 
+            // guna2ComboBox6
+            // 
+            this.guna2ComboBox6.Animated = true;
+            this.guna2ComboBox6.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox6.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox6.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox6.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox6.FocusedState.Parent = this.guna2ComboBox6;
+            this.guna2ComboBox6.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox6.HoverState.Parent = this.guna2ComboBox6;
+            this.guna2ComboBox6.ItemHeight = 30;
+            this.guna2ComboBox6.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.guna2ComboBox6.ItemsAppearance.Parent = this.guna2ComboBox6;
+            this.guna2ComboBox6.Location = new System.Drawing.Point(318, 421);
+            this.guna2ComboBox6.Name = "guna2ComboBox6";
+            this.guna2ComboBox6.ShadowDecoration.Parent = this.guna2ComboBox6;
+            this.guna2ComboBox6.Size = new System.Drawing.Size(140, 36);
+            this.guna2ComboBox6.TabIndex = 20;
+            // 
+            // guna2ComboBox7
+            // 
+            this.guna2ComboBox7.Animated = true;
+            this.guna2ComboBox7.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox7.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox7.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox7.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox7.FocusedState.Parent = this.guna2ComboBox7;
+            this.guna2ComboBox7.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox7.HoverState.Parent = this.guna2ComboBox7;
+            this.guna2ComboBox7.ItemHeight = 30;
+            this.guna2ComboBox7.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.guna2ComboBox7.ItemsAppearance.Parent = this.guna2ComboBox7;
+            this.guna2ComboBox7.Location = new System.Drawing.Point(318, 371);
+            this.guna2ComboBox7.Name = "guna2ComboBox7";
+            this.guna2ComboBox7.ShadowDecoration.Parent = this.guna2ComboBox7;
+            this.guna2ComboBox7.Size = new System.Drawing.Size(140, 36);
+            this.guna2ComboBox7.TabIndex = 19;
+            // 
+            // guna2ComboBox8
+            // 
+            this.guna2ComboBox8.Animated = true;
+            this.guna2ComboBox8.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox8.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox8.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox8.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox8.FocusedState.Parent = this.guna2ComboBox8;
+            this.guna2ComboBox8.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox8.HoverState.Parent = this.guna2ComboBox8;
+            this.guna2ComboBox8.ItemHeight = 30;
+            this.guna2ComboBox8.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.guna2ComboBox8.ItemsAppearance.Parent = this.guna2ComboBox8;
+            this.guna2ComboBox8.Location = new System.Drawing.Point(318, 325);
+            this.guna2ComboBox8.Name = "guna2ComboBox8";
+            this.guna2ComboBox8.ShadowDecoration.Parent = this.guna2ComboBox8;
+            this.guna2ComboBox8.Size = new System.Drawing.Size(140, 36);
+            this.guna2ComboBox8.TabIndex = 18;
+            // 
+            // guna2ComboBox9
+            // 
+            this.guna2ComboBox9.Animated = true;
+            this.guna2ComboBox9.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox9.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox9.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox9.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox9.FocusedState.Parent = this.guna2ComboBox9;
+            this.guna2ComboBox9.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox9.HoverState.Parent = this.guna2ComboBox9;
+            this.guna2ComboBox9.ItemHeight = 30;
+            this.guna2ComboBox9.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.guna2ComboBox9.ItemsAppearance.Parent = this.guna2ComboBox9;
+            this.guna2ComboBox9.Location = new System.Drawing.Point(318, 701);
+            this.guna2ComboBox9.Name = "guna2ComboBox9";
+            this.guna2ComboBox9.ShadowDecoration.Parent = this.guna2ComboBox9;
+            this.guna2ComboBox9.Size = new System.Drawing.Size(140, 36);
+            this.guna2ComboBox9.TabIndex = 25;
+            // 
+            // guna2ComboBox10
+            // 
+            this.guna2ComboBox10.Animated = true;
+            this.guna2ComboBox10.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox10.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox10.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox10.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox10.FocusedState.Parent = this.guna2ComboBox10;
+            this.guna2ComboBox10.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox10.HoverState.Parent = this.guna2ComboBox10;
+            this.guna2ComboBox10.ItemHeight = 30;
+            this.guna2ComboBox10.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.guna2ComboBox10.ItemsAppearance.Parent = this.guna2ComboBox10;
+            this.guna2ComboBox10.Location = new System.Drawing.Point(318, 659);
+            this.guna2ComboBox10.Name = "guna2ComboBox10";
+            this.guna2ComboBox10.ShadowDecoration.Parent = this.guna2ComboBox10;
+            this.guna2ComboBox10.Size = new System.Drawing.Size(140, 36);
+            this.guna2ComboBox10.TabIndex = 24;
+            // 
+            // guna2ComboBox11
+            // 
+            this.guna2ComboBox11.Animated = true;
+            this.guna2ComboBox11.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox11.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox11.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox11.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox11.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox11.FocusedState.Parent = this.guna2ComboBox11;
+            this.guna2ComboBox11.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox11.HoverState.Parent = this.guna2ComboBox11;
+            this.guna2ComboBox11.ItemHeight = 30;
+            this.guna2ComboBox11.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.guna2ComboBox11.ItemsAppearance.Parent = this.guna2ComboBox11;
+            this.guna2ComboBox11.Location = new System.Drawing.Point(318, 609);
+            this.guna2ComboBox11.Name = "guna2ComboBox11";
+            this.guna2ComboBox11.ShadowDecoration.Parent = this.guna2ComboBox11;
+            this.guna2ComboBox11.Size = new System.Drawing.Size(140, 36);
+            this.guna2ComboBox11.TabIndex = 23;
+            // 
+            // guna2ComboBox12
+            // 
+            this.guna2ComboBox12.Animated = true;
+            this.guna2ComboBox12.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox12.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox12.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox12.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox12.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox12.FocusedState.Parent = this.guna2ComboBox12;
+            this.guna2ComboBox12.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox12.HoverState.Parent = this.guna2ComboBox12;
+            this.guna2ComboBox12.ItemHeight = 30;
+            this.guna2ComboBox12.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.guna2ComboBox12.ItemsAppearance.Parent = this.guna2ComboBox12;
+            this.guna2ComboBox12.Location = new System.Drawing.Point(318, 563);
+            this.guna2ComboBox12.Name = "guna2ComboBox12";
+            this.guna2ComboBox12.ShadowDecoration.Parent = this.guna2ComboBox12;
+            this.guna2ComboBox12.Size = new System.Drawing.Size(140, 36);
+            this.guna2ComboBox12.TabIndex = 22;
             // 
             // Menu
             // 
@@ -499,6 +914,18 @@ namespace ChapeauUI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlLunchMenu;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox3;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox5;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox9;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox10;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox11;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox12;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox4;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox6;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox7;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox8;
     }
 }
 

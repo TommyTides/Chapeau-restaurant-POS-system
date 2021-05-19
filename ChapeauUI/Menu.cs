@@ -32,6 +32,25 @@ namespace ChapeauUI
             // welcome message displaying firstname, lastname and employeerole.
             
         }
+        public Menu()
+        {
+            InitializeComponent();
+
+            menuItemService = new MenuItemService();
+
+            this.Text = $"Menu options";
+            lblApplicationState.Text = "";
+            lblApplicationSubState.Text = "";
+            // Code below makes the background tranparant on the picture behind it.
+            pictureBox2.Controls.Add(pictureBox1);
+            pictureBox2.Controls.Add(pictureBox3);
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox3.BackColor = Color.Transparent;
+
+            HideAllPanels();
+            // welcome message displaying firstname, lastname and employeerole.
+
+        }
 
         private void HideAllPanels() // Will hide all panels when called
         {
@@ -106,13 +125,22 @@ namespace ChapeauUI
         private void LunchMenuPanel()
         {
             List<MenuItem> menuItems = menuItemService.GetAllMenuItems(); // Gets list of menuItems form database
-
+            int count = 0;
             foreach (MenuItem item in menuItems) // Adding items tot the listboxes
             {
                 if (item.item_type == "lunch main")
                 {
                     listBoxLunchMain.Items.Add(item.item_name);
-                    listBoxLunchMainPrice.Items.Add(item.item_price);
+                    listBoxLunchMainPrice.Items.Add(item.item_price.ToString("c"));
+                    if (count < 3)
+                    {
+                        listBoxLunchMain.Items.Add("");
+                        listBoxLunchMain.Items.Add("");
+
+                        listBoxLunchMainPrice.Items.Add("");
+                        listBoxLunchMainPrice.Items.Add("");
+                        count++;
+                    }
                 }
                 else if (item.item_type == "specials")
                 {
@@ -125,21 +153,18 @@ namespace ChapeauUI
                     listBoxLunchBitesPrice.Items.Add(item.item_price);
                 }
             }
-
         }
 
         private void btnExitGunaUI_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-            
-        }
-        /*
-        private void btnlogout_Click(object sender, EventArgs e)
         {
             this.Hide();
             LoginForm loginForm = new LoginForm();
             loginForm.ShowDialog();
         }
-         */
+
+        private void pnlLunchMenuInside_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
