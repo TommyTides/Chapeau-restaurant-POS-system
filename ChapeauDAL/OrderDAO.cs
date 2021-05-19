@@ -14,10 +14,34 @@ namespace ChapeauDAL
         // This method passes the query to the ExecuteSelectQuery METHOD
         public List<Order> GetAllOrders()
         {
-            string query = "SELECT [order_id], [item_code], [table_code], [quantity], [order_time], [order_price], [order_status], [employee_code] FROM ORDER;";
+            string query = "SELECT [order_id], [item_code], [table_code], [quantity], [order_time], [order_price], [order_status], [employee_code] FROM [ORDER];";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
+
+        public List<Order> GetALLOrdersBar()
+        {
+
+
+            string query = "m.menu_type, m.item_name,o.quantity FROM [ORDER] as o" +
+                "JOIN [MENU_ITEM] as m ON o.item_code=m.item_id" +
+                "where m.menu_type = 'drinks'" +
+                "ORDER BY o.order_time desc;";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public List<Order> GetALLOrdersChef()
+        {
+            string query = "m.menu_type, m.item_name,o.quantity FROM [ORDER] as o" +
+                "JOIN [MENU_ITEM] as m ON o.item_code=m.item_id" +
+                "where m.menu_type = 'lunch' OR where ='dinner'" +
+                "ORDER BY o.order_time desc;";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+
 
         // Read the selected tablerows from the database and add it to the list
         private List<Order> ReadTables(DataTable dataTable)
@@ -27,7 +51,7 @@ namespace ChapeauDAL
             foreach (DataRow dr in dataTable.Rows)
             {
                 int order_id = (int)dr["order_id"];
-                int item_id = (int)dr["item_id"];
+                int item_code = (int)dr["item_code"];
                 int table_code = (int)dr["table_code"];
                int quantity = (int)dr["quantity"];
                DateTime order_time = (DateTime)dr["order_time"];
@@ -35,7 +59,7 @@ namespace ChapeauDAL
                 int order_status = (int)dr["order_status"];
                 int employee_code = (int)dr["employee_code"];
 
-                Order order = new Order(order_id, item_id, table_code, quantity, order_time, order_price, order_status, employee_code);
+                Order order = new Order(order_id, item_code, table_code, quantity, order_time, order_price, order_status, employee_code);
                orders.Add(order);
             }
             return orders;

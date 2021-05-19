@@ -22,6 +22,9 @@ namespace ChapeauUI
         private void OrderForm_Load(object sender, EventArgs e)
         {
             WinAPI.AnimateWindow(this.Handle, 2000, WinAPI.BLEND);
+            ListViewOrder();
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -29,32 +32,33 @@ namespace ChapeauUI
             listViewOrder.Clear();
         }
 
-        private void listViewOrder_SelectedIndexChanged(object sender, EventArgs e)
+      
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void ListViewOrder()
         {
             OrderService orderService = new OrderService();
             List<Order> orders = orderService.GetAllOrders();
 
-            foreach (var Item in orders)
+            foreach (Order I in orders)
             {
-                 ListViewItem li = new ListViewItem(Item.order_id.ToString());
-                li.SubItems.Add(Item.item_code.ToString());
-                li.SubItems.Add(Item.table_code.ToString());
-                li.SubItems.Add(Item.quantity.ToString());
-                li.SubItems.Add(Item.order_time.ToString());
-                li.SubItems.Add(Item.order_price.ToString());
-                li.SubItems.Add(Item.order_price.ToString());
-                li.SubItems.Add(Item.order_price.ToString());
-                li.SubItems.Add(Item.order_status.ToString());
-                li.SubItems.Add(Item.employee_code.ToString());
+                ListViewItem li = new ListViewItem(I.order_id.ToString());
+                li.SubItems.Add(I.item_code.ToString());
+                li.SubItems.Add(I.table_code.ToString());
+                li.SubItems.Add(I.quantity.ToString());
+                li.SubItems.Add(I.order_time.ToString());
+                li.SubItems.Add(I.order_price.ToString());
+                li.SubItems.Add(I.order_price.ToString());
+                li.SubItems.Add(I.order_price.ToString());
+                li.SubItems.Add(I.order_status.ToString());
+                li.SubItems.Add(I.employee_code.ToString());
                 listViewOrder.Items.Add(li);
 
             }
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
     }
 }
