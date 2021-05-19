@@ -63,9 +63,9 @@ namespace ChapeauUI
             this.panel1.Controls.Add(this.lblPayment);
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(3, 1);
+            this.panel1.Location = new System.Drawing.Point(0, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(797, 118);
+            this.panel1.Size = new System.Drawing.Size(800, 120);
             this.panel1.TabIndex = 2;
             // 
             // lblPayment
@@ -142,28 +142,33 @@ namespace ChapeauUI
             // OrderitemCode
             // 
             this.OrderitemCode.Text = "OrderitemCode";
+            this.OrderitemCode.Width = 84;
             // 
             // PaymentStatus
             // 
             this.PaymentStatus.Text = "PaymentStatus";
+            this.PaymentStatus.Width = 86;
             // 
             // PaymentMethod
             // 
             this.PaymentMethod.Text = "PaymentMethod";
+            this.PaymentMethod.Width = 92;
             // 
             // PaymentDate
             // 
             this.PaymentDate.Text = "PaymentDate";
+            this.PaymentDate.Width = 105;
             // 
             // PaymentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 640);
             this.Controls.Add(this.lstViewPayment);
             this.Controls.Add(this.lstViewItems);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PaymentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.PaymentForm_Load);
             this.panel1.ResumeLayout(false);
