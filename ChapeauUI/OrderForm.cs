@@ -35,6 +35,8 @@ namespace ChapeauUI
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
             Application.Exit();
         }
 
@@ -63,8 +65,9 @@ namespace ChapeauUI
         private void ListViewKitchen()
         {
             OrderService orderService = new OrderService();
-            List<Order> orders = orderService.GetAllKitchen();
-            foreach (Order I in orders)
+            List<Order> orderKitchen = orderService.GetAllKitchen();
+            //List<Order> orderBar = orderService.GetAllBar();
+            foreach (Order I in orderKitchen)
             {
                 ListViewItem li = new ListViewItem(I.menu.menu_type);
                 li.SubItems.Add(I.menu.item_name);
