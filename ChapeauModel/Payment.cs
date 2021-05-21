@@ -8,13 +8,17 @@ namespace ChapeauModel
 {
     public class Payment
     {
-        public int PaymentID { get; set; }
-        public int OrderitemCode { get; set; }
-        public PaymentStatus paymentStatus { get; set; }
-        public PaymentMethod paymentMethod { get; set; }
-        public DateTime PaymentDate { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
 
+        public DateTime PaymentDate { get; set; }
+        public bool PaymentStatus { get; set; }
+        public decimal Tip { get; set; }
+        public PaymentMethod paymentMethod { get; set; }
+        // All of the VATs combined in an order
+        public decimal TotalVAT { get; set; }
+        //The price of the entire bill + VAT
+        public decimal Total { get; set; }
     }
+
     public enum PaymentMethod { CreditCard = 1, Pin, Cash }
-    public enum PaymentStatus { Finished = 1, NotFinished }
 }

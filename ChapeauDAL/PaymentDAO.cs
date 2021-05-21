@@ -16,23 +16,30 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        private List<Payment> ReadTables(DataTable dataTable)
-        {
-            List<Payment> payments = new List<Payment>();
+        //private List<Payment> ReadTables(DataTable dataTable)
+        //{
+        //    List<Payment> payments = new List<Payment>();
 
-            foreach(DataRow dr in dataTable.Rows)
-            {
-                Payment payment = new Payment()
-                {
-                    PaymentID = (int)dr["payment_id"],
-                    OrderitemCode = (int)dr["orderitem_code"],
-                    paymentMethod = (PaymentMethod)dr["payment_method"],
-                    paymentStatus = (PaymentStatus)dr["payment_status"],
-                    PaymentDate = (DateTime)dr["payment_date"]
-                };
-                payments.Add(payment);
-            }
-            return payments;
+        //    foreach(DataRow dr in dataTable.Rows)
+        //    {
+        //        Payment payment = new Payment()
+        //        {
+        //            PaymentID = (int)dr["payment_id"],
+        //            OrderitemCode = (int)dr["orderitem_code"],
+        //            paymentMethod = (PaymentMethod)dr["payment_method"],
+        //            paymentStatus = (PaymentStatus)dr["payment_status"],
+        //            PaymentDate = (DateTime)dr["payment_date"]
+        //        };
+        //        payments.Add(payment);
+        //    }
+        //    return payments;
+        //}
+
+        public List<OrderItem> GetOrderItemsByOrderID(int orderID)
+        {
+            List<OrderItem> orderItem = new List<OrderItem>();
+            string query = "SELECT"
+            sqlParameters[0] = new SqlParameter("productID", d.ProductID);
         }
     }
 }
