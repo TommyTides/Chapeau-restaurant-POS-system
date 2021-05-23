@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmployeeService.cs" />
-    <Compile Include="PaymentService.cs" />
     <Compile Include="MenuItemService.cs" />
     <Compile Include="OrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
