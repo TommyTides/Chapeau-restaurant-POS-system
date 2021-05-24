@@ -28,10 +28,9 @@ namespace ChapeauUI
 
         private void KeypadButton_Click(object sender, EventArgs e)
         {
-            txtemployeeid.AppendText(((Button)sender).Text);
             txtlogincode.AppendText(((Button)sender).Text);
 
-            if (txtemployeeid.TextLength == 4 && txtlogincode.TextLength == 4)
+            if (txtlogincode.TextLength == 4)
             {
                 GetEmployeeByLogin();
             }
