@@ -23,5 +23,5 @@ namespace ChapeauModel
         public ItemStatus Status { get; set; }
     }
 
-    public enum ItemStatus { Ready = 1, Preparing }
+    public enum ItemStatus { Ready = 1, Preparing, Delivered }
 }

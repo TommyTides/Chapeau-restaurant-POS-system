@@ -17,8 +17,12 @@ namespace ChapeauModel
         // status of the transaction (finished or not finished)
         public bool PaymentStatus { get; set; }
         public double Tip { get; set; }
+
+        public Table Table { get; set; }
+        public Employee Employee { get; set; }
         public List<OrderItem> OrderItem { get; set; }
-        public PaymentMethod paymentMethod { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
+        public OrderStatus OrderStatus { get; set; }
 
         // total price including the VAT
         public double Total { get; set; }
@@ -39,16 +43,6 @@ namespace ChapeauModel
         }
 
 
-        //public Order(int order_id, int item_code, int table_code, int quantity, DateTime order_time, double order_price, int order_status, int employee_code)
-        //{
-        //    this.order_id = order_id;
-        //    this.item_code = item_code;
-        //    this.table_code = table_code;
-        //    this.quantity = quantity;
-        //    this.order_price = order_price;
-        //    this.order_status = order_status;
-        //    this.employee_code = employee_code;
-        //}
     }
 
     public enum OrderStatus { Pending = 1, Preparing, Ready, Served}
