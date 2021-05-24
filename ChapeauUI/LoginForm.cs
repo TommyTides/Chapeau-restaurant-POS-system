@@ -38,7 +38,7 @@ namespace ChapeauUI
 
         private void GetEmployeeByLogin()
         {
-            Employee employee = employeeService.GetEmployeeByCode(int.Parse(txtemployeeid.Text), int.Parse(txtlogincode.Text));
+            Employee employee = employeeService.GetEmployeeByCode(int.Parse(txtlogincode.Text));
 
             string[] management = new string[] { "Waiter", "Manager" };
 

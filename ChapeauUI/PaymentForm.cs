@@ -39,18 +39,18 @@ namespace ChapeauUI
 
         private void lstViewPayment_SelectedIndexChanged(object sender, EventArgs e)
         {
-            PaymentService paymentService = new PaymentService();
-            List<Payment> paymentList = paymentService.GetAllPayments();
+            //ChapeauLogic.PaymentService paymentService = new PaymentService();
+            //List<Payment> paymentList = paymentService.GetAllPayments();
 
-            foreach (Payment p in paymentList)
-            {
-                ListViewItem li = new ListViewItem(p.PaymentID.ToString());
-                li.SubItems.Add(p.OrderitemCode.ToString());
-                li.SubItems.Add(p.paymentStatus.ToString());
-                li.SubItems.Add(p.paymentMethod.ToString());
-                li.SubItems.Add(p.PaymentDate.ToShortDateString());
-                lstViewPayment.Items.Add(li);
-            }    
+            //foreach (Payment p in paymentList)
+            //{
+            //    ListViewItem li = new ListViewItem(p.PaymentID.ToString());
+            //    li.SubItems.Add(p.OrderitemCode.ToString());
+            //    li.SubItems.Add(p.paymentStatus.ToString());
+            //    li.SubItems.Add(p.paymentMethod.ToString());
+            //    li.SubItems.Add(p.PaymentDate.ToShortDateString());
+            //    lstViewPayment.Items.Add(li);
+            //}    
         }
     }
 }
