@@ -128,7 +128,7 @@ namespace ChapeauUI
             int count = 0;
             foreach (MenuItem item in menuItems) // Adding items tot the listboxes
             {
-                if (item.item_type == "lunch main")
+                if (item.item_type == MenuSubCategory.lunchMain)
                 {
                     listBoxLunchMain.Items.Add(item.item_name);
                     listBoxLunchMainPrice.Items.Add(item.item_price.ToString("c"));
@@ -142,12 +142,12 @@ namespace ChapeauUI
                         count++;
                     }
                 }
-                else if (item.item_type == "specials")
+                else if (item.item_type == MenuSubCategory.specials)
                 {
                     listBoxLunchSpecials.Items.Add(item.item_name);
                     listBoxLunchSpecialsPrice.Items.Add(item.item_price);
                 }
-                else if (item.item_type == "bites")
+                else if (item.item_type == MenuSubCategory.bites)
                 {
                     listBoxLunchBites.Items.Add(item.item_name);
                     listBoxLunchBitesPrice.Items.Add(item.item_price);
