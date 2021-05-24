@@ -8,38 +8,50 @@ namespace ChapeauModel
 {
     public class Order
     {
-        public int order_id { get; set; }
-        public int item_code { get; set; }
-        public int table_code { get; set; }
-        public int quantity { get; set; }
-        public DateTime order_time { get; set; }
-        public double order_price { get; set; }
-        public int order_status { get; set; }
-        public int employee_code { get; set; }
-        public MenuItem menu { get; set; }
+        public int OrderID { get; set; }
 
-        public Order()
-        {
+        // total VAT price (all VATS combined in an order)
+        public double VATTotal { get; set; }
+        public DateTime PaymentDate { get; set; }
 
-        }
-        public Order(MenuItem menu, int quantity)
+        // status of the transaction (finished or not finished)
+        public bool PaymentStatus { get; set; }
+        public double Tip { get; set; }
+        public List<OrderItem> OrderItem { get; set; }
+        public PaymentMethod paymentMethod { get; set; }
+
+        // total price including the VAT
+        public double Total { get; set; }
+
+        // total price for a certain item (depending on quantity) excluding the VAT
+        public double TotalPrice
         {
-            this.menu = menu;
-            this.quantity = quantity;
+            get 
+            {
+                double tp = 0;
+
+                foreach(OrderItem orderItem in OrderItem)
+                {
+                    tp += orderItem.menuItem.item_price * orderItem.Quantity;
+                }
+                return tp;
+            }
         }
-        public Order(MenuItem menu)
-        {
-            this.menu = menu;
-        }
-        public Order(int order_id, int item_code, int table_code, int quantity, DateTime order_time, double order_price, int order_status, int employee_code)
-        {
-            this.order_id = order_id;
-            this.item_code = item_code;
-            this.table_code = table_code;
-            this.quantity = quantity;
-            this.order_price = order_price;
-            this.order_status = order_status;
-            this.employee_code = employee_code;
-        }
+
+
+        //public Order(int order_id, int item_code, int table_code, int quantity, DateTime order_time, double order_price, int order_status, int employee_code)
+        //{
+        //    this.order_id = order_id;
+        //    this.item_code = item_code;
+        //    this.table_code = table_code;
+        //    this.quantity = quantity;
+        //    this.order_price = order_price;
+        //    this.order_status = order_status;
+        //    this.employee_code = employee_code;
+        //}
     }
+
+    public enum OrderStatus { Pending = 1, Preparing, Ready, Served}
+
+    public enum PaymentMethod { CreditCard = 1, Pin, Cash }
 }
