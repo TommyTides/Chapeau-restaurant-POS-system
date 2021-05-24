@@ -28,9 +28,10 @@ namespace ChapeauUI
 
         private void KeypadButton_Click(object sender, EventArgs e)
         {
+            txtemployeeid.AppendText(((Button)sender).Text);
             txtlogincode.AppendText(((Button)sender).Text);
 
-            if (txtlogincode.TextLength == 4)
+            if (txtemployeeid.TextLength == 4 && txtlogincode.TextLength == 4)
             {
                 GetEmployeeByLogin();
             }
@@ -38,7 +39,7 @@ namespace ChapeauUI
 
         private void GetEmployeeByLogin()
         {
-            Employee employee = employeeService.GetEmployeeByCode(int.Parse(txtlogincode.Text));
+            Employee employee = employeeService.GetEmployeeByCode(int.Parse(txtemployeeid.Text), int.Parse(txtlogincode.Text));
 
             string[] management = new string[] { "Waiter", "Manager" };
 
@@ -46,28 +47,43 @@ namespace ChapeauUI
 
 
             // if employee not null and role is valid
-            if (employee != null && (management.Contains(employee.Role) || kitchen.Contains(employee.Role)))
-            {
-                this.Hide();
-                if (management.Contains(employee.Role))
-                {
-                    // the table view page will go here 
-                    Menu mainMenu = new Menu(employee);
-                    mainMenu.ShowDialog();
+            /* if (employee != null && (management.Contains(Role.Waiter) || kitchen.Contains(Role.Manager)))
+             {
+                 this.Hide();
+                 if (management.Contains(employee.Role))
+                 {
+                     // the table view page will go here 
+                     Menu mainMenu = new Menu(employee);
+                     mainMenu.ShowDialog();
 
-                }
-                else if (kitchen.Contains(employee.Role))
-                {
-                    /*
-                      The kitchen and bar view page will go here 
-                    */
-                }
-                this.Close();
+                 }
+                 else if (kitchen.Contains(employee.Role))
+                 {
+                       //The kitchen and bar view page will go here 
+                 }
+                 this.Close();
+             }
+             else
+             {
+                 txtlogincode.Text = "";
+                 MessageBox.Show("Password Entered is Incorrect");
+             }
+            */
+
+            if (employee.Role == Role.Waiter || employee.Role == Role.Manager)
+            {
+                Menu mainMenu = new Menu();
+                mainMenu.Show();
+            }
+            else if (employee.Role == Role.KitchenStaff || employee.Role == Role.Barman)
+            {
+                /*The kitchen and bar view will go here */
             }
             else
             {
+                txtemployeeid.Text = "";
                 txtlogincode.Text = "";
-                MessageBox.Show("Password Entered is Incorrect");
+                MessageBox.Show("Invalid login credentials!");
             }
         }
 

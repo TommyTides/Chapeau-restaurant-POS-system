@@ -46,6 +46,8 @@ namespace ChapeauUI
             this.btn9 = new System.Windows.Forms.Button();
             this.btn0 = new System.Windows.Forms.Button();
             this.btndelete = new System.Windows.Forms.Button();
+            this.lblemployeeID = new System.Windows.Forms.Label();
+            this.txtemployeeid = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -95,7 +97,7 @@ namespace ChapeauUI
             // txtlogincode
             // 
             this.txtlogincode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtlogincode.Location = new System.Drawing.Point(315, 242);
+            this.txtlogincode.Location = new System.Drawing.Point(315, 291);
             this.txtlogincode.Name = "txtlogincode";
             this.txtlogincode.Size = new System.Drawing.Size(179, 30);
             this.txtlogincode.TabIndex = 2;
@@ -104,7 +106,7 @@ namespace ChapeauUI
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(94, 245);
+            this.label1.Location = new System.Drawing.Point(105, 294);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(164, 25);
             this.label1.TabIndex = 3;
@@ -231,10 +233,30 @@ namespace ChapeauUI
             this.btndelete.UseVisualStyleBackColor = true;
             this.btndelete.Click += new System.EventHandler(this.btndelete_Click);
             // 
+            // lblemployeeID
+            // 
+            this.lblemployeeID.AutoSize = true;
+            this.lblemployeeID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblemployeeID.Location = new System.Drawing.Point(105, 213);
+            this.lblemployeeID.Name = "lblemployeeID";
+            this.lblemployeeID.Size = new System.Drawing.Size(178, 25);
+            this.lblemployeeID.TabIndex = 15;
+            this.lblemployeeID.Text = "Enter employee ID:";
+            // 
+            // txtemployeeid
+            // 
+            this.txtemployeeid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtemployeeid.Location = new System.Drawing.Point(315, 208);
+            this.txtemployeeid.Name = "txtemployeeid";
+            this.txtemployeeid.Size = new System.Drawing.Size(179, 30);
+            this.txtemployeeid.TabIndex = 16;
+            // 
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(752, 985);
+            this.Controls.Add(this.txtemployeeid);
+            this.Controls.Add(this.lblemployeeID);
             this.Controls.Add(this.btndelete);
             this.Controls.Add(this.btn0);
             this.Controls.Add(this.btn9);
@@ -281,5 +303,7 @@ namespace ChapeauUI
         private System.Windows.Forms.Button btn9;
         private System.Windows.Forms.Button btn0;
         private System.Windows.Forms.Button btndelete;
+        private System.Windows.Forms.Label lblemployeeID;
+        private System.Windows.Forms.TextBox txtemployeeid;
     }
 }

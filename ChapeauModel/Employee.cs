@@ -10,8 +10,10 @@ namespace ChapeauModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Role { get; set; }
+        public Role Role { get; set; }
         public int LoginCode { get; set; }
+
+        public string FullName { get { return FirstName + " " + LastName; } }
 
         // default constructor
         public Employee()
@@ -19,11 +21,13 @@ namespace ChapeauModel
 
         }
 
-        public Employee(string firstname, string lastname, string role)
+        public Employee(string firstname, string lastname, Role role)
         {
             this.FirstName = firstname;
             this.LastName = lastname;
             this.Role = role;
         }
     }
+
+    public enum Role { Manager=1, Waiter, KitchenStaff, Barman }
 }

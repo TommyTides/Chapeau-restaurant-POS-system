@@ -11,11 +11,12 @@ namespace ChapeauDAL
 {
     public class EmployeeDAO: BaseDao
     {
-        public Employee GetEmployeeByCode(int logincode)
+        public Employee GetEmployeeByCode(int employeeid, int logincode)
         {
-            string query = "SELECT * FROM EMPLOYEE WHERE login_code = @login_code";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("login_code", logincode);
+            string query = "SELECT * FROM EMPLOYEE WHERE employeeID = @employeeID AND PIN = @PIN";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@employeeID", employeeid);
+            sqlParameters[1] = new SqlParameter("@PIN", logincode);
             return ReadEmployee(ExecuteSelectQuery(query, sqlParameters));
         }
 
@@ -33,7 +34,7 @@ namespace ChapeauDAL
 
                     FirstName = (string)(dr["firstname"]),
                     LastName = (string)(dr["lastname"]),
-                    Role = (string)(dr["role_detail"]),
+                    Role = (Role)(dr["role_detail"]),
                     LoginCode = (int)(dr["login_code"])
                 };
                 return employee;
