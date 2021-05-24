@@ -11,22 +11,17 @@ namespace ChapeauModel
     public class OrderItem
     {
         public ItemStatus Status { get; set; } // status of the order(single)
-        public List<MenuItem> menuItem { get; set; } // List of menuItems
+        public MenuItem menuItem { get; set; } // List of menuItems
 
         public int Quantity { get; set; }
-
+        public DateTime OrderTime { get; set; }
         public string Comment { get; set; }
 
-        public double TotalPrice // calculate property
+        public double TotalPrice
         { 
             get 
             {
-                double totalCalculated = 0;
-                foreach (MenuItem item in menuItem)
-                {
-                    totalCalculated += item.item_price;
-                }
-                return totalCalculated;
+                return menuItem.item_price;
             }
         }      
     }  
