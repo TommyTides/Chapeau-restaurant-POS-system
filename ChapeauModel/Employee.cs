@@ -30,5 +30,5 @@ namespace ChapeauModel
         }
     }
 
-    public enum Role { Manager=1, Waiter, KitchenStaff, Barman }
+    public enum Role { Manager=1, Waiter, KitchenStaff, Barman, UnDefined }
 }

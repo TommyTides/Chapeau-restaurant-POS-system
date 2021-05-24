@@ -36,5 +36,17 @@ namespace ChapeauDAL
             return tables;
         }
 
+        public List<Order> GetAllRunningOrders()
+        {
+            string query = "select ord.orderID, ord.totalPrice, ord.tableID, ord.orderStatus, ord.tip, ord.vat, ord.employeeID, ord.paymentStatus, ord_s.description " +
+                            " FROM[ORDER] as ord " +
+                            " JOIN ORDER_STATUS as ord_s ON ord.orderStatus = ord_s.orderstatusID " +
+                            " WHERE ord.paymentStatus = @paymentStatus";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@paymentStatus", false);
+            return null;
+        }
+
+
     }
 }
