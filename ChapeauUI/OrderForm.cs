@@ -24,7 +24,7 @@ namespace ChapeauUI
             WinAPI.AnimateWindow(this.Handle, 2000, WinAPI.BLEND);
           
 
-            ListViewOrder();
+            //ListViewOrder();
             ListViewKitchen();
             pictureBox4.Controls.Add(pictureBox1);
             pictureBox4.Controls.Add(pictureBox3);
@@ -40,40 +40,40 @@ namespace ChapeauUI
             Application.Exit();
         }
 
-        private void ListViewOrder()
-        {
-            OrderService orderService = new OrderService();
-            List<Order> orders = orderService.GetAllOrders();
+        //private void ListViewOrder()
+        //{
+        //    OrderService orderService = new OrderService();
+        //    List<Order> orders = orderService.GetAllOrders();
 
-            foreach (Order I in orders)
-            {
-                ListViewItem li = new ListViewItem(I.order_id.ToString());
-                li.SubItems.Add(I.item_code.ToString());
-                li.SubItems.Add(I.table_code.ToString());
-                li.SubItems.Add(I.quantity.ToString());
-                li.SubItems.Add(I.order_time.ToString());
-                li.SubItems.Add(I.order_price.ToString());
-                li.SubItems.Add(I.order_price.ToString());
-                li.SubItems.Add(I.order_price.ToString());
-                li.SubItems.Add(I.order_status.ToString());
-                li.SubItems.Add(I.employee_code.ToString());
-                listViewOrder.Items.Add(li);
+        //    foreach (Order I in orders)
+        //    {
+        //        ListViewItem li = new ListViewItem(I.order_id.ToString());
+        //        li.SubItems.Add(I.item_code.ToString());
+        //        li.SubItems.Add(I.table_code.ToString());
+        //        li.SubItems.Add(I.quantity.ToString());
+        //        li.SubItems.Add(I.order_time.ToString());
+        //        li.SubItems.Add(I.order_price.ToString());
+        //        li.SubItems.Add(I.order_price.ToString());
+        //        li.SubItems.Add(I.order_price.ToString());
+        //        li.SubItems.Add(I.order_status.ToString());
+        //        li.SubItems.Add(I.employee_code.ToString());
+        //        listViewOrder.Items.Add(li);
 
-            }
-        }
+        //    }
+        //}
 
         private void ListViewKitchen()
         {
             OrderService orderService = new OrderService();
-            List<Order> orderKitchen = orderService.GetAllKitchen();
+            List<OrderItem> orderKitchen = orderService.GetAllKitchen();
             //List<Order> orderBar = orderService.GetAllBar();
-            foreach (Order I in orderKitchen)
+            foreach (OrderItem I in orderKitchen)
             {
-                ListViewItem li = new ListViewItem(I.menu.menu_type);
-                li.SubItems.Add(I.menu.item_name);
-                li.SubItems.Add(I.quantity.ToString());
-                li.SubItems.Add(I.order_time.ToString());
-                li.SubItems.Add(I.order_status.ToString());
+                ListViewItem li = new ListViewItem(I.menuItem.menu_type.ToString());
+                li.SubItems.Add(I.menuItem.item_name);
+                li.SubItems.Add(I.Quantity.ToString());
+                li.SubItems.Add(I.OrderTime.ToString());
+                li.SubItems.Add(I.Status.ToString());
                 listViewKitch.Items.Add(li);
 
             }
@@ -82,9 +82,12 @@ namespace ChapeauUI
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            listViewOrder.Clear();
+            //listViewOrder.Clear();
         }
 
+        private void listViewKitch_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

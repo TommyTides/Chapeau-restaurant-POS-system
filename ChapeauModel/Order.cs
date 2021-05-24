@@ -37,18 +37,6 @@ namespace ChapeauModel
                 return tp;
             }
         }
-
-
-        //public Order(int order_id, int item_code, int table_code, int quantity, DateTime order_time, double order_price, int order_status, int employee_code)
-        //{
-        //    this.order_id = order_id;
-        //    this.item_code = item_code;
-        //    this.table_code = table_code;
-        //    this.quantity = quantity;
-        //    this.order_price = order_price;
-        //    this.order_status = order_status;
-        //    this.employee_code = employee_code;
-        //}
     }
 
     public enum OrderStatus { Pending = 1, Preparing, Ready, Served}
