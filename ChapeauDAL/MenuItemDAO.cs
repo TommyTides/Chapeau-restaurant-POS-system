@@ -23,14 +23,14 @@ namespace ChapeauDAL
             foreach (DataRow dr in dataTable.Rows)
             {
                 int item_id = (int)dr["item_id"];
-                string menu_type = (string)dr["menu_type"];
-                string item_type = (string)dr["item_type"];
+                MenuCategory menu_type = (MenuCategory)dr["menu_type"];
+                MenuSubCategory item_type = (MenuSubCategory)dr["item_type"];
                 string item_name = (string)dr["item_name"];
                 double item_price = (double)dr["item_price"];
                 int stock = (int)dr["stock"];
-                int vat = (int)dr["vat"];
+                Place place = (Place)dr["place"];
 
-                MenuItem menuItem = new MenuItem(item_id, menu_type, item_type, item_name, item_price, stock, vat);
+                MenuItem menuItem = new MenuItem(item_id, menu_type, item_type, item_name, item_price, stock, place);
                 menuItems.Add(menuItem);
             }
             return menuItems;
