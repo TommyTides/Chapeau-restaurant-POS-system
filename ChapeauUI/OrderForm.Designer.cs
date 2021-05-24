@@ -40,15 +40,6 @@ namespace ChapeauUI
             this.order_statusv2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
             this.btnReady = new System.Windows.Forms.Button();
-            this.listViewOrder = new System.Windows.Forms.ListView();
-            this.order_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.item_code = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.table_code = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.quantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.order_time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.order_price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.order_status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.employee_code = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnRefresh = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -89,7 +80,6 @@ namespace ChapeauUI
             this.pnlLunchMenu.Controls.Add(this.listViewKitch);
             this.pnlLunchMenu.Controls.Add(this.label4);
             this.pnlLunchMenu.Controls.Add(this.btnReady);
-            this.pnlLunchMenu.Controls.Add(this.listViewOrder);
             this.pnlLunchMenu.Controls.Add(this.btnRefresh);
             this.pnlLunchMenu.Controls.Add(this.btnExit);
             this.pnlLunchMenu.Location = new System.Drawing.Point(-2, 92);
@@ -106,12 +96,13 @@ namespace ChapeauUI
             this.order_timev2,
             this.order_statusv2});
             this.listViewKitch.HideSelection = false;
-            this.listViewKitch.Location = new System.Drawing.Point(62, 350);
+            this.listViewKitch.Location = new System.Drawing.Point(180, 87);
             this.listViewKitch.Name = "listViewKitch";
             this.listViewKitch.Size = new System.Drawing.Size(370, 217);
             this.listViewKitch.TabIndex = 15;
             this.listViewKitch.UseCompatibleStateImageBehavior = false;
             this.listViewKitch.View = System.Windows.Forms.View.Details;
+            this.listViewKitch.SelectedIndexChanged += new System.EventHandler(this.listViewKitch_SelectedIndexChanged);
             // 
             // menu_type
             // 
@@ -143,7 +134,7 @@ namespace ChapeauUI
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(292, 44);
+            this.label4.Location = new System.Drawing.Point(324, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 24);
             this.label4.TabIndex = 14;
@@ -160,63 +151,6 @@ namespace ChapeauUI
             this.btnReady.TabIndex = 13;
             this.btnReady.Text = "Ready";
             this.btnReady.UseVisualStyleBackColor = false;
-            // 
-            // listViewOrder
-            // 
-            this.listViewOrder.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.order_id,
-            this.item_code,
-            this.table_code,
-            this.quantity,
-            this.order_time,
-            this.order_price,
-            this.order_status,
-            this.employee_code});
-            this.listViewOrder.HideSelection = false;
-            this.listViewOrder.Location = new System.Drawing.Point(44, 95);
-            this.listViewOrder.Name = "listViewOrder";
-            this.listViewOrder.Size = new System.Drawing.Size(613, 171);
-            this.listViewOrder.TabIndex = 11;
-            this.listViewOrder.UseCompatibleStateImageBehavior = false;
-            this.listViewOrder.View = System.Windows.Forms.View.Details;
-            // 
-            // order_id
-            // 
-            this.order_id.Text = "order_id";
-            // 
-            // item_code
-            // 
-            this.item_code.Text = "item_code";
-            this.item_code.Width = 69;
-            // 
-            // table_code
-            // 
-            this.table_code.Text = "table_code";
-            this.table_code.Width = 69;
-            // 
-            // quantity
-            // 
-            this.quantity.Text = "quantity";
-            // 
-            // order_time
-            // 
-            this.order_time.Text = "order_time";
-            this.order_time.Width = 70;
-            // 
-            // order_price
-            // 
-            this.order_price.Text = "order_price";
-            this.order_price.Width = 82;
-            // 
-            // order_status
-            // 
-            this.order_status.Text = "order_status";
-            this.order_status.Width = 85;
-            // 
-            // employee_code
-            // 
-            this.employee_code.Text = "employee_code";
-            this.employee_code.Width = 105;
             // 
             // btnRefresh
             // 
@@ -308,15 +242,6 @@ namespace ChapeauUI
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.ListView listViewOrder;
-        private System.Windows.Forms.ColumnHeader order_id;
-        private System.Windows.Forms.ColumnHeader item_code;
-        private System.Windows.Forms.ColumnHeader table_code;
-        private System.Windows.Forms.ColumnHeader quantity;
-        private System.Windows.Forms.ColumnHeader order_time;
-        private System.Windows.Forms.ColumnHeader order_price;
-        private System.Windows.Forms.ColumnHeader order_status;
-        private System.Windows.Forms.ColumnHeader employee_code;
         private System.Windows.Forms.Button btnReady;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblApplicationState;

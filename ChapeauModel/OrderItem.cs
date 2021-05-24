@@ -6,22 +6,23 @@ using System.Threading.Tasks;
 
 namespace ChapeauModel
 {
+    public enum ItemStatus { Preparing = 1, Ready, Delivered }
+
     public class OrderItem
     {
-        public MenuItem menuItem { get; set; }
+        public ItemStatus Status { get; set; } // status of the order(single)
+        public MenuItem menuItem { get; set; } // List of menuItems
+
         public int Quantity { get; set; }
+        public DateTime OrderTime { get; set; }
         public string Comment { get; set; }
 
         public double TotalPrice
-        {
-            get
+        { 
+            get 
             {
-                return menuItem.item_price * Quantity;
+                return menuItem.item_price;
             }
-        }
-
-        public ItemStatus Status { get; set; }
-    }
-
-    public enum ItemStatus { Ready = 1, Preparing, Delivered }
+        }      
+    }  
 }

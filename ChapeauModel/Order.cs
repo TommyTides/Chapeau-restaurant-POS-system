@@ -17,12 +17,8 @@ namespace ChapeauModel
         // status of the transaction (finished or not finished)
         public bool PaymentStatus { get; set; }
         public double Tip { get; set; }
-
-        public Table Table { get; set; }
-        public Employee Employee { get; set; }
         public List<OrderItem> OrderItem { get; set; }
-        public PaymentMethod PaymentMethod { get; set; }
-        public OrderStatus OrderStatus { get; set; }
+        public PaymentMethod paymentMethod { get; set; }
 
         // total price including the VAT
         public double Total { get; set; }
@@ -41,8 +37,6 @@ namespace ChapeauModel
                 return tp;
             }
         }
-
-
     }
 
     public enum OrderStatus { Pending = 1, Preparing, Ready, Served}

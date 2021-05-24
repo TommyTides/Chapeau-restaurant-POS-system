@@ -23,12 +23,12 @@ namespace ChapeauLogic
             return orderDAO.GetAllOrders();
         }
 
-        public List<Order> GetAllKitchen()
+        public List<OrderItem> GetAllKitchen()
         { 
             return orderDAO.GetAllOrdersKitchen();
         }
 
-        public List<Order> GetAllBar()
+        public List<OrderItem> GetAllBar()
         {
             return orderDAO.GetAllOrdersBar();
         }
