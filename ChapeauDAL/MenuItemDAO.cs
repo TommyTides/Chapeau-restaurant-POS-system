@@ -10,7 +10,7 @@ namespace ChapeauDAL
         // This method passes the query to the ExecuteSelectQuery METHOD
         public List<MenuItem> GetAllMenuItems()
         {
-            string query = "SELECT [item_id], [menu_type], [item_type], [item_name], [item_price], [stock], [vat] FROM MENU_ITEM;";
+            string query = "SELECT [item_id], [menu_type], [item_type], [item_name], [item_price], [stock], [place] FROM MENU_ITEM;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
