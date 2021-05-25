@@ -24,7 +24,13 @@ namespace ChapeauUI
 
         private void TablePage_Load(object sender, EventArgs e)
         {
+            lblemployee.Text = $"{employee.Role}: {employee.FullName}";
+        }
 
+        private void btnBackToMenu_Click(object sender, EventArgs e)
+        {
+            Menu menu = new Menu();
+            menu.ShowDialog();
         }
     }
 }

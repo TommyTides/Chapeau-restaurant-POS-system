@@ -30,8 +30,10 @@ namespace ChapeauUI
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblemployee = new System.Windows.Forms.Label();
+            this.btnBackToMenu = new System.Windows.Forms.Button();
             this.lblrestaurantview = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,8 +53,6 @@ namespace ChapeauUI
             this.btntable7 = new System.Windows.Forms.Button();
             this.btntable8 = new System.Windows.Forms.Button();
             this.btntable10 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.lblemployee = new System.Windows.Forms.Label();
             this.btntable9 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -62,13 +62,45 @@ namespace ChapeauUI
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
             this.panel1.Controls.Add(this.lblemployee);
-            this.panel1.Controls.Add(this.button10);
+            this.panel1.Controls.Add(this.btnBackToMenu);
             this.panel1.Controls.Add(this.lblrestaurantview);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(-2, -2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(756, 162);
             this.panel1.TabIndex = 0;
+            // 
+            // lblemployee
+            // 
+            this.lblemployee.AutoSize = true;
+            this.lblemployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblemployee.Location = new System.Drawing.Point(495, 11);
+            this.lblemployee.Name = "lblemployee";
+            this.lblemployee.Size = new System.Drawing.Size(61, 29);
+            this.lblemployee.TabIndex = 3;
+            this.lblemployee.Text = "------";
+            // 
+            // btnBackToMenu
+            // 
+            this.btnBackToMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackToMenu.Location = new System.Drawing.Point(593, 64);
+            this.btnBackToMenu.Name = "btnBackToMenu";
+            this.btnBackToMenu.Size = new System.Drawing.Size(136, 66);
+            this.btnBackToMenu.TabIndex = 2;
+            this.btnBackToMenu.Text = "Back to Menu";
+            this.btnBackToMenu.UseVisualStyleBackColor = true;
+            this.btnBackToMenu.Click += new System.EventHandler(this.btnBackToMenu_Click);
+            // 
+            // lblrestaurantview
+            // 
+            this.lblrestaurantview.AutoSize = true;
+            this.lblrestaurantview.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblrestaurantview.ForeColor = System.Drawing.Color.White;
+            this.lblrestaurantview.Location = new System.Drawing.Point(278, 64);
+            this.lblrestaurantview.Name = "lblrestaurantview";
+            this.lblrestaurantview.Size = new System.Drawing.Size(257, 38);
+            this.lblrestaurantview.TabIndex = 1;
+            this.lblrestaurantview.Text = "Restaurant View";
             // 
             // pictureBox1
             // 
@@ -78,17 +110,6 @@ namespace ChapeauUI
             this.pictureBox1.Size = new System.Drawing.Size(259, 195);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // lblrestaurantview
-            // 
-            this.lblrestaurantview.AutoSize = true;
-            this.lblrestaurantview.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblrestaurantview.ForeColor = System.Drawing.Color.White;
-            this.lblrestaurantview.Location = new System.Drawing.Point(278, 64);
-            this.lblrestaurantview.Name = "lblrestaurantview";
-            this.lblrestaurantview.Size = new System.Drawing.Size(267, 39);
-            this.lblrestaurantview.TabIndex = 1;
-            this.lblrestaurantview.Text = "Restaurant View";
             // 
             // label1
             // 
@@ -268,25 +289,6 @@ namespace ChapeauUI
             this.btntable10.Text = "Table 10";
             this.btntable10.UseVisualStyleBackColor = true;
             // 
-            // button10
-            // 
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(593, 64);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(136, 66);
-            this.button10.TabIndex = 2;
-            this.button10.Text = "Back to Menu";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // lblemployee
-            // 
-            this.lblemployee.AutoSize = true;
-            this.lblemployee.Location = new System.Drawing.Point(497, 21);
-            this.lblemployee.Name = "lblemployee";
-            this.lblemployee.Size = new System.Drawing.Size(38, 17);
-            this.lblemployee.TabIndex = 3;
-            this.lblemployee.Text = "------";
-            // 
             // btntable9
             // 
             this.btntable9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -339,7 +341,7 @@ namespace ChapeauUI
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btnBackToMenu;
         private System.Windows.Forms.Label lblrestaurantview;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
