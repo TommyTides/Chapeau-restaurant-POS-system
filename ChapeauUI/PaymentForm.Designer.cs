@@ -39,24 +39,26 @@ namespace ChapeauUI
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
+            this.lblWaiter = new System.Windows.Forms.Label();
+            this.lblTotalVAT = new System.Windows.Forms.Label();
+            this.lblTableNumber = new System.Windows.Forms.Label();
+            this.chbTip = new System.Windows.Forms.CheckBox();
+            this.cmbMethod = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmdTable = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cmbMethod = new System.Windows.Forms.ComboBox();
-            this.chbTip = new System.Windows.Forms.CheckBox();
-            this.lblTableNumber = new System.Windows.Forms.Label();
-            this.lblTotalVAT = new System.Windows.Forms.Label();
-            this.lblWaiter = new System.Windows.Forms.Label();
-            this.lblTotalAmount = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtComment = new System.Windows.Forms.TextBox();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.txtComment = new System.Windows.Forms.TextBox();
+            this.lblComment = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtTip = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -132,20 +134,24 @@ namespace ChapeauUI
             // columnHeader2
             // 
             this.columnHeader2.Text = "Item";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader2.Width = 69;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Qty";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Price";
-            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.txtTip);
             this.groupBox1.Controls.Add(this.lblTotalAmount);
             this.groupBox1.Controls.Add(this.lblWaiter);
             this.groupBox1.Controls.Add(this.lblTotalVAT);
@@ -167,6 +173,106 @@ namespace ChapeauUI
             this.groupBox1.Text = "Billing";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // lblTotalAmount
+            // 
+            this.lblTotalAmount.AutoSize = true;
+            this.lblTotalAmount.Location = new System.Drawing.Point(587, 134);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(23, 17);
+            this.lblTotalAmount.TabIndex = 14;
+            this.lblTotalAmount.Text = "___";
+            // 
+            // lblWaiter
+            // 
+            this.lblWaiter.AutoSize = true;
+            this.lblWaiter.Location = new System.Drawing.Point(303, 43);
+            this.lblWaiter.Name = "lblWaiter";
+            this.lblWaiter.Size = new System.Drawing.Size(23, 17);
+            this.lblWaiter.TabIndex = 13;
+            this.lblWaiter.Text = "___";
+            // 
+            // lblTotalVAT
+            // 
+            this.lblTotalVAT.AutoSize = true;
+            this.lblTotalVAT.Location = new System.Drawing.Point(525, 43);
+            this.lblTotalVAT.Name = "lblTotalVAT";
+            this.lblTotalVAT.Size = new System.Drawing.Size(23, 17);
+            this.lblTotalVAT.TabIndex = 12;
+            this.lblTotalVAT.Text = "___";
+            // 
+            // lblTableNumber
+            // 
+            this.lblTableNumber.AutoSize = true;
+            this.lblTableNumber.Location = new System.Drawing.Point(110, 43);
+            this.lblTableNumber.Name = "lblTableNumber";
+            this.lblTableNumber.Size = new System.Drawing.Size(23, 17);
+            this.lblTableNumber.TabIndex = 11;
+            this.lblTableNumber.Text = "___";
+            // 
+            // chbTip
+            // 
+            this.chbTip.AutoSize = true;
+            this.chbTip.Location = new System.Drawing.Point(237, 126);
+            this.chbTip.Name = "chbTip";
+            this.chbTip.Size = new System.Drawing.Size(45, 21);
+            this.chbTip.TabIndex = 10;
+            this.chbTip.Text = "Tip";
+            this.chbTip.UseVisualStyleBackColor = true;
+            this.chbTip.CheckedChanged += new System.EventHandler(this.chbTip_CheckedChanged);
+            // 
+            // cmbMethod
+            // 
+            this.cmbMethod.FormattingEnabled = true;
+            this.cmbMethod.Location = new System.Drawing.Point(18, 126);
+            this.cmbMethod.Name = "cmbMethod";
+            this.cmbMethod.Size = new System.Drawing.Size(156, 25);
+            this.cmbMethod.TabIndex = 9;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(15, 95);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(166, 17);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Choose a payment method";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(455, 134);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(126, 17);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Total amount to pay";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(455, 43);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 17);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Total VAT";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(251, 43);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Waiter";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 43);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 17);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Table number";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -183,143 +289,19 @@ namespace ChapeauUI
             this.cmdTable.Name = "cmdTable";
             this.cmdTable.Size = new System.Drawing.Size(146, 21);
             this.cmdTable.TabIndex = 1;
+            this.cmdTable.SelectedIndexChanged += new System.EventHandler(this.cmdTable_SelectedIndexChanged);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.panel2.Controls.Add(this.btnSubmit);
             this.panel2.Controls.Add(this.txtComment);
-            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.lblComment);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(418, 450);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(397, 310);
             this.panel2.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(149, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Add a comment";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 17);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Table number";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(251, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 17);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Waiter";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(455, 43);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 17);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Total VAT";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(455, 134);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(126, 17);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Total amount to pay";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(15, 95);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(166, 17);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Choose a payment method";
-            // 
-            // cmbMethod
-            // 
-            this.cmbMethod.FormattingEnabled = true;
-            this.cmbMethod.Location = new System.Drawing.Point(18, 126);
-            this.cmbMethod.Name = "cmbMethod";
-            this.cmbMethod.Size = new System.Drawing.Size(156, 25);
-            this.cmbMethod.TabIndex = 9;
-            // 
-            // chbTip
-            // 
-            this.chbTip.AutoSize = true;
-            this.chbTip.Location = new System.Drawing.Point(252, 126);
-            this.chbTip.Name = "chbTip";
-            this.chbTip.Size = new System.Drawing.Size(45, 21);
-            this.chbTip.TabIndex = 10;
-            this.chbTip.Text = "Tip";
-            this.chbTip.UseVisualStyleBackColor = true;
-            // 
-            // lblTableNumber
-            // 
-            this.lblTableNumber.AutoSize = true;
-            this.lblTableNumber.Location = new System.Drawing.Point(110, 43);
-            this.lblTableNumber.Name = "lblTableNumber";
-            this.lblTableNumber.Size = new System.Drawing.Size(23, 17);
-            this.lblTableNumber.TabIndex = 11;
-            this.lblTableNumber.Text = "___";
-            // 
-            // lblTotalVAT
-            // 
-            this.lblTotalVAT.AutoSize = true;
-            this.lblTotalVAT.Location = new System.Drawing.Point(525, 43);
-            this.lblTotalVAT.Name = "lblTotalVAT";
-            this.lblTotalVAT.Size = new System.Drawing.Size(23, 17);
-            this.lblTotalVAT.TabIndex = 12;
-            this.lblTotalVAT.Text = "___";
-            // 
-            // lblWaiter
-            // 
-            this.lblWaiter.AutoSize = true;
-            this.lblWaiter.Location = new System.Drawing.Point(303, 43);
-            this.lblWaiter.Name = "lblWaiter";
-            this.lblWaiter.Size = new System.Drawing.Size(23, 17);
-            this.lblWaiter.TabIndex = 13;
-            this.lblWaiter.Text = "___";
-            // 
-            // lblTotalAmount
-            // 
-            this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.Location = new System.Drawing.Point(587, 134);
-            this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(23, 17);
-            this.lblTotalAmount.TabIndex = 14;
-            this.lblTotalAmount.Text = "___";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 79);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 13);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Comment";
-            // 
-            // txtComment
-            // 
-            this.txtComment.Location = new System.Drawing.Point(13, 95);
-            this.txtComment.Multiline = true;
-            this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(369, 168);
-            this.txtComment.TabIndex = 2;
             // 
             // btnSubmit
             // 
@@ -332,6 +314,48 @@ namespace ChapeauUI
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = false;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // txtComment
+            // 
+            this.txtComment.Location = new System.Drawing.Point(13, 95);
+            this.txtComment.Multiline = true;
+            this.txtComment.Name = "txtComment";
+            this.txtComment.Size = new System.Drawing.Size(369, 168);
+            this.txtComment.TabIndex = 2;
+            // 
+            // lblComment
+            // 
+            this.lblComment.AutoSize = true;
+            this.lblComment.Location = new System.Drawing.Point(14, 79);
+            this.lblComment.Name = "lblComment";
+            this.lblComment.Size = new System.Drawing.Size(51, 13);
+            this.lblComment.TabIndex = 1;
+            this.lblComment.Text = "Comment";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(149, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Add a comment";
+            // 
+            // txtTip
+            // 
+            this.txtTip.Location = new System.Drawing.Point(313, 124);
+            this.txtTip.Name = "txtTip";
+            this.txtTip.Size = new System.Drawing.Size(100, 23);
+            this.txtTip.TabIndex = 15;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(292, 127);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(15, 17);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "$";
             // 
             // PaymentForm
             // 
@@ -389,7 +413,9 @@ namespace ChapeauUI
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.TextBox txtComment;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblComment;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtTip;
     }
 }
