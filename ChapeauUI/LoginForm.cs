@@ -44,31 +44,6 @@ namespace ChapeauUI
 
             string[] kitchen = new string[] { "Chef", "Barman" };
 
-
-            // if employee not null and role is valid
-            /* if (employee != null && (management.Contains(Role.Waiter) || kitchen.Contains(Role.Manager)))
-             {
-                 this.Hide();
-                 if (management.Contains(employee.Role))
-                 {
-                     // the table view page will go here 
-                     Menu mainMenu = new Menu(employee);
-                     mainMenu.ShowDialog();
-
-                 }
-                 else if (kitchen.Contains(employee.Role))
-                 {
-                       //The kitchen and bar view page will go here 
-                 }
-                 this.Close();
-             }
-             else
-             {
-                 txtlogincode.Text = "";
-                 MessageBox.Show("Password Entered is Incorrect");
-             }
-            */
-
             if (employee.Role == Role.Waiter || employee.Role == Role.Manager)
             {
                 Menu mainMenu = new Menu();
@@ -80,7 +55,6 @@ namespace ChapeauUI
             }
             else
             {
-                txtemployeeid.Text = "";
                 txtlogincode.Text = "";
                 MessageBox.Show("Invalid login credentials!");
             }

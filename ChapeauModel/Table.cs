@@ -6,7 +6,22 @@ using System.Threading.Tasks;
 
 namespace ChapeauModel
 {
-    class Class1
+    public class Table
     {
+        public int TableID { get; set; }
+        public TableStatus TableStatus { get; set; }
+        public int Capacity { get; set; }
+        public Table(int tableid)
+        {
+            this.TableID = tableid;
+        }
+
+        // default constructor
+        public Table()
+        {
+
+        }
     }
+
+    public enum TableStatus { Free = 1, Occupied, Reserved }
 }

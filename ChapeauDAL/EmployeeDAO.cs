@@ -11,13 +11,13 @@ namespace ChapeauDAL
 {
     public class EmployeeDAO: BaseDao
     {
-        public Employee GetEmployeeByCode(int employeeid)
+        public Employee GetEmployeeByCode(int pin)
         {
             string query = " SELECT e.firstName, e.lastName, e.roleID ,r.description FROM EMPLOYEE as e " +
             " JOIN ROLE as r ON e.roleID = r.roleID " +
-            " WHERE employeeID = @employeeID";
+            " WHERE PIN = @PIN";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@employeeID", employeeid);
+            sqlParameters[0] = new SqlParameter("@PIN", pin);
             return ReadEmployee(ExecuteSelectQuery(query, sqlParameters));
         }
 
@@ -39,5 +39,14 @@ namespace ChapeauDAL
                 return employee;
             }
         }
+
+        public Employee GetEmployee(int employeeid)
+        {
+            string query = "SELECT employeeID, firstName, lastName, roleID FROM EMPLOYEE WHERE employeeID = @employeeID";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@employeeID", employeeid);
+            return ReadEmployee(ExecuteSelectQuery(query, sqlParameters));
+        }
+
     }
 }

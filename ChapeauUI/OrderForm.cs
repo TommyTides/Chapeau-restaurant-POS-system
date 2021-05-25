@@ -14,9 +14,11 @@ namespace ChapeauUI
 {
     public partial class OrderForm : Form
     {
+        OrderService orderService;
         public OrderForm()
         {
             InitializeComponent();
+           orderService = new OrderService();
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
@@ -64,7 +66,8 @@ namespace ChapeauUI
 
         private void ListViewKitchen()
         {
-            OrderService orderService = new OrderService();
+            
+            //Employee employee = EmployeeService.GetEmployeeByCode(int.Parse(txtlogincode.Text));
             List<OrderItem> orderKitchen = orderService.GetAllKitchen();
             //List<Order> orderBar = orderService.GetAllBar();
             foreach (OrderItem I in orderKitchen)
@@ -74,8 +77,9 @@ namespace ChapeauUI
                 li.SubItems.Add(I.Quantity.ToString());
                 li.SubItems.Add(I.OrderTime.ToString());
                 li.SubItems.Add(I.Status.ToString());
-                listViewKitch.Items.Add(li);
-
+                li.SubItems.Add(I.Comment.ToString());
+                //li.SubItems.Add(I.) for table later
+                ListViewKitch.Items.Add(li);
             }
 
         }
@@ -85,9 +89,19 @@ namespace ChapeauUI
             //listViewOrder.Clear();
         }
 
-        private void listViewKitch_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnReady_Click(object sender, EventArgs e)
         {
+            
+            if (ListViewKitch.Items.Count > 0) 
+            {
+                OrderItem order = ListViewKitch.SelectedItems[0].Tag as OrderItem;
+                MessageBox.Show($"Order is marked 'ready' Click refresh ");
+                orderService.UpdateOrderStatus(order);
 
+            }
+              
         }
+
+
     }
 }

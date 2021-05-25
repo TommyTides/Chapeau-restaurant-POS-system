@@ -32,12 +32,14 @@ namespace ChapeauUI
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlLunchMenu = new System.Windows.Forms.Panel();
-            this.listViewKitch = new System.Windows.Forms.ListView();
+            this.ListViewKitch = new System.Windows.Forms.ListView();
             this.menu_type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.item_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.quantityv2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.order_timev2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.order_statusv2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.quantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.order_time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.order_status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Comment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TableV1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
             this.btnReady = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
@@ -77,7 +79,7 @@ namespace ChapeauUI
             // pnlLunchMenu
             // 
             this.pnlLunchMenu.BackColor = System.Drawing.Color.White;
-            this.pnlLunchMenu.Controls.Add(this.listViewKitch);
+            this.pnlLunchMenu.Controls.Add(this.ListViewKitch);
             this.pnlLunchMenu.Controls.Add(this.label4);
             this.pnlLunchMenu.Controls.Add(this.btnReady);
             this.pnlLunchMenu.Controls.Add(this.btnRefresh);
@@ -87,22 +89,25 @@ namespace ChapeauUI
             this.pnlLunchMenu.Size = new System.Drawing.Size(686, 894);
             this.pnlLunchMenu.TabIndex = 13;
             // 
-            // listViewKitch
+            // ListViewKitch
             // 
-            this.listViewKitch.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ListViewKitch.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.menu_type,
             this.item_name,
-            this.quantityv2,
-            this.order_timev2,
-            this.order_statusv2});
-            this.listViewKitch.HideSelection = false;
-            this.listViewKitch.Location = new System.Drawing.Point(180, 87);
-            this.listViewKitch.Name = "listViewKitch";
-            this.listViewKitch.Size = new System.Drawing.Size(370, 217);
-            this.listViewKitch.TabIndex = 15;
-            this.listViewKitch.UseCompatibleStateImageBehavior = false;
-            this.listViewKitch.View = System.Windows.Forms.View.Details;
-            this.listViewKitch.SelectedIndexChanged += new System.EventHandler(this.listViewKitch_SelectedIndexChanged);
+            this.quantity,
+            this.order_time,
+            this.order_status,
+            this.Comment,
+            this.TableV1});
+            this.ListViewKitch.FullRowSelect = true;
+            this.ListViewKitch.GridLines = true;
+            this.ListViewKitch.HideSelection = false;
+            this.ListViewKitch.Location = new System.Drawing.Point(44, 87);
+            this.ListViewKitch.Name = "ListViewKitch";
+            this.ListViewKitch.Size = new System.Drawing.Size(592, 468);
+            this.ListViewKitch.TabIndex = 15;
+            this.ListViewKitch.UseCompatibleStateImageBehavior = false;
+            this.ListViewKitch.View = System.Windows.Forms.View.Details;
             // 
             // menu_type
             // 
@@ -114,20 +119,29 @@ namespace ChapeauUI
             this.item_name.Text = "item_name";
             this.item_name.Width = 74;
             // 
-            // quantityv2
+            // quantity
             // 
-            this.quantityv2.Text = "quantity";
-            this.quantityv2.Width = 67;
+            this.quantity.Text = "quantity";
+            this.quantity.Width = 83;
             // 
-            // order_timev2
+            // order_time
             // 
-            this.order_timev2.Text = "order_time";
-            this.order_timev2.Width = 77;
+            this.order_time.Text = "order_time";
+            this.order_time.Width = 106;
             // 
-            // order_statusv2
+            // order_status
             // 
-            this.order_statusv2.Text = "order_status";
-            this.order_statusv2.Width = 105;
+            this.order_status.Text = "order_status";
+            this.order_status.Width = 95;
+            // 
+            // Comment
+            // 
+            this.Comment.Text = "Comment";
+            // 
+            // TableV1
+            // 
+            this.TableV1.Text = "Table";
+            this.TableV1.Width = 102;
             // 
             // label4
             // 
@@ -151,6 +165,7 @@ namespace ChapeauUI
             this.btnReady.TabIndex = 13;
             this.btnReady.Text = "Ready";
             this.btnReady.UseVisualStyleBackColor = false;
+            this.btnReady.Click += new System.EventHandler(this.btnReady_Click);
             // 
             // btnRefresh
             // 
@@ -245,11 +260,13 @@ namespace ChapeauUI
         private System.Windows.Forms.Button btnReady;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblApplicationState;
-        private System.Windows.Forms.ListView listViewKitch;
+        private System.Windows.Forms.ListView ListViewKitch;
         private System.Windows.Forms.ColumnHeader menu_type;
         private System.Windows.Forms.ColumnHeader item_name;
-        private System.Windows.Forms.ColumnHeader quantityv2;
-        private System.Windows.Forms.ColumnHeader order_timev2;
-        private System.Windows.Forms.ColumnHeader order_statusv2;
+        private System.Windows.Forms.ColumnHeader quantity;
+        private System.Windows.Forms.ColumnHeader order_time;
+        private System.Windows.Forms.ColumnHeader order_status;
+        private System.Windows.Forms.ColumnHeader Comment;
+        private System.Windows.Forms.ColumnHeader TableV1;
     }
 }

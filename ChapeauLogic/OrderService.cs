@@ -18,11 +18,15 @@ namespace ChapeauLogic
         }
 
       
-        public List<Order> GetAllOrders()
-        {  
-            return orderDAO.GetAllOrders();
-        }
+        //public List<Order> GetAllOrders()
+        //{  
+        //    return orderDAO.GetAllOrders();
+        //}
 
+        public void UpdateOrderStatus(OrderItem order)
+        {
+            orderDAO.UpdateOrderStatus(order);
+        }
         public List<OrderItem> GetAllKitchen()
         { 
             return orderDAO.GetAllOrdersKitchen();
