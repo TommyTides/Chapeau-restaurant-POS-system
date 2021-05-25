@@ -15,16 +15,21 @@ namespace ChapeauUI
     public partial class TablePage : Form
     {
         private Employee employee;
-        private TableServices tableServices = new TableServices();
+        private TableServices tableServices;
         public TablePage(Employee employee)
         {
             InitializeComponent();
             this.employee = employee;
+            tableServices = new TableServices();
         }
-
+        
         private void TablePage_Load(object sender, EventArgs e)
         {
             lblemployee.Text = $"{employee.Role}: {employee.FullName}";
+            while (true)
+            {
+                tableServices.GetAllTables();
+            }
         }
 
         private void btnBackToMenu_Click(object sender, EventArgs e)

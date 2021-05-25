@@ -12,9 +12,11 @@ namespace ChapeauDAL
     {
         public List<Table> GetAllTables()
         {
-            string query = "SELECT t.table_id, t.capacity, ts.description " +
+            string query = "SELECT t.table_id, ts.description, oi.ItemStatus " +
             "FROM[TABLE] as t " +
-            " JOIN TABLE_STATUS as ts on t.statusID = ts.tablestatusID; ";
+            " JOIN TABLE_STATUS as ts on t.statusID = ts.tablestatusID " +
+            " JOIN [ORDER] as o ON t.table_id = o.tableID " +
+            " JOIN [ORDER_ITEM] as oi ON o.orderID = oi.orderID";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadAllTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -29,7 +31,6 @@ namespace ChapeauDAL
                 {
                     TableID = (int)dr["tableID"],
                     TableStatus = (TableStatus)(dr["description"]),
-                    Capacity = (int)(dr["capacity"])
                 };
                 tables.Add(table);
             }
