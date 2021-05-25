@@ -78,6 +78,12 @@
     <Compile Include="RoundButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TablePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TablePage.Designer.cs">
+      <DependentUpon>TablePage.cs</DependentUpon>
+    </Compile>
     <Compile Include="TakingOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TablePage.resx">
+      <DependentUpon>TablePage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TakingOrderForm.resx">
       <DependentUpon>TakingOrderForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using ChapeauModel;
 namespace ChapeauDAL
 {
-    class TableDAO: BaseDao
+    public class TableDAO: BaseDao
     {
         public List<Table> GetAllTables()
         {

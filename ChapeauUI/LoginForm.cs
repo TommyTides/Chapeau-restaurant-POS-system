@@ -55,7 +55,6 @@ namespace ChapeauUI
             }
             else
             {
-                txtemployeeid.Text = "";
                 txtlogincode.Text = "";
                 MessageBox.Show("Invalid login credentials!");
             }
