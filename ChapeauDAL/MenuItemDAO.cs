@@ -31,8 +31,8 @@ namespace ChapeauDAL
                 int stock = (int)dr["stock"];
                 Place place = (Place)dr["place"];
 
-                MenuItem menuItem = new MenuItem(item_id, menu_type, item_type, item_name, item_price, stock, place);
-                menuItems.Add(menuItem);
+                //MenuItem menuItem = new MenuItem(item_id, menu_type, item_type, item_name, item_price, stock, vat);
+                //menuItems.Add(menuItem);
             }
             return null;
         }
