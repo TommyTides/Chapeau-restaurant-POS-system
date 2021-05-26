@@ -12,16 +12,16 @@ namespace ChapeauDAL
    public class OrderDAO : BaseDao
     {
      
-        public List<OrderItem> GetAllOrdersBar()
-        {
-            string query = "select m.menu_type, m.item_name,o.quantity,o.orderTime,o.ItemStatus,o.comment from [ORDER_ITEM] as o JOIN [MENU_ITEM] as m ON o.item_code=m.item_id where m.menu_type = 'drinks' ORDER BY o.order_time asc;";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadKitchen(ExecuteSelectQuery(query, sqlParameters));
-        }
-        //read 
+        //public List<OrderItem> GetAllOrdersBar()
+        //{
+        //    string query = "select m.menu_type, m.item_name,o.quantity,o.orderTime,o.itemStatus,o.comment from [ORDER_ITEM] as o JOIN [MENU_ITEM] as m ON o.item_id = m.item_id where m.menu_type = 'drinks' ORDER BY o.order_time asc;";
+        //    SqlParameter[] sqlParameters = new SqlParameter[0];
+        //    return ReadKitchen(ExecuteSelectQuery(query, sqlParameters));
+        //}
+         
         public List<OrderItem> GetAllOrdersKitchen()
         {
-            string query = "select m.menu_type, m.item_name,o.quantity,o.orderTime,o.ItemStatus,o.comment from [ORDER_ITEM] as o JOIN [MENU_ITEM] as m ON o.item_code=m.item_id where m.menu_type = 'lunch' OR m.menu_type = 'dinner' ORDER BY o.order_time asc;";
+            string query = "select m.menu_type, m.item_name,o.quantity,o.orderTime,o.itemStatus,o.comment from [ORDER_ITEM] as o JOIN [MENU_ITEM] as m ON o.item_id = m.item_id";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadKitchen(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -29,33 +29,9 @@ namespace ChapeauDAL
         public void UpdateOrderStatus(OrderItem order)
         {
             SqlCommand cmd = new SqlCommand("Update [ORDER_ITEM] Set Status = 2 Where orderID = orderID");
-            cmd.Parameters.AddWithValue("@ID", order.Status);
-           
+            cmd.Parameters.AddWithValue("@orderID", order.Status);
+
         }
-
-
-        //Read the selected tablerows from the database and add it to the list
-        //private List<Order> ReadTables(DataTable dataTable)
-        //{
-        //    List<Order> orders = new List<Order>();
-
-        //    foreach (DataRow dr in dataTable.Rows)
-        //    {
-        //        int order_id = (int)dr["order_id"];
-        //        int item_code = (int)dr["item_code"];
-        //        int table_code = (int)dr["table_code"];
-        //        int quantity = (int)dr["quantity"];
-        //        DateTime order_time = (DateTime)dr["order_time"];
-        //        double order_price = (double)dr["order_price"];
-        //        int order_status = (int)dr["order_status"];
-        //        int employee_code = (int)dr["employee_code"];
-
-        //        //Order order = new Order(order_id, item_code, table_code, quantity, order_time, order_price, order_status, employee_code);
-        //        //orders.Add(order);
-        //    }
-        //    return orders;
-        //}
-
 
         private List<OrderItem> ReadKitchen(DataTable dataTable)
         {
@@ -72,10 +48,11 @@ namespace ChapeauDAL
                 OrderItem orderItem = new OrderItem();
                 orderItem.Comment = (string)dr["comment"];
                 orderItem.Quantity = (int)dr["quantity"];
-                orderItem.Status = (ItemStatus)dr["ItemStatus"];
+                orderItem.Status = (ItemStatus)dr["itemStatus"];
                 orderItem.OrderTime = (DateTime)dr["orderTime"];
-                //kitchenorders.menu_type = (string)dr["menu_type"];
-                //kitchenorders.item_name = (string)dr["item_name"];
+                orderItem.menuItem = item;
+
+        
                 Kitchen.Add(orderItem);
                 
             }

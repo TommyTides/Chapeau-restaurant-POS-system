@@ -17,7 +17,7 @@ namespace ChapeauLogic
             orderDAO = new OrderDAO();
         }
 
-      
+
         //public List<Order> GetAllOrders()
         //{  
         //    return orderDAO.GetAllOrders();
@@ -32,9 +32,9 @@ namespace ChapeauLogic
             return orderDAO.GetAllOrdersKitchen();
         }
 
-        public List<OrderItem> GetAllBar()
-        {
-            return orderDAO.GetAllOrdersBar();
-        }
+        //public List<OrderItem> GetAllBar()
+        //{
+        //    return orderDAO.GetAllOrdersBar();
+        //}
     }
 }
