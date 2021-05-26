@@ -18,6 +18,7 @@ namespace ChapeauModel
         public bool PaymentStatus { get; set; }
         public double Tip { get; set; }
         public List<OrderItem> OrderItem { get; set; }
+        public Table table { get; set; }
         public PaymentMethod paymentMethod { get; set; }
 
         // total price including the VAT
