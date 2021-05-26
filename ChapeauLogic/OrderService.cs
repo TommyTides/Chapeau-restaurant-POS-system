@@ -36,5 +36,6 @@ namespace ChapeauLogic
         {
             return orderDAO.GetAllOrdersBar();
         }
+
     }
 }

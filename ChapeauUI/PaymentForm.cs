@@ -15,23 +15,24 @@ namespace ChapeauUI
     public partial class PaymentForm : Form
     {
         OrderService orderService;
-        Order orderPay;
-        Employee employee;
+        Order Order;
+        Employee Employee;
 
-        public PaymentForm(Employee employee_)
+        public PaymentForm()
         {
             InitializeComponent();
 
             orderService = new OrderService();
-            employee = employee_;
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
-            WinAPI.AnimateWindow(this.Handle, 2000, WinAPI.BLEND);
-            // set the starting point for the tip at nothing
             txtTip.Enabled = false;
         }
+
+
+
+
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -40,7 +41,7 @@ namespace ChapeauUI
 
         private void ShowPayments()
         {
-            // Load all payments for orders here
+            
         }
 
         private void lstViewItems_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,6 +99,41 @@ namespace ChapeauUI
         private void cmdTable_SelectedIndexChanged(object sender, EventArgs e)
         {
             // fill the listview with the order items and make a way to distinguish alcoholic from non alcoholic drinks (VAT)
+            double VAT = 0;
+
+            this.Order = cmbTable.Tag as Order;
+            this.Order.Employee = Employee;
+
+            lblTableNumber.Text = Order.Table.TableID.ToString();
+            lblPayment.Text = Order.Total.ToString();
+
+            foreach(OrderItem orderItem in Order.OrderItem) // fill the listview with ordered items
+            {
+                ListViewItem item = new ListViewItem(Order.OrderID.ToString());
+                item.SubItems.Add(orderItem.menuItem.item_name);
+                item.SubItems.Add(orderItem.Quantity.ToString());
+                item.SubItems.Add(orderItem.TotalPrice.ToString());
+                item.Tag = orderItem;
+
+                lstViewItems.Items.Add(item);
+            }
+            cmbMethod.DataSource = (Enum.GetValues(typeof(PaymentMethod)));
+
+            foreach(OrderItem item in Order.OrderItem)
+            {
+                if (item.menuItem.item_type == MenuSubCategory.alcohol)
+                {
+                    VAT += item.menuItem.item_price * item.Quantity * 0.21;
+                }
+
+                else
+                {
+                    VAT += item.menuItem.item_price * item.Quantity * 0.06;
+                }
+            }
+            Order.VATTotal = VAT;
+            lblTotalVAT.Text = VAT.ToString("0.00");
+            lblTotalAmount.Text = (Order.Total + Order.VATTotal + Order.Tip).ToString("0.00");
         }
 
         private void chbTip_CheckedChanged(object sender, EventArgs e)
@@ -112,6 +148,23 @@ namespace ChapeauUI
             {
                 txtTip.Enabled = false;
             }
+        }
+
+        private void btnFinalizePayment_Click(object sender, EventArgs e)
+        {
+            double tip = 0;
+
+            // the tip gets converted into a double
+            bool validTip = double.TryParse(txtTip.Text, out tip);
+
+            // checks if the tip is ticked and whether its not valid -> displays message that its not valid
+            if (chbTip.Checked && !validTip)
+            {
+                MessageBox.Show("Please enter a valid amount for the tip");
+            }
+
+            Order.paymentMethod = (PaymentMethod)cmbMethod.SelectedItem;
+            Order.Tip = tip;          
         }
     }
 }

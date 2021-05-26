@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ChapeauDAL
 {
-   public class OrderDAO : BaseDao
+    public class OrderDAO : BaseDao
     {
-     
+
         public List<OrderItem> GetAllOrdersBar()
         {
             string query = "select m.menu_type, m.item_name,o.quantity,o.orderTime,o.ItemStatus,o.comment from [ORDER_ITEM] as o JOIN [MENU_ITEM] as m ON o.item_code=m.item_id where m.menu_type = 'drinks' ORDER BY o.order_time asc;";
@@ -30,7 +30,7 @@ namespace ChapeauDAL
         {
             SqlCommand cmd = new SqlCommand("Update [ORDER_ITEM] Set Status = 2 Where orderID = orderID");
             cmd.Parameters.AddWithValue("@ID", order.Status);
-           
+
         }
 
 
@@ -77,12 +77,8 @@ namespace ChapeauDAL
                 //kitchenorders.menu_type = (string)dr["menu_type"];
                 //kitchenorders.item_name = (string)dr["item_name"];
                 Kitchen.Add(orderItem);
-                
+
             }
             return Kitchen;
         }
-
-
-
     }
-}

@@ -16,6 +16,8 @@ namespace ChapeauModel
             this.TableID = tableid;
         }
 
+        public TableStatus Status { get; set; }
+
         // default constructor
         public Table()
         {
