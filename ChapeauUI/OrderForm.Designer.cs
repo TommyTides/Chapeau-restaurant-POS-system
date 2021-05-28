@@ -39,7 +39,7 @@ namespace ChapeauUI
             this.order_time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.order_status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Comment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.TableV1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Table = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
             this.btnReady = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
@@ -98,13 +98,13 @@ namespace ChapeauUI
             this.order_time,
             this.order_status,
             this.Comment,
-            this.TableV1});
+            this.Table});
             this.ListViewKitch.FullRowSelect = true;
             this.ListViewKitch.GridLines = true;
             this.ListViewKitch.HideSelection = false;
-            this.ListViewKitch.Location = new System.Drawing.Point(44, 87);
+            this.ListViewKitch.Location = new System.Drawing.Point(44, 86);
             this.ListViewKitch.Name = "ListViewKitch";
-            this.ListViewKitch.Size = new System.Drawing.Size(592, 468);
+            this.ListViewKitch.Size = new System.Drawing.Size(609, 496);
             this.ListViewKitch.TabIndex = 15;
             this.ListViewKitch.UseCompatibleStateImageBehavior = false;
             this.ListViewKitch.View = System.Windows.Forms.View.Details;
@@ -138,17 +138,17 @@ namespace ChapeauUI
             // 
             this.Comment.Text = "Comment";
             // 
-            // TableV1
+            // Table
             // 
-            this.TableV1.Text = "Table";
-            this.TableV1.Width = 102;
+            this.Table.Text = "Table";
+            this.Table.Width = 102;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(324, 47);
+            this.label4.Location = new System.Drawing.Point(298, 41);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 24);
             this.label4.TabIndex = 14;
@@ -165,7 +165,6 @@ namespace ChapeauUI
             this.btnReady.TabIndex = 13;
             this.btnReady.Text = "Ready";
             this.btnReady.UseVisualStyleBackColor = false;
-            this.btnReady.Click += new System.EventHandler(this.btnReady_Click);
             // 
             // btnRefresh
             // 
@@ -215,7 +214,7 @@ namespace ChapeauUI
             this.lblApplicationState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
             this.lblApplicationState.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblApplicationState.ForeColor = System.Drawing.Color.White;
-            this.lblApplicationState.Location = new System.Drawing.Point(341, 24);
+            this.lblApplicationState.Location = new System.Drawing.Point(293, 19);
             this.lblApplicationState.Name = "lblApplicationState";
             this.lblApplicationState.Size = new System.Drawing.Size(132, 42);
             this.lblApplicationState.TabIndex = 15;
@@ -267,6 +266,6 @@ namespace ChapeauUI
         private System.Windows.Forms.ColumnHeader order_time;
         private System.Windows.Forms.ColumnHeader order_status;
         private System.Windows.Forms.ColumnHeader Comment;
-        private System.Windows.Forms.ColumnHeader TableV1;
+        private System.Windows.Forms.ColumnHeader Table;
     }
 }

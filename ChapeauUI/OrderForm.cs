@@ -25,8 +25,6 @@ namespace ChapeauUI
         {
             WinAPI.AnimateWindow(this.Handle, 2000, WinAPI.BLEND);
           
-
-            //ListViewOrder();
             ListViewKitchen();
             pictureBox4.Controls.Add(pictureBox1);
             pictureBox4.Controls.Add(pictureBox3);
@@ -42,34 +40,12 @@ namespace ChapeauUI
             Application.Exit();
         }
 
-        //private void ListViewOrder()
-        //{
-        //    OrderService orderService = new OrderService();
-        //    List<Order> orders = orderService.GetAllOrders();
-
-        //    foreach (Order I in orders)
-        //    {
-        //        ListViewItem li = new ListViewItem(I.order_id.ToString());
-        //        li.SubItems.Add(I.item_code.ToString());
-        //        li.SubItems.Add(I.table_code.ToString());
-        //        li.SubItems.Add(I.quantity.ToString());
-        //        li.SubItems.Add(I.order_time.ToString());
-        //        li.SubItems.Add(I.order_price.ToString());
-        //        li.SubItems.Add(I.order_price.ToString());
-        //        li.SubItems.Add(I.order_price.ToString());
-        //        li.SubItems.Add(I.order_status.ToString());
-        //        li.SubItems.Add(I.employee_code.ToString());
-        //        listViewOrder.Items.Add(li);
-
-        //    }
-        //}
-
         private void ListViewKitchen()
         {
             
             //Employee employee = EmployeeService.GetEmployeeByCode(int.Parse(txtlogincode.Text));
             List<OrderItem> orderKitchen = orderService.GetAllKitchen();
-            //List<Order> orderBar = orderService.GetAllBar();
+          
             foreach (OrderItem I in orderKitchen)
             {
                 ListViewItem li = new ListViewItem(I.menuItem.menu_type.ToString());
@@ -78,7 +54,7 @@ namespace ChapeauUI
                 li.SubItems.Add(I.OrderTime.ToString());
                 li.SubItems.Add(I.Status.ToString());
                 li.SubItems.Add(I.Comment.ToString());
-                //li.SubItems.Add(I.) for table later
+           
                 ListViewKitch.Items.Add(li);
             }
 
@@ -89,18 +65,18 @@ namespace ChapeauUI
             //listViewOrder.Clear();
         }
 
-        private void btnReady_Click(object sender, EventArgs e)
-        {
+        //private void btnReady_Click(object sender, EventArgs e)
+        //{
             
-            if (ListViewKitch.Items.Count > 0) 
-            {
-                OrderItem order = ListViewKitch.SelectedItems[0].Tag as OrderItem;
-                MessageBox.Show($"Order is marked 'ready' Click refresh ");
-                orderService.UpdateOrderStatus(order);
+        //    if (ListViewKitch.Items.Count > 0) 
+        //    {
+        //        OrderItem order = ListViewKitch.SelectedItems[0].Tag as OrderItem;
+        //        MessageBox.Show($"Order is marked 'ready' Click refresh ");
+        //        orderService.UpdateOrderStatus(order);
 
-            }
+        //    }
               
-        }
+        //}
 
 
     }

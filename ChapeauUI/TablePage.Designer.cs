@@ -54,6 +54,16 @@ namespace ChapeauUI
             this.btntable8 = new System.Windows.Forms.Button();
             this.btntable10 = new System.Windows.Forms.Button();
             this.btntable9 = new System.Windows.Forms.Button();
+            this.lbltable1status = new System.Windows.Forms.Label();
+            this.btntable2status = new System.Windows.Forms.Label();
+            this.btntable3status = new System.Windows.Forms.Label();
+            this.btntable4status = new System.Windows.Forms.Label();
+            this.btntable5status = new System.Windows.Forms.Label();
+            this.btntable6status = new System.Windows.Forms.Label();
+            this.btntable7status = new System.Windows.Forms.Label();
+            this.btntable8status = new System.Windows.Forms.Label();
+            this.btntable9status = new System.Windows.Forms.Label();
+            this.btntable10status = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -202,7 +212,7 @@ namespace ChapeauUI
             // btntable1
             // 
             this.btntable1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntable1.Location = new System.Drawing.Point(155, 345);
+            this.btntable1.Location = new System.Drawing.Point(263, 345);
             this.btntable1.Name = "btntable1";
             this.btntable1.Size = new System.Drawing.Size(84, 62);
             this.btntable1.TabIndex = 9;
@@ -212,7 +222,7 @@ namespace ChapeauUI
             // btntable2
             // 
             this.btntable2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntable2.Location = new System.Drawing.Point(440, 345);
+            this.btntable2.Location = new System.Drawing.Point(385, 345);
             this.btntable2.Name = "btntable2";
             this.btntable2.Size = new System.Drawing.Size(84, 62);
             this.btntable2.TabIndex = 10;
@@ -222,7 +232,7 @@ namespace ChapeauUI
             // btntable3
             // 
             this.btntable3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntable3.Location = new System.Drawing.Point(155, 477);
+            this.btntable3.Location = new System.Drawing.Point(263, 477);
             this.btntable3.Name = "btntable3";
             this.btntable3.Size = new System.Drawing.Size(84, 62);
             this.btntable3.TabIndex = 11;
@@ -232,7 +242,7 @@ namespace ChapeauUI
             // btntable4
             // 
             this.btntable4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntable4.Location = new System.Drawing.Point(440, 477);
+            this.btntable4.Location = new System.Drawing.Point(385, 477);
             this.btntable4.Name = "btntable4";
             this.btntable4.Size = new System.Drawing.Size(84, 62);
             this.btntable4.TabIndex = 12;
@@ -242,7 +252,7 @@ namespace ChapeauUI
             // btntable5
             // 
             this.btntable5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntable5.Location = new System.Drawing.Point(155, 620);
+            this.btntable5.Location = new System.Drawing.Point(263, 601);
             this.btntable5.Name = "btntable5";
             this.btntable5.Size = new System.Drawing.Size(84, 62);
             this.btntable5.TabIndex = 13;
@@ -252,7 +262,7 @@ namespace ChapeauUI
             // btntable6
             // 
             this.btntable6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntable6.Location = new System.Drawing.Point(440, 620);
+            this.btntable6.Location = new System.Drawing.Point(385, 601);
             this.btntable6.Name = "btntable6";
             this.btntable6.Size = new System.Drawing.Size(84, 62);
             this.btntable6.TabIndex = 14;
@@ -262,7 +272,7 @@ namespace ChapeauUI
             // btntable7
             // 
             this.btntable7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntable7.Location = new System.Drawing.Point(155, 770);
+            this.btntable7.Location = new System.Drawing.Point(263, 746);
             this.btntable7.Name = "btntable7";
             this.btntable7.Size = new System.Drawing.Size(84, 62);
             this.btntable7.TabIndex = 15;
@@ -272,7 +282,7 @@ namespace ChapeauUI
             // btntable8
             // 
             this.btntable8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntable8.Location = new System.Drawing.Point(440, 770);
+            this.btntable8.Location = new System.Drawing.Point(385, 746);
             this.btntable8.Name = "btntable8";
             this.btntable8.Size = new System.Drawing.Size(84, 62);
             this.btntable8.TabIndex = 16;
@@ -282,7 +292,7 @@ namespace ChapeauUI
             // btntable10
             // 
             this.btntable10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntable10.Location = new System.Drawing.Point(440, 899);
+            this.btntable10.Location = new System.Drawing.Point(385, 873);
             this.btntable10.Name = "btntable10";
             this.btntable10.Size = new System.Drawing.Size(84, 62);
             this.btntable10.TabIndex = 17;
@@ -292,17 +302,117 @@ namespace ChapeauUI
             // btntable9
             // 
             this.btntable9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntable9.Location = new System.Drawing.Point(155, 899);
+            this.btntable9.Location = new System.Drawing.Point(263, 873);
             this.btntable9.Name = "btntable9";
             this.btntable9.Size = new System.Drawing.Size(84, 62);
             this.btntable9.TabIndex = 18;
             this.btntable9.Text = "Table 9";
             this.btntable9.UseVisualStyleBackColor = true;
             // 
+            // lbltable1status
+            // 
+            this.lbltable1status.AutoSize = true;
+            this.lbltable1status.Location = new System.Drawing.Point(59, 371);
+            this.lbltable1status.Name = "lbltable1status";
+            this.lbltable1status.Size = new System.Drawing.Size(38, 17);
+            this.lbltable1status.TabIndex = 19;
+            this.lbltable1status.Text = "------";
+            // 
+            // btntable2status
+            // 
+            this.btntable2status.AutoSize = true;
+            this.btntable2status.Location = new System.Drawing.Point(549, 371);
+            this.btntable2status.Name = "btntable2status";
+            this.btntable2status.Size = new System.Drawing.Size(38, 17);
+            this.btntable2status.TabIndex = 20;
+            this.btntable2status.Text = "------";
+            // 
+            // btntable3status
+            // 
+            this.btntable3status.AutoSize = true;
+            this.btntable3status.Location = new System.Drawing.Point(59, 503);
+            this.btntable3status.Name = "btntable3status";
+            this.btntable3status.Size = new System.Drawing.Size(38, 17);
+            this.btntable3status.TabIndex = 21;
+            this.btntable3status.Text = "------";
+            // 
+            // btntable4status
+            // 
+            this.btntable4status.AutoSize = true;
+            this.btntable4status.Location = new System.Drawing.Point(549, 503);
+            this.btntable4status.Name = "btntable4status";
+            this.btntable4status.Size = new System.Drawing.Size(38, 17);
+            this.btntable4status.TabIndex = 22;
+            this.btntable4status.Text = "------";
+            // 
+            // btntable5status
+            // 
+            this.btntable5status.AutoSize = true;
+            this.btntable5status.Location = new System.Drawing.Point(59, 627);
+            this.btntable5status.Name = "btntable5status";
+            this.btntable5status.Size = new System.Drawing.Size(38, 17);
+            this.btntable5status.TabIndex = 23;
+            this.btntable5status.Text = "------";
+            // 
+            // btntable6status
+            // 
+            this.btntable6status.AutoSize = true;
+            this.btntable6status.Location = new System.Drawing.Point(549, 627);
+            this.btntable6status.Name = "btntable6status";
+            this.btntable6status.Size = new System.Drawing.Size(38, 17);
+            this.btntable6status.TabIndex = 24;
+            this.btntable6status.Text = "------";
+            // 
+            // btntable7status
+            // 
+            this.btntable7status.AutoSize = true;
+            this.btntable7status.Location = new System.Drawing.Point(59, 772);
+            this.btntable7status.Name = "btntable7status";
+            this.btntable7status.Size = new System.Drawing.Size(38, 17);
+            this.btntable7status.TabIndex = 25;
+            this.btntable7status.Text = "------";
+            // 
+            // btntable8status
+            // 
+            this.btntable8status.AutoSize = true;
+            this.btntable8status.Location = new System.Drawing.Point(549, 772);
+            this.btntable8status.Name = "btntable8status";
+            this.btntable8status.Size = new System.Drawing.Size(38, 17);
+            this.btntable8status.TabIndex = 26;
+            this.btntable8status.Text = "------";
+            // 
+            // btntable9status
+            // 
+            this.btntable9status.AutoSize = true;
+            this.btntable9status.Location = new System.Drawing.Point(59, 899);
+            this.btntable9status.Name = "btntable9status";
+            this.btntable9status.Size = new System.Drawing.Size(38, 17);
+            this.btntable9status.TabIndex = 27;
+            this.btntable9status.Text = "------";
+            // 
+            // btntable10status
+            // 
+            this.btntable10status.AutoSize = true;
+            this.btntable10status.Location = new System.Drawing.Point(549, 899);
+            this.btntable10status.Name = "btntable10status";
+            this.btntable10status.Size = new System.Drawing.Size(38, 17);
+            this.btntable10status.TabIndex = 28;
+            this.btntable10status.Text = "------";
+            // 
             // TablePage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(752, 985);
+            this.Controls.Add(this.btntable10status);
+            this.Controls.Add(this.btntable9status);
+            this.Controls.Add(this.btntable8status);
+            this.Controls.Add(this.btntable7status);
+            this.Controls.Add(this.btntable6status);
+            this.Controls.Add(this.btntable5status);
+            this.Controls.Add(this.btntable4status);
+            this.Controls.Add(this.btntable3status);
+            this.Controls.Add(this.btntable2status);
+            this.Controls.Add(this.lbltable1status);
             this.Controls.Add(this.btntable9);
             this.Controls.Add(this.btntable10);
             this.Controls.Add(this.btntable8);
@@ -364,5 +474,15 @@ namespace ChapeauUI
         private System.Windows.Forms.Button btntable10;
         private System.Windows.Forms.Label lblemployee;
         private System.Windows.Forms.Button btntable9;
+        private System.Windows.Forms.Label lbltable1status;
+        private System.Windows.Forms.Label btntable2status;
+        private System.Windows.Forms.Label btntable3status;
+        private System.Windows.Forms.Label btntable4status;
+        private System.Windows.Forms.Label btntable5status;
+        private System.Windows.Forms.Label btntable6status;
+        private System.Windows.Forms.Label btntable7status;
+        private System.Windows.Forms.Label btntable8status;
+        private System.Windows.Forms.Label btntable9status;
+        private System.Windows.Forms.Label btntable10status;
     }
 }

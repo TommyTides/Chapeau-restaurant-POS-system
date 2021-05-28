@@ -33,7 +33,7 @@ namespace ChapeauDAL
                 MenuItem menuItem = new MenuItem(item_id, menu_type, item_type, item_name, item_price, stock, place);
                 menuItems.Add(menuItem);
             }
-            return null;
+            return menuItems;
         }
     }
 }

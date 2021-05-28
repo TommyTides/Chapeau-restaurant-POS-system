@@ -10,7 +10,8 @@ namespace ChapeauModel
     {
         public int TableID { get; set; }
         public TableStatus TableStatus { get; set; }
-        public int Capacity { get; set; }
+        public string OrderStatus { get; set; }
+
         public Table(int tableid)
         {
             this.TableID = tableid;
