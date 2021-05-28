@@ -12,12 +12,18 @@ namespace ChapeauUI
     public partial class Menu : Form
     {
         MenuItemService menuItemService;
+        Order order;
+        OrderItem orderItem;
+        List<MenuItem> menuItems; // list of menu items to fill the menu
 
         public Menu(Employee employee)
         {
             InitializeComponent();
 
             menuItemService = new MenuItemService();
+            order = new Order();
+            orderItem = new OrderItem();
+            menuItems = new List<MenuItem>();
 
             this.Text = $"Menu options";
             lblApplicationState.Text = "";
@@ -29,8 +35,7 @@ namespace ChapeauUI
             pictureBox3.BackColor = Color.Transparent;
 
             HideAllPanels();
-            // welcome message displaying firstname, lastname and employeerole.
-            
+            // welcome message displaying firstname, lastname and employeerole.        
         }
         public Menu()
         {
@@ -49,7 +54,6 @@ namespace ChapeauUI
 
             HideAllPanels();
             // welcome message displaying firstname, lastname and employeerole.
-
         }
 
         private void HideAllPanels() // Will hide all panels when called
@@ -122,35 +126,32 @@ namespace ChapeauUI
             LunchMenuPanel();
         }
 
+        public void EmptyOrder() // remove entire order.
+        {
+            //this.order = new Order();
+            //this.order.OrderItem = new List<OrderItem>();
+        }
+
         private void LunchMenuPanel()
         {
-            List<MenuItem> menuItems = menuItemService.GetAllMenuItems(); // Gets list of menuItems form database
-            int count = 0;
+            menuItems = menuItemService.GetAllMenuItems(); // Gets list of menuItems form database
+
             foreach (MenuItem item in menuItems) // Adding items tot the listboxes
             {
                 if (item.item_type == MenuSubCategory.lunchMain)
                 {
-                    listBoxLunchMain.Items.Add(item.item_name);
-                    listBoxLunchMainPrice.Items.Add(item.item_price.ToString("c"));
-                    if (count < 3)
-                    {
-                        listBoxLunchMain.Items.Add("");
-                        listBoxLunchMain.Items.Add("");
-
-                        listBoxLunchMainPrice.Items.Add("");
-                        listBoxLunchMainPrice.Items.Add("");
-                        count++;
-                    }
+                    listBoxLunchMain.Items.Add(item);
+                    listBoxPrice1.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
                 }
                 else if (item.item_type == MenuSubCategory.specials)
                 {
-                    listBoxLunchSpecials.Items.Add(item.item_name);
-                    listBoxLunchSpecialsPrice.Items.Add(item.item_price);
+                    listBoxLunchSpecials.Items.Add(item);
+                    listBoxPrice2.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
                 }
                 else if (item.item_type == MenuSubCategory.bites)
                 {
-                    listBoxLunchBites.Items.Add(item.item_name);
-                    listBoxLunchBitesPrice.Items.Add(item.item_price);
+                    listBoxLunchBites.Items.Add(item);
+                    listBoxPrice3.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
                 }
             }
         }
@@ -160,11 +161,36 @@ namespace ChapeauUI
             this.Hide();
             LoginForm loginForm = new LoginForm();
             loginForm.ShowDialog();
+            this.Close();
         }
 
-        private void pnlLunchMenuInside_Paint(object sender, PaintEventArgs e)
+        private void btnAddToCart_Click(object sender, EventArgs e)
         {
+            if (order.OrderItem.Count <= 0)
+            {
+                MessageBox.Show("Select an item to send an order!");
+                return;
+            }
+            order.table.TableID = 1; // temporaty table;
+            order.PaymentStatus = false;
+            menuItemService.SendOrder(order);// send order to database
+        }
 
+        private void cmbLunchMain1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //if (Convert.ToInt32(cmbLunchMain1.SelectedItem) == 0)
+            //{
+
+            //}
+            //else
+            //{
+            //    MenuItem item = menuItems[0];
+            //    OrderItem testOrder = new OrderItem();
+            //    testOrder.menuItem = item;
+            //    testOrder.Quantity = Convert.ToInt32(cmbLunchMain1.SelectedItem);
+            //    lstbTest.Items.Add(testOrder);
+            //}
+            
         }
     }
 }

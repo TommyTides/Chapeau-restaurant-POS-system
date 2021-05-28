@@ -83,6 +83,16 @@ namespace ChapeauUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_waiter_48px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_waiter_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap kisspng_computer_icons_hamburger_button_menu_new_menu_5b34724c3cb0f7_1188475115301637882486 {
             get {
                 object obj = ResourceManager.GetObject("kisspng-computer-icons-hamburger-button-menu-new-menu-5b34724c3cb0f7.118847511530" +
@@ -107,6 +117,16 @@ namespace ChapeauUI.Properties {
         internal static System.Drawing.Bitmap Rectangle_1 {
             get {
                 object obj = ResourceManager.GetObject("Rectangle 1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap waiter {
+            get {
+                object obj = ResourceManager.GetObject("waiter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
