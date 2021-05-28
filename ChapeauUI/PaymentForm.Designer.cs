@@ -136,7 +136,7 @@ namespace ChapeauUI
             // 
             this.columnHeader2.Text = "Item";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader2.Width = 69;
+            this.columnHeader2.Width = 82;
             // 
             // columnHeader3
             // 
@@ -147,6 +147,7 @@ namespace ChapeauUI
             // 
             this.columnHeader4.Text = "Price";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader4.Width = 86;
             // 
             // groupBox1
             // 

@@ -11,6 +11,35 @@ namespace ChapeauDAL
 {
     public class PaymentDAO : BaseDao
     {
+        private List<OrderItem> ReadOrderItem(DataTable dataTable)
+        {
+            List<OrderItem> orderItems = new List<OrderItem>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                // read from menu item
+                MenuItem menu = new MenuItem()
+                {
+                    item_id = (int)dr["itemID"],
+                    item_name = (string)dr["itemName"],
+                    item_price = (double)dr["itemPrice"]
+                };
+
+                // read from order item
+                OrderItem orderItem = new OrderItem
+                {
+                    // store menu item in the order item object (menuItem)
+                    menuItem = menu,
+                    Quantity = (int)dr["quantity"],
+                    Comment = (string)dr["comment"],
+                    Status = (ItemStatus)dr["statusID"]
+                };
+
+                orderItems.Add(orderItem);
+            }
+            return orderItems;
+        }
+
         public List<OrderItem> GetOrderItemForOrderID(int orderID)
         {
             List<OrderItem> orderItems = new List<OrderItem>();
@@ -22,17 +51,7 @@ namespace ChapeauDAL
             return ReadOrderItem(ExecuteSelectQuery(query, sqlParameters));
         }
 
-
-        public List<Order> GetOrdersForPayment()
-        {
-            List<Order> ordersToBePaid = new List<Order>();
-
-            string query = "SELECT O.orderID, O.paymentDate, O.tableID, O.orderStatus, O.totalPrice, O.paymentStatus, T.capacity, T.statusID FROM [ORDER] AS O JOIN [TABLE] AS T on T.tableID = O.tableID WHERE O.paymentStatus = 0";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadUOrdersForPayment(ExecuteSelectQuery(query, sqlParameters));
-        }
-
-        private List<Order> ReadUOrdersForPayment(DataTable dataTable)
+        private List<Order> ReadOrdersForPayment(DataTable dataTable)
         {
             List<Order> unpaidOrders = new List<Order>();
 
@@ -54,6 +73,16 @@ namespace ChapeauDAL
                 unpaidOrders.Add(order);
             }
             return unpaidOrders;
+        }
+
+        // get orders for the payment
+        public List<Order> GetOrdersForPayment()
+        {
+            List<Order> ordersToBePaid = new List<Order>();
+            // remove O.orderStatus from query
+            string query = "SELECT O.orderID, O.paymentDate, O.tableID, O.orderStatus, O.totalPrice, O.paymentStatus, T.capacity, T.statusID FROM [ORDER] AS O JOIN [TABLE] AS T on T.tableID = O.tableID WHERE O.paymentStatus = 0";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadOrdersForPayment(ExecuteSelectQuery(query, sqlParameters));
         }
 
 
@@ -97,39 +126,40 @@ namespace ChapeauDAL
             List<Order> orders = new List<Order>();
             // joining with the table and the employee
             string query = "SELECT orderID, employeeID, tableID FROM [ORDER] WHERE paymentStatus = 0";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
 
             return
 
         }
 
-        private List<OrderItem> ReadOrderItem(DataTable dataTable)
+
+        public List<Order> ReadOrders(DataTable dataTable)
         {
-            List<OrderItem> orderItems = new List<OrderItem>();
+            List<Order> orders = new List<Order>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                // read from menu item
-                MenuItem menu = new MenuItem()
+                Order order = new Order
                 {
-                    item_id = (int)dr["itemID"],
-                    item_name = (string)dr["itemName"],
-                    item_price = (double)dr["itemPrice"]
+
+                    OrderID = (int)dr["orderID"],
+                    PaymentDate = (DateTime)dr["paymentDate"],
+                    Status = (OrderStatus)dr["orderStatus"]
                 };
 
-                // read from order item
-                OrderItem orderItem = new OrderItem
+                Table table = new Table
                 {
-                    // store menu item in the order item object (menuItem)
-                    menuItem = menu,
-                    Quantity = (int)dr["quantity"],
-                    Comment = (string)dr["comment"],
-                    Status = (ItemStatus)dr["statusID"]
+                    TableID = (int)dr["tableID"],
+                    Status = (TableStatus)dr["statusID"]
                 };
-
-                orderItems.Add(orderItem);
+                //store table data in order object reference
+                order.Table = table;
+                orders.Add(order);
             }
-            return orderItems;
+            return orders;
         }
+
+
 
         // this is for the rounding up for an order and paying with a method
         public void OrderPayment(Order order)
@@ -154,6 +184,25 @@ namespace ChapeauDAL
             }
         }
 
+        //public int PayOrder(Order order, PaymentMethod paymentMethod) //roundng up order to make payment with a method
+        //{
+        //    SqlCommand sqlCommand = new SqlCommand("INSERT INTO Payments(orderID, methodID, billAmount, vatAmount, tip, employeeID) " +
+        //        "VALUES(@id, @method, @bill, @vat, @tip, @empID)", dbConnection);
+        //    sqlCommand.Parameters.AddWithValue("@id", order.OrderID);
+        //    sqlCommand.Parameters.AddWithValue("@method", paymentMethod);
+        //    sqlCommand.Parameters.AddWithValue("@bill", order.Total);
+        //    sqlCommand.Parameters.AddWithValue("@vat", order.TotalVat);
+        //    sqlCommand.Parameters.AddWithValue("@tip", order.Tip);
+        //    sqlCommand.Parameters.AddWithValue("empid", order.Employee.EmployeeID);
+
+        //    dbConnection.Open();
+        //    int payOrders = sqlCommand.ExecuteNonQuery();
+        //    dbConnection.Close();
+
+        //    return payOrders;
+        
+        //}
+
         public void ChangePaymentStatus(Order order)
         {
             string query = "UPDATE [ORDER] SET paymentStatus = @status, VAT = @vat, tip = @tip WHERE orderID = @ID";
@@ -169,9 +218,37 @@ namespace ChapeauDAL
 
         public Order GetOrderForTable(Table table)
         {
-            SqlCommand cmd = new SqlCommand("SELECT O.orderID, O.paymentDate, O.totalPrice, O.tableID, O.orderStatus, " +
-                "O.tip, O.vat, O.paymentStatus, T.capacity, T.statusID " +
-                "FROM ORDER AS O JOIN TABLE AS T ON T.tableID = O.tableID WHERE O.tableID = 1 AND O.paymentStatus = 0");
+            string query = "SELECT O.orderID, O.paymentDate, O.totalPrice, O.tableID, O.orderStatus, O.tip, O.vat, O.paymentStatus, T.capacity, T.statusID FROM [ORDER] AS O JOIN [TABLE] AS T ON T.table_id = O.tableID WHERE O.tableID = 1 AND O.paymentStatus = 0";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@id", table.TableID);
+
+            return ReadFromOrder(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        private Order ReadFromOrder(DataTable dataTable)
+        {
+            Order order = null;
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                 order = new Order()
+                 {
+                    OrderID = (int)dr["orderID"],
+                    PaymentStatus = (bool)dr["paymentStatus"],
+                    Status = (OrderStatus)dr["orderStatus"],
+                    Total = (double)dr["totalPrice"]
+                 };
+            }
+            return order; 
+        }
+
+        public void UpdateOrderStatus(Order order)
+        {
+            string query = $"UPDATE [ORDER] SET PaymentStatus=@status, WHERE orderID=@orderID";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
+            sqlParameters[0] = new SqlParameter("@status", 1);
+
+            ExecuteEditQuery(query, sqlParameters);
         }
     }
 }

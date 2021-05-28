@@ -8,7 +8,7 @@ using ChapeauDAL;
 
 namespace ChapeauLogic
 {
-    class PaymentService
+    public class PaymentService
     {
         private PaymentDAO paymentDAO;
 
@@ -31,9 +31,42 @@ namespace ChapeauLogic
             }
         }
 
+        //public int PayOrder(Order order, PaymentMethod paymentMethod) //paying an order with a payment method
+        //{
+        //    try
+        //    {
+        //        order.Payment = true;
+        //        orderDAO.ChangePaymentState(order);
+
+        //        return orderDAO.PayOrder(order, paymentMethod);
+
+        //    }
+        //    catch (Exception e)
+        //    {
+
+        //        return -1;
+        //    }
+        //}
+
         public List<OrderItem> GetOrderItems(int orderID)
         {
             return paymentDAO.GetOrderItemForOrderID(orderID);
+        }
+
+        public Order GetOrderForTable(Table table)
+        {
+            return paymentDAO.GetOrderForTable(table);
+        }
+
+        public List<Order> GetOrdersToPay()
+        {
+            List<Order> orders = paymentDAO.GetOrdersForPayment();
+
+            foreach(Order order in orders)
+            {
+                order.OrderItem = paymentDAO.GetOrderItemForOrderID(order.OrderID);
+            }
+            return orders;
         }
     }
 }

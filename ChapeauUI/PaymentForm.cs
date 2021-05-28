@@ -14,6 +14,7 @@ namespace ChapeauUI
 {
     public partial class PaymentForm : Form
     {
+        PaymentService paymentService;
         OrderService orderService;
         Order Order;
         Employee Employee;
@@ -23,10 +24,13 @@ namespace ChapeauUI
             InitializeComponent();
 
             orderService = new OrderService();
+            paymentService = new PaymentService();
+            this.Order = order;
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
+            ShowPayments();
             txtTip.Enabled = false;
         }
 
@@ -41,7 +45,13 @@ namespace ChapeauUI
 
         private void ShowPayments()
         {
-            
+            List<Order> orders = paymentService.GetOrdersToPay();
+
+            foreach(Order order in orders)
+            {
+                cmbTable.Items.Add(order.Table.TableID);
+                cmbTable.Tag = order;
+            }
         }
 
         private void lstViewItems_SelectedIndexChanged(object sender, EventArgs e)
@@ -107,6 +117,9 @@ namespace ChapeauUI
             lblTableNumber.Text = Order.Table.TableID.ToString();
             lblPayment.Text = Order.Total.ToString();
 
+            //Order order = paymentService.GetOrderForTable();
+            //Order.OrderItem = paymentService.GetOrderItems()
+
             foreach(OrderItem orderItem in Order.OrderItem) // fill the listview with ordered items
             {
                 ListViewItem item = new ListViewItem(Order.OrderID.ToString());
@@ -164,7 +177,11 @@ namespace ChapeauUI
             }
 
             Order.paymentMethod = (PaymentMethod)cmbMethod.SelectedItem;
-            Order.Tip = tip;          
+            Order.Tip = tip;
+
+            paymentService.OrderPayment(Order);
+
+                     
         }
     }
 }
