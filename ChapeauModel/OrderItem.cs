@@ -21,8 +21,21 @@ namespace ChapeauModel
         { 
             get 
             {
-                return menuItem.item_price;
+                return menuItem.item_price * Quantity;
             }
-        }      
+        }
+
+        public OrderItem(MenuItem menuItem, int Quantity)
+        {
+            this.menuItem = menuItem;
+            this.Quantity = Quantity;
+        }
+
+        public OrderItem(){} // Empty constructor
+
+        public override string ToString()
+        {
+            return $"{menuItem.item_name}";
+        }
     }  
 }

@@ -32,5 +32,9 @@ namespace ChapeauModel
             this.stock = stock;
             this.place = place;
         }
+        public override string ToString()
+        {
+            return $"{item_name}";
+        }
     }
 }
