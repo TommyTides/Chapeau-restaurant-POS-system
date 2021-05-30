@@ -25,7 +25,7 @@ namespace ChapeauUI
 
             orderService = new OrderService();
             paymentService = new PaymentService();
-            this.Order = order;
+            //this.Order = order;
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)

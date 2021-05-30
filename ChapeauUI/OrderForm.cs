@@ -15,16 +15,19 @@ namespace ChapeauUI
     public partial class OrderForm : Form
     {
         OrderService orderService;
+        EmployeeService employeeService;
         public OrderForm()
         {
+
             InitializeComponent();
            orderService = new OrderService();
+            employeeService = new EmployeeService();
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
         {
             WinAPI.AnimateWindow(this.Handle, 2000, WinAPI.BLEND);
-          
+           
             ListViewKitchen();
             pictureBox4.Controls.Add(pictureBox1);
             pictureBox4.Controls.Add(pictureBox3);
@@ -40,21 +43,44 @@ namespace ChapeauUI
             Application.Exit();
         }
 
+        //private List<OrderItem> Employee(Employee employee)
+        //{
+        //    List<OrderItem> orderKitchen;
+        //   if (employee.Role == Role.Barman)
+        //    {
+        //       return orderKitchen = orderService.GetAllKitchen();
+        //    }
+        //   else if (employee.Role == Role.KitchenStaff)
+        //    {
+        //     return  orderKitchen = orderService.GetAllKitchen();
+        //    }
+           
+        //}
+
         private void ListViewKitchen()
         {
-            
-            //Employee employee = EmployeeService.GetEmployeeByCode(int.Parse(txtlogincode.Text));
+            // if login works i can fix this
+            //Employee employee = new Employee();
             List<OrderItem> orderKitchen = orderService.GetAllKitchen();
-          
+            //if (employee.Role == Role.Barman)
+            //{
+            //    orderKitchen = orderService.GetAllKitchen();
+            //}
+            //else if (employee.Role == Role.KitchenStaff)
+            //{
+            //     orderKitchen = orderService.GetAllKitchen();
+            //}
+
             foreach (OrderItem I in orderKitchen)
             {
-                ListViewItem li = new ListViewItem(I.menuItem.menu_type.ToString());
+                ListViewItem li = new ListViewItem(I.OrderID.ToString());
                 li.SubItems.Add(I.menuItem.item_name);
+                li.SubItems.Add(I.Comment.ToString());
                 li.SubItems.Add(I.Quantity.ToString());
                 li.SubItems.Add(I.OrderTime.ToString());
+                //li.SubItems.Add(I.order.Table.TableID.ToString());
                 li.SubItems.Add(I.Status.ToString());
-                li.SubItems.Add(I.Comment.ToString());
-           
+               
                 ListViewKitch.Items.Add(li);
             }
 
@@ -62,22 +88,22 @@ namespace ChapeauUI
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            //listViewOrder.Clear();
+            ListViewKitchen();
         }
 
-        //private void btnReady_Click(object sender, EventArgs e)
-        //{
-            
-        //    if (ListViewKitch.Items.Count > 0) 
-        //    {
-        //        OrderItem order = ListViewKitch.SelectedItems[0].Tag as OrderItem;
-        //        MessageBox.Show($"Order is marked 'ready' Click refresh ");
-        //        orderService.UpdateOrderStatus(order);
 
-        //    }
+        private void btnReady_Click_1(object sender, EventArgs e)
+        {
+            if (ListViewKitch.Items.Count > 0)
+            {
+                OrderItem order = ListViewKitch.SelectedItems[0].Tag as OrderItem;
+
+                MessageBox.Show($"Order is marked 'ready' Click refresh ");
               
-        //}
+                orderService.UpdateOrderStatus(order);
 
+            }
+        }
 
     }
 }

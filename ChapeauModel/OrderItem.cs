@@ -18,8 +18,8 @@ namespace ChapeauModel
         public string Comment { get; set; }
 
         public double TotalPrice
-        { 
-            get 
+        {
+            get
             {
                 return menuItem.item_price * Quantity;
             }
@@ -31,11 +31,11 @@ namespace ChapeauModel
             this.Quantity = Quantity;
         }
 
-        public OrderItem(){} // Empty constructor
+        public OrderItem() { } // Empty constructor
 
         public override string ToString()
         {
             return $"{menuItem.item_name}";
         }
-    }  
+    }
 }
