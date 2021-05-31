@@ -27,8 +27,8 @@ namespace ChapeauUI
         private void OrderForm_Load(object sender, EventArgs e)
         {
             WinAPI.AnimateWindow(this.Handle, 2000, WinAPI.BLEND);
-           
-            ListViewKitchen();
+
+            ListViewKitchenBar();
             pictureBox4.Controls.Add(pictureBox1);
             pictureBox4.Controls.Add(pictureBox3);
             pictureBox1.BackColor = Color.Transparent;
@@ -57,11 +57,11 @@ namespace ChapeauUI
            
         //}
 
-        private void ListViewKitchen()
+        private void ListViewKitchenBar()
         {
             // if login works i can fix this
             //Employee employee = new Employee();
-            List<OrderItem> orderKitchen = orderService.GetAllKitchen();
+            List<Order> orderKitchen = orderService.GetAllKitchen();
             //if (employee.Role == Role.Barman)
             //{
             //    orderKitchen = orderService.GetAllKitchen();
@@ -71,24 +71,30 @@ namespace ChapeauUI
             //     orderKitchen = orderService.GetAllKitchen();
             //}
 
-            foreach (OrderItem I in orderKitchen)
+
+            foreach (Order O in orderKitchen)
             {
-                ListViewItem li = new ListViewItem(I.OrderID.ToString());
-                li.SubItems.Add(I.menuItem.item_name);
-                li.SubItems.Add(I.Comment.ToString());
-                li.SubItems.Add(I.Quantity.ToString());
-                li.SubItems.Add(I.OrderTime.ToString());
-                //li.SubItems.Add(I.order.Table.TableID.ToString());
-                li.SubItems.Add(I.Status.ToString());
-               
-                ListViewKitch.Items.Add(li);
+                foreach (OrderItem I in O.OrderItem)
+                {
+                    ListViewItem li = new ListViewItem(I.OrderID.ToString());
+                    li.SubItems.Add(I.menuItem.item_name);
+                    li.SubItems.Add(I.Comment.ToString());
+                    li.SubItems.Add(I.Quantity.ToString());
+                    li.SubItems.Add(I.OrderTime.ToString());
+                    li.SubItems.Add(O.Table.TableID.ToString());
+                    li.SubItems.Add(I.Status.ToString());
+
+                    li.Tag = I; // this is saving our object to the Item tag
+                    ListViewKitch.Items.Add(li);
+                }
             }
+            
 
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            ListViewKitchen();
+            ListViewKitchenBar();
         }
 
 
@@ -97,10 +103,16 @@ namespace ChapeauUI
             if (ListViewKitch.Items.Count > 0)
             {
                 OrderItem order = ListViewKitch.SelectedItems[0].Tag as OrderItem;
+                
+                //OrderItem orderItem = new OrderItem();
+                //orderItem.OrderID = int.Parse(ListViewKitch.SelectedItems[0].Text);
 
                 MessageBox.Show($"Order is marked 'ready' Click refresh ");
               
                 orderService.UpdateOrderStatus(order);
+
+                ListViewKitch.Items.Clear();
+                ListViewKitchenBar();
 
             }
         }

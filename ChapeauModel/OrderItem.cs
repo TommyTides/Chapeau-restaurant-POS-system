@@ -10,6 +10,7 @@ namespace ChapeauModel
 
     public class OrderItem
     {
+        public int OrderID { get; set; }
         public ItemStatus Status { get; set; } // status of the order(single)
         public MenuItem menuItem { get; set; } // List of menuItems
 

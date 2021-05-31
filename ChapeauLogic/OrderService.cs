@@ -27,15 +27,15 @@ namespace ChapeauLogic
         {
             orderDAO.UpdateOrderStatus(order);
         }
-        public List<OrderItem> GetAllKitchen()
+        public List<Order> GetAllKitchen()
         { 
 
             return orderDAO.GetAllOrdersKitchen();
         }
 
-        //public List<OrderItem> GetAllBar()
-        //{
-        //    return orderDAO.GetAllOrdersBar();
-        //}
+        public List<Order> GetAllBar()
+        {
+            return orderDAO.GetAllOrdersBar();
+        }
     }
 }
