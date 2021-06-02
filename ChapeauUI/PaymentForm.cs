@@ -25,16 +25,16 @@ namespace ChapeauUI
 
             orderService = new OrderService();
             paymentService = new PaymentService();
-            this.Order = order;
+            Employee = new Employee();
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
             ShowPayments();
+
+            // at the start of the form, the tip checkbox is disabled
             txtTip.Enabled = false;
         }
-
-
 
 
 
@@ -47,6 +47,7 @@ namespace ChapeauUI
         {
             List<Order> orders = paymentService.GetOrdersToPay();
 
+            // get table# for each order
             foreach(Order order in orders)
             {
                 cmbTable.Items.Add(order.Table.TableID);
@@ -56,27 +57,13 @@ namespace ChapeauUI
 
         private void lstViewItems_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //check whether the list is empty, if so return, if not, continue
             if (lstViewItems.SelectedItems.Count <= 0)
                 return;
 
             OrderItem orderItem = lstViewItems.SelectedItems[0].Tag as OrderItem;
+            // Set the label as the name of the menu item 
             lblComment.Text = orderItem.menuItem.item_name;
-        }
-
-        private void lstViewPayment_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //ChapeauLogic.PaymentService paymentService = new PaymentService();
-            //List<Payment> paymentList = paymentService.GetAllPayments();
-
-            //foreach (Payment p in paymentList)
-            //{
-            //    ListViewItem li = new ListViewItem(p.PaymentID.ToString());
-            //    li.SubItems.Add(p.OrderitemCode.ToString());
-            //    li.SubItems.Add(p.paymentStatus.ToString());
-            //    li.SubItems.Add(p.paymentMethod.ToString());
-            //    li.SubItems.Add(p.PaymentDate.ToShortDateString());
-            //    lstViewPayment.Items.Add(li);
-            //}    
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -96,6 +83,8 @@ namespace ChapeauUI
 
             // if the comment is not empty, you're able to add a comment, otherwise a message displays that you havent added a comment
             // the comment gets stored in the object and gets sent through with the message when the button is clicked.
+            orderItem.Comment = txtComment.Text;
+
             if (!String.IsNullOrWhiteSpace(txtComment.Text))
                 comment = txtComment.Text;
             else
@@ -111,15 +100,17 @@ namespace ChapeauUI
             // fill the listview with the order items and make a way to distinguish alcoholic from non alcoholic drinks (VAT)
             double VAT = 0;
 
-            this.Order = cmbTable.Tag as Order;
-            this.Order.Employee = Employee;
+            // this.Order = cmbTable.Tag as Order;
 
-            lblTableNumber.Text = Order.Table.TableID.ToString();
-            lblPayment.Text = Order.Total.ToString();
+            //gets the tableID based on the GetOrderForTableByTableID method and parses it
+            int tableID=Int32.Parse(cmbTable.Text);
+            this.Order = paymentService.GetOrderForTableByTableID(tableID);
+
 
             //Order order = paymentService.GetOrderForTable();
             //Order.OrderItem = paymentService.GetOrderItems()
 
+            lstViewItems.Items.Clear();
             foreach(OrderItem orderItem in Order.OrderItem) // fill the listview with ordered items
             {
                 ListViewItem item = new ListViewItem(Order.OrderID.ToString());
@@ -132,21 +123,35 @@ namespace ChapeauUI
             }
             cmbMethod.DataSource = (Enum.GetValues(typeof(PaymentMethod)));
 
-            foreach(OrderItem item in Order.OrderItem)
+            lblTableNumber.Text = this.Order.Table.TableID.ToString();
+            lblBill.Text = this.Order.Total.ToString();
+            lblWaiter.Text = this.Order.Employee.employeeID.ToString();
+
+            if(Order.Tip>0)
             {
-                if (item.menuItem.item_type == MenuSubCategory.alcohol)
+                txtTip.Text = this.Order.Tip.ToString("0.00");
+                chbTip.Checked = true;
+            }
+
+            foreach (OrderItem orderItem in Order.OrderItem)
+            {
+                if (orderItem.menuItem.item_type == MenuSubCategory.alcohol)
                 {
-                    VAT += item.menuItem.item_price * item.Quantity * 0.21;
+                    VAT += orderItem.menuItem.item_price * orderItem.Quantity * 0.21;
                 }
 
                 else
                 {
-                    VAT += item.menuItem.item_price * item.Quantity * 0.06;
+                    VAT += orderItem.menuItem.item_price * orderItem.Quantity * 0.06;
                 }
             }
+            // storing VAT (calculated) into VATTOTAL
             Order.VATTotal = VAT;
-            lblTotalVAT.Text = VAT.ToString("0.00");
-            lblTotalAmount.Text = (Order.Total + Order.VATTotal + Order.Tip).ToString("0.00");
+            lblTotalVAT.Text = VAT.ToString("€ 0.00");
+            // calculating the total price by adding the total order price + the total vat + the tip
+            lblTotalAmount.Text = (Order.Total + Order.VATTotal + Order.Tip).ToString("€ 0.00");
+           // Order.Feedback = txtComment.Text;
+
         }
 
         private void chbTip_CheckedChanged(object sender, EventArgs e)
@@ -160,6 +165,7 @@ namespace ChapeauUI
             else
             {
                 txtTip.Enabled = false;
+                txtTip.Text = "0";
             }
         }
 
@@ -180,8 +186,32 @@ namespace ChapeauUI
             Order.Tip = tip;
 
             paymentService.OrderPayment(Order);
+            paymentService.UpdateOrderStatus(Order);
+            MessageBox.Show("Order was successfully paid!");
+        }
 
-                     
+        private void cmbMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTip_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                // if the tip if empty, it's automatically assigned the value 0
+                if (txtTip.Text.Trim() == "")
+                    txtTip.Text="0";
+                double newTip = double.Parse(txtTip.Text);
+                Order.Tip = newTip;
+                lblTotalAmount.Text = (Order.Total + Order.VATTotal + Order.Tip).ToString("€ 0.00");
+            }
+            catch { };
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

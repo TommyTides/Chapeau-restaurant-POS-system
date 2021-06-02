@@ -23,10 +23,7 @@ namespace ChapeauModel
 
         public OrderStatus Status { get; set; }
 
-        public Table table { get; set; }
-
         public PaymentMethod paymentMethod { get; set; }
-        public Employee employee { get; set; }
 
         // total price including the VAT
         public double Total { get; set; }

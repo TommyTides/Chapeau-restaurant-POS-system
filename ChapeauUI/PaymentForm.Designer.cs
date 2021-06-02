@@ -31,7 +31,7 @@ namespace ChapeauUI
         {
             this.btnExit = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblPayment = new System.Windows.Forms.Label();
+            this.paymnetLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lstViewItems = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -39,7 +39,6 @@ namespace ChapeauUI
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.txtTip = new System.Windows.Forms.TextBox();
             this.lblTotalAmount = new System.Windows.Forms.Label();
             this.lblWaiter = new System.Windows.Forms.Label();
@@ -60,6 +59,9 @@ namespace ChapeauUI
             this.lblComment = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnFinalizePayment = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblBill = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -79,7 +81,7 @@ namespace ChapeauUI
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
-            this.panel1.Controls.Add(this.lblPayment);
+            this.panel1.Controls.Add(this.paymnetLabel);
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(0, -1);
@@ -87,16 +89,16 @@ namespace ChapeauUI
             this.panel1.Size = new System.Drawing.Size(862, 120);
             this.panel1.TabIndex = 2;
             // 
-            // lblPayment
+            // paymnetLabel
             // 
-            this.lblPayment.AutoSize = true;
-            this.lblPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayment.ForeColor = System.Drawing.Color.White;
-            this.lblPayment.Location = new System.Drawing.Point(273, 35);
-            this.lblPayment.Name = "lblPayment";
-            this.lblPayment.Size = new System.Drawing.Size(121, 31);
-            this.lblPayment.TabIndex = 2;
-            this.lblPayment.Text = "Payment";
+            this.paymnetLabel.AutoSize = true;
+            this.paymnetLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.paymnetLabel.ForeColor = System.Drawing.Color.White;
+            this.paymnetLabel.Location = new System.Drawing.Point(273, 35);
+            this.paymnetLabel.Name = "paymnetLabel";
+            this.paymnetLabel.Size = new System.Drawing.Size(121, 31);
+            this.paymnetLabel.TabIndex = 2;
+            this.paymnetLabel.Text = "Payment";
             // 
             // pictureBox1
             // 
@@ -153,6 +155,8 @@ namespace ChapeauUI
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.lblBill);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtTip);
             this.groupBox1.Controls.Add(this.lblTotalAmount);
             this.groupBox1.Controls.Add(this.lblWaiter);
@@ -175,21 +179,13 @@ namespace ChapeauUI
             this.groupBox1.Text = "Billing";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(292, 127);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(15, 17);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "$";
-            // 
             // txtTip
             // 
-            this.txtTip.Location = new System.Drawing.Point(313, 124);
+            this.txtTip.Location = new System.Drawing.Point(315, 126);
             this.txtTip.Name = "txtTip";
             this.txtTip.Size = new System.Drawing.Size(100, 23);
             this.txtTip.TabIndex = 15;
+            this.txtTip.TextChanged += new System.EventHandler(this.txtTip_TextChanged);
             // 
             // lblTotalAmount
             // 
@@ -245,6 +241,7 @@ namespace ChapeauUI
             this.cmbMethod.Name = "cmbMethod";
             this.cmbMethod.Size = new System.Drawing.Size(156, 25);
             this.cmbMethod.TabIndex = 9;
+            this.cmbMethod.SelectedIndexChanged += new System.EventHandler(this.cmbMethod_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -372,11 +369,39 @@ namespace ChapeauUI
             this.btnFinalizePayment.UseVisualStyleBackColor = false;
             this.btnFinalizePayment.Click += new System.EventHandler(this.btnFinalizePayment_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(602, 43);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(25, 17);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Bill";
+            // 
+            // lblBill
+            // 
+            this.lblBill.AutoSize = true;
+            this.lblBill.Location = new System.Drawing.Point(642, 43);
+            this.lblBill.Name = "lblBill";
+            this.lblBill.Size = new System.Drawing.Size(23, 17);
+            this.lblBill.TabIndex = 18;
+            this.lblBill.Text = "___";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(294, 130);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(15, 17);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "€";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
             // PaymentForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(879, 890);
+            this.ClientSize = new System.Drawing.Size(872, 968);
             this.Controls.Add(this.btnFinalizePayment);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.cmbTable);
@@ -387,7 +412,7 @@ namespace ChapeauUI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PaymentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Payment";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.PaymentForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -405,7 +430,7 @@ namespace ChapeauUI
 
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblPayment;
+        private System.Windows.Forms.Label paymnetLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ListView lstViewItems;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -431,8 +456,10 @@ namespace ChapeauUI
         private System.Windows.Forms.TextBox txtComment;
         private System.Windows.Forms.Label lblComment;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtTip;
         private System.Windows.Forms.Button btnFinalizePayment;
+        private System.Windows.Forms.Label lblBill;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }

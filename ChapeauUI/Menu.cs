@@ -171,7 +171,7 @@ namespace ChapeauUI
                 MessageBox.Show("Select an item to send an order!");
                 return;
             }
-            order.table.TableID = 1; // temporaty table;
+            order.Table.TableID = 1; // temporaty table;
             order.PaymentStatus = false;
             menuItemService.SendOrder(order);// send order to database
         }

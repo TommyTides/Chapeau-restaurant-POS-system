@@ -20,9 +20,9 @@ namespace ChapeauDAL
                 // read from menu item
                 MenuItem menu = new MenuItem()
                 {
-                    item_id = (int)dr["itemID"],
-                    item_name = (string)dr["itemName"],
-                    item_price = (double)dr["itemPrice"]
+                    item_id = (int)dr["item_id"],
+                    item_name = (string)dr["item_name"],
+                    item_price = (double)dr["item_price"]
                 };
 
                 // read from order item
@@ -32,19 +32,23 @@ namespace ChapeauDAL
                     menuItem = menu,
                     Quantity = (int)dr["quantity"],
                     Comment = (string)dr["comment"],
-                    Status = (ItemStatus)dr["statusID"]
+                    Status = (ItemStatus)dr["itemStatus"]
                 };
 
                 orderItems.Add(orderItem);
             }
             return orderItems;
         }
+        
 
+        // gets the right orderitem that is related to the orderID
         public List<OrderItem> GetOrderItemForOrderID(int orderID)
         {
             List<OrderItem> orderItems = new List<OrderItem>();
 
-            string query = "SELECT I.item_id, I.quantity, I.orderTime, I.itemStatus, I.comment, M.item_name, M.item_price FROM ORDER_ITEM AS I JOIN MENU_ITEM AS M on M.item_id = I.item_id WHERE I.orderID = @id";
+            string query = 
+                 "SELECT I.item_id, I.quantity, I.orderTime, I.itemStatus, I.comment, M.item_name, M.item_price "
+                +"FROM ORDER_ITEM AS I JOIN MENU_ITEM AS M on M.item_id = I.item_id WHERE I.orderID = @id";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@id", orderID);
 
@@ -80,45 +84,10 @@ namespace ChapeauDAL
         {
             List<Order> ordersToBePaid = new List<Order>();
             // remove O.orderStatus from query
-            string query = "SELECT O.orderID, O.paymentDate, O.tableID, O.orderStatus, O.totalPrice, O.paymentStatus, T.capacity, T.statusID FROM [ORDER] AS O JOIN [TABLE] AS T on T.tableID = O.tableID WHERE O.paymentStatus = 0";
+            string query = "SELECT O.orderID, O.paymentDate, O.tableID, O.orderStatus, O.totalPrice, O.paymentStatus, O.employeeID , T.capacity, T.statusID FROM [ORDER] AS O JOIN [TABLE] AS T on T.table_id = O.tableID WHERE O.paymentStatus = 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadOrdersForPayment(ExecuteSelectQuery(query, sqlParameters));
         }
-
-
-        //private Order ReadOrder(DataTable dataTable)
-        //{
-        //    foreach(DataRow dr in dataTable.Rows)
-        //    {
-        //        Order order = new Order
-        //        {
-        //            OrderID = (int)dr["orderID"],
-        //            Status = (OrderStatus)dr["orderStatus"],
-        //            PaymentDate = (DateTime)dr["paymentDate"]
-        //        };
-
-        //        Employee employee = new Employee
-        //        {
-        //            FirstName = (string)dr["firstName"],
-        //            LastName = (string)dr["lastName"],
-        //            employeeID = (int)dr["employeeID"]
-        //        };
-
-        //        Table table = new Table
-        //        {
-        //            TableID = (int)dr["tableID"],
-        //            Capacity = (int)dr["capacity"],
-        //            Status = (TableStatus)dr["tableStatus"]
-
-        //        };
-
-        //        order.Table = table;
-        //        order.Employee = employee;
-
-        //        return order;
-        //    }
-        //}
-
 
 
         public List<Order> GetOrders()
@@ -128,8 +97,7 @@ namespace ChapeauDAL
             string query = "SELECT orderID, employeeID, tableID FROM [ORDER] WHERE paymentStatus = 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
-            return
-
+            return ReadOrders(ExecuteSelectQuery(query, sqlParameters));
         }
 
 
@@ -141,19 +109,21 @@ namespace ChapeauDAL
             {
                 Order order = new Order
                 {
-
-                    OrderID = (int)dr["orderID"],
-                    PaymentDate = (DateTime)dr["paymentDate"],
-                    Status = (OrderStatus)dr["orderStatus"]
+                    OrderID = (int)dr["orderID"]                   
                 };
+
+                Employee employee = new Employee
+                {
+                    employeeID = (int)dr["employeeID"]
+                }; 
 
                 Table table = new Table
                 {
                     TableID = (int)dr["tableID"],
-                    Status = (TableStatus)dr["statusID"]
                 };
                 //store table data in order object reference
                 order.Table = table;
+                order.Employee = employee;
                 orders.Add(order);
             }
             return orders;
@@ -203,6 +173,7 @@ namespace ChapeauDAL
         
         //}
 
+        // when the order has been paid for, the payment status changes to true in the database
         public void ChangePaymentStatus(Order order)
         {
             string query = "UPDATE [ORDER] SET paymentStatus = @status, VAT = @vat, tip = @tip WHERE orderID = @ID";
@@ -215,16 +186,23 @@ namespace ChapeauDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
-
+        // gets the right order related to the table??
         public Order GetOrderForTable(Table table)
         {
-            string query = "SELECT O.orderID, O.paymentDate, O.totalPrice, O.tableID, O.orderStatus, O.tip, O.vat, O.paymentStatus, T.capacity, T.statusID FROM [ORDER] AS O JOIN [TABLE] AS T ON T.table_id = O.tableID WHERE O.tableID = 1 AND O.paymentStatus = 0";
+            return GetOrderForTableByTableID(table.TableID);
+        }
+
+        // gets the right order corresponding to the tableID
+        public Order GetOrderForTableByTableID(int tableID)
+        {
+            string query = "SELECT O.orderID, O.paymentDate, O.totalPrice, O.tableID, O.employeeID, O.orderStatus, O.tip, O.vat, O.paymentStatus, T.capacity, T.statusID FROM [ORDER] AS O JOIN [TABLE] AS T ON T.table_id = O.tableID WHERE O.tableID = @id AND O.paymentStatus = 0";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@id", table.TableID);
+            sqlParameters[0] = new SqlParameter("@id", tableID);
 
             return ReadFromOrder(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        // information that reads from the orders (used for GetOrderForTableByTableID method)
         private Order ReadFromOrder(DataTable dataTable)
         {
             Order order = null;
@@ -235,12 +213,34 @@ namespace ChapeauDAL
                     OrderID = (int)dr["orderID"],
                     PaymentStatus = (bool)dr["paymentStatus"],
                     Status = (OrderStatus)dr["orderStatus"],
-                    Total = (double)dr["totalPrice"]
+                    Total = (double)dr["totalPrice"],
+                    PaymentDate=(DateTime)dr["paymentDate"],
+                    Tip= (double)dr["tip"],
+                    VATTotal = (double)dr["vat"],
+
                  };
+
+                // order.Table = GetTableByID(tmp_tableID);
+                order.Table = new Table()
+                {
+                    TableID = (int)dr["tableID"]
+                    // the rest of fields are UNINITIALIZED! But it is OK because we do not need the rest in this module.
+                };
+
+                // order.Employee = GetEmployeeByID(tmp_employeeID);
+                order.Employee = new Employee()
+                {
+                    employeeID = (int)dr["employeeID"]
+                    // the rest of fields are UNINITIALIZED! But it is OK because we do not need the rest in this module.
+                };
+                
+                order.OrderItem = GetOrderItemForOrderID(order.OrderID);
+                order.paymentMethod = PaymentMethod.Cash; // PaymentMethod { get; set; }
             }
             return order; 
         }
 
+        // after the order has been paid for, order status gets updated to paid
         public void UpdateOrderStatus(Order order)
         {
             string query = $"UPDATE [ORDER] SET PaymentStatus=@status, WHERE orderID=@orderID";

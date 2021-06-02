@@ -53,6 +53,11 @@ namespace ChapeauLogic
             return paymentDAO.GetOrderItemForOrderID(orderID);
         }
 
+        public List<Order> GetOrders()
+        {
+            return paymentDAO.GetOrders();
+        }
+
         public Order GetOrderForTable(Table table)
         {
             return paymentDAO.GetOrderForTable(table);
@@ -67,6 +72,21 @@ namespace ChapeauLogic
                 order.OrderItem = paymentDAO.GetOrderItemForOrderID(order.OrderID);
             }
             return orders;
+        }
+
+        public List<OrderItem> GetOrderItemForOrderID(int orderID)
+        {
+            return paymentDAO.GetOrderItemForOrderID(orderID);
+        }
+
+        public void UpdateOrderStatus(Order order)
+        {
+            paymentDAO.UpdateOrderStatus(order);
+        }
+
+        public Order GetOrderForTableByTableID(int tableID)
+        {
+            return paymentDAO.GetOrderForTableByTableID(tableID);
         }
     }
 }
