@@ -23,9 +23,14 @@ namespace ChapeauLogic
         //    return orderDAO.GetAllOrders();
         //}
 
-        public void UpdateOrderStatus(OrderItem order)
+        public void UpdateOrderPreparing(OrderItem order)
         {
-            orderDAO.UpdateOrderStatus(order);
+            orderDAO.UpdateOrderPreparing(order);
+        }
+
+        public void UpdateOrderReady(OrderItem order)
+        {
+            orderDAO.UpdateOrderReady(order);
         }
         public List<Order> GetAllKitchen()
         { 
