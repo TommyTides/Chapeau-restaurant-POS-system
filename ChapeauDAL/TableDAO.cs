@@ -31,6 +31,8 @@ namespace ChapeauDAL
                 {
                     TableID = (int)dr["tableID"],
                     TableStatus = (TableStatus)(dr["description"]),
+                    TableStatusId = (int)(dr["statusID"])
+                    
                 };
                 tables.Add(table);
             }
@@ -45,7 +47,37 @@ namespace ChapeauDAL
                             " WHERE ord.paymentStatus = @paymentStatus";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@paymentStatus", false);
-            return null;
+            return CreateOrders(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        private List<Order> CreateOrders(DataTable orderdata)
+        {
+            List<Order> orders = new List<Order>();
+            EmployeeDAO employeeDAO = new EmployeeDAO();
+            foreach (DataRow dr in orderdata.Rows)
+            {
+                Order order = new Order()
+                {
+                    Table = new Table((int)dr["tableID"]),
+                    Status = (OrderStatus)(dr["orderStatus"]),
+                    PaymentStatus = (bool)(dr["paymentStatus"]),
+                    OrderID = (int)(dr["orderID"]),
+                    Employee = employeeDAO.GetEmployee((int)dr["employeeID"])
+                };
+                orders.Add(order);
+            }
+            return orders;
+        }
+
+        private void ChangeTableStatus(Table table)
+        {
+            string query = " UPDATE [TABLE] " +
+                           " SET statusID = @statusID " +
+                           " WHERE table_id = @table_id ";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@statusID", (int)table.TableStatus);
+            sqlParameters[1] = new SqlParameter("@table_id", table.TableID);
+            ExecuteEditQuery(query, sqlParameters);
         }
 
 
