@@ -19,7 +19,6 @@ namespace ChapeauUI
         public Menu(Employee employee)
         {
             InitializeComponent();
-
             menuItemService = new MenuItemService();
             order = new Order();
             orderItem = new OrderItem();
