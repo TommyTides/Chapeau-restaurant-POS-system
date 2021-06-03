@@ -55,16 +55,16 @@ namespace ChapeauUI
             }
         }
 
-        private void lstViewItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //check whether the list is empty, if so return, if not, continue
-            if (lstViewItems.SelectedItems.Count <= 0)
-                return;
+        //private void lstViewItems_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    //check whether the list is empty, if so return, if not, continue
+        //    if (lstViewItems.SelectedItems.Count <= 0)
+        //        return;
 
-            OrderItem orderItem = lstViewItems.SelectedItems[0].Tag as OrderItem;
-            // Set the label as the name of the menu item 
-            lblComment.Text = orderItem.menuItem.item_name;
-        }
+        //    OrderItem orderItem = lstViewItems.SelectedItems[0].Tag as OrderItem;
+        //    // Set the label as the name of the menu item 
+        //    lblFeedback.Text = orderItem.menuItem.item_name;
+        //}
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -73,32 +73,29 @@ namespace ChapeauUI
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            string comment;
+            string feedback;
 
             // if the viewlist is empty or if the comment is empty then return
-            if (lstViewItems.SelectedItems.Count <= 0 || String.IsNullOrWhiteSpace(txtComment.Text))
+            if (String.IsNullOrWhiteSpace(txtFeedback.Text))
                 return;
-
-            OrderItem orderItem = lstViewItems.SelectedItems[0].Tag as OrderItem;
 
             // if the comment is not empty, you're able to add a comment, otherwise a message displays that you havent added a comment
             // the comment gets stored in the object and gets sent through with the message when the button is clicked.
-            orderItem.Comment = txtComment.Text;
+            Order.Feedback = txtFeedback.Text;
 
-            if (!String.IsNullOrWhiteSpace(txtComment.Text))
-                comment = txtComment.Text;
+            if (!String.IsNullOrWhiteSpace(txtFeedback.Text))
+                feedback = txtFeedback.Text;
             else
-                comment = "There was no comment added";
+                feedback = "There was no feedback added";
 
-            orderItem.Comment = comment;
+            Order.Feedback = feedback;
 
-            MessageBox.Show("Your comment has been added");
+            MessageBox.Show("Your feedback has been added");
         }
 
         private void cmdTable_SelectedIndexChanged(object sender, EventArgs e)
         {
             // fill the listview with the order items and make a way to distinguish alcoholic from non alcoholic drinks (VAT)
-            double VAT = 0;
 
             // this.Order = cmbTable.Tag as Order;
 
@@ -116,23 +113,29 @@ namespace ChapeauUI
                 ListViewItem item = new ListViewItem(Order.OrderID.ToString());
                 item.SubItems.Add(orderItem.menuItem.item_name);
                 item.SubItems.Add(orderItem.Quantity.ToString());
-                item.SubItems.Add(orderItem.TotalPrice.ToString());
+                item.SubItems.Add(orderItem.TotalPrice.ToString("€ 0.00"));
                 item.Tag = orderItem;
 
                 lstViewItems.Items.Add(item);
             }
             cmbMethod.DataSource = (Enum.GetValues(typeof(PaymentMethod)));
 
+            // storing values from the database into the labels
             lblTableNumber.Text = this.Order.Table.TableID.ToString();
-            lblBill.Text = this.Order.Total.ToString();
+            lblBill.Text = this.Order.Total.ToString("€ 0.00");
             lblWaiter.Text = this.Order.Employee.employeeID.ToString();
 
+            // if the amount entered in the tip text box is greater than 0
+            // then it adds the value to the Tip property
             if(Order.Tip>0)
             {
                 txtTip.Text = this.Order.Tip.ToString("0.00");
                 chbTip.Checked = true;
             }
 
+            // loop to check for every orderitem whether the menuitem contains alcololic drinks or not
+            // if it cotains them, then the VAT is 21% if not, then the VAT is 6%
+            double VAT = 0;
             foreach (OrderItem orderItem in Order.OrderItem)
             {
                 if (orderItem.menuItem.item_type == MenuSubCategory.alcohol)
@@ -144,7 +147,7 @@ namespace ChapeauUI
                 {
                     VAT += orderItem.menuItem.item_price * orderItem.Quantity * 0.06;
                 }
-            }
+            }  
             // storing VAT (calculated) into VATTOTAL
             Order.VATTotal = VAT;
             lblTotalVAT.Text = VAT.ToString("€ 0.00");
@@ -185,9 +188,21 @@ namespace ChapeauUI
             Order.paymentMethod = (PaymentMethod)cmbMethod.SelectedItem;
             Order.Tip = tip;
 
-            paymentService.OrderPayment(Order);
-            paymentService.UpdateOrderStatus(Order);
-            MessageBox.Show("Order was successfully paid!");
+            // a boolean to check whether the payment has been paid for
+            bool isPaid = paymentService.OrderPayment(Order);
+
+            // if the payment is paid for, it shows a message that it has been successfull
+            // as well as updates the order status. otherwise gives an error message.
+            if (isPaid == true)
+            {
+                MessageBox.Show("Order has been paid successfully!");
+                paymentService.UpdateOrderStatus(Order);
+            }
+
+            else 
+            {
+                MessageBox.Show("An error has occured during the payment process.");
+            }
         }
 
         private void cmbMethod_SelectedIndexChanged(object sender, EventArgs e)
@@ -202,6 +217,8 @@ namespace ChapeauUI
                 // if the tip if empty, it's automatically assigned the value 0
                 if (txtTip.Text.Trim() == "")
                     txtTip.Text="0";
+
+                // after inserting a tip, update the price and store it into the TotalAmount
                 double newTip = double.Parse(txtTip.Text);
                 Order.Tip = newTip;
                 lblTotalAmount.Text = (Order.Total + Order.VATTotal + Order.Tip).ToString("€ 0.00");

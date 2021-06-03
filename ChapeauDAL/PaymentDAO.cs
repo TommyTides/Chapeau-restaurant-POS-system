@@ -18,21 +18,24 @@ namespace ChapeauDAL
             foreach (DataRow dr in dataTable.Rows)
             {
                 // read from menu item
+                // note to self: next time fill out all the fields in order to avoid errors with retrieving data
                 MenuItem menu = new MenuItem()
                 {
                     item_id = (int)dr["item_id"],
                     item_name = (string)dr["item_name"],
-                    item_price = (double)dr["item_price"]
+                    item_price = (double)dr["item_price"],
+                    menu_type = (MenuCategory)dr["menu_type"],
+                    item_type = (MenuSubCategory)dr["item_type"],
                 };
 
                 // read from order item
-                OrderItem orderItem = new OrderItem
+                OrderItem orderItem = new OrderItem();
                 {
                     // store menu item in the order item object (menuItem)
-                    menuItem = menu,
-                    Quantity = (int)dr["quantity"],
-                    Comment = (string)dr["comment"],
-                    Status = (ItemStatus)dr["itemStatus"]
+                    orderItem.menuItem = menu;
+                    orderItem.Quantity = (int)dr["quantity"];
+                    if (dr["comment"] != System.DBNull.Value) orderItem.Comment = (string)dr["comment"]; // comment can be left null in database
+                    orderItem.Status = (ItemStatus)dr["itemStatus"];
                 };
 
                 orderItems.Add(orderItem);
@@ -47,7 +50,7 @@ namespace ChapeauDAL
             List<OrderItem> orderItems = new List<OrderItem>();
 
             string query = 
-                 "SELECT I.item_id, I.quantity, I.orderTime, I.itemStatus, I.comment, M.item_name, M.item_price "
+                 "SELECT I.item_id, I.quantity, I.orderTime, I.itemStatus, I.comment, M.item_name, M.item_price, M.menu_type, M.item_type "
                 +"FROM ORDER_ITEM AS I JOIN MENU_ITEM AS M on M.item_id = I.item_id WHERE I.orderID = @id";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@id", orderID);
@@ -132,64 +135,32 @@ namespace ChapeauDAL
 
 
         // this is for the rounding up for an order and paying with a method
-        public void OrderPayment(Order order)
+        // this query inserts into the PAYMENT table after the paymnet has been completed
+        // this information can be used for storage
+        public bool OrderPayment(Order order)
         {
             try
             {
-                string query = "INSERT INTO PAYMENT(orderID, paymentmethodID, paymentTotal, vatTotal, tip, employeeID) " +
-                "VALUES(@id, @method, @payment, @vat, @tip, @empID)";
-                SqlParameter[] sqlParameters = new SqlParameter[6];
+                string query = "INSERT INTO [PAYMENT](orderID, paymentmethodID, paymentTotal, vatTotal, tip, employeeID, feedback) " +
+                "VALUES(@id, @method, @payment, @vat, @tip, @empID, @feedback)";
+                SqlParameter[] sqlParameters = new SqlParameter[7];
                 sqlParameters[0] = new SqlParameter("@id", order.OrderID);
                 sqlParameters[1] = new SqlParameter("@method", order.paymentMethod);
                 sqlParameters[2] = new SqlParameter("@payment", order.Total);
                 sqlParameters[3] = new SqlParameter("@vat", order.VATTotal);
                 sqlParameters[4] = new SqlParameter("@tip", order.Tip);
                 sqlParameters[5] = new SqlParameter("@empID", order.Employee.employeeID);
+                sqlParameters[6] = new SqlParameter("@feedback", order.Feedback);
+
 
                 ExecuteEditQuery(query, sqlParameters);
+
+                return true;
             }
             catch (Exception exp)
             {
-                throw new Exception("Failed loading orders for the payment");
+                return false;
             }
-        }
-
-        //public int PayOrder(Order order, PaymentMethod paymentMethod) //roundng up order to make payment with a method
-        //{
-        //    SqlCommand sqlCommand = new SqlCommand("INSERT INTO Payments(orderID, methodID, billAmount, vatAmount, tip, employeeID) " +
-        //        "VALUES(@id, @method, @bill, @vat, @tip, @empID)", dbConnection);
-        //    sqlCommand.Parameters.AddWithValue("@id", order.OrderID);
-        //    sqlCommand.Parameters.AddWithValue("@method", paymentMethod);
-        //    sqlCommand.Parameters.AddWithValue("@bill", order.Total);
-        //    sqlCommand.Parameters.AddWithValue("@vat", order.TotalVat);
-        //    sqlCommand.Parameters.AddWithValue("@tip", order.Tip);
-        //    sqlCommand.Parameters.AddWithValue("empid", order.Employee.EmployeeID);
-
-        //    dbConnection.Open();
-        //    int payOrders = sqlCommand.ExecuteNonQuery();
-        //    dbConnection.Close();
-
-        //    return payOrders;
-        
-        //}
-
-        // when the order has been paid for, the payment status changes to true in the database
-        public void ChangePaymentStatus(Order order)
-        {
-            string query = "UPDATE [ORDER] SET paymentStatus = @status, VAT = @vat, tip = @tip WHERE orderID = @ID";
-            SqlParameter[] sqlParameters = new SqlParameter[4];
-            sqlParameters[0] = new SqlParameter("@status", order.PaymentStatus);
-            sqlParameters[1] = new SqlParameter("@ID", order.OrderID);
-            sqlParameters[2] = new SqlParameter("@vat", order.VATTotal);
-            sqlParameters[3] = new SqlParameter("@tip", order.Tip);
-
-            ExecuteEditQuery(query, sqlParameters);
-        }
-
-        // gets the right order related to the table??
-        public Order GetOrderForTable(Table table)
-        {
-            return GetOrderForTableByTableID(table.TableID);
         }
 
         // gets the right order corresponding to the tableID
@@ -208,17 +179,16 @@ namespace ChapeauDAL
             Order order = null;
             foreach (DataRow dr in dataTable.Rows)
             {
-                 order = new Order()
-                 {
-                    OrderID = (int)dr["orderID"],
-                    PaymentStatus = (bool)dr["paymentStatus"],
-                    Status = (OrderStatus)dr["orderStatus"],
-                    Total = (double)dr["totalPrice"],
-                    PaymentDate=(DateTime)dr["paymentDate"],
-                    Tip= (double)dr["tip"],
-                    VATTotal = (double)dr["vat"],
-
-                 };
+                // used DBNull because otherwise it would give me an error regarding having nulls (specifically for VAT and TIP since they have to be empty)
+                // due to the fact that they have to be filled out within the form and then updated to the database
+                order = new Order();
+                order.OrderID = (int)dr["orderID"];
+                if(dr["paymentStatus"]!=System.DBNull.Value) order.PaymentStatus = (bool)dr["paymentStatus"];
+                if(dr["orderStatus"]!=System.DBNull.Value) order.Status = (OrderStatus)dr["orderStatus"];
+                if(dr["totalPrice"]!= System.DBNull.Value) order.Total = (double)dr["totalPrice"];
+                if(dr["paymentDate"]!= System.DBNull.Value) order.PaymentDate = (DateTime)dr["paymentDate"];
+                if(dr["tip"]!= System.DBNull.Value) order.Tip = (double)dr["tip"];
+                if(dr["vat"]!= System.DBNull.Value) order.VATTotal = (double)dr["vat"];
 
                 // order.Table = GetTableByID(tmp_tableID);
                 order.Table = new Table()
@@ -247,6 +217,19 @@ namespace ChapeauDAL
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
             sqlParameters[0] = new SqlParameter("@status", 1);
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        // when the order has been paid for, the payment status changes to true in the database
+        public void ChangePaymentStatus(Order order)
+        {
+            string query = "UPDATE [ORDER] SET paymentStatus = @status, VAT = @vat, tip = @tip WHERE orderID = @ID";
+            SqlParameter[] sqlParameters = new SqlParameter[4];
+            sqlParameters[0] = new SqlParameter("@status", order.PaymentStatus);
+            sqlParameters[1] = new SqlParameter("@ID", order.OrderID);
+            sqlParameters[2] = new SqlParameter("@vat", order.VATTotal);
+            sqlParameters[3] = new SqlParameter("@tip", order.Tip);
 
             ExecuteEditQuery(query, sqlParameters);
         }

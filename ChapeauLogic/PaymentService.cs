@@ -16,7 +16,7 @@ namespace ChapeauLogic
         {
             paymentDAO = new PaymentDAO();
         }
-        public void OrderPayment(Order order)
+        public bool OrderPayment(Order order)
         {
             try
             {
@@ -24,43 +24,13 @@ namespace ChapeauLogic
                 paymentDAO.ChangePaymentStatus(order);
 
                 paymentDAO.OrderPayment(order);
+
+                return true;
             }
             catch (Exception exp)
             {
-                throw new Exception("Failed loading orders for the payment");
+                return false;
             }
-        }
-
-        //public int PayOrder(Order order, PaymentMethod paymentMethod) //paying an order with a payment method
-        //{
-        //    try
-        //    {
-        //        order.Payment = true;
-        //        orderDAO.ChangePaymentState(order);
-
-        //        return orderDAO.PayOrder(order, paymentMethod);
-
-        //    }
-        //    catch (Exception e)
-        //    {
-
-        //        return -1;
-        //    }
-        //}
-
-        public List<OrderItem> GetOrderItems(int orderID)
-        {
-            return paymentDAO.GetOrderItemForOrderID(orderID);
-        }
-
-        public List<Order> GetOrders()
-        {
-            return paymentDAO.GetOrders();
-        }
-
-        public Order GetOrderForTable(Table table)
-        {
-            return paymentDAO.GetOrderForTable(table);
         }
 
         public List<Order> GetOrdersToPay()

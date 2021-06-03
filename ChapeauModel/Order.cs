@@ -28,6 +28,8 @@ namespace ChapeauModel
         // total price including the VAT
         public double Total { get; set; }
 
+        public string Feedback { get; set; }
+
         // total price for a certain item (depending on quantity) excluding the VAT
         public double TotalPrice
         {
