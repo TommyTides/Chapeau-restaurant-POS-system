@@ -22,5 +22,10 @@ namespace ChapeauLogic
             return tableDAO.GetAllTables();
         }
 
+        public void ChangeTableStatus(int tableid, int tablestatus)
+        {
+            tableDAO.ChangeTableStatus(tableid, tablestatus);
+        }
+
     }
 }

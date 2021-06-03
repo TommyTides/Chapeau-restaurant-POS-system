@@ -46,8 +46,8 @@ namespace ChapeauUI
 
             if (employee.Role == Role.Waiter || employee.Role == Role.Manager)
             {
-                Menu mainMenu = new Menu(employee, this);
-                mainMenu.Show();
+                TablePage page = new TablePage(employee);
+                page.Show();
             }
             else if (employee.Role == Role.KitchenStaff || employee.Role == Role.Barman)
             {

@@ -8,9 +8,8 @@ namespace ChapeauModel
 {
     public class Table
     {
-        public int TableID { get; set; }
-        public TableStatus TableStatus { get; set; }
-        public int TableStatusId { get; set; }
+        public int? TableID { get; set; }
+        public TableStatus? TableStatus { get; set; }
         public string OrderStatus { get; set; }
 
         public Table(int tableid)
@@ -18,7 +17,7 @@ namespace ChapeauModel
             this.TableID = tableid;
         }
 
-        public TableStatus Status { get; set; }
+       
 
         // default constructor
         public Table()
@@ -27,5 +26,5 @@ namespace ChapeauModel
         }
     }
 
-    public enum TableStatus { Free = 1, Occupied, Reserved }
+    public enum TableStatus { Free = 1, Occupied = 2, Reserved = 3 }
 }

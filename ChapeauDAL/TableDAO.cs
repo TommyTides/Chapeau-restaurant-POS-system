@@ -12,11 +12,11 @@ namespace ChapeauDAL
     {
         public List<Table> GetAllTables()
         {
-            string query = "SELECT t.table_id, ts.description, oi.ItemStatus " +
+            string query = "SELECT t.table_id, t.statusID, os.description " +
             "FROM[TABLE] as t " +
-            " JOIN TABLE_STATUS as ts on t.statusID = ts.tablestatusID " +
             " JOIN [ORDER] as o ON t.table_id = o.tableID " +
-            " JOIN [ORDER_ITEM] as oi ON o.orderID = oi.orderID";
+            " JOIN [ORDER_ITEM] as oi ON o.orderID = oi.orderID" + 
+            " JOIN [ORDER_STATUS] as os ON oi.itemStatus = os.orderstatusID";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadAllTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -27,12 +27,15 @@ namespace ChapeauDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
+                int? tableID = (dr["table_id"]) as int?;
+                int? tableStatusId = (dr["statusID"]) as int?;
+                string orderstatus = (dr["description"]) as string;
+
                 Table table = new Table()
                 {
-                    TableID = (int)dr["tableID"],
-                    TableStatus = (TableStatus)(dr["description"]),
-                    TableStatusId = (int)(dr["statusID"])
-                    
+                    TableID = tableID,
+                    TableStatus = (TableStatus)tableStatusId,
+                    OrderStatus = orderstatus
                 };
                 tables.Add(table);
             }
@@ -69,14 +72,14 @@ namespace ChapeauDAL
             return orders;
         }
 
-        private void ChangeTableStatus(Table table)
+        public void ChangeTableStatus(int tableid, int tablestatus)
         {
             string query = " UPDATE [TABLE] " +
                            " SET statusID = @statusID " +
                            " WHERE table_id = @table_id ";
             SqlParameter[] sqlParameters = new SqlParameter[2];
-            sqlParameters[0] = new SqlParameter("@statusID", (int)table.TableStatus);
-            sqlParameters[1] = new SqlParameter("@table_id", table.TableID);
+            sqlParameters[0] = new SqlParameter("@statusID", tablestatus);
+            sqlParameters[1] = new SqlParameter("@table_id", tableid);
             ExecuteEditQuery(query, sqlParameters);
         }
 
