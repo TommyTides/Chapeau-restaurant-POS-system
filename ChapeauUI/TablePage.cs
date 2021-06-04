@@ -27,6 +27,7 @@ namespace ChapeauUI
         private void TablePage_Load(object sender, EventArgs e)
         {
             lblemployee.Text = $"{employee.Role}: {employee.FullName}";
+
             LoadTableData();
 
             tableButtons.Add(btntable1);
@@ -47,10 +48,10 @@ namespace ChapeauUI
             List<Table> tables = tableServices.GetAllTables();
 
             // set the table to free by default
-            for (int i = 0; i < 10; i++)
-            {
-                ChangeColorByTableStatus(tableButtons[0], TableStatus.Free);
-            }
+            //for (int i = 0; i <= 10; i++)
+            //{
+            //    ChangeColorByTableStatus(tableButtons[0], TableStatus.Free);
+            //}
 
 
             foreach (Table table in tables)
@@ -131,12 +132,18 @@ namespace ChapeauUI
             {
                 tableServices.ChangeTableStatus(tableid, (int)TableStatus.Reserved);
             }
+
             else if (result == DialogResult.No)
             {
                 tableServices.ChangeTableStatus(tableid, (int)TableStatus.Occupied);
             }
-
         }
+
+        private void TakeOrders(int tableid)
+        {
+            //...
+        }
+
 
 
         private void btnBackToMenu_Click(object sender, EventArgs e)
@@ -148,6 +155,51 @@ namespace ChapeauUI
         private void btntable1_Click(object sender, EventArgs e)
         {
             Reservation(1);
+        }
+
+        private void btntable2_Click(object sender, EventArgs e)
+        {
+            Reservation(2);
+        }
+
+        private void btntable3_Click(object sender, EventArgs e)
+        {
+            Reservation(3);
+        }
+
+        private void btntable4_Click(object sender, EventArgs e)
+        {
+            Reservation(4);
+        }
+
+        private void btntable5_Click(object sender, EventArgs e)
+        {
+            Reservation(5);
+        }
+
+        private void btntable6_Click(object sender, EventArgs e)
+        {
+            Reservation(6);
+        }
+
+        private void btntable7_Click(object sender, EventArgs e)
+        {
+            Reservation(7);
+        }
+
+        private void btntable8_Click(object sender, EventArgs e)
+        {
+            Reservation(8);
+        }
+
+        private void btntable9_Click(object sender, EventArgs e)
+        {
+            Reservation(9);
+        }
+
+        private void btntable10_Click(object sender, EventArgs e)
+        {
+            Reservation(10);
         }
     }
 }
