@@ -135,13 +135,27 @@ namespace ChapeauUI
 
             else if (result == DialogResult.No)
             {
+                string message1 = "Would you like to place order for this table";
+                string caption2 = "Order for table";
+
+                MessageBoxButtons messageBoxButtons1 = MessageBoxButtons.YesNo;
+                DialogResult result1 = MessageBox.Show(message1, caption2, messageBoxButtons1);
+
+                if (result1 == DialogResult.Yes)
+                {
+                    MessageBox.Show("This should display the order view");
+                }
+                else if (result1 == DialogResult.No)
+                {
+                    //...
+                }
                 tableServices.ChangeTableStatus(tableid, (int)TableStatus.Occupied);
             }
         }
 
         private void TakeOrders(int tableid)
         {
-            //...
+            //..
         }
 
 
