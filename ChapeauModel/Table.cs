@@ -8,9 +8,11 @@ namespace ChapeauModel
 {
     public class Table
     {
-        public int? TableID { get; set; }
+        public int TableID { get; set; }
         public TableStatus? TableStatus { get; set; }
         public string OrderStatus { get; set; }
+
+        public DateTime? TimeStamp { get; set; }
 
         public Table(int tableid)
         {

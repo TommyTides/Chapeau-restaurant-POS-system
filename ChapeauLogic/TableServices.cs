@@ -17,7 +17,7 @@ namespace ChapeauLogic
             tableDAO = new TableDAO();
         }
 
-        public List<Table> GetAllTables()
+        public Dictionary<int, Table> GetAllTables()
         {
             return tableDAO.GetAllTables();
         }

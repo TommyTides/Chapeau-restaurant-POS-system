@@ -10,7 +10,7 @@ namespace ChapeauDAL
 {
     public class TableDAO: BaseDao
     {
-        public List<Table> GetAllTables()
+        public Dictionary<int, Table> GetAllTables()
         {
             string query = "SELECT t.table_id, t.statusID, os.description, oi.orderTime " +
             " FROM[TABLE] as t " +
@@ -32,20 +32,21 @@ namespace ChapeauDAL
                 string orderstatus = (dr["description"]) as string;
                 DateTime? timestamp = (dr["orderTime"]) as DateTime?;
 
-                if (tableID != null)
+                if (tableID.HasValue)
                 {
-                    //if (/*tables.ContainsKey(tableID)*/)
-                    //{
-
-                    //}
+                    // if value not present in dictionry or new value available 
+                    if (!tables.ContainsKey(tableID.Value) || (tables.ContainsKey(tableID.Value) && tables[tableID.Value].TimeStamp < timestamp))
+                    {
+                        tables[tableID.Value] = new Table()
+                        {
+                            TableID = tableID.Value,
+                            TableStatus = (TableStatus)tableStatusId,
+                            OrderStatus = orderstatus,
+                            TimeStamp = timestamp
+                        };
+                    }
+                    
                 }
-                Table table = new Table()
-                {
-                    TableID = tableID,
-                    TableStatus = (TableStatus)tableStatusId,
-                    OrderStatus = orderstatus
-                };
-                tables.Add(table);
             }
             return tables;
         }

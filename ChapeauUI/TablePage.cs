@@ -16,7 +16,8 @@ namespace ChapeauUI
     {
         private Employee employee;
         private TableServices tableServices;
-        private List<Button> tableButtons = new List<Button>();
+        //private List<Button> tableButtons = new List<Button>();
+        Dictionary<int, Table> tables;
         public TablePage(Employee employee)
         {
             InitializeComponent();
@@ -30,22 +31,22 @@ namespace ChapeauUI
 
             LoadTableData();
 
-            tableButtons.Add(btntable1);
-            tableButtons.Add(btntable2);
-            tableButtons.Add(btntable3);
-            tableButtons.Add(btntable4);
-            tableButtons.Add(btntable5);
-            tableButtons.Add(btntable6);
-            tableButtons.Add(btntable7);
-            tableButtons.Add(btntable8);
-            tableButtons.Add(btntable9);
-            tableButtons.Add(btntable10);
+            //tableButtons.Add(btntable1);
+            //tableButtons.Add(btntable2);
+            //tableButtons.Add(btntable3);
+            //tableButtons.Add(btntable4);
+            //tableButtons.Add(btntable5);
+            //tableButtons.Add(btntable6);
+            //tableButtons.Add(btntable7);
+            //tableButtons.Add(btntable8);
+            //tableButtons.Add(btntable9);
+            //tableButtons.Add(btntable10);
 
         }
 
         private void LoadTableData()
         {
-            List<Table> tables = tableServices.GetAllTables();
+            tables = tableServices.GetAllTables();
 
             // set the table to free by default
             //for (int i = 0; i <= 10; i++)
@@ -54,8 +55,10 @@ namespace ChapeauUI
             //}
 
 
-            foreach (Table table in tables)
+            foreach (KeyValuePair<int, Table> keyValuePair in tables)
             {
+                Table table = keyValuePair.Value;
+
                 switch (table.TableID)
                 {
                     case 1:
@@ -121,41 +124,65 @@ namespace ChapeauUI
             }
         }
 
-        private void Reservation(int tableid)
+        private void TableStatusChangeOnClick(int tableid)
         {
-            string message = "Do you want to reserve this table?, select No to occupy the table";
-            string caption = "Table reservation";
-            MessageBoxButtons messageBoxButtons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(message, caption, messageBoxButtons);
+            Table table = tables[tableid];
 
-            if (result == DialogResult.Yes)
+            if (table.TableStatus == TableStatus.Free)
             {
-                tableServices.ChangeTableStatus(tableid, (int)TableStatus.Reserved);
+                string message = "Do you want to reserve this table?, select No to occupy the table";
+                string caption = "Table reservation";
+                MessageBoxButtons messageBoxButtons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, caption, messageBoxButtons);
+
+                if (result == DialogResult.Yes)
+                {
+                    tableServices.ChangeTableStatus(tableid, (int)TableStatus.Reserved);
+                }
+
+                else if (result == DialogResult.No)
+                {
+                    TakeOrder(tableid);
+                    tableServices.ChangeTableStatus(tableid, (int)TableStatus.Occupied);
+                }
             }
 
-            else if (result == DialogResult.No)
+
+            else if (table.TableStatus == TableStatus.Occupied)
             {
-                string message1 = "Would you like to place order for this table";
-                string caption2 = "Order for table";
+                string message = "Finish ordering?";
+                string caption = "Check customer order";
 
-                MessageBoxButtons messageBoxButtons1 = MessageBoxButtons.YesNo;
-                DialogResult result1 = MessageBox.Show(message1, caption2, messageBoxButtons1);
+                MessageBoxButtons messageBoxButtons = MessageBoxButtons.YesNo;
 
-                if (result1 == DialogResult.Yes)
+                DialogResult result = MessageBox.Show(message, caption, messageBoxButtons);
+
+                if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("This should display the order view");
+                    PaymentForm paymentForm = new PaymentForm();
+                    paymentForm.ShowDialog();
                 }
-                else if (result1 == DialogResult.No)
-                {
-                    //...
-                }
-                tableServices.ChangeTableStatus(tableid, (int)TableStatus.Occupied);
+            }
+
+            else if (table.TableStatus == TableStatus.Reserved)
+            {
+                TakeOrder(tableid);
             }
         }
 
-        private void TakeOrders(int tableid)
+        private void TakeOrder(int tableid)
         {
-            //..
+            string message = "Would you like to place order for this table";
+            string caption = "Start ordering";
+
+            MessageBoxButtons messageBoxButtons = MessageBoxButtons.YesNo;
+            DialogResult result1 = MessageBox.Show(message, caption, messageBoxButtons);
+
+            if (result1 == DialogResult.Yes)
+            {
+                PlaceOrderForm placeOrderForm = new PlaceOrderForm();
+                placeOrderForm.ShowDialog();
+            }
         }
 
 
@@ -168,52 +195,52 @@ namespace ChapeauUI
 
         private void btntable1_Click(object sender, EventArgs e)
         {
-            Reservation(1);
+            TableStatusChangeOnClick(1);
         }
 
         private void btntable2_Click(object sender, EventArgs e)
         {
-            Reservation(2);
+            TableStatusChangeOnClick(2);
         }
 
         private void btntable3_Click(object sender, EventArgs e)
         {
-            Reservation(3);
+            TableStatusChangeOnClick(3);
         }
 
         private void btntable4_Click(object sender, EventArgs e)
         {
-            Reservation(4);
+            TableStatusChangeOnClick(4);
         }
 
         private void btntable5_Click(object sender, EventArgs e)
         {
-            Reservation(5);
+            TableStatusChangeOnClick(5);
         }
 
         private void btntable6_Click(object sender, EventArgs e)
         {
-            Reservation(6);
+            TableStatusChangeOnClick(6);
         }
 
         private void btntable7_Click(object sender, EventArgs e)
         {
-            Reservation(7);
+            TableStatusChangeOnClick(7);
         }
 
         private void btntable8_Click(object sender, EventArgs e)
         {
-            Reservation(8);
+            TableStatusChangeOnClick(8);
         }
 
         private void btntable9_Click(object sender, EventArgs e)
         {
-            Reservation(9);
+            TableStatusChangeOnClick(9);
         }
 
         private void btntable10_Click(object sender, EventArgs e)
         {
-            Reservation(10);
+            TableStatusChangeOnClick(10);
         }
     }
 }
