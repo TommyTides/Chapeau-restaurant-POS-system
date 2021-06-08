@@ -59,43 +59,43 @@ namespace ChapeauUI
                 switch (table.TableID)
                 {
                     case 1:
-                        ChangeColorByTableStatus(btntable1, table.TableStatus);
+                        ChangeColorByTableStatus(rndbutton1, table.TableStatus);
                         lbltable1status.Text = table.OrderStatus;
                         break;
                     case 2:
-                        ChangeColorByTableStatus(btntable2, table.TableStatus);
+                        ChangeColorByTableStatus(rndbutton2, table.TableStatus);
                         lbltable2status.Text = table.OrderStatus;
                         break;
                     case 3:
-                        ChangeColorByTableStatus(btntable3, table.TableStatus);
+                        ChangeColorByTableStatus(rndbutton3, table.TableStatus);
                         lbltable3status.Text = table.OrderStatus;
                         break;
                     case 4:
-                        ChangeColorByTableStatus(btntable4, table.TableStatus);
+                        ChangeColorByTableStatus(rndbutton4, table.TableStatus);
                         lbltable4status.Text = table.OrderStatus;
                         break;
                     case 5:
-                        ChangeColorByTableStatus(btntable5, table.TableStatus);
+                        ChangeColorByTableStatus(rndbutton5, table.TableStatus);
                         lbltable5status.Text = table.OrderStatus;
                         break;
                     case 6:
-                        ChangeColorByTableStatus(btntable6, table.TableStatus);
+                        ChangeColorByTableStatus(rndbutton6, table.TableStatus);
                         lbltable6status.Text = table.OrderStatus;
                         break;
                     case 7:
-                        ChangeColorByTableStatus(btntable7, table.TableStatus);
+                        ChangeColorByTableStatus(rndbutton7, table.TableStatus);
                         lbltable7status.Text = table.OrderStatus;
                         break;
                     case 8:
-                        ChangeColorByTableStatus(btntable8, table.TableStatus);
+                        ChangeColorByTableStatus(rndbutton8, table.TableStatus);
                         lbltable8status.Text = table.OrderStatus;
                         break;
                     case 9:
-                        ChangeColorByTableStatus(btntable9, table.TableStatus);
+                        ChangeColorByTableStatus(rndbuttons9, table.TableStatus);
                         lbltable9status.Text = table.OrderStatus;
                         break;
                     case 10:
-                        ChangeColorByTableStatus(btntable10, table.TableStatus);
+                        ChangeColorByTableStatus(rndbutton10, table.TableStatus);
                         lbltable10status.Text = table.OrderStatus;
                         break;
                 }
@@ -107,16 +107,16 @@ namespace ChapeauUI
             switch (tableStatus)
             {
                 case TableStatus.Free:
-                    buttonTable.BackColor = Color.Green;
+                    buttonTable.ForeColor = Color.Green;
                     break;
                 case TableStatus.Occupied:
-                    buttonTable.BackColor = Color.Red;
+                    buttonTable.ForeColor = Color.Red;
                     break;
                 case TableStatus.Reserved:
-                    buttonTable.BackColor = Color.Cyan;
+                    buttonTable.ForeColor = Color.Cyan;
                     break;
                 default:
-                    buttonTable.BackColor = Color.Green;
+                    buttonTable.ForeColor = Color.Green;
                     break;
             }
         }
