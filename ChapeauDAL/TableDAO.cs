@@ -12,25 +12,33 @@ namespace ChapeauDAL
     {
         public List<Table> GetAllTables()
         {
-            string query = "SELECT t.table_id, t.statusID, os.description " +
-            "FROM[TABLE] as t " +
-            " JOIN [ORDER] as o ON t.table_id = o.tableID " +
-            " JOIN [ORDER_ITEM] as oi ON o.orderID = oi.orderID" + 
-            " JOIN [ORDER_STATUS] as os ON oi.itemStatus = os.orderstatusID";
+            string query = "SELECT t.table_id, t.statusID, os.description, oi.orderTime " +
+            " FROM[TABLE] as t " +
+            " LEFT JOIN[ORDER] as o ON t.table_id = o.tableID " +
+            " LEFT JOIN[ORDER_ITEM] as oi ON o.orderID = oi.orderID " +
+            " LEFT JOIN[ORDER_STATUS] as os ON oi.itemStatus = os.orderstatusID ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadAllTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public List<Table> ReadAllTables(DataTable dataTable)
+        public Dictionary<int, Table> ReadAllTables(DataTable dataTable)
         {
-            List<Table> tables = new List<Table>();
+            Dictionary<int, Table> tables = new Dictionary<int, Table>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
                 int? tableID = (dr["table_id"]) as int?;
                 int? tableStatusId = (dr["statusID"]) as int?;
                 string orderstatus = (dr["description"]) as string;
+                DateTime? timestamp = (dr["orderTime"]) as DateTime?;
 
+                if (tableID != null)
+                {
+                    //if (/*tables.ContainsKey(tableID)*/)
+                    //{
+
+                    //}
+                }
                 Table table = new Table()
                 {
                     TableID = tableID,

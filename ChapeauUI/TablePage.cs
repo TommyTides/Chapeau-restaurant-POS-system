@@ -107,16 +107,16 @@ namespace ChapeauUI
             switch (tableStatus)
             {
                 case TableStatus.Free:
-                    buttonTable.ForeColor = Color.Green;
+                    buttonTable.BackColor = Color.Green;
                     break;
                 case TableStatus.Occupied:
-                    buttonTable.ForeColor = Color.Red;
+                    buttonTable.BackColor = Color.Red;
                     break;
                 case TableStatus.Reserved:
-                    buttonTable.ForeColor = Color.Cyan;
+                    buttonTable.BackColor = Color.Cyan;
                     break;
                 default:
-                    buttonTable.ForeColor = Color.Green;
+                    buttonTable.BackColor = Color.Green;
                     break;
             }
         }
