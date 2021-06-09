@@ -28,23 +28,13 @@ namespace ChapeauUI
         private void TablePage_Load(object sender, EventArgs e)
         {
             lblemployee.Text = $"{employee.Role}: {employee.FullName}";
-
-            LoadTableData();
-
-            //tableButtons.Add(btntable1);
-            //tableButtons.Add(btntable2);
-            //tableButtons.Add(btntable3);
-            //tableButtons.Add(btntable4);
-            //tableButtons.Add(btntable5);
-            //tableButtons.Add(btntable6);
-            //tableButtons.Add(btntable7);
-            //tableButtons.Add(btntable8);
-            //tableButtons.Add(btntable9);
-            //tableButtons.Add(btntable10);
-
+            Timer timer = new Timer();
+            timer.Tick += new EventHandler(LoadTableData);
+            timer.Interval = 1000;
+            timer.Start();
         }
 
-        private void LoadTableData()
+        private void LoadTableData(Object sender, EventArgs e)
         {
             tables = tableServices.GetAllTables();
 
@@ -128,46 +118,49 @@ namespace ChapeauUI
         {
             Table table = tables[tableid];
 
-            if (table.TableStatus == TableStatus.Free)
-            {
-                string message = "Do you want to reserve this table?, select No to occupy the table";
-                string caption = "Table reservation";
-                MessageBoxButtons messageBoxButtons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, caption, messageBoxButtons);
+            TableDialog tableDialog = new TableDialog(table);
+            tableDialog.ShowDialog();
 
-                if (result == DialogResult.Yes)
-                {
-                    tableServices.ChangeTableStatus(tableid, (int)TableStatus.Reserved);
-                }
+            //if (table.TableStatus == TableStatus.Free)
+            //{
+            //    string message = "Do you want to reserve this table?, select No to occupy the table";
+            //    string caption = "Table reservation";
+            //    MessageBoxButtons messageBoxButtons = MessageBoxButtons.YesNo;
+            //    DialogResult result = MessageBox.Show(message, caption, messageBoxButtons);
 
-                else if (result == DialogResult.No)
-                {
-                    TakeOrder(tableid);
-                    tableServices.ChangeTableStatus(tableid, (int)TableStatus.Occupied);
-                }
-            }
+            //    if (result == DialogResult.Yes)
+            //    {
+            //        tableServices.ChangeTableStatus(tableid, (int)TableStatus.Reserved);
+            //    }
+
+            //    else if (result == DialogResult.No)
+            //    {
+            //        TakeOrder(tableid);
+            //        tableServices.ChangeTableStatus(tableid, (int)TableStatus.Occupied);
+            //    }
+            //}
 
 
-            else if (table.TableStatus == TableStatus.Occupied)
-            {
-                string message = "Finish ordering?";
-                string caption = "Check customer order";
+            //else if (table.TableStatus == TableStatus.Occupied)
+            //{
+            //    string message = "Finish ordering?";
+            //    string caption = "Check customer order";
 
-                MessageBoxButtons messageBoxButtons = MessageBoxButtons.YesNo;
+            //    MessageBoxButtons messageBoxButtons = MessageBoxButtons.YesNo;
 
-                DialogResult result = MessageBox.Show(message, caption, messageBoxButtons);
+            //    DialogResult result = MessageBox.Show(message, caption, messageBoxButtons);
 
-                if (result == DialogResult.Yes)
-                {
-                    PaymentForm paymentForm = new PaymentForm();
-                    paymentForm.ShowDialog();
-                }
-            }
+            //    if (result == DialogResult.Yes)
+            //    {
+            //        PaymentForm paymentForm = new PaymentForm();
+            //        paymentForm.ShowDialog();
+            //    }
+            //}
 
-            else if (table.TableStatus == TableStatus.Reserved)
-            {
-                TakeOrder(tableid);
-            }
+            //else if (table.TableStatus == TableStatus.Reserved)
+            //{
+            //    TakeOrder(tableid);
+            //}
         }
 
         private void TakeOrder(int tableid)

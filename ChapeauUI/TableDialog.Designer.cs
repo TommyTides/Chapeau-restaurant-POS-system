@@ -83,6 +83,7 @@ namespace ChapeauUI
             this.btntakeOrder.TabIndex = 3;
             this.btntakeOrder.Text = "Start Ordering";
             this.btntakeOrder.UseVisualStyleBackColor = true;
+            this.btntakeOrder.Click += new System.EventHandler(this.btntakeOrder_Click);
             // 
             // btnReserveTable
             // 
@@ -93,6 +94,7 @@ namespace ChapeauUI
             this.btnReserveTable.TabIndex = 4;
             this.btnReserveTable.Text = "Reserve Table";
             this.btnReserveTable.UseVisualStyleBackColor = true;
+            this.btnReserveTable.Click += new System.EventHandler(this.btnReserveTable_Click);
             // 
             // btnCancel
             // 
@@ -103,13 +105,14 @@ namespace ChapeauUI
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(221, 30);
+            this.label4.Location = new System.Drawing.Point(233, 35);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(200, 36);
             this.label4.TabIndex = 6;
