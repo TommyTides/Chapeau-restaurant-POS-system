@@ -177,7 +177,7 @@ namespace ChapeauUI
 
         private void listBoxSelectedFoodItem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            numericUpDownFoodMenu.Value = 1; // set quantity to 1 when the aan item is selected.
+            numericUpDownFoodMenu.Value = 1; // set quantity to 1 when the an item is selected.
         }
 
         private void numericUpDownFoodMenu_ValueChanged(object sender, EventArgs e)
