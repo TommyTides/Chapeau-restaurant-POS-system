@@ -27,5 +27,9 @@ namespace ChapeauLogic
             tableDAO.ChangeTableStatus(tableid, tablestatus);
         }
 
+        public void ChangeTableStatusAfterPayment(Table table)
+        {
+            tableDAO.ChangeTableStatusAfterPayment(table);
+        }
     }
 }

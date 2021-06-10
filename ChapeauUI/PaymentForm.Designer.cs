@@ -350,7 +350,7 @@ namespace ChapeauUI
             this.lstViewItems.HideSelection = false;
             this.lstViewItems.Location = new System.Drawing.Point(42, 450);
             this.lstViewItems.Name = "lstViewItems";
-            this.lstViewItems.Size = new System.Drawing.Size(326, 306);
+            this.lstViewItems.Size = new System.Drawing.Size(352, 306);
             this.lstViewItems.TabIndex = 10;
             this.lstViewItems.UseCompatibleStateImageBehavior = false;
             this.lstViewItems.View = System.Windows.Forms.View.Details;

@@ -14,7 +14,7 @@ namespace ChapeauUI
 {
     public partial class PaymentForm : Form
     {
-        PaymentService paymentService;
+        OrderService orderService;
         TableServices tableService;
         Order Order;
         Employee Employee;
@@ -24,7 +24,7 @@ namespace ChapeauUI
         {
             InitializeComponent();
 
-            paymentService = new PaymentService();
+            orderService = new OrderService();
             tableService = new TableServices();
         }
 
@@ -46,7 +46,7 @@ namespace ChapeauUI
         // this method displays the tables that are yet to be paid (when the payment form loads)
         private void ShowPayments()
         {
-            List<Order> orders = paymentService.GetOrdersToPay();
+            List<Order> orders = orderService.GetOrdersToPay();
 
             // get table# for each order
             foreach (Order order in orders)
@@ -55,18 +55,6 @@ namespace ChapeauUI
                 cmbTable.Tag = order;
             }
         }
-
-        //private void lstViewItems_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    //check whether the list is empty, if so return, if not, continue
-        //    if (lstViewItems.SelectedItems.Count <= 0)
-        //        return;
-
-        //    OrderItem orderItem = lstViewItems.SelectedItems[0].Tag as OrderItem;
-        //    // Set the label as the name of the menu item 
-        //    lblFeedback.Text = orderItem.menuItem.item_name;
-        //}
-
 
         private void cmdTable_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -77,7 +65,7 @@ namespace ChapeauUI
             //gets the tableID based on the GetOrderForTableByTableID method and parses it
             int tableID = Int32.Parse(cmbTable.Text);
             // gets the order based on the tableID
-            this.Order = paymentService.GetOrderForTableByTableID(tableID);
+            this.Order = orderService.GetOrderForTableByTableID(tableID);
 
             // gets the total price for every item times the quantity and stores it into Order.Total
             // VAT logic is stores in the Order class as a method/function and called here and stored in VATTotal
@@ -158,15 +146,15 @@ namespace ChapeauUI
             Order.Tip = tip;
 
             // a boolean to check whether the payment has been paid for
-            bool isPaid = paymentService.OrderPayment(Order);
+            bool isPaid = orderService.OrderPayment(Order);
 
             // if the payment is paid for, it shows a message that it has been successfull
             // as well as updates the order status. otherwise gives an error message.
             if (isPaid == true)
             {
-                paymentService.UpdateOrderStatus(Order);
+                orderService.UpdateOrderStatus(Order);
                 Order.Table.TableStatus = TableStatus.Free;
-                tableService.ChangeTableStatus(Order.Table);
+                tableService.ChangeTableStatusAfterPayment(Order.Table);
                 MessageBox.Show("Order has been paid successfully!");
                 this.Close();
                 new TablePage(Order.Employee).Show();

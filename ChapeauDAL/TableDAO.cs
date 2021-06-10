@@ -92,7 +92,7 @@ namespace ChapeauDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        public void ChangeTableStatus(Table table)
+        public void ChangeTableStatusAfterPayment(Table table)
         {
             string query = " UPDATE [TABLE] " +
                            " SET statusID = @statusID " +
