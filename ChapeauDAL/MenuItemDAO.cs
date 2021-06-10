@@ -35,6 +35,9 @@ namespace ChapeauDAL
 
         public int AddOrder(Order order)
         {
+            // Test id for table
+            order.Table.TableID = 1;
+            //
             string query = $"INSERT INTO [ORDER](tableID, employeeID, paymentStatus) " +
                     $"VALUES(@paymentDate, @totalPrice, @tableID, #employeeID, #paymentStatus);";
             SqlParameter[] sqlParameters = new SqlParameter[5];
@@ -47,10 +50,14 @@ namespace ChapeauDAL
 
         public void AddOrderItem(Order order)
         {
-            foreach (OrderItem orderItem in order.OrderItems)
+            // Test id for table
+            order.Table.TableID = 1;
+            //
+            foreach (OrderItem orderItem in order.OrderItem)
             {
                 string query = $"INSERT INTO ORDER_ITEM(orderID, item_id, quantity, totalPrice, comment, orderTime, placeID) " +
                     $"VALUES(@orderID, @item_id, @quantity, @totalPrice, @comment, @orderTime, @placeID);";
+
                 SqlParameter[] sqlParameters = new SqlParameter[6];
                 sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
                 sqlParameters[1] = new SqlParameter("@item_id", orderItem.menuItem.item_id);

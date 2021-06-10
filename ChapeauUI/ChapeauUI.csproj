@@ -61,12 +61,6 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
-    </Compile>
     <Compile Include="OrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,18 +90,9 @@
     <Compile Include="TablePage.Designer.cs">
       <DependentUpon>TablePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="TakingOrderForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TakingOrderForm.Designer.cs">
-      <DependentUpon>TakingOrderForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="WinAPI.cs" />
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderForm.resx">
       <DependentUpon>OrderForm.cs</DependentUpon>
@@ -133,9 +118,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TablePage.resx">
       <DependentUpon>TablePage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TakingOrderForm.resx">
-      <DependentUpon>TakingOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />

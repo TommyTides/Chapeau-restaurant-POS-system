@@ -30,26 +30,12 @@ namespace ChapeauUI
         private void InitializeComponent()
         {
             this.pnlStaticBar = new System.Windows.Forms.Panel();
+            this.lblBack = new System.Windows.Forms.Label();
+            this.lblForward = new System.Windows.Forms.Label();
             this.hamburgerIcon = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblApplicationSubState = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pnlLunchMenu = new System.Windows.Forms.Panel();
-            this.pnlLunchMenuInside = new System.Windows.Forms.Panel();
-            this.listBoxSelectedLunchItem = new System.Windows.Forms.ListBox();
-            this.btnAddLunchItem = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.listBoxPrice3 = new System.Windows.Forms.ListBox();
-            this.listBoxPrice2 = new System.Windows.Forms.ListBox();
-            this.listBoxPrice1 = new System.Windows.Forms.ListBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.listBoxLunchBites = new System.Windows.Forms.ListBox();
-            this.listBoxLunchSpecials = new System.Windows.Forms.ListBox();
-            this.listBoxLunchMain = new System.Windows.Forms.ListBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblWhereWeAre = new System.Windows.Forms.Label();
             this.pnlHamburger = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.lblOrderCart = new System.Windows.Forms.Label();
@@ -61,31 +47,73 @@ namespace ChapeauUI
             this.btnDinnerMenu = new System.Windows.Forms.Button();
             this.btnDrinksNonAlcMenu = new System.Windows.Forms.Button();
             this.btnLunchMenu = new System.Windows.Forms.Button();
-            this.numUpdQuantity = new System.Windows.Forms.NumericUpDown();
+            this.pnlFoodMenu = new System.Windows.Forms.Panel();
+            this.pnlAllMenuInside = new System.Windows.Forms.Panel();
+            this.numericUpDownFoodMenu = new System.Windows.Forms.NumericUpDown();
+            this.listBoxSelectedFoodItem = new System.Windows.Forms.ListBox();
+            this.btnAddFoodItem = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.listBoxThirdListPrice = new System.Windows.Forms.ListBox();
+            this.listBoxSecondListPrice = new System.Windows.Forms.ListBox();
+            this.listBoxFirstListPrice = new System.Windows.Forms.ListBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.listBoxThirdList = new System.Windows.Forms.ListBox();
+            this.listBoxSecondList = new System.Windows.Forms.ListBox();
+            this.listBoxFirstList = new System.Windows.Forms.ListBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.pnlStaticBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hamburgerIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.pnlLunchMenu.SuspendLayout();
-            this.pnlLunchMenuInside.SuspendLayout();
             this.pnlHamburger.SuspendLayout();
             this.pnlMenuOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpdQuantity)).BeginInit();
+            this.pnlFoodMenu.SuspendLayout();
+            this.pnlAllMenuInside.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFoodMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlStaticBar
             // 
             this.pnlStaticBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
+            this.pnlStaticBar.Controls.Add(this.lblBack);
+            this.pnlStaticBar.Controls.Add(this.lblForward);
             this.pnlStaticBar.Controls.Add(this.hamburgerIcon);
             this.pnlStaticBar.Controls.Add(this.pictureBox3);
             this.pnlStaticBar.Controls.Add(this.lblApplicationSubState);
-            this.pnlStaticBar.Controls.Add(this.label1);
+            this.pnlStaticBar.Controls.Add(this.lblWhereWeAre);
             this.pnlStaticBar.Location = new System.Drawing.Point(-1, -1);
             this.pnlStaticBar.Name = "pnlStaticBar";
             this.pnlStaticBar.Size = new System.Drawing.Size(756, 94);
             this.pnlStaticBar.TabIndex = 0;
             // 
+            // lblBack
+            // 
+            this.lblBack.AutoSize = true;
+            this.lblBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBack.ForeColor = System.Drawing.Color.White;
+            this.lblBack.Location = new System.Drawing.Point(270, 10);
+            this.lblBack.Name = "lblBack";
+            this.lblBack.Size = new System.Drawing.Size(41, 42);
+            this.lblBack.TabIndex = 12;
+            this.lblBack.Text = "<";
+            // 
+            // lblForward
+            // 
+            this.lblForward.AutoSize = true;
+            this.lblForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblForward.ForeColor = System.Drawing.Color.White;
+            this.lblForward.Location = new System.Drawing.Point(440, 10);
+            this.lblForward.Name = "lblForward";
+            this.lblForward.Size = new System.Drawing.Size(41, 42);
+            this.lblForward.TabIndex = 11;
+            this.lblForward.Text = ">";
+            // 
             // hamburgerIcon
             // 
+            this.hamburgerIcon.BackColor = System.Drawing.Color.Transparent;
+            this.hamburgerIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.hamburgerIcon.Image = global::ChapeauUI.Properties.Resources.hamburger_menu;
             this.hamburgerIcon.Location = new System.Drawing.Point(670, 0);
             this.hamburgerIcon.Name = "hamburgerIcon";
@@ -118,201 +146,16 @@ namespace ChapeauUI
             this.lblApplicationSubState.Text = "Welcome back";
             this.lblApplicationSubState.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // lblWhereWeAre
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(317, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 42);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Home";
-            // 
-            // pnlLunchMenu
-            // 
-            this.pnlLunchMenu.BackColor = System.Drawing.Color.White;
-            this.pnlLunchMenu.Controls.Add(this.pnlLunchMenuInside);
-            this.pnlLunchMenu.Location = new System.Drawing.Point(-1, 95);
-            this.pnlLunchMenu.Name = "pnlLunchMenu";
-            this.pnlLunchMenu.Size = new System.Drawing.Size(686, 898);
-            this.pnlLunchMenu.TabIndex = 12;
-            // 
-            // pnlLunchMenuInside
-            // 
-            this.pnlLunchMenuInside.BackColor = System.Drawing.Color.White;
-            this.pnlLunchMenuInside.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlLunchMenuInside.Controls.Add(this.numUpdQuantity);
-            this.pnlLunchMenuInside.Controls.Add(this.listBoxSelectedLunchItem);
-            this.pnlLunchMenuInside.Controls.Add(this.btnAddLunchItem);
-            this.pnlLunchMenuInside.Controls.Add(this.label7);
-            this.pnlLunchMenuInside.Controls.Add(this.listBoxPrice3);
-            this.pnlLunchMenuInside.Controls.Add(this.listBoxPrice2);
-            this.pnlLunchMenuInside.Controls.Add(this.listBoxPrice1);
-            this.pnlLunchMenuInside.Controls.Add(this.label6);
-            this.pnlLunchMenuInside.Controls.Add(this.label5);
-            this.pnlLunchMenuInside.Controls.Add(this.listBoxLunchBites);
-            this.pnlLunchMenuInside.Controls.Add(this.listBoxLunchSpecials);
-            this.pnlLunchMenuInside.Controls.Add(this.listBoxLunchMain);
-            this.pnlLunchMenuInside.Controls.Add(this.label4);
-            this.pnlLunchMenuInside.Controls.Add(this.label3);
-            this.pnlLunchMenuInside.Controls.Add(this.label2);
-            this.pnlLunchMenuInside.Location = new System.Drawing.Point(61, 34);
-            this.pnlLunchMenuInside.Name = "pnlLunchMenuInside";
-            this.pnlLunchMenuInside.Size = new System.Drawing.Size(622, 835);
-            this.pnlLunchMenuInside.TabIndex = 0;
-            // 
-            // listBoxSelectedLunchItem
-            // 
-            this.listBoxSelectedLunchItem.Font = new System.Drawing.Font("Segoe UI", 15.75F);
-            this.listBoxSelectedLunchItem.FormattingEnabled = true;
-            this.listBoxSelectedLunchItem.ItemHeight = 30;
-            this.listBoxSelectedLunchItem.Location = new System.Drawing.Point(19, 657);
-            this.listBoxSelectedLunchItem.Name = "listBoxSelectedLunchItem";
-            this.listBoxSelectedLunchItem.Size = new System.Drawing.Size(482, 34);
-            this.listBoxSelectedLunchItem.TabIndex = 92;
-            // 
-            // btnAddLunchItem
-            // 
-            this.btnAddLunchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnAddLunchItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddLunchItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAddLunchItem.Location = new System.Drawing.Point(406, 742);
-            this.btnAddLunchItem.Name = "btnAddLunchItem";
-            this.btnAddLunchItem.Size = new System.Drawing.Size(187, 49);
-            this.btnAddLunchItem.TabIndex = 91;
-            this.btnAddLunchItem.Text = "Add to cart";
-            this.btnAddLunchItem.UseVisualStyleBackColor = false;
-            this.btnAddLunchItem.Click += new System.EventHandler(this.btnAddLunchItem_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(15, 622);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(108, 20);
-            this.label7.TabIndex = 89;
-            this.label7.Text = "Selected Item";
-            // 
-            // listBoxPrice3
-            // 
-            this.listBoxPrice3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxPrice3.FormattingEnabled = true;
-            this.listBoxPrice3.ItemHeight = 30;
-            this.listBoxPrice3.Location = new System.Drawing.Point(523, 464);
-            this.listBoxPrice3.Name = "listBoxPrice3";
-            this.listBoxPrice3.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.listBoxPrice3.Size = new System.Drawing.Size(70, 124);
-            this.listBoxPrice3.TabIndex = 43;
-            // 
-            // listBoxPrice2
-            // 
-            this.listBoxPrice2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxPrice2.FormattingEnabled = true;
-            this.listBoxPrice2.ItemHeight = 30;
-            this.listBoxPrice2.Location = new System.Drawing.Point(523, 279);
-            this.listBoxPrice2.Name = "listBoxPrice2";
-            this.listBoxPrice2.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.listBoxPrice2.Size = new System.Drawing.Size(70, 124);
-            this.listBoxPrice2.TabIndex = 42;
-            // 
-            // listBoxPrice1
-            // 
-            this.listBoxPrice1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxPrice1.FormattingEnabled = true;
-            this.listBoxPrice1.ItemHeight = 30;
-            this.listBoxPrice1.Location = new System.Drawing.Point(523, 98);
-            this.listBoxPrice1.Name = "listBoxPrice1";
-            this.listBoxPrice1.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.listBoxPrice1.Size = new System.Drawing.Size(70, 124);
-            this.listBoxPrice1.TabIndex = 41;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(15, 425);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 24);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Bites";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(15, 238);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 24);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Specials";
-            // 
-            // listBoxLunchBites
-            // 
-            this.listBoxLunchBites.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxLunchBites.FormattingEnabled = true;
-            this.listBoxLunchBites.ItemHeight = 30;
-            this.listBoxLunchBites.Location = new System.Drawing.Point(19, 464);
-            this.listBoxLunchBites.Name = "listBoxLunchBites";
-            this.listBoxLunchBites.Size = new System.Drawing.Size(482, 124);
-            this.listBoxLunchBites.TabIndex = 7;
-            this.listBoxLunchBites.SelectedIndexChanged += new System.EventHandler(this.listBoxLunchBites_SelectedIndexChanged);
-            // 
-            // listBoxLunchSpecials
-            // 
-            this.listBoxLunchSpecials.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxLunchSpecials.FormattingEnabled = true;
-            this.listBoxLunchSpecials.ItemHeight = 30;
-            this.listBoxLunchSpecials.Location = new System.Drawing.Point(19, 279);
-            this.listBoxLunchSpecials.Name = "listBoxLunchSpecials";
-            this.listBoxLunchSpecials.Size = new System.Drawing.Size(482, 124);
-            this.listBoxLunchSpecials.TabIndex = 6;
-            this.listBoxLunchSpecials.SelectedIndexChanged += new System.EventHandler(this.listBoxLunchSpecials_SelectedIndexChanged);
-            // 
-            // listBoxLunchMain
-            // 
-            this.listBoxLunchMain.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxLunchMain.FormattingEnabled = true;
-            this.listBoxLunchMain.ItemHeight = 30;
-            this.listBoxLunchMain.Location = new System.Drawing.Point(19, 98);
-            this.listBoxLunchMain.Name = "listBoxLunchMain";
-            this.listBoxLunchMain.Size = new System.Drawing.Size(482, 124);
-            this.listBoxLunchMain.TabIndex = 5;
-            this.listBoxLunchMain.SelectedIndexChanged += new System.EventHandler(this.listBoxLunchMain_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(15, 56);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 24);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Lunch Main";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(519, 622);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Quantity";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(519, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Price";
+            this.lblWhereWeAre.AutoSize = true;
+            this.lblWhereWeAre.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.lblWhereWeAre.ForeColor = System.Drawing.Color.White;
+            this.lblWhereWeAre.Location = new System.Drawing.Point(317, 10);
+            this.lblWhereWeAre.Name = "lblWhereWeAre";
+            this.lblWhereWeAre.Size = new System.Drawing.Size(117, 42);
+            this.lblWhereWeAre.TabIndex = 0;
+            this.lblWhereWeAre.Text = "Home";
             // 
             // pnlHamburger
             // 
@@ -452,21 +295,207 @@ namespace ChapeauUI
             this.btnLunchMenu.UseVisualStyleBackColor = false;
             this.btnLunchMenu.Click += new System.EventHandler(this.btnLunchMenu_Click);
             // 
-            // numUpdQuantity
+            // pnlFoodMenu
             // 
-            this.numUpdQuantity.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
-            this.numUpdQuantity.Location = new System.Drawing.Point(523, 658);
-            this.numUpdQuantity.Name = "numUpdQuantity";
-            this.numUpdQuantity.Size = new System.Drawing.Size(70, 33);
-            this.numUpdQuantity.TabIndex = 93;
-            this.numUpdQuantity.ValueChanged += new System.EventHandler(this.numUpdQuantity_ValueChanged);
+            this.pnlFoodMenu.BackColor = System.Drawing.Color.White;
+            this.pnlFoodMenu.Controls.Add(this.pnlAllMenuInside);
+            this.pnlFoodMenu.Location = new System.Drawing.Point(2, 99);
+            this.pnlFoodMenu.Name = "pnlFoodMenu";
+            this.pnlFoodMenu.Size = new System.Drawing.Size(686, 891);
+            this.pnlFoodMenu.TabIndex = 14;
+            // 
+            // pnlAllMenuInside
+            // 
+            this.pnlAllMenuInside.BackColor = System.Drawing.Color.White;
+            this.pnlAllMenuInside.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlAllMenuInside.Controls.Add(this.numericUpDownFoodMenu);
+            this.pnlAllMenuInside.Controls.Add(this.listBoxSelectedFoodItem);
+            this.pnlAllMenuInside.Controls.Add(this.btnAddFoodItem);
+            this.pnlAllMenuInside.Controls.Add(this.label14);
+            this.pnlAllMenuInside.Controls.Add(this.listBoxThirdListPrice);
+            this.pnlAllMenuInside.Controls.Add(this.listBoxSecondListPrice);
+            this.pnlAllMenuInside.Controls.Add(this.listBoxFirstListPrice);
+            this.pnlAllMenuInside.Controls.Add(this.label15);
+            this.pnlAllMenuInside.Controls.Add(this.label16);
+            this.pnlAllMenuInside.Controls.Add(this.listBoxThirdList);
+            this.pnlAllMenuInside.Controls.Add(this.listBoxSecondList);
+            this.pnlAllMenuInside.Controls.Add(this.listBoxFirstList);
+            this.pnlAllMenuInside.Controls.Add(this.label17);
+            this.pnlAllMenuInside.Controls.Add(this.label18);
+            this.pnlAllMenuInside.Controls.Add(this.label19);
+            this.pnlAllMenuInside.Location = new System.Drawing.Point(61, 34);
+            this.pnlAllMenuInside.Name = "pnlAllMenuInside";
+            this.pnlAllMenuInside.Size = new System.Drawing.Size(622, 835);
+            this.pnlAllMenuInside.TabIndex = 0;
+            // 
+            // numericUpDownFoodMenu
+            // 
+            this.numericUpDownFoodMenu.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.numericUpDownFoodMenu.Location = new System.Drawing.Point(520, 697);
+            this.numericUpDownFoodMenu.Name = "numericUpDownFoodMenu";
+            this.numericUpDownFoodMenu.Size = new System.Drawing.Size(70, 33);
+            this.numericUpDownFoodMenu.TabIndex = 93;
+            this.numericUpDownFoodMenu.ValueChanged += new System.EventHandler(this.numericUpDownFoodMenu_ValueChanged);
+            // 
+            // listBoxSelectedFoodItem
+            // 
+            this.listBoxSelectedFoodItem.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            this.listBoxSelectedFoodItem.FormattingEnabled = true;
+            this.listBoxSelectedFoodItem.ItemHeight = 30;
+            this.listBoxSelectedFoodItem.Location = new System.Drawing.Point(16, 697);
+            this.listBoxSelectedFoodItem.Name = "listBoxSelectedFoodItem";
+            this.listBoxSelectedFoodItem.Size = new System.Drawing.Size(482, 34);
+            this.listBoxSelectedFoodItem.TabIndex = 92;
+            this.listBoxSelectedFoodItem.SelectedIndexChanged += new System.EventHandler(this.listBoxSelectedFoodItem_SelectedIndexChanged);
+            // 
+            // btnAddFoodItem
+            // 
+            this.btnAddFoodItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnAddFoodItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddFoodItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAddFoodItem.Location = new System.Drawing.Point(406, 754);
+            this.btnAddFoodItem.Name = "btnAddFoodItem";
+            this.btnAddFoodItem.Size = new System.Drawing.Size(187, 49);
+            this.btnAddFoodItem.TabIndex = 91;
+            this.btnAddFoodItem.Text = "Add to cart";
+            this.btnAddFoodItem.UseVisualStyleBackColor = false;
+            this.btnAddFoodItem.Click += new System.EventHandler(this.btnAddFoodItem_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(15, 657);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(108, 20);
+            this.label14.TabIndex = 89;
+            this.label14.Text = "Selected Item";
+            // 
+            // listBoxThirdListPrice
+            // 
+            this.listBoxThirdListPrice.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxThirdListPrice.FormattingEnabled = true;
+            this.listBoxThirdListPrice.ItemHeight = 30;
+            this.listBoxThirdListPrice.Location = new System.Drawing.Point(520, 512);
+            this.listBoxThirdListPrice.Name = "listBoxThirdListPrice";
+            this.listBoxThirdListPrice.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxThirdListPrice.Size = new System.Drawing.Size(83, 124);
+            this.listBoxThirdListPrice.TabIndex = 43;
+            // 
+            // listBoxSecondListPrice
+            // 
+            this.listBoxSecondListPrice.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxSecondListPrice.FormattingEnabled = true;
+            this.listBoxSecondListPrice.ItemHeight = 30;
+            this.listBoxSecondListPrice.Location = new System.Drawing.Point(520, 265);
+            this.listBoxSecondListPrice.Name = "listBoxSecondListPrice";
+            this.listBoxSecondListPrice.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxSecondListPrice.Size = new System.Drawing.Size(83, 184);
+            this.listBoxSecondListPrice.TabIndex = 42;
+            // 
+            // listBoxFirstListPrice
+            // 
+            this.listBoxFirstListPrice.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxFirstListPrice.FormattingEnabled = true;
+            this.listBoxFirstListPrice.ItemHeight = 30;
+            this.listBoxFirstListPrice.Location = new System.Drawing.Point(520, 57);
+            this.listBoxFirstListPrice.Name = "listBoxFirstListPrice";
+            this.listBoxFirstListPrice.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxFirstListPrice.Size = new System.Drawing.Size(83, 154);
+            this.listBoxFirstListPrice.TabIndex = 41;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(12, 464);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(82, 24);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "Desserts";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(12, 225);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(60, 24);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "Mains";
+            // 
+            // listBoxThirdList
+            // 
+            this.listBoxThirdList.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxThirdList.FormattingEnabled = true;
+            this.listBoxThirdList.ItemHeight = 30;
+            this.listBoxThirdList.Location = new System.Drawing.Point(16, 512);
+            this.listBoxThirdList.Name = "listBoxThirdList";
+            this.listBoxThirdList.Size = new System.Drawing.Size(482, 124);
+            this.listBoxThirdList.TabIndex = 7;
+            this.listBoxThirdList.SelectedIndexChanged += new System.EventHandler(this.listBoxThirdList_SelectedIndexChanged);
+            // 
+            // listBoxSecondList
+            // 
+            this.listBoxSecondList.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxSecondList.FormattingEnabled = true;
+            this.listBoxSecondList.ItemHeight = 30;
+            this.listBoxSecondList.Location = new System.Drawing.Point(16, 265);
+            this.listBoxSecondList.Name = "listBoxSecondList";
+            this.listBoxSecondList.Size = new System.Drawing.Size(482, 184);
+            this.listBoxSecondList.TabIndex = 6;
+            this.listBoxSecondList.SelectedIndexChanged += new System.EventHandler(this.listBoxSecondList_SelectedIndexChanged);
+            // 
+            // listBoxFirstList
+            // 
+            this.listBoxFirstList.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxFirstList.FormattingEnabled = true;
+            this.listBoxFirstList.ItemHeight = 30;
+            this.listBoxFirstList.Location = new System.Drawing.Point(16, 57);
+            this.listBoxFirstList.Name = "listBoxFirstList";
+            this.listBoxFirstList.Size = new System.Drawing.Size(482, 154);
+            this.listBoxFirstList.TabIndex = 5;
+            this.listBoxFirstList.SelectedIndexChanged += new System.EventHandler(this.listBoxFirstList_SelectedIndexChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(12, 15);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(72, 24);
+            this.label17.TabIndex = 3;
+            this.label17.Text = "Starters";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(519, 664);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(68, 20);
+            this.label18.TabIndex = 2;
+            this.label18.Text = "Quantity";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(516, 15);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(49, 20);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "Price";
             // 
             // PlaceOrderForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(752, 985);
-            this.Controls.Add(this.pnlLunchMenu);
+            this.Controls.Add(this.pnlFoodMenu);
             this.Controls.Add(this.pnlHamburger);
             this.Controls.Add(this.pnlStaticBar);
             this.Controls.Add(this.pnlMenuOptions);
@@ -480,13 +509,13 @@ namespace ChapeauUI
             this.pnlStaticBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hamburgerIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.pnlLunchMenu.ResumeLayout(false);
-            this.pnlLunchMenuInside.ResumeLayout(false);
-            this.pnlLunchMenuInside.PerformLayout();
             this.pnlHamburger.ResumeLayout(false);
             this.pnlHamburger.PerformLayout();
             this.pnlMenuOptions.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numUpdQuantity)).EndInit();
+            this.pnlFoodMenu.ResumeLayout(false);
+            this.pnlAllMenuInside.ResumeLayout(false);
+            this.pnlAllMenuInside.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFoodMenu)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -494,24 +523,10 @@ namespace ChapeauUI
         #endregion
 
         private System.Windows.Forms.Panel pnlStaticBar;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblWhereWeAre;
         private System.Windows.Forms.Label lblApplicationSubState;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox hamburgerIcon;
-        private System.Windows.Forms.Panel pnlLunchMenu;
-        private System.Windows.Forms.Panel pnlLunchMenuInside;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ListBox listBoxPrice3;
-        private System.Windows.Forms.ListBox listBoxPrice2;
-        private System.Windows.Forms.ListBox listBoxPrice1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ListBox listBoxLunchBites;
-        private System.Windows.Forms.ListBox listBoxLunchSpecials;
-        private System.Windows.Forms.ListBox listBoxLunchMain;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnlHamburger;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblOrderCart;
@@ -523,8 +538,24 @@ namespace ChapeauUI
         private System.Windows.Forms.Button btnDinnerMenu;
         private System.Windows.Forms.Button btnDrinksNonAlcMenu;
         private System.Windows.Forms.Button btnLunchMenu;
-        private System.Windows.Forms.Button btnAddLunchItem;
-        private System.Windows.Forms.ListBox listBoxSelectedLunchItem;
-        private System.Windows.Forms.NumericUpDown numUpdQuantity;
+        private System.Windows.Forms.Label lblBack;
+        private System.Windows.Forms.Label lblForward;
+        private System.Windows.Forms.Panel pnlFoodMenu;
+        private System.Windows.Forms.Panel pnlAllMenuInside;
+        private System.Windows.Forms.NumericUpDown numericUpDownFoodMenu;
+        private System.Windows.Forms.ListBox listBoxSelectedFoodItem;
+        private System.Windows.Forms.Button btnAddFoodItem;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ListBox listBoxThirdListPrice;
+        private System.Windows.Forms.ListBox listBoxSecondListPrice;
+        private System.Windows.Forms.ListBox listBoxFirstListPrice;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ListBox listBoxThirdList;
+        private System.Windows.Forms.ListBox listBoxSecondList;
+        private System.Windows.Forms.ListBox listBoxFirstList;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
     }
 }
