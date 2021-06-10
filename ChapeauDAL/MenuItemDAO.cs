@@ -47,7 +47,7 @@ namespace ChapeauDAL
 
         public void AddOrderItem(Order order)
         {
-            foreach (OrderItem orderItem in order.OrderItem)
+            foreach (OrderItem orderItem in order.OrderItems)
             {
                 string query = $"INSERT INTO ORDER_ITEM(orderID, item_id, quantity, totalPrice, comment, orderTime, placeID) " +
                     $"VALUES(@orderID, @item_id, @quantity, @totalPrice, @comment, @orderTime, @placeID);";

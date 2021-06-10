@@ -68,7 +68,7 @@ namespace ChapeauUI
 
             foreach (Order O in orderKitchen)
             {
-                foreach (OrderItem I in O.OrderItem)
+                foreach (OrderItem I in O.OrderItems)
                 {
                     ListViewItem li = new ListViewItem(I.OrderID.ToString());
                     li.SubItems.Add(I.menuItem.item_name);

@@ -30,7 +30,7 @@ namespace ChapeauUI
             menuItemService = new MenuItemService();
             order = new Order();
             orderItem = new OrderItem();
-            order.OrderItem = new List<OrderItem>();
+            order.OrderItems = new List<OrderItem>();
             menuItems = new List<MenuItem>();
             item = new MenuItem();
         }
@@ -138,7 +138,7 @@ namespace ChapeauUI
             int temp = Convert.ToInt32(numUpdQuantity.Value);
             orderItem.Quantity = temp;
 
-            order.OrderItem.Add(orderItem);
+            order.OrderItems.Add(orderItem);
         }
 
         private void FillOrderItem()

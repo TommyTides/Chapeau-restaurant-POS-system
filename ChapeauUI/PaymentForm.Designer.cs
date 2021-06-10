@@ -52,7 +52,6 @@ namespace ChapeauUI
             this.label1 = new System.Windows.Forms.Label();
             this.cmbTable = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnSubmit = new System.Windows.Forms.Button();
             this.txtFeedback = new System.Windows.Forms.TextBox();
             this.lblFeedback = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -294,7 +293,6 @@ namespace ChapeauUI
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.panel2.Controls.Add(this.btnSubmit);
             this.panel2.Controls.Add(this.txtFeedback);
             this.panel2.Controls.Add(this.lblFeedback);
             this.panel2.Controls.Add(this.label2);
@@ -302,17 +300,6 @@ namespace ChapeauUI
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(397, 310);
             this.panel2.TabIndex = 8;
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnSubmit.ForeColor = System.Drawing.Color.Black;
-            this.btnSubmit.Location = new System.Drawing.Point(152, 269);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(99, 37);
-            this.btnSubmit.TabIndex = 3;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = false;
             // 
             // txtFeedback
             // 
@@ -437,7 +424,6 @@ namespace ChapeauUI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbTable;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.TextBox txtFeedback;
         private System.Windows.Forms.Label lblFeedback;
         private System.Windows.Forms.Label label2;

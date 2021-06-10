@@ -76,7 +76,11 @@ namespace ChapeauUI
 
             //gets the tableID based on the GetOrderForTableByTableID method and parses it
             int tableID = Int32.Parse(cmbTable.Text);
+            // gets the order based on the tableID
             this.Order = paymentService.GetOrderForTableByTableID(tableID);
+
+            // gets the total price for every item times the quantity and stores it into Order.Total
+            // VAT logic is stores in the Order class as a method/function and called here and stored in VATTotal
             Order.Total = Order.CalculateTotalOrderPriceByItems();
             Order.VATTotal = Order.CalculateVATbyItems();
 
@@ -86,7 +90,7 @@ namespace ChapeauUI
 
             //clear listview before filling it
             lstViewItems.Items.Clear();
-            foreach (OrderItem orderItem in Order.OrderItem) // fill the listview with ordered items
+            foreach (OrderItem orderItem in Order.OrderItems) // fill the listview with ordered items
             {
                 ListViewItem item = new ListViewItem(Order.OrderID.ToString());
                 item.SubItems.Add(orderItem.menuItem.item_name);

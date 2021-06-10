@@ -71,10 +71,10 @@ namespace ChapeauDAL
                 orderItem.menuItem = item;
 
                 Order order = new Order();
-                order.OrderItem = new List<OrderItem>(); //I did it because the list will be null otherwise.
+                order.OrderItems = new List<OrderItem>(); //I did it because the list will be null otherwise.
                 table.TableID = (int)dr["tableID"];
                 order.Table = table;
-                order.OrderItem.Add(orderItem);
+                order.OrderItems.Add(orderItem);
 
 
 

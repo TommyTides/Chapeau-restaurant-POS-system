@@ -228,7 +228,7 @@ namespace ChapeauDAL
                     // the rest of fields are UNINITIALIZED! But it is OK because we do not need the rest in this module.
                 };
 
-                order.OrderItem = GetOrderItemForOrderID(order.OrderID);
+                order.OrderItems = GetOrderItemForOrderID(order.OrderID);
                 order.paymentMethod = PaymentMethod.Cash; // PaymentMethod { get; set; }
             }
             return order;

@@ -37,9 +37,9 @@ namespace ChapeauLogic
         {
             List<Order> orders = paymentDAO.GetOrdersForPayment();
 
-            foreach(Order order in orders)
+            foreach (Order order in orders)
             {
-                order.OrderItem = paymentDAO.GetOrderItemForOrderID(order.OrderID);
+                order.OrderItems = paymentDAO.GetOrderItemForOrderID(order.OrderID);
             }
             return orders;
         }
