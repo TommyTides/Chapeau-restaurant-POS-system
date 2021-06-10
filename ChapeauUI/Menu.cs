@@ -165,7 +165,7 @@ namespace ChapeauUI
 
         private void btnAddToCart_Click(object sender, EventArgs e)
         {
-            if (order.OrderItem.Count <= 0)
+            if (order.OrderItems.Count <= 0)
             {
                 MessageBox.Show("Select an item to send an order!");
                 return;

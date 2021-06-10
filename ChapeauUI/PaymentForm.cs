@@ -15,17 +15,17 @@ namespace ChapeauUI
     public partial class PaymentForm : Form
     {
         PaymentService paymentService;
-        OrderService orderService;
+        TableServices tableService;
         Order Order;
         Employee Employee;
 
+        // consturctor used for initializing every new object
         public PaymentForm()
         {
             InitializeComponent();
 
-            orderService = new OrderService();
             paymentService = new PaymentService();
-            Employee = new Employee();
+            tableService = new TableServices();
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
@@ -43,12 +43,13 @@ namespace ChapeauUI
             Application.Exit();
         }
 
+        // this method displays the tables that are yet to be paid (when the payment form loads)
         private void ShowPayments()
         {
             List<Order> orders = paymentService.GetOrdersToPay();
 
             // get table# for each order
-            foreach(Order order in orders)
+            foreach (Order order in orders)
             {
                 cmbTable.Items.Add(order.Table.TableID);
                 cmbTable.Tag = order;
@@ -66,32 +67,6 @@ namespace ChapeauUI
         //    lblFeedback.Text = orderItem.menuItem.item_name;
         //}
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            string feedback;
-
-            // if the viewlist is empty or if the comment is empty then return
-            if (String.IsNullOrWhiteSpace(txtFeedback.Text))
-                return;
-
-            // if the comment is not empty, you're able to add a comment, otherwise a message displays that you havent added a comment
-            // the comment gets stored in the object and gets sent through with the message when the button is clicked.
-            Order.Feedback = txtFeedback.Text;
-
-            if (!String.IsNullOrWhiteSpace(txtFeedback.Text))
-                feedback = txtFeedback.Text;
-            else
-                feedback = "There was no feedback added";
-
-            Order.Feedback = feedback;
-
-            MessageBox.Show("Your feedback has been added");
-        }
 
         private void cmdTable_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -100,15 +75,18 @@ namespace ChapeauUI
             // this.Order = cmbTable.Tag as Order;
 
             //gets the tableID based on the GetOrderForTableByTableID method and parses it
-            int tableID=Int32.Parse(cmbTable.Text);
+            int tableID = Int32.Parse(cmbTable.Text);
             this.Order = paymentService.GetOrderForTableByTableID(tableID);
+            Order.Total = Order.CalculateTotalOrderPriceByItems();
+            Order.VATTotal = Order.CalculateVATbyItems();
 
 
             //Order order = paymentService.GetOrderForTable();
             //Order.OrderItem = paymentService.GetOrderItems()
 
+            //clear listview before filling it
             lstViewItems.Items.Clear();
-            foreach(OrderItem orderItem in Order.OrderItem) // fill the listview with ordered items
+            foreach (OrderItem orderItem in Order.OrderItem) // fill the listview with ordered items
             {
                 ListViewItem item = new ListViewItem(Order.OrderID.ToString());
                 item.SubItems.Add(orderItem.menuItem.item_name);
@@ -127,33 +105,16 @@ namespace ChapeauUI
 
             // if the amount entered in the tip text box is greater than 0
             // then it adds the value to the Tip property
-            if(Order.Tip>0)
+            if (Order.Tip > 0)
             {
                 txtTip.Text = this.Order.Tip.ToString("0.00");
                 chbTip.Checked = true;
             }
 
-            // loop to check for every orderitem whether the menuitem contains alcololic drinks or not
-            // if it cotains them, then the VAT is 21% if not, then the VAT is 6%
-            double VAT = 0;
-            foreach (OrderItem orderItem in Order.OrderItem)
-            {
-                if (orderItem.menuItem.item_type == MenuSubCategory.alcohol)
-                {
-                    VAT += orderItem.menuItem.item_price * orderItem.Quantity * 0.21;
-                }
-
-                else
-                {
-                    VAT += orderItem.menuItem.item_price * orderItem.Quantity * 0.06;
-                }
-            }  
-            // storing VAT (calculated) into VATTOTAL
-            Order.VATTotal = VAT;
-            lblTotalVAT.Text = VAT.ToString("€ 0.00");
+            lblTotalVAT.Text = Order.VATTotal.ToString("€ 0.00");
             // calculating the total price by adding the total order price + the total vat + the tip
             lblTotalAmount.Text = (Order.Total + Order.VATTotal + Order.Tip).ToString("€ 0.00");
-           // Order.Feedback = txtComment.Text;
+            // Order.Feedback = txtComment.Text;
 
         }
 
@@ -174,11 +135,15 @@ namespace ChapeauUI
 
         private void btnFinalizePayment_Click(object sender, EventArgs e)
         {
-            double tip = 0;
+            // if feedback textbox is empty, then do not put feedback to order
+            if (!String.IsNullOrWhiteSpace(txtFeedback.Text))
+            {
+                Order.Feedback = txtFeedback.Text;
+            }
 
+            double tip = 0;
             // the tip gets converted into a double
             bool validTip = double.TryParse(txtTip.Text, out tip);
-
             // checks if the tip is ticked and whether its not valid -> displays message that its not valid
             if (chbTip.Checked && !validTip)
             {
@@ -195,11 +160,14 @@ namespace ChapeauUI
             // as well as updates the order status. otherwise gives an error message.
             if (isPaid == true)
             {
-                MessageBox.Show("Order has been paid successfully!");
                 paymentService.UpdateOrderStatus(Order);
+                Order.Table.TableStatus = TableStatus.Free;
+                tableService.ChangeTableStatus(Order.Table);
+                MessageBox.Show("Order has been paid successfully!");
+                this.Close();
+                new TablePage(Order.Employee).Show();
             }
-
-            else 
+            else
             {
                 MessageBox.Show("An error has occured during the payment process.");
             }
@@ -216,7 +184,7 @@ namespace ChapeauUI
             {
                 // if the tip if empty, it's automatically assigned the value 0
                 if (txtTip.Text.Trim() == "")
-                    txtTip.Text="0";
+                    txtTip.Text = "0";
 
                 // after inserting a tip, update the price and store it into the TotalAmount
                 double newTip = double.Parse(txtTip.Text);
@@ -224,11 +192,6 @@ namespace ChapeauUI
                 lblTotalAmount.Text = (Order.Total + Order.VATTotal + Order.Tip).ToString("€ 0.00");
             }
             catch { };
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

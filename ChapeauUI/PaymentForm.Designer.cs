@@ -136,7 +136,6 @@ namespace ChapeauUI
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Billing";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label9
             // 
@@ -146,7 +145,6 @@ namespace ChapeauUI
             this.label9.Size = new System.Drawing.Size(15, 17);
             this.label9.TabIndex = 19;
             this.label9.Text = "€";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // lblBill
             // 
@@ -315,7 +313,6 @@ namespace ChapeauUI
             this.btnSubmit.TabIndex = 3;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = false;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // txtFeedback
             // 

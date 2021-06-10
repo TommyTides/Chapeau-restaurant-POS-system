@@ -42,16 +42,16 @@ namespace ChapeauDAL
             }
             return orderItems;
         }
-        
+
 
         // gets the right orderitem that is related to the orderID
         public List<OrderItem> GetOrderItemForOrderID(int orderID)
         {
             List<OrderItem> orderItems = new List<OrderItem>();
 
-            string query = 
+            string query =
                  "SELECT I.item_id, I.quantity, I.orderTime, I.itemStatus, I.comment, M.item_name, M.item_price, M.menu_type, M.item_type "
-                +"FROM ORDER_ITEM AS I JOIN MENU_ITEM AS M on M.item_id = I.item_id WHERE I.orderID = @id";
+                + "FROM ORDER_ITEM AS I JOIN MENU_ITEM AS M on M.item_id = I.item_id WHERE I.orderID = @id";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@id", orderID);
 
@@ -66,15 +66,21 @@ namespace ChapeauDAL
             {
                 Table table = new Table
                 {
-                    TableID = (int)dr["tableID"]
+                    TableID = (int)dr["tableID"],
+                    TableStatus = (TableStatus)dr["tableStatus"]
                 };
 
                 Order order = new Order
                 {
                     OrderID = (int)dr["orderID"],
+                    VATTotal = (double)dr["vatTotal"],
                     PaymentDate = (DateTime)dr["paymentDate"],
+                    PaymentStatus = (bool)dr["paymentStatus"],
+                    Tip = (double)dr["tip"],
+                    Status = (OrderStatus)dr["orderStatus"],
+                    paymentMethod = (PaymentMethod)dr["paymentMethod"],
                     Total = (double)dr["totalPrice"],
-                    PaymentStatus = (bool)dr["paymentStatus"]
+                    Feedback = (string)dr["feedback"]
                 };
                 order.Table = table;
                 unpaidOrders.Add(order);
@@ -103,7 +109,6 @@ namespace ChapeauDAL
             return ReadOrders(ExecuteSelectQuery(query, sqlParameters));
         }
 
-
         public List<Order> ReadOrders(DataTable dataTable)
         {
             List<Order> orders = new List<Order>();
@@ -112,17 +117,31 @@ namespace ChapeauDAL
             {
                 Order order = new Order
                 {
-                    OrderID = (int)dr["orderID"]                   
+                    OrderID = (int)dr["orderID"],
+                    VATTotal = (double)dr["vatTotal"],
+                    PaymentDate = (DateTime)dr["paymentDate"],
+                    PaymentStatus = (bool)dr["paymentStatus"],
+                    Tip = (double)dr["tip"],
+                    Status = (OrderStatus)dr["orderStatus"],
+                    paymentMethod = (PaymentMethod)dr["paymentMethod"],
+                    Total = (double)dr["total"],
+                    Feedback = (string)dr["feedback"]
+
                 };
 
                 Employee employee = new Employee
                 {
-                    employeeID = (int)dr["employeeID"]
-                }; 
+                    employeeID = (int)dr["employeeID"],
+                    FirstName = (string)dr["firstName"],
+                    LastName = (string)dr["lastName"],
+                    Role = (Role)dr["role"],
+                    LoginCode = (int)dr["loginCode"]
+                };
 
                 Table table = new Table
                 {
                     TableID = (int)dr["tableID"],
+                    TableStatus = (TableStatus)dr["tableStatus"]
                 };
                 //store table data in order object reference
                 order.Table = table;
@@ -183,40 +202,45 @@ namespace ChapeauDAL
                 // due to the fact that they have to be filled out within the form and then updated to the database
                 order = new Order();
                 order.OrderID = (int)dr["orderID"];
-                if(dr["paymentStatus"]!=System.DBNull.Value) order.PaymentStatus = (bool)dr["paymentStatus"];
-                if(dr["orderStatus"]!=System.DBNull.Value) order.Status = (OrderStatus)dr["orderStatus"];
-                if(dr["totalPrice"]!= System.DBNull.Value) order.Total = (double)dr["totalPrice"];
-                if(dr["paymentDate"]!= System.DBNull.Value) order.PaymentDate = (DateTime)dr["paymentDate"];
-                if(dr["tip"]!= System.DBNull.Value) order.Tip = (double)dr["tip"];
-                if(dr["vat"]!= System.DBNull.Value) order.VATTotal = (double)dr["vat"];
+                if (dr["paymentStatus"] != System.DBNull.Value) order.PaymentStatus = (bool)dr["paymentStatus"];
+                if (dr["orderStatus"] != System.DBNull.Value) order.Status = (OrderStatus)dr["orderStatus"];
+                if (dr["totalPrice"] != System.DBNull.Value) order.Total = (double)dr["totalPrice"];
+                if (dr["paymentDate"] != System.DBNull.Value) order.PaymentDate = (DateTime)dr["paymentDate"];
+                if (dr["tip"] != System.DBNull.Value) order.Tip = (double)dr["tip"];
+                if (dr["vat"] != System.DBNull.Value) order.VATTotal = (double)dr["vat"];
 
                 // order.Table = GetTableByID(tmp_tableID);
                 order.Table = new Table()
                 {
-                    TableID = (int)dr["tableID"]
+                    TableID = (int)dr["tableID"],
+                    TableStatus = (TableStatus)dr["tableStatus"]
                     // the rest of fields are UNINITIALIZED! But it is OK because we do not need the rest in this module.
                 };
 
                 // order.Employee = GetEmployeeByID(tmp_employeeID);
                 order.Employee = new Employee()
                 {
-                    employeeID = (int)dr["employeeID"]
+                    employeeID = (int)dr["employeeID"],
+                    FirstName = (string)dr["firstName"],
+                    LastName = (string)dr["lastName"],
+                    Role = (Role)dr["role"],
+                    LoginCode = (int)dr["loginCode"]
                     // the rest of fields are UNINITIALIZED! But it is OK because we do not need the rest in this module.
                 };
-                
+
                 order.OrderItem = GetOrderItemForOrderID(order.OrderID);
                 order.paymentMethod = PaymentMethod.Cash; // PaymentMethod { get; set; }
             }
-            return order; 
+            return order;
         }
 
         // after the order has been paid for, order status gets updated to paid
         public void UpdateOrderStatus(Order order)
         {
-            string query = $"UPDATE [ORDER] SET PaymentStatus=@status, WHERE orderID=@orderID";
+            string query = $"UPDATE [ORDER] SET PaymentStatus=@status WHERE orderID=@orderID";
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
-            sqlParameters[0] = new SqlParameter("@status", 1);
+            sqlParameters[1] = new SqlParameter("@status", 1);
 
             ExecuteEditQuery(query, sqlParameters);
         }
