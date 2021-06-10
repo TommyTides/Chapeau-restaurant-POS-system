@@ -95,13 +95,7 @@ namespace ChapeauDAL
 
         public void ChangeTableStatusAfterPayment(Table table)
         {
-            string query = " UPDATE [TABLE] " +
-                           " SET statusID = @statusID " +
-                           " WHERE table_id = @table_id ";
-            SqlParameter[] sqlParameters = new SqlParameter[2];
-            sqlParameters[0] = new SqlParameter("@statusID", (int)table.TableStatus);
-            sqlParameters[1] = new SqlParameter("@table_id", table.TableID);
-            ExecuteEditQuery(query, sqlParameters);
+            ChangeTableStatus(table.TableID, (int)TableStatus.Free); // TableStatus.Free = 1
         }
     }
 }

@@ -9,7 +9,7 @@ namespace ChapeauModel
     public class Table
     {
         public int TableID { get; set; }
-        public TableStatus? TableStatus { get; set; }
+        public TableStatus TableStatus { get; set; }
         public string OrderStatus { get; set; }
 
         public DateTime? TimeStamp { get; set; }
@@ -18,8 +18,6 @@ namespace ChapeauModel
         {
             this.TableID = tableid;
         }
-
-       
 
         // default constructor
         public Table()

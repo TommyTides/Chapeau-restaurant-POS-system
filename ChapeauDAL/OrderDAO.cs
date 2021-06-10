@@ -186,20 +186,15 @@ namespace ChapeauDAL
                 Table table = new Table
                 {
                     TableID = (int)dr["tableID"],
-                    TableStatus = (TableStatus)dr["tableStatus"]
                 };
 
                 Order order = new Order
                 {
                     OrderID = (int)dr["orderID"],
-                    VATTotal = (double)dr["vatTotal"],
                     PaymentDate = (DateTime)dr["paymentDate"],
                     PaymentStatus = (bool)dr["paymentStatus"],
-                    Tip = (double)dr["tip"],
                     Status = (OrderStatus)dr["orderStatus"],
-                    paymentMethod = (PaymentMethod)dr["paymentMethod"],
                     Total = (double)dr["totalPrice"],
-                    Feedback = (string)dr["feedback"]
                 };
                 order.Table = table;
                 unpaidOrders.Add(order);
@@ -332,18 +327,13 @@ namespace ChapeauDAL
                 order.Table = new Table()
                 {
                     TableID = (int)dr["tableID"],
-                    TableStatus = (TableStatus)dr["tableStatus"]
                     // the rest of fields are UNINITIALIZED! But it is OK because we do not need the rest in this module.
                 };
 
                 // order.Employee = GetEmployeeByID(tmp_employeeID);
                 order.Employee = new Employee()
                 {
-                    employeeID = (int)dr["employeeID"],
-                    FirstName = (string)dr["firstName"],
-                    LastName = (string)dr["lastName"],
-                    Role = (Role)dr["role"],
-                    LoginCode = (int)dr["loginCode"]
+                    employeeID = (int)dr["employeeID"]
                     // the rest of fields are UNINITIALIZED! But it is OK because we do not need the rest in this module.
                 };
 
