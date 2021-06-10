@@ -213,15 +213,15 @@ namespace ChapeauDAL
         }
 
 
-        public List<Order> GetOrders()
-        {
-            List<Order> orders = new List<Order>();
-            // joining with the table and the employee
-            string query = "SELECT orderID, employeeID, tableID FROM [ORDER] WHERE paymentStatus = 0";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
+        //public List<Order> GetOrders()
+        //{
+        //    List<Order> orders = new List<Order>();
+        //    // joining with the table and the employee
+        //    string query = "SELECT orderID, employeeID, tableID FROM [ORDER] WHERE paymentStatus = 0";
+        //    SqlParameter[] sqlParameters = new SqlParameter[0];
 
-            return ReadOrders(ExecuteSelectQuery(query, sqlParameters));
-        }
+        //    return ReadOrders(ExecuteSelectQuery(query, sqlParameters));
+        //}
 
         public List<Order> ReadOrders(DataTable dataTable)
         {
@@ -326,7 +326,7 @@ namespace ChapeauDAL
                 // order.Table = GetTableByID(tmp_tableID);
                 order.Table = new Table()
                 {
-                    TableID = (int)dr["tableID"],
+                    TableID = (int)dr["tableID"]
                     // the rest of fields are UNINITIALIZED! But it is OK because we do not need the rest in this module.
                 };
 

@@ -17,7 +17,7 @@ namespace ChapeauUI
         OrderService orderService;
         TableServices tableService;
         Order Order;
-        Employee Employee;
+        private int TableID;
 
         // consturctor used for initializing every new object
         public PaymentForm()
@@ -28,9 +28,17 @@ namespace ChapeauUI
             tableService = new TableServices();
         }
 
+        public PaymentForm(int tableID)
+        {
+            InitializeComponent();
+
+            TableID = tableID;
+            orderService = new OrderService();
+            tableService = new TableServices();
+        }
         private void PaymentForm_Load(object sender, EventArgs e)
         {
-            ShowPayments();
+            LoadTables();
 
             // at the start of the form, the tip checkbox is disabled
             txtTip.Enabled = false;
@@ -44,7 +52,7 @@ namespace ChapeauUI
         }
 
         // this method displays the tables that are yet to be paid (when the payment form loads)
-        private void ShowPayments()
+        private void LoadTables()
         {
             List<Order> orders = orderService.GetOrdersToPay();
 
@@ -53,6 +61,15 @@ namespace ChapeauUI
             {
                 cmbTable.Items.Add(order.Table.TableID);
                 cmbTable.Tag = order;
+
+            }
+            // checks whether there are any tables that need to be paid for
+            // if so, it find the correct tableid that needs to be paid for
+            if (TableID > 0)
+            {
+                int index = cmbTable.FindString(cmbTable.ToString());
+                if (index >= 0)
+                    cmbTable.SelectedIndex = index;
             }
         }
 
