@@ -13,11 +13,17 @@ namespace ChapeauModel
     public class MenuItem
     {
         public int item_id { get; set; }
+
         public MenuCategory menu_type { get; set; }
+
         public MenuSubCategory item_type { get; set; }
+
         public string item_name { get; set; }
+
         public double item_price { get; set; }
+
         public int stock { get; set; }
+
         public Place place { get; set; }
 
         public MenuItem() { } // to create empty menuItem

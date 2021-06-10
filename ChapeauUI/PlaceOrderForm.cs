@@ -30,9 +30,10 @@ namespace ChapeauUI
             menuItemService = new MenuItemService();
             order = new Order();
             orderItem = new OrderItem();
-            order.OrderItem = new List<OrderItem>();
+            order.OrderItems = new List<OrderItem>();
             menuItems = new List<MenuItem>();
             item = new MenuItem();
+            
         }
 
         private void PlaceOrderForm_Load(object sender, EventArgs e)
@@ -44,7 +45,7 @@ namespace ChapeauUI
         {
             pnlHamburger.Visible = false;
             pnlMenuOptions.Visible = false;
-            pnlLunchMenu.Visible = false;
+            pnlFoodMenu.Visible = false; 
         }
 
         private void hamburgerIcon_Click(object sender, EventArgs e)
@@ -78,6 +79,10 @@ namespace ChapeauUI
         private void lblOrderCart_Click(object sender, EventArgs e)
         {
             // to do...
+            if (order.OrderItems.Count <= 0)
+            {
+                MessageBox.Show("Add item to the cart to view the order cart!");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -88,13 +93,13 @@ namespace ChapeauUI
         private void btnLunchMenu_Click(object sender, EventArgs e)
         {
             HideAllPanels();
-            FillLunchMenu(); // fill panel before making the panel visible
-            pnlLunchMenu.Visible = true;
+            FillFoodMenu(MenuCategory.Lunch, MenuSubCategory.lunchMain, MenuSubCategory.specials, MenuSubCategory.bites);
         }
 
         private void btnDinnerMenu_Click(object sender, EventArgs e)
         {
-            // to do...
+            HideAllPanels();
+            FillFoodMenu(MenuCategory.Dinner, MenuSubCategory.starters, MenuSubCategory.mains, MenuSubCategory.desserts);
         }
 
         private void btnDrinksNonAlcMenu_Click(object sender, EventArgs e)
@@ -106,39 +111,62 @@ namespace ChapeauUI
         {
             // to do...
         }
-
-        private void FillLunchMenu()
+        
+        public void SetListBoxSize(int size1, int size2, int size3, int size4)
         {
+            listBoxFirstList.Size = new Size(482, size1);
+            listBoxSecondList.Size = new Size(482, size2);
+            listBoxThirdList.Size = new Size(482, 124);// stays the same always
+            listBoxFirstListPrice.Size = new Size(70, size3);
+            listBoxSecondListPrice.Size = new Size(70, size4);
+            listBoxThirdListPrice.Size = new Size(70, 124);// stays the same always
+        }
+
+        public void ClearFoodMenu() // clear all lists etc.
+        {
+            listBoxFirstList.Items.Clear();
+            listBoxSecondList.Items.Clear();
+            listBoxThirdList.Items.Clear();
+            listBoxFirstListPrice.Items.Clear();
+            listBoxSecondListPrice.Items.Clear();
+            listBoxThirdListPrice.Items.Clear();
+            listBoxSelectedFoodItem.Items.Clear();
+            numericUpDownFoodMenu.Value = 0;
+        }
+
+        private void FillFoodMenu(MenuCategory category, MenuSubCategory firstCategory, MenuSubCategory secondCategory, MenuSubCategory ThirdCategory)
+        {
+            ClearFoodMenu();
+            pnlFoodMenu.Visible = true; // make menu panel visible
+            
+            // List box sizes depending on menu type.
+            if (category == MenuCategory.Lunch)
+                SetListBoxSize(124, 124, 124, 124);
+            else
+                SetListBoxSize(154, 184, 154, 184);
+
+            menuItems.Clear();
             menuItems = menuItemService.GetAllMenuItems(); // Gets list of menuItems form database
-            btnAddLunchItem.Enabled = false;
+            btnAddFoodItem.Enabled = false;
 
             foreach (MenuItem item in menuItems) // Adding items tot the listboxes
             {
-                if (item.item_type == MenuSubCategory.lunchMain)
+                if (item.item_type == firstCategory)
                 {
-                    listBoxLunchMain.Items.Add(item);
-                    listBoxPrice1.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
+                    listBoxFirstList.Items.Add(item);
+                    listBoxFirstListPrice.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
                 }
-                else if (item.item_type == MenuSubCategory.specials)
+                else if (item.item_type == secondCategory)
                 {
-                    listBoxLunchSpecials.Items.Add(item);
-                    listBoxPrice2.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
+                    listBoxSecondList.Items.Add(item);
+                    listBoxSecondListPrice.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
                 }
-                else if (item.item_type == MenuSubCategory.bites)
+                else if (item.item_type == ThirdCategory)
                 {
-                    listBoxLunchBites.Items.Add(item);
-                    listBoxPrice3.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
+                    listBoxThirdList.Items.Add(item);
+                    listBoxThirdListPrice.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
                 }
             }
-        }
-
-        private void btnAddLunchItem_Click(object sender, EventArgs e)
-        {
-            orderItem = (OrderItem)listBoxSelectedLunchItem.SelectedItem;
-            int temp = Convert.ToInt32(numUpdQuantity.Value);
-            orderItem.Quantity = temp;
-
-            order.OrderItem.Add(orderItem);
         }
 
         private void FillOrderItem()
@@ -147,46 +175,88 @@ namespace ChapeauUI
             orderItem.Status = ItemStatus.Preparing;
         }
 
-        private void listBoxLunchMain_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxSelectedFoodItem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //orderItem = new OrderItem();
-            FillOrderItem();
-            item = (MenuItem)listBoxLunchMain.SelectedItem;
-            orderItem.menuItem = item;
-            listBoxSelectedLunchItem.Items.Clear();
-            listBoxSelectedLunchItem.Items.Add(orderItem);
+            numericUpDownFoodMenu.Value = 1; // set quantity to 1 when the aan item is selected.
         }
 
-        private void listBoxLunchSpecials_SelectedIndexChanged(object sender, EventArgs e)
+        private void numericUpDownFoodMenu_ValueChanged(object sender, EventArgs e)
         {
-            //orderItem = new OrderItem();
-            FillOrderItem();
-            item = (MenuItem)listBoxLunchSpecials.SelectedItem;
-            orderItem.menuItem = item;
-            listBoxSelectedLunchItem.Items.Clear();
-            listBoxSelectedLunchItem.Items.Add(orderItem);
-        }
-
-        private void listBoxLunchBites_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //orderItem = new OrderItem();
-            FillOrderItem();
-            item = (MenuItem)listBoxLunchBites.SelectedItem;
-            orderItem.menuItem = item;
-            listBoxSelectedLunchItem.Items.Clear();
-            listBoxSelectedLunchItem.Items.Add(orderItem);
-        }
-
-        private void numUpdQuantity_ValueChanged(object sender, EventArgs e)
-        {
-            if (numUpdQuantity.Value >= 1)
+            if (numericUpDownFoodMenu.Value >= 1)
             {
-                btnAddLunchItem.Enabled = true; // enable add button when quantity is selected.
+                btnAddFoodItem.Enabled = true; // enable add button when quantity is selected.
             }
             else
             {
-                btnAddLunchItem.Enabled = false;
+                btnAddFoodItem.Enabled = false; // disable add button
+                listBoxSelectedFoodItem.Items.Clear(); // clear selected item list
             }
+        }
+
+        private void listBoxFirstList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillOrderItem();
+            item = (MenuItem)listBoxFirstList.SelectedItem;
+            AddOrderItemToOrder();
+        }
+
+        private void listBoxSecondList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillOrderItem();
+            item = (MenuItem)listBoxSecondList.SelectedItem;
+            AddOrderItemToOrder();
+            listBoxSelectedFoodItem.SelectedIndex = 0;
+        }
+
+        private void listBoxThirdList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillOrderItem();
+            item = (MenuItem)listBoxThirdList.SelectedItem;
+            AddOrderItemToOrder();
+            listBoxSelectedFoodItem.SelectedIndex = 0;
+        }
+
+        public void AddOrderItemToOrder()
+        {
+            orderItem.menuItem = item;
+            listBoxSelectedFoodItem.Items.Clear();
+            listBoxSelectedFoodItem.Items.Add(orderItem);
+            listBoxSelectedFoodItem.SelectedIndex = 0;
+        }
+
+        private void btnAddFoodItem_Click(object sender, EventArgs e) // add item to cart
+        {
+            bool grouped = false;
+            // orderItem = (OrderItem)listBoxSelectedLunchItem.SelectedItem;
+            this.listBoxSelectedFoodItem.SelectedIndex = 0;
+            orderItem = (OrderItem)listBoxSelectedFoodItem.SelectedItem;
+            int temp = Convert.ToInt32(numericUpDownFoodMenu.Value);
+            orderItem.Comment = "no comment";
+            orderItem.Quantity = temp;
+
+            order.OrderItems = menuItemService.GroupOrderItem();
+
+            foreach (OrderItem orderorderItem in order.OrderItems)
+            {
+                // if the selected item and the comment is the same the item will be grouped in the excisting list of orders.
+                if (orderorderItem.menuItem.item_id == orderItem.menuItem.item_id && orderorderItem.Comment == orderItem.Comment)
+                {
+                    orderorderItem.Quantity += orderItem.Quantity;
+                    grouped = true;
+                }
+            }
+            if (!grouped) // add order item to the list if they are not grouped already in the excisting list
+            {
+                order.OrderItems.Add(orderItem);
+            }
+            if (order.OrderItems.Count >= 1)
+            {
+                MessageBox.Show("Item has been added to cart");             
+            }
+
+            numericUpDownFoodMenu.Value = 0;
+            listBoxSelectedFoodItem.Items.Clear();
+            listBoxSelectedFoodItem.Text = "";
         }
     }
 }

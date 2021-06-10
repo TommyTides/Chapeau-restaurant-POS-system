@@ -29,5 +29,10 @@ namespace ChapeauLogic
             order.OrderID = menuItemDAO.AddOrder(order);
             menuItemDAO.AddOrderItem(order);
         }
+
+        public List<OrderItem> GroupOrderItem()
+        {
+            return null;
+        }
     }
 }

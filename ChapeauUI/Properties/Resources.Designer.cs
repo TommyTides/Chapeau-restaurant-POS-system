@@ -83,6 +83,16 @@ namespace ChapeauUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hamburger_menu2 {
+            get {
+                object obj = ResourceManager.GetObject("hamburger_menu2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_waiter_48px {
             get {
                 object obj = ResourceManager.GetObject("icons8_waiter_48px", resourceCulture);
@@ -107,6 +117,16 @@ namespace ChapeauUI.Properties {
         internal static System.Drawing.Bitmap logo_chapeau {
             get {
                 object obj = ResourceManager.GetObject("logo chapeau", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap notification {
+            get {
+                object obj = ResourceManager.GetObject("notification", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
