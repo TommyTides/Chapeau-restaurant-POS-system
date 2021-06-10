@@ -33,16 +33,15 @@ namespace ChapeauUI
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlLunchMenu = new System.Windows.Forms.Panel();
             this.ListViewKitch = new System.Windows.Forms.ListView();
-            this.menu_type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.item_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.quantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.order_time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.order_status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Comment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Table = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label4 = new System.Windows.Forms.Label();
+            this.OrderID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Itemorder = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Commentv2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Quanity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TimeOrder = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Tablev2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnReady = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnPreparing = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -68,7 +67,7 @@ namespace ChapeauUI
             this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnExit.Location = new System.Drawing.Point(574, 726);
+            this.btnExit.Location = new System.Drawing.Point(573, 682);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(96, 39);
             this.btnExit.TabIndex = 9;
@@ -80,9 +79,8 @@ namespace ChapeauUI
             // 
             this.pnlLunchMenu.BackColor = System.Drawing.Color.White;
             this.pnlLunchMenu.Controls.Add(this.ListViewKitch);
-            this.pnlLunchMenu.Controls.Add(this.label4);
             this.pnlLunchMenu.Controls.Add(this.btnReady);
-            this.pnlLunchMenu.Controls.Add(this.btnRefresh);
+            this.pnlLunchMenu.Controls.Add(this.btnPreparing);
             this.pnlLunchMenu.Controls.Add(this.btnExit);
             this.pnlLunchMenu.Location = new System.Drawing.Point(-2, 92);
             this.pnlLunchMenu.Name = "pnlLunchMenu";
@@ -92,67 +90,54 @@ namespace ChapeauUI
             // ListViewKitch
             // 
             this.ListViewKitch.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.menu_type,
-            this.item_name,
-            this.quantity,
-            this.order_time,
-            this.order_status,
-            this.Comment,
-            this.Table});
+            this.OrderID,
+            this.Itemorder,
+            this.Commentv2,
+            this.Quanity,
+            this.TimeOrder,
+            this.Tablev2,
+            this.Status});
             this.ListViewKitch.FullRowSelect = true;
             this.ListViewKitch.GridLines = true;
             this.ListViewKitch.HideSelection = false;
-            this.ListViewKitch.Location = new System.Drawing.Point(44, 86);
+            this.ListViewKitch.Location = new System.Drawing.Point(44, 29);
             this.ListViewKitch.Name = "ListViewKitch";
-            this.ListViewKitch.Size = new System.Drawing.Size(609, 496);
+            this.ListViewKitch.Size = new System.Drawing.Size(609, 590);
             this.ListViewKitch.TabIndex = 15;
             this.ListViewKitch.UseCompatibleStateImageBehavior = false;
             this.ListViewKitch.View = System.Windows.Forms.View.Details;
             // 
-            // menu_type
+            // OrderID
             // 
-            this.menu_type.Text = "menu_type";
-            this.menu_type.Width = 66;
+            this.OrderID.Text = "OrderID";
             // 
-            // item_name
+            // Itemorder
             // 
-            this.item_name.Text = "item_name";
-            this.item_name.Width = 74;
+            this.Itemorder.Text = "itemorder";
             // 
-            // quantity
+            // Commentv2
             // 
-            this.quantity.Text = "quantity";
-            this.quantity.Width = 83;
+            this.Commentv2.Text = "Comment";
             // 
-            // order_time
+            // Quanity
             // 
-            this.order_time.Text = "order_time";
-            this.order_time.Width = 106;
+            this.Quanity.Text = "Quanity";
+            this.Quanity.Width = 98;
             // 
-            // order_status
+            // TimeOrder
             // 
-            this.order_status.Text = "order_status";
-            this.order_status.Width = 95;
+            this.TimeOrder.Text = "Time";
+            this.TimeOrder.Width = 107;
             // 
-            // Comment
+            // Tablev2
             // 
-            this.Comment.Text = "Comment";
+            this.Tablev2.Text = "Table";
+            this.Tablev2.Width = 157;
             // 
-            // Table
+            // Status
             // 
-            this.Table.Text = "Table";
-            this.Table.Width = 102;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(298, 41);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 24);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Orders";
+            this.Status.Text = "Status";
+            this.Status.Width = 240;
             // 
             // btnReady
             // 
@@ -165,19 +150,20 @@ namespace ChapeauUI
             this.btnReady.TabIndex = 13;
             this.btnReady.Text = "Ready";
             this.btnReady.UseVisualStyleBackColor = false;
+            this.btnReady.Click += new System.EventHandler(this.btnReady_Click_1);
             // 
-            // btnRefresh
+            // btnPreparing
             // 
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRefresh.Location = new System.Drawing.Point(44, 726);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(96, 39);
-            this.btnRefresh.TabIndex = 10;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.btnPreparing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnPreparing.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPreparing.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnPreparing.Location = new System.Drawing.Point(44, 682);
+            this.btnPreparing.Name = "btnPreparing";
+            this.btnPreparing.Size = new System.Drawing.Size(96, 39);
+            this.btnPreparing.TabIndex = 10;
+            this.btnPreparing.Text = "Preparing";
+            this.btnPreparing.UseVisualStyleBackColor = false;
+            this.btnPreparing.Click += new System.EventHandler(this.btnPreparing_Click_1);
             // 
             // pictureBox1
             // 
@@ -214,11 +200,11 @@ namespace ChapeauUI
             this.lblApplicationState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
             this.lblApplicationState.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblApplicationState.ForeColor = System.Drawing.Color.White;
-            this.lblApplicationState.Location = new System.Drawing.Point(293, 19);
+            this.lblApplicationState.Location = new System.Drawing.Point(224, 29);
             this.lblApplicationState.Name = "lblApplicationState";
-            this.lblApplicationState.Size = new System.Drawing.Size(132, 42);
+            this.lblApplicationState.Size = new System.Drawing.Size(188, 42);
             this.lblApplicationState.TabIndex = 15;
-            this.lblApplicationState.Text = "Orders";
+            this.lblApplicationState.Text = "Orderview";
             this.lblApplicationState.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // OrderForm
@@ -238,7 +224,6 @@ namespace ChapeauUI
             this.Load += new System.EventHandler(this.OrderForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlLunchMenu.ResumeLayout(false);
-            this.pnlLunchMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -255,17 +240,16 @@ namespace ChapeauUI
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnPreparing;
         private System.Windows.Forms.Button btnReady;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblApplicationState;
         private System.Windows.Forms.ListView ListViewKitch;
-        private System.Windows.Forms.ColumnHeader menu_type;
-        private System.Windows.Forms.ColumnHeader item_name;
-        private System.Windows.Forms.ColumnHeader quantity;
-        private System.Windows.Forms.ColumnHeader order_time;
-        private System.Windows.Forms.ColumnHeader order_status;
-        private System.Windows.Forms.ColumnHeader Comment;
-        private System.Windows.Forms.ColumnHeader Table;
+        private System.Windows.Forms.ColumnHeader OrderID;
+        private System.Windows.Forms.ColumnHeader Itemorder;
+        private System.Windows.Forms.ColumnHeader Commentv2;
+        private System.Windows.Forms.ColumnHeader Quanity;
+        private System.Windows.Forms.ColumnHeader TimeOrder;
+        private System.Windows.Forms.ColumnHeader Tablev2;
+        private System.Windows.Forms.ColumnHeader Status;
     }
 }

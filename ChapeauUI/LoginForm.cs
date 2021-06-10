@@ -40,24 +40,22 @@ namespace ChapeauUI
         {
             Employee employee = employeeService.GetEmployeeByCode(int.Parse(txtlogincode.Text));
 
-            string[] management = new string[] { "Waiter", "Manager" };
-
-            string[] kitchen = new string[] { "Chef", "Barman" };
-
-            if (employee.Role == Role.Waiter || employee.Role == Role.Manager)
+            if (employee == null)
             {
-                Menu mainMenu = new Menu();
-                mainMenu.Show();
+                txtlogincode.Text = "";
+                MessageBox.Show("Entered pincode is not valid!");
+            }
+
+            else if (employee.Role == Role.Waiter || employee.Role == Role.Manager)
+            {
+                TablePage page = new TablePage(employee);
+                page.Show();
             }
             else if (employee.Role == Role.KitchenStaff || employee.Role == Role.Barman)
             {
                 /*The kitchen and bar view will go here */
             }
-            else
-            {
-                txtlogincode.Text = "";
-                MessageBox.Show("Invalid login credentials!");
-            }
+            
         }
 
         private void exitbtn_Click(object sender, EventArgs e)

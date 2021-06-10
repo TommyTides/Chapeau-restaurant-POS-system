@@ -17,10 +17,19 @@ namespace ChapeauLogic
             tableDAO = new TableDAO();
         }
 
-        public List<Table> GetAllTables()
+        public Dictionary<int, Table> GetAllTables()
         {
             return tableDAO.GetAllTables();
         }
 
+        public void ChangeTableStatus(int Tableid, int Tablestatus)
+        {
+            tableDAO.ChangeTableStatus(Tableid, Tablestatus);
+        }
+
+        public void ChangeTableStatusAfterPayment(Table table)
+        {
+            tableDAO.ChangeTableStatusAfterPayment(table);
+        }
     }
 }

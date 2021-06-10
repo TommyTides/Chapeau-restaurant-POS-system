@@ -14,27 +14,27 @@ namespace ChapeauUI
 {
     public partial class PaymentForm : Form
     {
-        PaymentService paymentService;
         OrderService orderService;
+        TableServices tableService;
         Order Order;
         Employee Employee;
 
+        // consturctor used for initializing every new object
         public PaymentForm()
         {
             InitializeComponent();
 
             orderService = new OrderService();
-            paymentService = new PaymentService();
-            this.Order = order;
+            tableService = new TableServices();
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
             ShowPayments();
+
+            // at the start of the form, the tip checkbox is disabled
             txtTip.Enabled = false;
         }
-
-
 
 
 
@@ -43,110 +43,71 @@ namespace ChapeauUI
             Application.Exit();
         }
 
+        // this method displays the tables that are yet to be paid (when the payment form loads)
         private void ShowPayments()
         {
-            List<Order> orders = paymentService.GetOrdersToPay();
+            List<Order> orders = orderService.GetOrdersToPay();
 
-            foreach(Order order in orders)
+            // get table# for each order
+            foreach (Order order in orders)
             {
                 cmbTable.Items.Add(order.Table.TableID);
                 cmbTable.Tag = order;
             }
         }
 
-        private void lstViewItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lstViewItems.SelectedItems.Count <= 0)
-                return;
-
-            OrderItem orderItem = lstViewItems.SelectedItems[0].Tag as OrderItem;
-            lblComment.Text = orderItem.menuItem.item_name;
-        }
-
-        private void lstViewPayment_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //ChapeauLogic.PaymentService paymentService = new PaymentService();
-            //List<Payment> paymentList = paymentService.GetAllPayments();
-
-            //foreach (Payment p in paymentList)
-            //{
-            //    ListViewItem li = new ListViewItem(p.PaymentID.ToString());
-            //    li.SubItems.Add(p.OrderitemCode.ToString());
-            //    li.SubItems.Add(p.paymentStatus.ToString());
-            //    li.SubItems.Add(p.paymentMethod.ToString());
-            //    li.SubItems.Add(p.PaymentDate.ToShortDateString());
-            //    lstViewPayment.Items.Add(li);
-            //}    
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            string comment;
-
-            // if the viewlist is empty or if the comment is empty then return
-            if (lstViewItems.SelectedItems.Count <= 0 || String.IsNullOrWhiteSpace(txtComment.Text))
-                return;
-
-            OrderItem orderItem = lstViewItems.SelectedItems[0].Tag as OrderItem;
-
-            // if the comment is not empty, you're able to add a comment, otherwise a message displays that you havent added a comment
-            // the comment gets stored in the object and gets sent through with the message when the button is clicked.
-            if (!String.IsNullOrWhiteSpace(txtComment.Text))
-                comment = txtComment.Text;
-            else
-                comment = "There was no comment added";
-
-            orderItem.Comment = comment;
-
-            MessageBox.Show("Your comment has been added");
-        }
-
         private void cmdTable_SelectedIndexChanged(object sender, EventArgs e)
         {
             // fill the listview with the order items and make a way to distinguish alcoholic from non alcoholic drinks (VAT)
-            double VAT = 0;
 
-            this.Order = cmbTable.Tag as Order;
-            this.Order.Employee = Employee;
+            // this.Order = cmbTable.Tag as Order;
 
-            lblTableNumber.Text = Order.Table.TableID.ToString();
-            lblPayment.Text = Order.Total.ToString();
+            //gets the tableID based on the GetOrderForTableByTableID method and parses it
+            int tableID = Int32.Parse(cmbTable.Text);
+            // gets the order based on the tableID
+            this.Order = orderService.GetOrderForTableByTableID(tableID);
+
+            // gets the total price for every item times the quantity and stores it into Order.Total
+            // VAT logic is stores in the Order class as a method/function and called here and stored in VATTotal
+            Order.Total = Order.CalculateTotalOrderPriceByItems();
+            Order.VATTotal = Order.CalculateVATbyItems();
+
 
             //Order order = paymentService.GetOrderForTable();
             //Order.OrderItem = paymentService.GetOrderItems()
 
-            foreach(OrderItem orderItem in Order.OrderItem) // fill the listview with ordered items
+            //clear listview before filling it
+            lstViewItems.Items.Clear();
+            foreach (OrderItem orderItem in Order.OrderItems) // fill the listview with ordered items
             {
                 ListViewItem item = new ListViewItem(Order.OrderID.ToString());
                 item.SubItems.Add(orderItem.menuItem.item_name);
                 item.SubItems.Add(orderItem.Quantity.ToString());
-                item.SubItems.Add(orderItem.TotalPrice.ToString());
+                item.SubItems.Add(orderItem.TotalPrice.ToString("€ 0.00"));
                 item.Tag = orderItem;
 
                 lstViewItems.Items.Add(item);
             }
             cmbMethod.DataSource = (Enum.GetValues(typeof(PaymentMethod)));
 
-            foreach(OrderItem item in Order.OrderItem)
-            {
-                if (item.menuItem.item_type == MenuSubCategory.alcohol)
-                {
-                    VAT += item.menuItem.item_price * item.Quantity * 0.21;
-                }
+            // storing values from the database into the labels
+            lblTableNumber.Text = this.Order.Table.TableID.ToString();
+            lblBill.Text = this.Order.Total.ToString("€ 0.00");
+            lblWaiter.Text = this.Order.Employee.employeeID.ToString();
 
-                else
-                {
-                    VAT += item.menuItem.item_price * item.Quantity * 0.06;
-                }
+            // if the amount entered in the tip text box is greater than 0
+            // then it adds the value to the Tip property
+            if (Order.Tip > 0)
+            {
+                txtTip.Text = this.Order.Tip.ToString("0.00");
+                chbTip.Checked = true;
             }
-            Order.VATTotal = VAT;
-            lblTotalVAT.Text = VAT.ToString("0.00");
-            lblTotalAmount.Text = (Order.Total + Order.VATTotal + Order.Tip).ToString("0.00");
+
+            lblTotalVAT.Text = Order.VATTotal.ToString("€ 0.00");
+            // calculating the total price by adding the total order price + the total vat + the tip
+            lblTotalAmount.Text = (Order.Total + Order.VATTotal + Order.Tip).ToString("€ 0.00");
+            // Order.Feedback = txtComment.Text;
+
         }
 
         private void chbTip_CheckedChanged(object sender, EventArgs e)
@@ -160,16 +121,21 @@ namespace ChapeauUI
             else
             {
                 txtTip.Enabled = false;
+                txtTip.Text = "0";
             }
         }
 
         private void btnFinalizePayment_Click(object sender, EventArgs e)
         {
-            double tip = 0;
+            // if feedback textbox is empty, then do not put feedback to order
+            if (!String.IsNullOrWhiteSpace(txtFeedback.Text))
+            {
+                Order.Feedback = txtFeedback.Text;
+            }
 
+            double tip = 0;
             // the tip gets converted into a double
             bool validTip = double.TryParse(txtTip.Text, out tip);
-
             // checks if the tip is ticked and whether its not valid -> displays message that its not valid
             if (chbTip.Checked && !validTip)
             {
@@ -179,9 +145,45 @@ namespace ChapeauUI
             Order.paymentMethod = (PaymentMethod)cmbMethod.SelectedItem;
             Order.Tip = tip;
 
-            paymentService.OrderPayment(Order);
+            // a boolean to check whether the payment has been paid for
+            bool isPaid = orderService.OrderPayment(Order);
 
-                     
+            // if the payment is paid for, it shows a message that it has been successfull
+            // as well as updates the order status. otherwise gives an error message.
+            if (isPaid == true)
+            {
+                orderService.UpdateOrderStatus(Order);
+                Order.Table.TableStatus = TableStatus.Free;
+                tableService.ChangeTableStatusAfterPayment(Order.Table);
+                MessageBox.Show("Order has been paid successfully!");
+                this.Close();
+                new TablePage(Order.Employee).Show();
+            }
+            else
+            {
+                MessageBox.Show("An error has occured during the payment process.");
+            }
+        }
+
+        private void cmbMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTip_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                // if the tip if empty, it's automatically assigned the value 0
+                if (txtTip.Text.Trim() == "")
+                    txtTip.Text = "0";
+
+                // after inserting a tip, update the price and store it into the TotalAmount
+                double newTip = double.Parse(txtTip.Text);
+                Order.Tip = newTip;
+                lblTotalAmount.Text = (Order.Total + Order.VATTotal + Order.Tip).ToString("€ 0.00");
+            }
+            catch { };
         }
     }
 }

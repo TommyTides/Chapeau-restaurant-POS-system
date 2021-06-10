@@ -66,3 +66,5 @@ namespace ChapeauModel
 
     public enum PaymentMethod { CreditCard = 1, Pin, Cash }
 }
+
+

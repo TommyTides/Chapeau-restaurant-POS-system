@@ -31,15 +31,12 @@ namespace ChapeauUI
         {
             this.btnExit = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblPayment = new System.Windows.Forms.Label();
+            this.paymnetLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lstViewItems = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.lblBill = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtTip = new System.Windows.Forms.TextBox();
             this.lblTotalAmount = new System.Windows.Forms.Label();
             this.lblWaiter = new System.Windows.Forms.Label();
@@ -55,11 +52,15 @@ namespace ChapeauUI
             this.label1 = new System.Windows.Forms.Label();
             this.cmbTable = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnSubmit = new System.Windows.Forms.Button();
-            this.txtComment = new System.Windows.Forms.TextBox();
-            this.lblComment = new System.Windows.Forms.Label();
+            this.txtFeedback = new System.Windows.Forms.TextBox();
+            this.lblFeedback = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnFinalizePayment = new System.Windows.Forms.Button();
+            this.lstViewItems = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -79,24 +80,24 @@ namespace ChapeauUI
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
-            this.panel1.Controls.Add(this.lblPayment);
+            this.panel1.Controls.Add(this.paymnetLabel);
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(0, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(862, 120);
+            this.panel1.Size = new System.Drawing.Size(873, 119);
             this.panel1.TabIndex = 2;
             // 
-            // lblPayment
+            // paymnetLabel
             // 
-            this.lblPayment.AutoSize = true;
-            this.lblPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayment.ForeColor = System.Drawing.Color.White;
-            this.lblPayment.Location = new System.Drawing.Point(273, 35);
-            this.lblPayment.Name = "lblPayment";
-            this.lblPayment.Size = new System.Drawing.Size(121, 31);
-            this.lblPayment.TabIndex = 2;
-            this.lblPayment.Text = "Payment";
+            this.paymnetLabel.AutoSize = true;
+            this.paymnetLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.paymnetLabel.ForeColor = System.Drawing.Color.White;
+            this.paymnetLabel.Location = new System.Drawing.Point(273, 35);
+            this.paymnetLabel.Name = "paymnetLabel";
+            this.paymnetLabel.Size = new System.Drawing.Size(121, 31);
+            this.paymnetLabel.TabIndex = 2;
+            this.paymnetLabel.Text = "Payment";
             // 
             // pictureBox1
             // 
@@ -108,51 +109,12 @@ namespace ChapeauUI
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // lstViewItems
-            // 
-            this.lstViewItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.lstViewItems.FullRowSelect = true;
-            this.lstViewItems.GridLines = true;
-            this.lstViewItems.HideSelection = false;
-            this.lstViewItems.Location = new System.Drawing.Point(42, 450);
-            this.lstViewItems.Name = "lstViewItems";
-            this.lstViewItems.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lstViewItems.Size = new System.Drawing.Size(348, 310);
-            this.lstViewItems.TabIndex = 8;
-            this.lstViewItems.UseCompatibleStateImageBehavior = false;
-            this.lstViewItems.View = System.Windows.Forms.View.Details;
-            this.lstViewItems.SelectedIndexChanged += new System.EventHandler(this.lstViewItems_SelectedIndexChanged);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "orderID";
-            this.columnHeader1.Width = 75;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Item";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader2.Width = 82;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Qty";
-            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Price";
-            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader4.Width = 86;
-            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.lblBill);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtTip);
             this.groupBox1.Controls.Add(this.lblTotalAmount);
             this.groupBox1.Controls.Add(this.lblWaiter);
@@ -173,23 +135,41 @@ namespace ChapeauUI
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Billing";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(292, 127);
+            this.label9.Location = new System.Drawing.Point(294, 130);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(15, 17);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "$";
+            this.label9.TabIndex = 19;
+            this.label9.Text = "€";
+            // 
+            // lblBill
+            // 
+            this.lblBill.AutoSize = true;
+            this.lblBill.Location = new System.Drawing.Point(642, 43);
+            this.lblBill.Name = "lblBill";
+            this.lblBill.Size = new System.Drawing.Size(23, 17);
+            this.lblBill.TabIndex = 18;
+            this.lblBill.Text = "___";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(602, 43);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(25, 17);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Bill";
             // 
             // txtTip
             // 
-            this.txtTip.Location = new System.Drawing.Point(313, 124);
+            this.txtTip.Location = new System.Drawing.Point(315, 126);
             this.txtTip.Name = "txtTip";
             this.txtTip.Size = new System.Drawing.Size(100, 23);
             this.txtTip.TabIndex = 15;
+            this.txtTip.TextChanged += new System.EventHandler(this.txtTip_TextChanged);
             // 
             // lblTotalAmount
             // 
@@ -245,6 +225,7 @@ namespace ChapeauUI
             this.cmbMethod.Name = "cmbMethod";
             this.cmbMethod.Size = new System.Drawing.Size(156, 25);
             this.cmbMethod.TabIndex = 9;
+            this.cmbMethod.SelectedIndexChanged += new System.EventHandler(this.cmbMethod_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -312,52 +293,39 @@ namespace ChapeauUI
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.panel2.Controls.Add(this.btnSubmit);
-            this.panel2.Controls.Add(this.txtComment);
-            this.panel2.Controls.Add(this.lblComment);
+            this.panel2.Controls.Add(this.txtFeedback);
+            this.panel2.Controls.Add(this.lblFeedback);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(418, 450);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(397, 310);
             this.panel2.TabIndex = 8;
             // 
-            // btnSubmit
+            // txtFeedback
             // 
-            this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnSubmit.ForeColor = System.Drawing.Color.Black;
-            this.btnSubmit.Location = new System.Drawing.Point(152, 269);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(99, 37);
-            this.btnSubmit.TabIndex = 3;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = false;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            this.txtFeedback.Location = new System.Drawing.Point(13, 95);
+            this.txtFeedback.Multiline = true;
+            this.txtFeedback.Name = "txtFeedback";
+            this.txtFeedback.Size = new System.Drawing.Size(369, 168);
+            this.txtFeedback.TabIndex = 2;
             // 
-            // txtComment
+            // lblFeedback
             // 
-            this.txtComment.Location = new System.Drawing.Point(13, 95);
-            this.txtComment.Multiline = true;
-            this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(369, 168);
-            this.txtComment.TabIndex = 2;
-            // 
-            // lblComment
-            // 
-            this.lblComment.AutoSize = true;
-            this.lblComment.Location = new System.Drawing.Point(14, 79);
-            this.lblComment.Name = "lblComment";
-            this.lblComment.Size = new System.Drawing.Size(51, 13);
-            this.lblComment.TabIndex = 1;
-            this.lblComment.Text = "Comment";
+            this.lblFeedback.AutoSize = true;
+            this.lblFeedback.Location = new System.Drawing.Point(14, 79);
+            this.lblFeedback.Name = "lblFeedback";
+            this.lblFeedback.Size = new System.Drawing.Size(77, 13);
+            this.lblFeedback.TabIndex = 1;
+            this.lblFeedback.Text = "Your feedback";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(149, 16);
+            this.label2.Location = new System.Drawing.Point(108, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
+            this.label2.Size = new System.Drawing.Size(181, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Add a comment";
+            this.label2.Text = "Add feedback to improve our service";
             // 
             // btnFinalizePayment
             // 
@@ -372,22 +340,56 @@ namespace ChapeauUI
             this.btnFinalizePayment.UseVisualStyleBackColor = false;
             this.btnFinalizePayment.Click += new System.EventHandler(this.btnFinalizePayment_Click);
             // 
+            // lstViewItems
+            // 
+            this.lstViewItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.lstViewItems.HideSelection = false;
+            this.lstViewItems.Location = new System.Drawing.Point(42, 450);
+            this.lstViewItems.Name = "lstViewItems";
+            this.lstViewItems.Size = new System.Drawing.Size(352, 306);
+            this.lstViewItems.TabIndex = 10;
+            this.lstViewItems.UseCompatibleStateImageBehavior = false;
+            this.lstViewItems.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "orderID";
+            this.columnHeader1.Width = 92;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Item";
+            this.columnHeader2.Width = 105;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Qty";
+            this.columnHeader3.Width = 84;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Price";
+            // 
             // PaymentForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(879, 890);
+            this.ClientSize = new System.Drawing.Size(872, 968);
+            this.Controls.Add(this.lstViewItems);
             this.Controls.Add(this.btnFinalizePayment);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.cmbTable);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lstViewItems);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PaymentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Payment";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.PaymentForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -405,13 +407,8 @@ namespace ChapeauUI
 
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblPayment;
+        private System.Windows.Forms.Label paymnetLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ListView lstViewItems;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblTotalAmount;
         private System.Windows.Forms.Label lblWaiter;
@@ -427,12 +424,18 @@ namespace ChapeauUI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbTable;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.TextBox txtComment;
-        private System.Windows.Forms.Label lblComment;
+        private System.Windows.Forms.TextBox txtFeedback;
+        private System.Windows.Forms.Label lblFeedback;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtTip;
         private System.Windows.Forms.Button btnFinalizePayment;
+        private System.Windows.Forms.Label lblBill;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ListView lstViewItems;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }

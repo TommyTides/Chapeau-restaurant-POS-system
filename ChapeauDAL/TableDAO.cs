@@ -10,29 +10,43 @@ namespace ChapeauDAL
 {
     public class TableDAO: BaseDao
     {
-        public List<Table> GetAllTables()
+        public Dictionary<int, Table> GetAllTables()
         {
-            string query = "SELECT t.table_id, ts.description, oi.ItemStatus " +
-            "FROM[TABLE] as t " +
-            " JOIN TABLE_STATUS as ts on t.statusID = ts.tablestatusID " +
-            " JOIN [ORDER] as o ON t.table_id = o.tableID " +
-            " JOIN [ORDER_ITEM] as oi ON o.orderID = oi.orderID";
+            string query = "SELECT t.table_id, t.statusID, os.description, oi.orderTime " +
+            " FROM[TABLE] as t " +
+            " LEFT JOIN[ORDER] as o ON t.table_id = o.tableID " +
+            " LEFT JOIN[ORDER_ITEM] as oi ON o.orderID = oi.orderID " +
+            " LEFT JOIN[ORDER_STATUS] as os ON oi.itemStatus = os.orderstatusID ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadAllTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public List<Table> ReadAllTables(DataTable dataTable)
+        public Dictionary<int, Table> ReadAllTables(DataTable dataTable)
         {
-            List<Table> tables = new List<Table>();
+            Dictionary<int, Table> tables = new Dictionary<int, Table>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Table table = new Table()
+                int? tableID = (dr["table_id"]) as int?;
+                int? tableStatusId = (dr["statusID"]) as int?;
+                string orderstatus = (dr["description"]) as string;
+                DateTime? timestamp = (dr["orderTime"]) as DateTime?;
+
+                if (tableID.HasValue)
                 {
-                    TableID = (int)dr["tableID"],
-                    TableStatus = (TableStatus)(dr["description"]),
-                };
-                tables.Add(table);
+                    // if value not present in dictionry or new value available 
+                    if (!tables.ContainsKey(tableID.Value) || (tables.ContainsKey(tableID.Value) && tables[tableID.Value].TimeStamp < timestamp))
+                    {
+                        tables[tableID.Value] = new Table()
+                        {
+                            TableID = tableID.Value,
+                            TableStatus = (TableStatus)tableStatusId,
+                            OrderStatus = orderstatus,
+                            TimeStamp = timestamp
+                        };
+                    }
+                    
+                }
             }
             return tables;
         }
@@ -45,9 +59,43 @@ namespace ChapeauDAL
                             " WHERE ord.paymentStatus = @paymentStatus";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@paymentStatus", false);
-            return null;
+            return CreateOrders(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        private List<Order> CreateOrders(DataTable orderdata)
+        {
+            List<Order> orders = new List<Order>();
+            EmployeeDAO employeeDAO = new EmployeeDAO();
+            foreach (DataRow dr in orderdata.Rows)
+            {
+                Order order = new Order()
+                {
+                    Table = new Table((int)dr["tableID"]),
+                    Status = (OrderStatus)(dr["orderStatus"]),
+                    PaymentStatus = (bool)(dr["paymentStatus"]),
+                    OrderID = (int)(dr["orderID"]),
+                    Employee = employeeDAO.GetEmployee((int)dr["employeeID"])
+                };
+                orders.Add(order);
+            }
+            return orders;
+        }
 
+        public void ChangeTableStatus(int Tableid, int TableStatus)
+        {
+            string query = "UPDATE [TABLE] " +
+                " SET statusID = @statusID " +
+                " WHERE table_id = @table_id";
+
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@statusID", TableStatus);
+            sqlParameters[1] = new SqlParameter("@table_id", Tableid);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public void ChangeTableStatusAfterPayment(Table table)
+        {
+            ChangeTableStatus(table.TableID, (int)TableStatus.Free); // TableStatus.Free = 1
+        }
     }
 }

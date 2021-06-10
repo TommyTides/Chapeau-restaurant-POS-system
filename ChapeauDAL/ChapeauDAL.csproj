@@ -65,7 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDAO.cs" />
-    <Compile Include="PaymentDAO.cs" />
     <Compile Include="EmployeeDAO.cs" />
     <Compile Include="MenuItemDAO.cs" />
     <Compile Include="OrderDAO.cs" />
