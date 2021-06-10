@@ -81,14 +81,15 @@ namespace ChapeauDAL
             return orders;
         }
 
-        public void ChangeTableStatus(int tableid, int tablestatus)
+        public void ChangeTableStatus(int Tableid, int TableStatus)
         {
-            string query = " UPDATE [TABLE] " +
-                           " SET statusID = @statusID " +
-                           " WHERE table_id = @table_id ";
+            string query = "UPDATE [TABLE] " +
+                " SET statusID = @statusID " +
+                " WHERE table_id = @table_id";
+
             SqlParameter[] sqlParameters = new SqlParameter[2];
-            sqlParameters[0] = new SqlParameter("@statusID", tablestatus);
-            sqlParameters[1] = new SqlParameter("@table_id", tableid);
+            sqlParameters[0] = new SqlParameter("@statusID", TableStatus);
+            sqlParameters[1] = new SqlParameter("@table_id", Tableid);
             ExecuteEditQuery(query, sqlParameters);
         }
 

@@ -21,6 +21,8 @@ namespace ChapeauUI
             this.table = table;
             tableServices = new TableServices();
             InitializeComponent();
+
+            // check table status and then display appropriate message
             if (table.TableStatus == TableStatus.Free)
             {
                 btnReserveTable.Text = "Reserve Table";
