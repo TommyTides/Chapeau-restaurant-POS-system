@@ -19,7 +19,7 @@ namespace ChapeauModel
         // status of the transaction (finished or not finished)
         public bool PaymentStatus { get; set; }
         public double Tip { get; set; }
-        public List<OrderItem> OrderItem { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
 
         public OrderStatus Status { get; set; }
 
@@ -31,22 +31,40 @@ namespace ChapeauModel
         public string Feedback { get; set; }
 
         // total price for a certain item (depending on quantity) excluding the VAT
-        public double TotalPrice
+        public double CalculateTotalOrderPriceByItems()
         {
-            get 
+            double tp = 0;
+            foreach (OrderItem orderItem in OrderItems)
             {
-                double tp = 0;
-
-                foreach(OrderItem orderItem in OrderItem)
-                {
-                    tp += orderItem.menuItem.item_price * orderItem.Quantity;
-                }
-                return tp;
+                tp += orderItem.menuItem.item_price * orderItem.Quantity;
             }
+            return tp;
+        }
+
+        public double CalculateVATbyItems()
+        {
+            double VAT = 0;
+
+            foreach (OrderItem orderItem in OrderItems)
+            {
+                if (orderItem.menuItem.item_type == MenuSubCategory.alcohol)
+                {
+                    VAT += orderItem.menuItem.item_price * orderItem.Quantity * 0.21;
+                }
+
+                else
+                {
+                    VAT += orderItem.menuItem.item_price * orderItem.Quantity * 0.06;
+                }
+            }
+
+            return VAT;
         }
     }
 
-    public enum OrderStatus { Pending = 1, Preparing, Ready, Served}
+    public enum OrderStatus { Pending = 1, Preparing, Ready, Served }
 
     public enum PaymentMethod { CreditCard = 1, Pin, Cash }
 }
+
+
