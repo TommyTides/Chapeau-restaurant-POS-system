@@ -182,8 +182,8 @@ namespace ChapeauUI
 
         private void btnBackToMenu_Click(object sender, EventArgs e)
         {
-            Menu menu = new Menu();
-            menu.ShowDialog();
+            //Menu menu = new Menu();
+           // menu.ShowDialog();
         }
 
         private void btntable1_Click(object sender, EventArgs e)

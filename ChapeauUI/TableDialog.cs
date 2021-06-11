@@ -40,8 +40,8 @@ namespace ChapeauUI
             {
                 tableServices.ChangeTableStatus(table.TableID, (int)TableStatus.Occupied);
             }
-            TakingOrderForm form = new TakingOrderForm();
-            form.ShowDialog();
+            //TakingOrderForm form = new TakingOrderForm();
+            //form.ShowDialog();
             this.Close();
         }
 
