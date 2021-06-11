@@ -28,6 +28,7 @@ namespace ChapeauUI
             tableService = new TableServices();
         }
 
+        // second constructor for when a tableID is passed from the tableoverview with the right table to pay
         public PaymentForm(int tableID)
         {
             InitializeComponent();
@@ -43,8 +44,6 @@ namespace ChapeauUI
             // at the start of the form, the tip checkbox is disabled
             txtTip.Enabled = false;
         }
-
-
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -73,8 +72,6 @@ namespace ChapeauUI
 
         private void cmdTable_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // fill the listview with the order items and make a way to distinguish alcoholic from non alcoholic drinks (VAT)
-
             // this.Order = cmbTable.Tag as Order;
 
             //gets the tableID based on the GetOrderForTableByTableID method and parses it
