@@ -60,8 +60,6 @@ namespace ChapeauUI
             foreach (Order order in orders)
             {
                 cmbTable.Items.Add(order.Table.TableID);
-                cmbTable.Tag = order;
-
             }
             // checks whether there are any tables that need to be paid for
             // if so, it find the correct tableid that needs to be paid for
