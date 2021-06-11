@@ -22,17 +22,6 @@ namespace ChapeauLogic
         {
             List<MenuItem> menuItems = menuItemDAO.GetAllMenuItems();
             return menuItems;
-        }
-
-        public void SendOrder(Order order)
-        {
-            order.OrderID = menuItemDAO.AddOrder(order);
-            menuItemDAO.AddOrderItem(order);
-        }
-
-        public List<OrderItem> GroupOrderItem()
-        {
-            return null;
-        }
+        } 
     }
 }

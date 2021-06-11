@@ -92,5 +92,17 @@ namespace ChapeauLogic
         {
             return orderDAO.GetOrderForTableByTableID(tableID);
         }
+
+        // Tommy Service parts
+        public void SendOrder(Order order)
+        {
+            order.OrderID = orderDAO.AddOrder(order);
+            orderDAO.AddOrderItem(order);
+        }
+
+        public List<OrderItem> GroupOrderItem()
+        {
+            return null;
+        }
     }
 }

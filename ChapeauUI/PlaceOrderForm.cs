@@ -12,15 +12,27 @@ namespace ChapeauUI
     public partial class PlaceOrderForm : Form
     {
         public MenuItemService menuItemService; // to communicate
+        public OrderService orderService;
         public Order order;
         public OrderItem orderItem;
         public List<MenuItem> menuItems; // list of menu items to fill the menu
         public MenuItem item;
-
+        public Employee employee;
 
         public PlaceOrderForm(Employee employee)
         {
             InitializeComponent();
+            HideAllPanels();
+
+            menuItemService = new MenuItemService();
+            orderService = new OrderService();
+            order = new Order();
+            orderItem = new OrderItem();
+            order.OrderItems = new List<OrderItem>();
+            menuItems = new List<MenuItem>();
+            item = new MenuItem();
+            this.employee = new Employee();
+            this.employee = employee;
         }
         public PlaceOrderForm() // constructor for test runs only
         {
@@ -67,7 +79,9 @@ namespace ChapeauUI
 
         private void lblTableView_Click(object sender, EventArgs e)
         {
-            // to do...
+            TablePage tableView = new TablePage(this.employee);
+            tableView.Show();
+            this.Close();
         }
 
         private void lblMenuOptions_Click(object sender, EventArgs e)
@@ -235,7 +249,7 @@ namespace ChapeauUI
             orderItem.Comment = "no comment";
             orderItem.Quantity = temp;
 
-            order.OrderItems = menuItemService.GroupOrderItem();
+            order.OrderItems = orderService.GroupOrderItem();
 
             foreach (OrderItem orderorderItem in order.OrderItems)
             {
