@@ -31,6 +31,7 @@ namespace ChapeauLogic
         public void UpdateOrderReady(OrderItem order)
         {
             orderDAO.UpdateOrderReady(order);
+            orderDAO.DeleteOrder(order);
         }
         public List<Order> GetAllKitchen()
         { 

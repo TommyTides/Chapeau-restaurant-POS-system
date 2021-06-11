@@ -48,6 +48,17 @@ namespace ChapeauDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
+        public void DeleteOrder(OrderItem order)
+        {
+            string query = "Delete from [ORDER_ITEM] Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
+            SqlParameter[] sqlParameters = new SqlParameter[4];
+            sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
+            sqlParameters[1] = new SqlParameter("@itemStatus", order.Status);
+            sqlParameters[2] = new SqlParameter("@comment", order.Comment);
+            sqlParameters[3] = new SqlParameter("@orderTime", order.OrderTime);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
         private List<Order> ReadKitchenBar(DataTable dataTable)
         {
             List<Order> KitchenBarOrders = new List<Order>();
@@ -84,50 +95,7 @@ namespace ChapeauDAL
             return KitchenBarOrders;
         }
 
-        //private List<Order> ReadKitchen(DataTable dataTable)
-        //{
-        //    List<Order> Kitchen = new List<Order>();
-        //    foreach (DataRow dr in dataTable.Rows)
-        //    {
-
-        //        Order order = new Order();
-        //        order.Table.TableID = (int)dr["tableID"];
-        //        order.OrderID = (int)dr["orderID"];
-        //        foreach (DataRow dr in dataTable.Rows)
-        //        {
-
-        //        }
-
-        //        MenuItem item = new MenuItem();
-
-        //        item.menu_type = (MenuCategory)dr["menu_type"];
-        //        item.item_name = (string)dr["item_name"];
-
-
-
-        //        OrderItem orderItem = new OrderItem();
-
-        //        orderItem.Comment = (string)dr["comment"];
-        //        orderItem.Quantity = (int)dr["quantity"];
-        //        orderItem.Status = (ItemStatus)dr["itemStatus"];
-        //        orderItem.OrderTime = (DateTime)dr["orderTime"];
-        //        orderItem.menuItem = item;
-
-
-
-        //        Kitchen.Add(orderItem);
-
-        //    }
-        //    return Kitchen;
-
-        //}
-
-
-
-
-
-
-
+        
         // Alex's part
 
         private List<OrderItem> ReadOrderItem(DataTable dataTable)
