@@ -188,14 +188,13 @@ namespace ChapeauDAL
                     TableID = (int)dr["tableID"],
                 };
 
-                Order order = new Order
-                {
-                    OrderID = (int)dr["orderID"],
-                    PaymentDate = (DateTime)dr["paymentDate"],
-                    PaymentStatus = (bool)dr["paymentStatus"],
-                    Status = (OrderStatus)dr["orderStatus"],
-                    Total = (double)dr["totalPrice"],
-                };
+                Order order = new Order();
+                order.OrderID = (int)dr["orderID"];
+                if (dr["paymentStatus"] != System.DBNull.Value) order.PaymentStatus = (bool)dr["paymentStatus"];
+                if (dr["orderStatus"] != System.DBNull.Value) order.Status = (OrderStatus)dr["orderStatus"];
+                if (dr["totalPrice"] != System.DBNull.Value) order.Total = (double)dr["totalPrice"];
+                if (dr["paymentDate"] != System.DBNull.Value) order.PaymentDate = (DateTime)dr["paymentDate"];
+
                 order.Table = table;
                 unpaidOrders.Add(order);
             }
