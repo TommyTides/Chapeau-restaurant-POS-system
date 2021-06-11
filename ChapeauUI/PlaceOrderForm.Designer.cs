@@ -64,6 +64,8 @@ namespace ChapeauUI
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.pnlDrinks = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.pnlStaticBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hamburgerIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -72,6 +74,7 @@ namespace ChapeauUI
             this.pnlFoodMenu.SuspendLayout();
             this.pnlAllMenuInside.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFoodMenu)).BeginInit();
+            this.pnlDrinks.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlStaticBar
@@ -165,9 +168,9 @@ namespace ChapeauUI
             this.pnlHamburger.Controls.Add(this.lblMenuOptions);
             this.pnlHamburger.Controls.Add(this.lblTableView);
             this.pnlHamburger.Controls.Add(this.lblHome);
-            this.pnlHamburger.Location = new System.Drawing.Point(538, 92);
+            this.pnlHamburger.Location = new System.Drawing.Point(538, 90);
             this.pnlHamburger.Name = "pnlHamburger";
-            this.pnlHamburger.Size = new System.Drawing.Size(217, 898);
+            this.pnlHamburger.Size = new System.Drawing.Size(217, 900);
             this.pnlHamburger.TabIndex = 10;
             // 
             // button1
@@ -238,9 +241,9 @@ namespace ChapeauUI
             this.pnlMenuOptions.Controls.Add(this.btnDinnerMenu);
             this.pnlMenuOptions.Controls.Add(this.btnDrinksNonAlcMenu);
             this.pnlMenuOptions.Controls.Add(this.btnLunchMenu);
-            this.pnlMenuOptions.Location = new System.Drawing.Point(-1, 95);
+            this.pnlMenuOptions.Location = new System.Drawing.Point(-1, 102);
             this.pnlMenuOptions.Name = "pnlMenuOptions";
-            this.pnlMenuOptions.Size = new System.Drawing.Size(756, 898);
+            this.pnlMenuOptions.Size = new System.Drawing.Size(756, 891);
             this.pnlMenuOptions.TabIndex = 11;
             // 
             // btnDrinksAlcMenu
@@ -490,11 +493,29 @@ namespace ChapeauUI
             this.label19.TabIndex = 1;
             this.label19.Text = "Price";
             // 
+            // pnlDrinks
+            // 
+            this.pnlDrinks.Controls.Add(this.label2);
+            this.pnlDrinks.Location = new System.Drawing.Point(332, 93);
+            this.pnlDrinks.Name = "pnlDrinks";
+            this.pnlDrinks.Size = new System.Drawing.Size(200, 100);
+            this.pnlDrinks.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(28, 54);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "label2";
+            // 
             // PlaceOrderForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(752, 985);
+            this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.pnlFoodMenu);
             this.Controls.Add(this.pnlHamburger);
             this.Controls.Add(this.pnlStaticBar);
@@ -516,6 +537,8 @@ namespace ChapeauUI
             this.pnlAllMenuInside.ResumeLayout(false);
             this.pnlAllMenuInside.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFoodMenu)).EndInit();
+            this.pnlDrinks.ResumeLayout(false);
+            this.pnlDrinks.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -557,5 +580,7 @@ namespace ChapeauUI
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Panel pnlDrinks;
+        private System.Windows.Forms.Label label2;
     }
 }

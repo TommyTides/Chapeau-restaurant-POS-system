@@ -16,7 +16,7 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public int GetNewestOrder()
+        public int GetNewestOrder() // Get newest order form the database
         {
             string query = "SELECT TOP 1 orderID FROM [ORDER] ORDER BY orderID DESC;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
@@ -53,7 +53,7 @@ namespace ChapeauDAL
             // Test id for table
             order.Table.TableID = 1;
             //
-            foreach (OrderItem orderItem in order.OrderItem)
+            foreach (OrderItem orderItem in order.OrderItems)
             {
                 string query = $"INSERT INTO ORDER_ITEM(orderID, item_id, quantity, totalPrice, comment, orderTime, placeID) " +
                     $"VALUES(@orderID, @item_id, @quantity, @totalPrice, @comment, @orderTime, @placeID);";
