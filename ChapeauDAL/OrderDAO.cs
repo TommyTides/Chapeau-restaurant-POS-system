@@ -322,6 +322,7 @@ namespace ChapeauDAL
                 if (dr["tip"] != System.DBNull.Value) order.Tip = (double)dr["tip"];
                 if (dr["vat"] != System.DBNull.Value) order.VATTotal = (double)dr["vat"];
 
+
                 // order.Table = GetTableByID(tmp_tableID);
                 order.Table = new Table()
                 {

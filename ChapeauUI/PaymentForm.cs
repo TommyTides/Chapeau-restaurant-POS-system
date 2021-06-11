@@ -169,7 +169,9 @@ namespace ChapeauUI
                 tableService.ChangeTableStatusAfterPayment(Order.Table);
                 MessageBox.Show("Order has been paid successfully!");
                 this.Close();
-                new TablePage(Order.Employee).Show();
+
+                TablePage tablePage = new TablePage(Order.Employee);
+                tablePage.ShowDialog();
             }
             else
             {
