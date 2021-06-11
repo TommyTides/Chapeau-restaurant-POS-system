@@ -16,7 +16,7 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public int GetNewestOrder()
+        public int GetNewestOrder() // Get newest order form the database
         {
             string query = "SELECT TOP 1 orderID FROM [ORDER] ORDER BY orderID DESC;";
             SqlParameter[] sqlParameters = new SqlParameter[0];

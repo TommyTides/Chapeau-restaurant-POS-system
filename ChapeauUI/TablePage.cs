@@ -182,7 +182,7 @@ namespace ChapeauUI
 
         private void btnBackToMenu_Click(object sender, EventArgs e)
         {
-            Menu menu = new Menu();
+            PlaceOrderForm menu = new PlaceOrderForm();
             menu.ShowDialog();
         }
 

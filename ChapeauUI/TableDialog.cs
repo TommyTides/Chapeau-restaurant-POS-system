@@ -42,6 +42,8 @@ namespace ChapeauUI
             }
             //TakingOrderForm form = new TakingOrderForm();
             //form.ShowDialog();
+            PlaceOrderForm form = new PlaceOrderForm();
+            form.ShowDialog();
             this.Close();
         }
 

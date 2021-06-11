@@ -33,7 +33,6 @@ namespace ChapeauUI
             order.OrderItems = new List<OrderItem>();
             menuItems = new List<MenuItem>();
             item = new MenuItem();
-
         }
 
         private void PlaceOrderForm_Load(object sender, EventArgs e)
@@ -46,6 +45,7 @@ namespace ChapeauUI
             pnlHamburger.Visible = false;
             pnlMenuOptions.Visible = false;
             pnlFoodMenu.Visible = false;
+            pnlDrinks.Visible = false;
         }
 
         private void hamburgerIcon_Click(object sender, EventArgs e)
@@ -104,7 +104,8 @@ namespace ChapeauUI
 
         private void btnDrinksNonAlcMenu_Click(object sender, EventArgs e)
         {
-            // to do...
+            HideAllPanels();
+            FillDrinksMenu(MenuSubCategory.soft, MenuSubCategory.hot);
         }
 
         private void btnDrinksAlcMenu_Click(object sender, EventArgs e)
@@ -177,7 +178,7 @@ namespace ChapeauUI
 
         private void listBoxSelectedFoodItem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            numericUpDownFoodMenu.Value = 1; // set quantity to 1 when the aan item is selected.
+            numericUpDownFoodMenu.Value = 1; // set quantity to 1 when the an item is selected.
         }
 
         private void numericUpDownFoodMenu_ValueChanged(object sender, EventArgs e)
@@ -258,5 +259,33 @@ namespace ChapeauUI
             listBoxSelectedFoodItem.Items.Clear();
             listBoxSelectedFoodItem.Text = "";
         }
+
+        private void FillDrinksMenu(MenuSubCategory firstCategory, MenuSubCategory secondCategory)
+        {
+            pnlDrinks.Visible = true;
+            pnlDrinks.BringToFront();
+            // List box sizes depending on menu type.
+            //if (firstCategory == MenuSubCategory.soft)
+            //    SetListBoxSize(124, 124, 124, 124);
+            //else
+            //    SetListBoxSize(154, 184, 154, 184);
+
+            //menuItems.Clear();
+            //menuItems = menuItemService.GetAllMenuItems(); // Gets list of menuItems form database
+            //btnAddDrink.Enabled = false;
+
+            //foreach (MenuItem item in menuItems) // Adding items tot the listboxes
+            //{
+            //    if (item.item_type == firstCategory)
+            //    {
+            //        listBoxDrinks1.Items.Add(item);
+            //        listBoxDrinks1Price.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
+            //    }
+            //    else if (item.item_type == secondCategory)
+            //    {
+            //        listBoxDrinks2.Items.Add(item);
+            //        listBoxDrinks2Price.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
+            //    }
+            }
+        }
     }
-}
