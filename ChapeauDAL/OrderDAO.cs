@@ -48,17 +48,6 @@ namespace ChapeauDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        public void DeleteOrder(OrderItem order)
-        {
-            string query = "Delete from [ORDER_ITEM] Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
-            SqlParameter[] sqlParameters = new SqlParameter[4];
-            sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
-            sqlParameters[1] = new SqlParameter("@itemStatus", order.Status);
-            sqlParameters[2] = new SqlParameter("@comment", order.Comment);
-            sqlParameters[3] = new SqlParameter("@orderTime", order.OrderTime);
-            ExecuteEditQuery(query, sqlParameters);
-        }
-
         private List<Order> ReadKitchenBar(DataTable dataTable)
         {
             List<Order> KitchenBarOrders = new List<Order>();

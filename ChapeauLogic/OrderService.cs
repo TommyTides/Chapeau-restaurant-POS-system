@@ -17,12 +17,6 @@ namespace ChapeauLogic
             orderDAO = new OrderDAO();
         }
 
-
-        //public List<Order> GetAllOrders()
-        //{  
-        //    return orderDAO.GetAllOrders();
-        //}
-
         public void UpdateOrderPreparing(OrderItem order)
         {
             orderDAO.UpdateOrderPreparing(order);
@@ -31,7 +25,7 @@ namespace ChapeauLogic
         public void UpdateOrderReady(OrderItem order)
         {
             orderDAO.UpdateOrderReady(order);
-            orderDAO.DeleteOrder(order);
+
         }
         public List<Order> GetAllKitchen()
         { 

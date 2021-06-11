@@ -13,6 +13,7 @@ namespace ChapeauUI
         private EmployeeService employeeService;
         private OrderItem orderItem;
         private Employee employee;
+        private Order order;
 
         public OrderForm()
         {
@@ -20,6 +21,8 @@ namespace ChapeauUI
             orderService = new OrderService();
             employeeService = new EmployeeService();
             orderItem = new OrderItem();
+            employee = new Employee();
+            order = new Order();
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
@@ -45,13 +48,13 @@ namespace ChapeauUI
         //    List<Order> orderKitchen = null;
         //    if (employee.Role == Role.Barman)
         //    {
-        //         orderKitchen = orderService.GetAllKitchen();
-        //lblEmployee.Text = " OrderView Kitchen";
+        //        orderKitchen = orderService.GetAllKitchen();
+        //        lblEmployee.Text = " OrderView Kitchen";
         //    }
         //    else if (employee.Role == Role.KitchenStaff)
         //    {
         //        orderKitchen = orderService.GetAllBar();
-        //lblEmployee.Text = " OrderView Bar";
+        //        lblEmployee.Text = " OrderView Bar";
         //    }
 
         //    return orderKitchen;
@@ -68,6 +71,13 @@ namespace ChapeauUI
             {
                 foreach (OrderItem I in O.OrderItems)
                 {
+                    if (I.Status.ToString() == "Ready")
+                    {
+                        //if status is ready it will skip it
+                        continue;
+                    }
+
+
                     ListViewItem li = new ListViewItem(I.OrderID.ToString());
                     li.SubItems.Add(I.menuItem.item_name);
                     li.SubItems.Add(I.Comment.ToString());
