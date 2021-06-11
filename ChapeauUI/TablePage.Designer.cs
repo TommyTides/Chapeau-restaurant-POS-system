@@ -33,7 +33,7 @@ namespace ChapeauUI
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.lblemployee = new System.Windows.Forms.Label();
-            this.btnBackToMenu = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.lblrestaurantview = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -85,7 +85,7 @@ namespace ChapeauUI
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.lblemployee);
-            this.panel1.Controls.Add(this.btnBackToMenu);
+            this.panel1.Controls.Add(this.btnLogout);
             this.panel1.Controls.Add(this.lblrestaurantview);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(-2, -2);
@@ -98,7 +98,7 @@ namespace ChapeauUI
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(323, 76);
+            this.label8.Location = new System.Drawing.Point(290, 76);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(130, 24);
             this.label8.TabIndex = 4;
@@ -108,29 +108,29 @@ namespace ChapeauUI
             // 
             this.lblemployee.AutoSize = true;
             this.lblemployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblemployee.Location = new System.Drawing.Point(548, 11);
+            this.lblemployee.Location = new System.Drawing.Point(482, 11);
             this.lblemployee.Name = "lblemployee";
             this.lblemployee.Size = new System.Drawing.Size(46, 24);
             this.lblemployee.TabIndex = 3;
             this.lblemployee.Text = "------";
             // 
-            // btnBackToMenu
+            // btnLogout
             // 
-            this.btnBackToMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBackToMenu.Location = new System.Drawing.Point(599, 55);
-            this.btnBackToMenu.Name = "btnBackToMenu";
-            this.btnBackToMenu.Size = new System.Drawing.Size(136, 66);
-            this.btnBackToMenu.TabIndex = 2;
-            this.btnBackToMenu.Text = "Back to Menu";
-            this.btnBackToMenu.UseVisualStyleBackColor = true;
-            this.btnBackToMenu.Click += new System.EventHandler(this.btnBackToMenu_Click);
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Location = new System.Drawing.Point(599, 55);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(136, 66);
+            this.btnLogout.TabIndex = 2;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // lblrestaurantview
             // 
             this.lblrestaurantview.AutoSize = true;
             this.lblrestaurantview.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblrestaurantview.ForeColor = System.Drawing.Color.White;
-            this.lblrestaurantview.Location = new System.Drawing.Point(321, 11);
+            this.lblrestaurantview.Location = new System.Drawing.Point(280, 11);
             this.lblrestaurantview.Name = "lblrestaurantview";
             this.lblrestaurantview.Size = new System.Drawing.Size(152, 31);
             this.lblrestaurantview.TabIndex = 1;
@@ -595,7 +595,7 @@ namespace ChapeauUI
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnBackToMenu;
+        private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Label lblrestaurantview;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
