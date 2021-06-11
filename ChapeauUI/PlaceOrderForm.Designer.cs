@@ -168,9 +168,9 @@ namespace ChapeauUI
             this.pnlHamburger.Controls.Add(this.lblMenuOptions);
             this.pnlHamburger.Controls.Add(this.lblTableView);
             this.pnlHamburger.Controls.Add(this.lblHome);
-            this.pnlHamburger.Location = new System.Drawing.Point(538, 90);
+            this.pnlHamburger.Location = new System.Drawing.Point(538, 93);
             this.pnlHamburger.Name = "pnlHamburger";
-            this.pnlHamburger.Size = new System.Drawing.Size(217, 900);
+            this.pnlHamburger.Size = new System.Drawing.Size(233, 897);
             this.pnlHamburger.TabIndex = 10;
             // 
             // button1
@@ -496,9 +496,9 @@ namespace ChapeauUI
             // pnlDrinks
             // 
             this.pnlDrinks.Controls.Add(this.label2);
-            this.pnlDrinks.Location = new System.Drawing.Point(332, 93);
+            this.pnlDrinks.Location = new System.Drawing.Point(12, 105);
             this.pnlDrinks.Name = "pnlDrinks";
-            this.pnlDrinks.Size = new System.Drawing.Size(200, 100);
+            this.pnlDrinks.Size = new System.Drawing.Size(676, 868);
             this.pnlDrinks.TabIndex = 14;
             // 
             // label2

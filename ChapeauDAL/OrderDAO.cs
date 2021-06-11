@@ -367,7 +367,59 @@ namespace ChapeauDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
+        // Tommy's DAO parts---------------------------------------------------------------------------
+        public int GetNewestOrder() // Get newest order form the database
+        {
+            string query = "SELECT TOP 1 orderID FROM [ORDER] ORDER BY orderID DESC;";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadOrderID(ExecuteSelectQuery(query, sqlParameters));
+        }
 
+        private int ReadOrderID(DataTable dataTable)
+        {
+            int newestOrder = 0;
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                newestOrder = (int)dr["orderID"];
+            }
+            return newestOrder;
+        }
+
+        public int AddOrder(Order order)
+        {
+            // Test id for table
+            order.Table.TableID = 1;
+            //
+            string query = $"INSERT INTO [ORDER](tableID, employeeID, paymentStatus) " +
+                    $"VALUES(@paymentDate, @totalPrice, @tableID, #employeeID, #paymentStatus);";
+            SqlParameter[] sqlParameters = new SqlParameter[5];
+            sqlParameters[2] = new SqlParameter("@tableID", order.Table.TableID);
+            sqlParameters[3] = new SqlParameter("@employeeID", order.Employee.employeeID);
+            sqlParameters[4] = new SqlParameter("@paymentStatus", order.PaymentStatus);
+            ExecuteEditQuery(query, sqlParameters);
+            return GetNewestOrder();
+        }
+
+        public void AddOrderItem(Order order)
+        {
+            // Test id for table
+            order.Table.TableID = 1;
+            //
+            foreach (OrderItem orderItem in order.OrderItems)
+            {
+                string query = $"INSERT INTO ORDER_ITEM(orderID, item_id, quantity, totalPrice, comment, orderTime, placeID) " +
+                    $"VALUES(@orderID, @item_id, @quantity, @totalPrice, @comment, @orderTime, @placeID);";
+
+                SqlParameter[] sqlParameters = new SqlParameter[6];
+                sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
+                sqlParameters[1] = new SqlParameter("@item_id", orderItem.menuItem.item_id);
+                sqlParameters[2] = new SqlParameter("@quantity", order.Table.TableID);
+                sqlParameters[3] = new SqlParameter("@comment", orderItem.Comment);
+                sqlParameters[4] = new SqlParameter("@orderTime", orderItem.OrderTime);
+                sqlParameters[5] = new SqlParameter("@placeID", orderItem.menuItem.place);
+                ExecuteEditQuery(query, sqlParameters);
+            }
+        }
 
     }
 }
