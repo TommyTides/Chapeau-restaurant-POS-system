@@ -223,47 +223,47 @@ namespace ChapeauDAL
         //    return ReadOrders(ExecuteSelectQuery(query, sqlParameters));
         //}
 
-        public List<Order> ReadOrders(DataTable dataTable)
-        {
-            List<Order> orders = new List<Order>();
+        //public List<Order> ReadOrders(DataTable dataTable)
+        //{
+        //    List<Order> orders = new List<Order>();
 
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                Order order = new Order
-                {
-                    OrderID = (int)dr["orderID"],
-                    VATTotal = (double)dr["vatTotal"],
-                    PaymentDate = (DateTime)dr["paymentDate"],
-                    PaymentStatus = (bool)dr["paymentStatus"],
-                    Tip = (double)dr["tip"],
-                    Status = (OrderStatus)dr["orderStatus"],
-                    paymentMethod = (PaymentMethod)dr["paymentMethod"],
-                    Total = (double)dr["total"],
-                    Feedback = (string)dr["feedback"]
+        //    foreach (DataRow dr in dataTable.Rows)
+        //    {
+        //        Order order = new Order
+        //        {
+        //            OrderID = (int)dr["orderID"],
+        //            VATTotal = (double)dr["vatTotal"],
+        //            PaymentDate = (DateTime)dr["paymentDate"],
+        //            PaymentStatus = (bool)dr["paymentStatus"],
+        //            Tip = (double)dr["tip"],
+        //            Status = (OrderStatus)dr["orderStatus"],
+        //            paymentMethod = (PaymentMethod)dr["paymentMethod"],
+        //            Total = (double)dr["total"],
+        //            Feedback = (string)dr["feedback"]
 
-                };
+        //        };
 
-                Employee employee = new Employee
-                {
-                    employeeID = (int)dr["employeeID"],
-                    FirstName = (string)dr["firstName"],
-                    LastName = (string)dr["lastName"],
-                    Role = (Role)dr["role"],
-                    LoginCode = (int)dr["loginCode"]
-                };
+        //        Employee employee = new Employee
+        //        {
+        //            employeeID = (int)dr["employeeID"],
+        //            FirstName = (string)dr["firstName"],
+        //            LastName = (string)dr["lastName"],
+        //            Role = (Role)dr["role"],
+        //            LoginCode = (int)dr["loginCode"]
+        //        };
 
-                Table table = new Table
-                {
-                    TableID = (int)dr["tableID"],
-                    TableStatus = (TableStatus)dr["tableStatus"]
-                };
-                //store table data in order object reference
-                order.Table = table;
-                order.Employee = employee;
-                orders.Add(order);
-            }
-            return orders;
-        }
+        //        Table table = new Table
+        //        {
+        //            TableID = (int)dr["tableID"],
+        //            TableStatus = (TableStatus)dr["tableStatus"]
+        //        };
+        //        //store table data in order object reference
+        //        order.Table = table;
+        //        order.Employee = employee;
+        //        orders.Add(order);
+        //    }
+        //    return orders;
+        //}
 
 
 
