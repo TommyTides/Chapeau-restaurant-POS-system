@@ -51,9 +51,11 @@ namespace ChapeauUI
                 TablePage page = new TablePage(employee);
                 page.Show();
             }
+
             else if (employee.Role == Role.KitchenStaff || employee.Role == Role.Barman)
             {
-                /*The kitchen and bar view will go here */
+                OrderForm orderForm = new OrderForm();
+                orderForm.Show();
             }
             
         }

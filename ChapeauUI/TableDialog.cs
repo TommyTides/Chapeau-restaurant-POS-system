@@ -16,9 +16,11 @@ namespace ChapeauUI
     {
         Table table;
         TableServices tableServices;
-        public TableDialog(Table table)
+        Employee employee;
+        public TableDialog(Table table, Employee employee)
         {
             this.table = table;
+            this.employee = employee;
             tableServices = new TableServices();
             InitializeComponent();
 
@@ -31,6 +33,7 @@ namespace ChapeauUI
             {
                 btnReserveTable.Text = "Release Table";
             }
+            btnPayment.Enabled = (table.TableStatus == TableStatus.Occupied);
             FillFormData();
         }
 
@@ -40,9 +43,7 @@ namespace ChapeauUI
             {
                 tableServices.ChangeTableStatus(table.TableID, (int)TableStatus.Occupied);
             }
-            //TakingOrderForm form = new TakingOrderForm();
-            //form.ShowDialog();
-            PlaceOrderForm form = new PlaceOrderForm();
+            PlaceOrderForm form = new PlaceOrderForm(employee);
             form.ShowDialog();
             this.Close();
         }
@@ -64,13 +65,19 @@ namespace ChapeauUI
             {
                 tableServices.ChangeTableStatus(table.TableID, (int)TableStatus.Free);
             }
-
             this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnPayment_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            PaymentForm form = new PaymentForm(table.TableID);
+            form.Show();
         }
     }
 }

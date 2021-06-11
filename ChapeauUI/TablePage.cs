@@ -118,72 +118,16 @@ namespace ChapeauUI
         {
             Table table = tables[tableid];
 
-            TableDialog tableDialog = new TableDialog(table);
+            TableDialog tableDialog = new TableDialog(table, employee);
             tableDialog.ShowDialog();
-
-            //if (table.TableStatus == TableStatus.Free)
-            //{
-            //    string message = "Do you want to reserve this table?, select No to occupy the table";
-            //    string caption = "Table reservation";
-            //    MessageBoxButtons messageBoxButtons = MessageBoxButtons.YesNo;
-            //    DialogResult result = MessageBox.Show(message, caption, messageBoxButtons);
-
-            //    if (result == DialogResult.Yes)
-            //    {
-            //        tableServices.ChangeTableStatus(tableid, (int)TableStatus.Reserved);
-            //    }
-
-            //    else if (result == DialogResult.No)
-            //    {
-            //        TakeOrder(tableid);
-            //        tableServices.ChangeTableStatus(tableid, (int)TableStatus.Occupied);
-            //    }
-            //}
-
-
-            //else if (table.TableStatus == TableStatus.Occupied)
-            //{
-            //    string message = "Finish ordering?";
-            //    string caption = "Check customer order";
-
-            //    MessageBoxButtons messageBoxButtons = MessageBoxButtons.YesNo;
-
-            //    DialogResult result = MessageBox.Show(message, caption, messageBoxButtons);
-
-            //    if (result == DialogResult.Yes)
-            //    {
-            //        PaymentForm paymentForm = new PaymentForm();
-            //        paymentForm.ShowDialog();
-            //    }
-            //}
-
-            //else if (table.TableStatus == TableStatus.Reserved)
-            //{
-            //    TakeOrder(tableid);
-            //}
         }
 
-        private void TakeOrder(int tableid)
+        private void btnLogout_Click(object sender, EventArgs e)
         {
-            string message = "Would you like to place order for this table";
-            string caption = "Start ordering";
-
-            MessageBoxButtons messageBoxButtons = MessageBoxButtons.YesNo;
-            DialogResult result1 = MessageBox.Show(message, caption, messageBoxButtons);
-
-            if (result1 == DialogResult.Yes)
-            {
-                PlaceOrderForm placeOrderForm = new PlaceOrderForm();
-                placeOrderForm.ShowDialog();
-            }
-        }
-
-
-
-        private void btnBackToMenu_Click(object sender, EventArgs e)
-        {
-            PlaceOrderForm menu = new PlaceOrderForm();
-            menu.ShowDialog();
+            this.Close();
+            LoginForm form = new LoginForm();
+            form.Show();
+            
         }
 
         private void btntable1_Click(object sender, EventArgs e)
