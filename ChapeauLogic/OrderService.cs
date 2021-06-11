@@ -78,10 +78,10 @@ namespace ChapeauLogic
             return orders;
         }
 
-        public List<OrderItem> GetOrderItemForOrderID(int orderID)
-        {
-            return orderDAO.GetOrderItemForOrderID(orderID);
-        }
+        //public List<OrderItem> GetOrderItemForOrderID(int orderID)
+        //{
+        //    return orderDAO.GetOrderItemForOrderID(orderID);
+        //}
 
         public void UpdateOrderStatus(Order order)
         {

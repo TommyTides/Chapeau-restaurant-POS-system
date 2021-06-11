@@ -49,11 +49,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <None Include="ClassDiagram1.cd" />
-=======
     <None Include="ClassDiagram2.cd" />
->>>>>>> c55df9c1089d109df09981ef2b99109ff082a1c0
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
