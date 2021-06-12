@@ -122,9 +122,42 @@ namespace ChapeauDAL
 
         //}
 
-    #region Alex's part
+        #region Alex's part
+
+
         private List<OrderItem> ReadOrderItems(DataTable dataTable)
-        
+        {
+            List<OrderItem> orderItems = new List<OrderItem>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                // read from menu item
+                // note to self: next time fill out all the fields in order to avoid errors with retrieving data
+                MenuItem menu = new MenuItem()
+                {
+                    item_id = (int)dr["item_id"],
+                    item_name = (string)dr["item_name"],
+                    item_price = (double)dr["item_price"],
+                    menu_type = (MenuCategory)dr["menu_type"],
+                    item_type = (MenuSubCategory)dr["item_type"],
+                };
+
+                // read from order item
+                OrderItem orderItem = new OrderItem();
+                {
+                    // store menu item in the order item object (menuItem)
+                    orderItem.menuItem = menu;
+                    orderItem.Quantity = (int)dr["quantity"];
+                    if (dr["comment"] != System.DBNull.Value) orderItem.Comment = (string)dr["comment"]; // comment can be left null in database
+                    orderItem.Status = (ItemStatus)dr["itemStatus"];
+                };
+
+                orderItems.Add(orderItem);
+            }
+            return orderItems;
+        }
+
+
         // Alex's part
 
         private List<OrderItem> ReadOrderItem(DataTable dataTable)
