@@ -32,11 +32,11 @@ namespace ChapeauUI
 
             if (txtlogincode.TextLength == 4)
             {
-                GetEmployeeByLogin();
+                LogEmployeeIn();
             }
         }
 
-        private void GetEmployeeByLogin()
+        private void LogEmployeeIn()
         {
             Employee employee = employeeService.GetEmployeeByCode(int.Parse(txtlogincode.Text));
 
@@ -48,16 +48,19 @@ namespace ChapeauUI
 
             else if (employee.Role == Role.Waiter || employee.Role == Role.Manager)
             {
+                this.Hide();
                 TablePage page = new TablePage(employee);
-                page.Show();
+                page.ShowDialog();
+                
             }
 
             else if (employee.Role == Role.KitchenStaff || employee.Role == Role.Barman)
             {
                 OrderForm orderForm = new OrderForm();
-                orderForm.Show();
+                orderForm.ShowDialog();
             }
             
+
         }
 
         private void exitbtn_Click(object sender, EventArgs e)

@@ -52,6 +52,7 @@ namespace ChapeauUI
             // 
             // exitbtn
             // 
+            this.exitbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitbtn.Location = new System.Drawing.Point(615, 35);
             this.exitbtn.Name = "exitbtn";
             this.exitbtn.Size = new System.Drawing.Size(110, 53);
@@ -112,7 +113,7 @@ namespace ChapeauUI
             // 
             // btn1
             // 
-            this.btn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn1.Location = new System.Drawing.Point(69, 382);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(91, 74);
@@ -123,7 +124,7 @@ namespace ChapeauUI
             // 
             // btn2
             // 
-            this.btn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn2.Location = new System.Drawing.Point(315, 382);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(91, 74);
@@ -134,7 +135,7 @@ namespace ChapeauUI
             // 
             // btn3
             // 
-            this.btn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn3.Location = new System.Drawing.Point(572, 382);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(91, 74);
@@ -145,7 +146,7 @@ namespace ChapeauUI
             // 
             // btn4
             // 
-            this.btn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn4.Location = new System.Drawing.Point(69, 550);
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(91, 74);
@@ -156,7 +157,7 @@ namespace ChapeauUI
             // 
             // btn5
             // 
-            this.btn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn5.Location = new System.Drawing.Point(315, 550);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(91, 74);
@@ -167,7 +168,7 @@ namespace ChapeauUI
             // 
             // btn6
             // 
-            this.btn6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn6.Location = new System.Drawing.Point(572, 550);
             this.btn6.Name = "btn6";
             this.btn6.Size = new System.Drawing.Size(91, 74);
@@ -178,7 +179,7 @@ namespace ChapeauUI
             // 
             // btn7
             // 
-            this.btn7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn7.Location = new System.Drawing.Point(69, 730);
             this.btn7.Name = "btn7";
             this.btn7.Size = new System.Drawing.Size(91, 74);
@@ -189,7 +190,7 @@ namespace ChapeauUI
             // 
             // btn8
             // 
-            this.btn8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn8.Location = new System.Drawing.Point(315, 730);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(91, 74);
@@ -200,7 +201,7 @@ namespace ChapeauUI
             // 
             // btn9
             // 
-            this.btn9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn9.Location = new System.Drawing.Point(572, 730);
             this.btn9.Name = "btn9";
             this.btn9.Size = new System.Drawing.Size(91, 74);
@@ -211,7 +212,7 @@ namespace ChapeauUI
             // 
             // btn0
             // 
-            this.btn0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn0.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn0.Location = new System.Drawing.Point(315, 877);
             this.btn0.Name = "btn0";
             this.btn0.Size = new System.Drawing.Size(91, 74);
@@ -222,7 +223,7 @@ namespace ChapeauUI
             // 
             // btndelete
             // 
-            this.btndelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btndelete.Location = new System.Drawing.Point(572, 877);
             this.btndelete.Name = "btndelete";
             this.btndelete.Size = new System.Drawing.Size(91, 74);

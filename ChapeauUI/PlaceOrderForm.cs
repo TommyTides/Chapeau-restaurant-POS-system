@@ -18,8 +18,9 @@ namespace ChapeauUI
         public List<MenuItem> menuItems; // list of menu items to fill the menu
         public MenuItem item;
         public Employee employee;
+        private Table table;
 
-        public PlaceOrderForm(Employee employee)
+        public PlaceOrderForm(Table table, Employee employee)
         {
             InitializeComponent();
             HideAllPanels();
@@ -33,6 +34,7 @@ namespace ChapeauUI
             item = new MenuItem();
             this.employee = new Employee();
             this.employee = employee;
+            this.table = table;
         }
         public PlaceOrderForm() // constructor for test runs only
         {
