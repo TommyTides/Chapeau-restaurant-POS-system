@@ -15,13 +15,13 @@ namespace ChapeauUI
         private Employee employee;
         private Order order;
 
-        public OrderForm()
+        public OrderForm(Employee employee)
         {
             InitializeComponent();
             orderService = new OrderService();
             employeeService = new EmployeeService();
             orderItem = new OrderItem();
-            employee = new Employee();
+            this.employee = employee;
             order = new Order();
         }
 
