@@ -15,13 +15,12 @@ namespace ChapeauUI
         private Employee employee;
         private Order order;
 
-        public OrderForm()
+        public OrderForm(Employee employee)
         {
             InitializeComponent();
             orderService = new OrderService();
-            employeeService = new EmployeeService();
             orderItem = new OrderItem();
-            employee = new Employee();
+            this.employee = employee;
             order = new Order();
         }
 
@@ -43,30 +42,28 @@ namespace ChapeauUI
             Application.Exit();
         }
 
-        //private List<Order> Employee()
-        //{
-        //    List<Order> orderKitchen = null;
-        //    if (employee.Role == Role.Barman)
-        //    {
-        //        orderKitchen = orderService.GetAllKitchen();
-        //        lblEmployee.Text = " OrderView Kitchen";
-        //    }
-        //    else if (employee.Role == Role.KitchenStaff)
-        //    {
-        //        orderKitchen = orderService.GetAllBar();
-        //        lblEmployee.Text = " OrderView Bar";
-        //    }
+        private List<Order> Employee()
+        {
+            List<Order> orderKitchen = null;
+            if (employee.Role == Role.Barman)
+            {
+                orderKitchen = orderService.GetAllBar();
+                lblEmployee.Text = " OrderView Bar";
+            }
+            else if (employee.Role == Role.KitchenStaff)
+            {
+                orderKitchen = orderService.GetAllKitchen();
+                lblEmployee.Text = " OrderView Kitchen";
+            }
 
-        //    return orderKitchen;
-        //}
+            return orderKitchen;
+        }
 
         private void ListViewKitchenBar()
         {
 
-            List<Order> orderKitchen = orderService.GetAllKitchen();
-
-
-
+            List<Order> orderKitchen = Employee();
+            //foreach to display the orderitems, I used the foreach to access TableID
             foreach (Order O in orderKitchen)
             {
                 foreach (OrderItem I in O.OrderItems)
@@ -77,7 +74,6 @@ namespace ChapeauUI
                         continue;
                     }
 
-
                     ListViewItem li = new ListViewItem(I.OrderID.ToString());
                     li.SubItems.Add(I.menuItem.item_name);
                     li.SubItems.Add(I.Comment.ToString());
@@ -85,7 +81,6 @@ namespace ChapeauUI
                     li.SubItems.Add(I.OrderTime.ToString("HH:mm"));
                     li.SubItems.Add(O.Table.TableID.ToString());
                     li.SubItems.Add(I.Status.ToString());
-
                     li.Tag = I; // this is saving our object to the Item tag
                     ListViewKitch.Items.Add(li);
                 }
@@ -102,16 +97,16 @@ namespace ChapeauUI
             {
                 MessageBox.Show($"Order is not marked");
                 return;
+                //if nothing is selected it shows the message
             }
             if(confirmResult == DialogResult.Yes)
             {
                 for (int i = 0; i < ListViewKitch.Items.Count; i++)
                 {
-                    ListViewKitch.SelectedItems[0].ForeColor = Color.Green;
-                   
-
+            //it goes thorugh the list of items in the listview
                     if (ListViewKitch.Items[i].Selected)
                     {
+                        //if item is selected it turns the selected item to listview
                         orderService.UpdateOrderReady((OrderItem)ListViewKitch.Items[i].Tag);
                   
                         

@@ -47,10 +47,6 @@ namespace ChapeauUI
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblEmployee = new System.Windows.Forms.Label();
-            this.SelectOrder = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlLunchMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -83,10 +79,6 @@ namespace ChapeauUI
             // pnlLunchMenu
             // 
             this.pnlLunchMenu.BackColor = System.Drawing.Color.White;
-            this.pnlLunchMenu.Controls.Add(this.label2);
-            this.pnlLunchMenu.Controls.Add(this.label1);
-            this.pnlLunchMenu.Controls.Add(this.comboBox1);
-            this.pnlLunchMenu.Controls.Add(this.SelectOrder);
             this.pnlLunchMenu.Controls.Add(this.btnRefresh);
             this.pnlLunchMenu.Controls.Add(this.btnReady);
             this.pnlLunchMenu.Controls.Add(this.ListViewKitch);
@@ -136,9 +128,9 @@ namespace ChapeauUI
             this.ListViewKitch.FullRowSelect = true;
             this.ListViewKitch.GridLines = true;
             this.ListViewKitch.HideSelection = false;
-            this.ListViewKitch.Location = new System.Drawing.Point(60, 133);
+            this.ListViewKitch.Location = new System.Drawing.Point(44, 21);
             this.ListViewKitch.Name = "ListViewKitch";
-            this.ListViewKitch.Size = new System.Drawing.Size(609, 463);
+            this.ListViewKitch.Size = new System.Drawing.Size(609, 559);
             this.ListViewKitch.TabIndex = 15;
             this.ListViewKitch.UseCompatibleStateImageBehavior = false;
             this.ListViewKitch.View = System.Windows.Forms.View.Details;
@@ -223,47 +215,12 @@ namespace ChapeauUI
             this.lblEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
             this.lblEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmployee.ForeColor = System.Drawing.Color.White;
-            this.lblEmployee.Location = new System.Drawing.Point(278, 9);
+            this.lblEmployee.Location = new System.Drawing.Point(282, 28);
             this.lblEmployee.Name = "lblEmployee";
             this.lblEmployee.Size = new System.Drawing.Size(188, 42);
             this.lblEmployee.TabIndex = 15;
             this.lblEmployee.Text = "Orderview";
             this.lblEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // SelectOrder
-            // 
-            this.SelectOrder.AutoSize = true;
-            this.SelectOrder.Location = new System.Drawing.Point(96, 32);
-            this.SelectOrder.Name = "SelectOrder";
-            this.SelectOrder.Size = new System.Drawing.Size(44, 13);
-            this.SelectOrder.TabIndex = 18;
-            this.SelectOrder.Text = "OrderID";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(60, 57);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 19;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(297, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Running orders";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(382, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(13, 13);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "5";
             // 
             // OrderForm
             // 
@@ -282,7 +239,6 @@ namespace ChapeauUI
             this.Load += new System.EventHandler(this.OrderForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlLunchMenu.ResumeLayout(false);
-            this.pnlLunchMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -311,9 +267,5 @@ namespace ChapeauUI
         private System.Windows.Forms.ColumnHeader Status;
         private System.Windows.Forms.Button btnReady;
         private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label SelectOrder;
     }
 }
