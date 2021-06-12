@@ -19,16 +19,7 @@ namespace ChapeauUI
         Order Order;
         private int TableID;
 
-        // consturctor used for initializing every new object
-        public PaymentForm()
-        {
-            InitializeComponent();
-
-            orderService = new OrderService();
-            tableService = new TableServices();
-        }
-
-        // second constructor for when a tableID is passed from the tableoverview with the right table to pay
+        // constructor used when a tableID is passed from the tableoverview with the right table to pay
         public PaymentForm(int tableID)
         {
             InitializeComponent();
@@ -37,6 +28,7 @@ namespace ChapeauUI
             orderService = new OrderService();
             tableService = new TableServices();
         }
+
         private void PaymentForm_Load(object sender, EventArgs e)
         {
             LoadTables();
@@ -53,40 +45,13 @@ namespace ChapeauUI
         // this method displays the tables that are yet to be paid (when the payment form loads)
         private void LoadTables()
         {
-            List<Order> orders = orderService.GetOrdersToPay();
-
-            // get table# for each order
-            foreach (Order order in orders)
-            {
-                cmbTable.Items.Add(order.Table.TableID);
-            }
-            // checks whether there are any tables that need to be paid for
-            // if so, it find the correct tableid that needs to be paid for
-            if (TableID > 0)
-            {
-                int index = cmbTable.FindString(cmbTable.ToString());
-                if (index >= 0)
-                    cmbTable.SelectedIndex = index;
-            }
-        }
-
-        private void cmdTable_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // this.Order = cmbTable.Tag as Order;
-
-            //gets the tableID based on the GetOrderForTableByTableID method and parses it
-            int tableID = Int32.Parse(cmbTable.Text);
             // gets the order based on the tableID
-            this.Order = orderService.GetOrderForTableByTableID(tableID);
+            this.Order = orderService.GetOrderForTableByTableID(TableID);
 
             // gets the total price for every item times the quantity and stores it into Order.Total
             // VAT logic is stores in the Order class as a method/function and called here and stored in VATTotal
             Order.Total = Order.CalculateTotalOrderPriceByItems();
             Order.VATTotal = Order.CalculateVATbyItems();
-
-
-            //Order order = paymentService.GetOrderForTable();
-            //Order.OrderItem = paymentService.GetOrderItems()
 
             //clear listview before filling it
             lstViewItems.Items.Clear();
@@ -96,10 +61,9 @@ namespace ChapeauUI
                 item.SubItems.Add(orderItem.menuItem.item_name);
                 item.SubItems.Add(orderItem.Quantity.ToString());
                 item.SubItems.Add(orderItem.TotalPrice.ToString("€ 0.00"));
-                item.Tag = orderItem;
-
                 lstViewItems.Items.Add(item);
             }
+
             cmbMethod.DataSource = (Enum.GetValues(typeof(PaymentMethod)));
 
             // storing values from the database into the labels
@@ -116,10 +80,9 @@ namespace ChapeauUI
             }
 
             lblTotalVAT.Text = Order.VATTotal.ToString("€ 0.00");
+
             // calculating the total price by adding the total order price + the total vat + the tip
             lblTotalAmount.Text = (Order.Total + Order.VATTotal + Order.Tip).ToString("€ 0.00");
-            // Order.Feedback = txtComment.Text;
-
         }
 
         private void chbTip_CheckedChanged(object sender, EventArgs e)
@@ -146,27 +109,38 @@ namespace ChapeauUI
             }
 
             double tip = 0;
-            // the tip gets converted into a double
-            bool validTip = double.TryParse(txtTip.Text, out tip);
-            // checks if the tip is ticked and whether its not valid -> displays message that its not valid
-            if (chbTip.Checked && !validTip)
+            if (chbTip.Checked)
             {
-                MessageBox.Show("Please enter a valid amount for the tip");
+                // if the tip if empty, it's automatically assigned the value 0
+                if (txtTip.Text.Trim() == "")
+                    txtTip.Text = "0";
+                // the tip gets converted into a double
+                // only digits, no letters or weird things
+                // tip is the output parameter which gets its value by assigment inside the Parse function
+                bool validTip = double.TryParse(txtTip.Text, out tip);
+
+                // checks if the tip is ticked and whether its not valid -> displays message that its not valid
+                // tip only takes into account anything that is a digit eg. 1 or 1,5
+                if (!validTip)
+                {
+                    MessageBox.Show("Please enter a valid amount for the tip");
+                    return;
+                }
             }
+            // after inserting a tip, update the price and store it into the TotalAmount
+            Order.Tip = tip;
+            lblTotalAmount.Text = (Order.Total + Order.VATTotal + Order.Tip).ToString("€ 0.00");
 
             Order.paymentMethod = (PaymentMethod)cmbMethod.SelectedItem;
-            Order.Tip = tip;
 
             // a boolean to check whether the payment has been paid for
-            bool isPaid = orderService.OrderPayment(Order);
+            bool isPaid = orderService.ExecuteOrderPayment(Order);
 
             // if the payment is paid for, it shows a message that it has been successfull
             // as well as updates the order status. otherwise gives an error message.
             if (isPaid == true)
             {
-                orderService.UpdateOrderStatus(Order);
-                Order.Table.TableStatus = TableStatus.Free;
-                tableService.ChangeTableStatusAfterPayment(Order.Table);
+                tableService.ChangeTableStatus(Order.Table.TableID,(int)TableStatus.Free);  // TableStatus.Free = 1
                 MessageBox.Show("Order has been paid successfully!");
                 this.Close();
 
@@ -177,27 +151,6 @@ namespace ChapeauUI
             {
                 MessageBox.Show("An error has occured during the payment process.");
             }
-        }
-
-        private void cmbMethod_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTip_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                // if the tip if empty, it's automatically assigned the value 0
-                if (txtTip.Text.Trim() == "")
-                    txtTip.Text = "0";
-
-                // after inserting a tip, update the price and store it into the TotalAmount
-                double newTip = double.Parse(txtTip.Text);
-                Order.Tip = newTip;
-                lblTotalAmount.Text = (Order.Total + Order.VATTotal + Order.Tip).ToString("€ 0.00");
-            }
-            catch { };
         }
     }
 }
