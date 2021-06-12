@@ -11,13 +11,18 @@ namespace ChapeauUI
     {
         private OrderService orderService;
         private EmployeeService employeeService;
-        private  OrderItem orderItem; 
+        private OrderItem orderItem;
+        private Employee employee;
+        private Order order;
+
         public OrderForm()
         {
             InitializeComponent();
             orderService = new OrderService();
             employeeService = new EmployeeService();
             orderItem = new OrderItem();
+            employee = new Employee();
+            order = new Order();
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
@@ -38,38 +43,41 @@ namespace ChapeauUI
             Application.Exit();
         }
 
-        //private List<OrderItem> Employee(Employee employee)
+        //private List<Order> Employee()
         //{
-        //    List<OrderItem> orderKitchen;
-        //   if (employee.Role == Role.Barman)
+        //    List<Order> orderKitchen = null;
+        //    if (employee.Role == Role.Barman)
         //    {
-        //       return orderKitchen = orderService.GetAllKitchen();
+        //        orderKitchen = orderService.GetAllKitchen();
+        //        lblEmployee.Text = " OrderView Kitchen";
         //    }
-        //   else if (employee.Role == Role.KitchenStaff)
+        //    else if (employee.Role == Role.KitchenStaff)
         //    {
-        //     return  orderKitchen = orderService.GetAllKitchen();
+        //        orderKitchen = orderService.GetAllBar();
+        //        lblEmployee.Text = " OrderView Bar";
         //    }
 
+        //    return orderKitchen;
         //}
 
         private void ListViewKitchenBar()
         {
-            // if login works i can fix this
-            //Employee employee = new Employee();
+
             List<Order> orderKitchen = orderService.GetAllKitchen();
-            //if (employee.Role == Role.Barman)
-            //{
-            //    orderKitchen = orderService.GetAllKitchen();
-            //}
-            //else if (employee.Role == Role.KitchenStaff)
-            //{
-            //     orderKitchen = orderService.GetAllKitchen();
-            //}
+
+
 
             foreach (Order O in orderKitchen)
             {
                 foreach (OrderItem I in O.OrderItems)
                 {
+                    if (I.Status.ToString() == "Ready")
+                    {
+                        //if status is ready it will skip it
+                        continue;
+                    }
+
+
                     ListViewItem li = new ListViewItem(I.OrderID.ToString());
                     li.SubItems.Add(I.menuItem.item_name);
                     li.SubItems.Add(I.Comment.ToString());
@@ -84,58 +92,68 @@ namespace ChapeauUI
             }
         }
 
-        private void btnReady_Click_1(object sender, EventArgs e)
+        private void btnReady_Click(object sender, EventArgs e)
         {
+            var confirmResult = MessageBox.Show("Do you want to mark the order Ready??",
+                               "Confirm Order Status",
+                               MessageBoxButtons.YesNo);
+
             if (ListViewKitch.SelectedItems.Count <= 0)
             {
                 MessageBox.Show($"Order is not marked");
+                return;
             }
-            else if (ListViewKitch.Items.Count > 0)
+            if(confirmResult == DialogResult.Yes)
             {
-                OrderItem order = ListViewKitch.SelectedItems[0].Tag as OrderItem;
-                var confirmResult = MessageBox.Show("Do you want to mark the order ready??",
-                                     "Confirm Order Status",
-                                     MessageBoxButtons.YesNo);
-
-                if (confirmResult == DialogResult.Yes)
+                for (int i = 0; i < ListViewKitch.Items.Count; i++)
                 {
-                    orderService.UpdateOrderReady(order);
+                    ListViewKitch.SelectedItems[0].ForeColor = Color.Green;
+                   
 
-                    ListViewKitch.Items.Clear();
-                    ListViewKitchenBar();
+                    if (ListViewKitch.Items[i].Selected)
+                    {
+                        orderService.UpdateOrderReady((OrderItem)ListViewKitch.Items[i].Tag);
+                  
+                        
+                    }
                 }
-                else
-                {
-                    MessageBox.Show($"Order is not marked");
-                }
+                ListViewKitch.Items.Clear();
+                ListViewKitchenBar();
             }
         }
 
         private void btnPreparing_Click_1(object sender, EventArgs e)
         {
+            var confirmResult = MessageBox.Show("Do you want to mark the order Ready??",
+                               "Confirm Order Status",
+                               MessageBoxButtons.YesNo);
+
             if (ListViewKitch.SelectedItems.Count <= 0)
             {
                 MessageBox.Show($"Order is not marked");
+                return;
             }
-            else if (ListViewKitch.Items.Count > 0)
+
+            if (confirmResult == DialogResult.Yes)
             {
-                OrderItem order = ListViewKitch.SelectedItems[0].Tag as OrderItem;
-                var confirmResult = MessageBox.Show("Do you want to mark the order Preparing??",
-                                     "Confirm Order Status",
-                                     MessageBoxButtons.YesNo);
-
-                if (confirmResult == DialogResult.Yes)
+                for (int i = 0; i < ListViewKitch.Items.Count; i++)
                 {
-                    orderService.UpdateOrderPreparing(order);
-
-                    ListViewKitch.Items.Clear();
-                    ListViewKitchenBar();
+                    if (ListViewKitch.Items[i].Selected)
+                    {
+                        orderService.UpdateOrderPreparing((OrderItem)ListViewKitch.Items[i].Tag);
+                     
+                    }
                 }
-                else
-                {
-                    MessageBox.Show($"Order is not marked");
-                }
+                ListViewKitch.Items.Clear();
+                ListViewKitchenBar();
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e) 
+        {
+            //Refresh for the Button for ListView
+            ListViewKitch.Items.Clear();
+            ListViewKitchenBar();
         }
     }
 }

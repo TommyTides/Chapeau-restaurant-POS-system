@@ -17,10 +17,12 @@ namespace ChapeauUI
         Table table;
         TableServices tableServices;
         Employee employee;
-        public TableDialog(Table table, Employee employee)
+        TablePage previousPage;
+        public TableDialog(Table table, Employee employee, TablePage previousPage)
         {
             this.table = table;
             this.employee = employee;
+            this.previousPage = previousPage;
             tableServices = new TableServices();
             InitializeComponent();
 
@@ -43,7 +45,10 @@ namespace ChapeauUI
             {
                 tableServices.ChangeTableStatus(table.TableID, (int)TableStatus.Occupied);
             }
-            PlaceOrderForm form = new PlaceOrderForm(employee);
+            this.Hide();
+            this.previousPage.Hide();
+
+            PlaceOrderForm form = new PlaceOrderForm(table, employee);
             form.ShowDialog();
             this.Close();
         }
@@ -75,7 +80,8 @@ namespace ChapeauUI
 
         private void btnPayment_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
+            this.previousPage.Hide();
             PaymentForm form = new PaymentForm(table.TableID);
             form.Show();
         }
