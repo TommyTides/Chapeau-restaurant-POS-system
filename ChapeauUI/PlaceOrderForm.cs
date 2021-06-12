@@ -124,10 +124,11 @@ namespace ChapeauUI
 
         private void btnDrinksAlcMenu_Click(object sender, EventArgs e)
         {
-            // to do...
+            HideAllPanels();
+            FillDrinksMenu(MenuSubCategory.alcohol, MenuSubCategory.wines);
         }
 
-        public void SetListBoxSize(int size1, int size2, int size3, int size4)
+        public void SetListBoxSize(int size1, int size2, int size3, int size4) // Cahnges the size of the listboxes
         {
             listBoxFirstList.Size = new Size(482, size1);
             listBoxSecondList.Size = new Size(482, size2);
@@ -135,6 +136,14 @@ namespace ChapeauUI
             listBoxFirstListPrice.Size = new Size(70, size3);
             listBoxSecondListPrice.Size = new Size(70, size4);
             listBoxThirdListPrice.Size = new Size(70, 124);// stays the same always
+        }
+
+        public void SetListBoxSizeDrinks(int size1, int size2, int size3, int size4) // Cahnges the size of the listboxes
+        {
+            listBoxDrink1.Size = new Size(482, size1);
+            listBoxDrink2.Size = new Size(482, size2);
+            listBoxDrink1Price.Size = new Size(83, size3);
+            listBoxDrink2Price.Size = new Size(83, size4);
         }
 
         public void ClearFoodMenu() // clear all lists etc.
@@ -274,32 +283,56 @@ namespace ChapeauUI
             listBoxSelectedFoodItem.Text = "";
         }
 
+        public void ClearDrinkMenu()
+        {
+            listBoxDrink1.Items.Clear();
+            listBoxDrink2.Items.Clear();
+            listBoxDrink1Price.Items.Clear();
+            listBoxDrink2Price.Items.Clear();
+            listBoxSelectedDrink.Items.Clear();
+            numericUpDownDrink.Value = 0;
+        }
+
         private void FillDrinksMenu(MenuSubCategory firstCategory, MenuSubCategory secondCategory)
         {
+            ClearDrinkMenu();
             pnlDrinks.Visible = true;
-            pnlDrinks.BringToFront();
+            //pnlDrinks.BringToFront();
+
             // List box sizes depending on menu type.
-            //if (firstCategory == MenuSubCategory.soft)
-            //    SetListBoxSize(124, 124, 124, 124);
-            //else
-            //    SetListBoxSize(154, 184, 154, 184);
+            if (secondCategory == MenuSubCategory.wines)
+                SetListBoxSizeDrinks(154, 184, 154, 184);
+            else
+                SetListBoxSizeDrinks(214, 184, 214, 184);
 
-            //menuItems.Clear();
-            //menuItems = menuItemService.GetAllMenuItems(); // Gets list of menuItems form database
-            //btnAddDrink.Enabled = false;
+            menuItems.Clear();
+            menuItems = menuItemService.GetAllMenuItems(); // Gets list of menuItems form database
+            btnAddDrink.Enabled = false;
 
-            //foreach (MenuItem item in menuItems) // Adding items tot the listboxes
-            //{
-            //    if (item.item_type == firstCategory)
-            //    {
-            //        listBoxDrinks1.Items.Add(item);
-            //        listBoxDrinks1Price.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
-            //    }
-            //    else if (item.item_type == secondCategory)
-            //    {
-            //        listBoxDrinks2.Items.Add(item);
-            //        listBoxDrinks2Price.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
-            //    }
+            if (firstCategory == MenuSubCategory.wines) // Change label names
+            {
+                lblDrinks1.Text = "Beers";
+                lblDrinks2.Text = "Wines";
+            }
+            else
+            {
+                lblDrinks1.Text = "Soft Drinks";
+                lblDrinks2.Text = "Hot Drinks";
+            }
+
+            foreach (MenuItem item in menuItems) // Adding items tot the listboxes
+            {
+                if (item.item_type == firstCategory)
+                {
+                    listBoxDrink1.Items.Add(item);
+                    listBoxDrink1Price.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
+                }
+                else if (item.item_type == secondCategory)
+                {
+                    listBoxDrink2.Items.Add(item);
+                    listBoxDrink2Price.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
+                }
             }
         }
     }
+}
