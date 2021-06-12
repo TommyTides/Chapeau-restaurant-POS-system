@@ -128,9 +128,9 @@ namespace ChapeauUI
             this.ListViewKitch.FullRowSelect = true;
             this.ListViewKitch.GridLines = true;
             this.ListViewKitch.HideSelection = false;
-            this.ListViewKitch.Location = new System.Drawing.Point(44, 29);
+            this.ListViewKitch.Location = new System.Drawing.Point(44, 21);
             this.ListViewKitch.Name = "ListViewKitch";
-            this.ListViewKitch.Size = new System.Drawing.Size(609, 590);
+            this.ListViewKitch.Size = new System.Drawing.Size(609, 559);
             this.ListViewKitch.TabIndex = 15;
             this.ListViewKitch.UseCompatibleStateImageBehavior = false;
             this.ListViewKitch.View = System.Windows.Forms.View.Details;
@@ -215,7 +215,7 @@ namespace ChapeauUI
             this.lblEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
             this.lblEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmployee.ForeColor = System.Drawing.Color.White;
-            this.lblEmployee.Location = new System.Drawing.Point(278, 9);
+            this.lblEmployee.Location = new System.Drawing.Point(282, 28);
             this.lblEmployee.Name = "lblEmployee";
             this.lblEmployee.Size = new System.Drawing.Size(188, 42);
             this.lblEmployee.TabIndex = 15;

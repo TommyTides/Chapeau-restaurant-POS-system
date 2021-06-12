@@ -15,6 +15,7 @@ namespace ChapeauUI
     public partial class LoginForm : Form
     {
         EmployeeService employeeService = new EmployeeService();
+        
         public LoginForm()
         {
             InitializeComponent();
@@ -32,15 +33,15 @@ namespace ChapeauUI
 
             if (txtlogincode.TextLength == 4)
             {
-                GetEmployeeByLogin();
+                LogEmployeeIn();
             }
         }
 
-        private void GetEmployeeByLogin()
+        private void LogEmployeeIn()
         {
             Employee employee = employeeService.GetEmployeeByCode(int.Parse(txtlogincode.Text));
 
-            if (employee == null)
+            if(employee == null)
             {
                 txtlogincode.Text = "";
                 MessageBox.Show("Entered pincode is not valid!");
@@ -48,16 +49,18 @@ namespace ChapeauUI
 
             else if (employee.Role == Role.Waiter || employee.Role == Role.Manager)
             {
+                this.Hide();
                 TablePage page = new TablePage(employee);
-                page.Show();
+                page.ShowDialog();
+                
             }
 
             else if (employee.Role == Role.KitchenStaff || employee.Role == Role.Barman)
             {
+                this.Hide();
                 OrderForm orderForm = new OrderForm();
-                orderForm.Show();
+                orderForm.ShowDialog();
             }
-            
         }
 
         private void exitbtn_Click(object sender, EventArgs e)

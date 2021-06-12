@@ -17,12 +17,6 @@ namespace ChapeauLogic
             orderDAO = new OrderDAO();
         }
 
-
-        //public List<Order> GetAllOrders()
-        //{  
-        //    return orderDAO.GetAllOrders();
-        //}
-
         public void UpdateOrderPreparing(OrderItem order)
         {
             orderDAO.UpdateOrderPreparing(order);
@@ -31,7 +25,7 @@ namespace ChapeauLogic
         public void UpdateOrderReady(OrderItem order)
         {
             orderDAO.UpdateOrderReady(order);
-            orderDAO.DeleteOrder(order);
+
         }
         public List<Order> GetAllKitchen()
         { 
@@ -44,22 +38,16 @@ namespace ChapeauLogic
             return orderDAO.GetAllOrdersBar();
         }
 
+    #region Alex's part
 
-
-
-        /// Alex's part
-        /// 
-
-
-        public bool OrderPayment(Order order)
+        public bool ExecuteOrderPayment(Order order)
         {
             try
             {
-                order.PaymentStatus = true;
-                orderDAO.ChangePaymentStatus(order);
-
-                orderDAO.OrderPayment(order);
-
+                // in real life - we need to perform interaction with PaymentSystem here to get payment processed by bank and confirmed
+                // if(PerformBankTransaction() == false) throw new Exception("Payment refused by bank");
+                orderDAO.SaveOrderPaymentInfo(order);
+                orderDAO.ChangePaymentStatus(order,/*newStatus=*/true);
                 return true;
             }
             catch (Exception exp)
@@ -68,31 +56,12 @@ namespace ChapeauLogic
             }
         }
 
-        public List<Order> GetOrdersToPay()
-        {
-            List<Order> orders = orderDAO.GetOrdersForPayment();
-
-            foreach (Order order in orders)
-            {
-                order.OrderItems = orderDAO.GetOrderItemForOrderID(order.OrderID);
-            }
-            return orders;
-        }
-
-        //public List<OrderItem> GetOrderItemForOrderID(int orderID)
-        //{
-        //    return orderDAO.GetOrderItemForOrderID(orderID);
-        //}
-
-        public void UpdateOrderStatus(Order order)
-        {
-            orderDAO.UpdateOrderStatus(order);
-        }
-
         public Order GetOrderForTableByTableID(int tableID)
         {
             return orderDAO.GetOrderForTableByTableID(tableID);
         }
+
+    #endregion Alex's part
 
         // Tommy Service parts
         public void SendOrder(Order order)

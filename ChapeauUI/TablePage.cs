@@ -16,7 +16,6 @@ namespace ChapeauUI
     {
         private Employee employee;
         private TableServices tableServices;
-        //private List<Button> tableButtons = new List<Button>();
         Dictionary<int, Table> tables;
         public TablePage(Employee employee)
         {
@@ -28,6 +27,7 @@ namespace ChapeauUI
         private void TablePage_Load(object sender, EventArgs e)
         {
             lblemployee.Text = $"{employee.Role}: {employee.FullName}";
+
             Timer timer = new Timer();
             timer.Tick += new EventHandler(LoadTableData);
             timer.Interval = 1000;
@@ -37,13 +37,6 @@ namespace ChapeauUI
         private void LoadTableData(Object sender, EventArgs e)
         {
             tables = tableServices.GetAllTables();
-
-            // set the table to free by default
-            //for (int i = 0; i <= 10; i++)
-            //{
-            //    ChangeColorByTableStatus(tableButtons[0], TableStatus.Free);
-            //}
-
 
             foreach (KeyValuePair<int, Table> keyValuePair in tables)
             {
@@ -118,7 +111,7 @@ namespace ChapeauUI
         {
             Table table = tables[tableid];
 
-            TableDialog tableDialog = new TableDialog(table, employee);
+            TableDialog tableDialog = new TableDialog(table, employee, this);
             tableDialog.ShowDialog();
         }
 
@@ -127,7 +120,6 @@ namespace ChapeauUI
             this.Close();
             LoginForm form = new LoginForm();
             form.Show();
-            
         }
 
         private void btntable1_Click(object sender, EventArgs e)

@@ -22,6 +22,11 @@ namespace ChapeauModel
 
         }
 
+        public Employee(Role role)
+        {
+            this.Role = role;
+        }
+
         public Employee(string firstname, string lastname, Role role)
         {
             this.FirstName = firstname;
