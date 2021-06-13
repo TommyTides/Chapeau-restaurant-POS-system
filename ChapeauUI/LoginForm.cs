@@ -15,7 +15,6 @@ namespace ChapeauUI
     public partial class LoginForm : Form
     {
         EmployeeService employeeService = new EmployeeService();
-        
         public LoginForm()
         {
             InitializeComponent();
