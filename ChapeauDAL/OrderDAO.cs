@@ -15,25 +15,29 @@ namespace ChapeauDAL
         public List<Order> GetAllOrdersBar()
         {
             string query = "select m.menu_type, m.item_name,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o " +
-                "JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " +
-                "JOIN [ORDER] as R ON o.orderID = r.orderID " +
-                "where PlaceID = 2 "; 
+                "JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " + //Selecting for menu items
+                "JOIN [ORDER] as R ON o.orderID = r.orderID " + // selecting for Order
+                "where PlaceID = 2 " +
+                "order by o.orderTime ASC"; //select  only kitchen items
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadKitchenBar(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<Order> GetAllOrdersKitchen()
         {
+           
             string query = "select m.menu_type, m.item_name,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o " +
-                "JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " +
-                "JOIN [ORDER] as R ON o.orderID = r.orderID " +
-                "where PlaceID = 1 ";
+                "JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " + //Selecting for menu items
+                "JOIN [ORDER] as R ON o.orderID = r.orderID " + // selecting for Order
+                "where PlaceID = 1 " +
+                "order by o.orderTime ASC"; //select  only kitchen items
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadKitchenBar(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public void UpdateOrderReady(OrderItem order)
         {
+            //change status to preparing
             string query = "Update [ORDER_ITEM] Set itemStatus = 3" +
                 " Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
             SqlParameter[] sqlParameters = new SqlParameter[4];
@@ -46,6 +50,7 @@ namespace ChapeauDAL
 
         public void UpdateOrderPreparing(OrderItem order)
         {
+            //change status to preparing where id is equal.
             string query = "Update [ORDER_ITEM] Set itemStatus = 2" +
                 " Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
             SqlParameter[] sqlParameters = new SqlParameter[4];
@@ -58,6 +63,7 @@ namespace ChapeauDAL
 
         public void UpdateOrderStatus(Order order)
         {
+            //receiving what needs to be changed in orderstatus
             string query = "Update [ORDER] Set orderStatus = @orderStatus where orderID = @orderID"; 
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@orderStatus", order.Status);
@@ -70,7 +76,7 @@ namespace ChapeauDAL
         private List<Order> ReadKitchenBar(DataTable dataTable)
         {
             List<Order> KitchenBarOrders = new List<Order>();
-
+            //reading from datbase the data
             foreach (DataRow dr in dataTable.Rows)
             {
                 Table table = new Table();
