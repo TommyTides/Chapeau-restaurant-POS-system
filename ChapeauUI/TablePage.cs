@@ -46,43 +46,43 @@ namespace ChapeauUI
                 {
                     case 1:
                         ChangeColorByTableStatus(rndbutton1, table.TableStatus);
-                        lbltable1status.Text = table.OrderStatus;
+                        lbltable1status.Text = table.CurrentOrderInfo;
                         break;
                     case 2:
                         ChangeColorByTableStatus(rndbutton2, table.TableStatus);
-                        lbltable2status.Text = table.OrderStatus;
+                        lbltable2status.Text = table.CurrentOrderInfo;
                         break;
                     case 3:
                         ChangeColorByTableStatus(rndbutton3, table.TableStatus);
-                        lbltable3status.Text = table.OrderStatus;
+                        lbltable3status.Text = table.CurrentOrderInfo;
                         break;
                     case 4:
                         ChangeColorByTableStatus(rndbutton4, table.TableStatus);
-                        lbltable4status.Text = table.OrderStatus;
+                        lbltable4status.Text = table.CurrentOrderInfo;
                         break;
                     case 5:
                         ChangeColorByTableStatus(rndbutton5, table.TableStatus);
-                        lbltable5status.Text = table.OrderStatus;
+                        lbltable5status.Text = table.CurrentOrderInfo;
                         break;
                     case 6:
                         ChangeColorByTableStatus(rndbutton6, table.TableStatus);
-                        lbltable6status.Text = table.OrderStatus;
+                        lbltable6status.Text = table.CurrentOrderInfo;
                         break;
                     case 7:
                         ChangeColorByTableStatus(rndbutton7, table.TableStatus);
-                        lbltable7status.Text = table.OrderStatus;
+                        lbltable7status.Text = table.CurrentOrderInfo;
                         break;
                     case 8:
                         ChangeColorByTableStatus(rndbutton8, table.TableStatus);
-                        lbltable8status.Text = table.OrderStatus;
+                        lbltable8status.Text = table.CurrentOrderInfo;
                         break;
                     case 9:
                         ChangeColorByTableStatus(rndbuttons9, table.TableStatus);
-                        lbltable9status.Text = table.OrderStatus;
+                        lbltable9status.Text = table.CurrentOrderInfo;
                         break;
                     case 10:
                         ChangeColorByTableStatus(rndbutton10, table.TableStatus);
-                        lbltable10status.Text = table.OrderStatus;
+                        lbltable10status.Text = table.CurrentOrderInfo;
                         break;
                 }
             }
