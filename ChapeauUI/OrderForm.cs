@@ -25,9 +25,9 @@ namespace ChapeauUI
             WinAPI.AnimateWindow(this.Handle, 2000, WinAPI.BLEND);
             //load in instantly ListViewKitchenBar
             ListViewKitchenBar();
-            pictureBox4.Controls.Add(pictureBox1);
+            //pictureBox4.Controls.Add(pictureBox1);
             pictureBox4.Controls.Add(pictureBox3);
-            pictureBox1.BackColor = Color.Transparent;
+            //pictureBox1.BackColor = Color.Transparent;
             pictureBox3.BackColor = Color.Transparent;
         }
 
@@ -146,15 +146,15 @@ namespace ChapeauUI
         {
             List<Order> orderKitchenBar = Employee();
             Order order = new Order();
+            //count of items in side order
+            int item = 0;
+
+            //count of  items which is ready inside order
+            int readyItem = 0;
 
             // all our order
             foreach (Order O in orderKitchenBar)
             {
-                //count of items in side order
-                int item = 0;
-
-                //count of  items which is ready inside order
-                int readyItem = 0;
 
                 // all items inside 1 order
                 foreach (OrderItem I in O.OrderItems)
