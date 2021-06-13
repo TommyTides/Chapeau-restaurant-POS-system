@@ -64,9 +64,9 @@ namespace ChapeauUI
             }
         }
 
-        private void lblHome_Click(object sender, EventArgs e)
+        private void lblHome_Click(object sender, EventArgs e)// open home view
         {
-            // to do...
+            HideAllPanels();
         }
 
         private void lblTableView_Click(object sender, EventArgs e)
@@ -96,30 +96,30 @@ namespace ChapeauUI
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) // exit application
         {
             Application.Exit();
         }
 
-        private void btnLunchMenu_Click(object sender, EventArgs e)
+        private void btnLunchMenu_Click(object sender, EventArgs e)// open lunch menu
         {
             HideAllPanels();
             FillFoodMenu(MenuCategory.Lunch, MenuSubCategory.lunchMain, MenuSubCategory.specials, MenuSubCategory.bites);
         }
 
-        private void btnDinnerMenu_Click(object sender, EventArgs e)
+        private void btnDinnerMenu_Click(object sender, EventArgs e) // open dinner menu
         {
             HideAllPanels();
             FillFoodMenu(MenuCategory.Dinner, MenuSubCategory.starters, MenuSubCategory.mains, MenuSubCategory.desserts);
         }
 
-        private void btnDrinksNonAlcMenu_Click(object sender, EventArgs e)
+        private void btnDrinksNonAlcMenu_Click(object sender, EventArgs e)// open non-alc menu
         {
             HideAllPanels();
             FillDrinksMenu(MenuSubCategory.soft, MenuSubCategory.hot);
         }
 
-        private void btnDrinksAlcMenu_Click(object sender, EventArgs e)
+        private void btnDrinksAlcMenu_Click(object sender, EventArgs e) // open alc menu
         {
             HideAllPanels();
             FillDrinksMenu(MenuSubCategory.alcohol, MenuSubCategory.wines);
@@ -210,7 +210,7 @@ namespace ChapeauUI
 
         private void FillOrderItem()
         {
-            orderItem.Status = OrderItemStatus.Preparing;
+            orderItem.Status = OrderItemStatus.Preparing; // set order status
         }
 
         private void listBoxSelectedFoodItem_SelectedIndexChanged(object sender, EventArgs e)
@@ -233,6 +233,7 @@ namespace ChapeauUI
 
         private void listBoxFirstList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // add selected item to selectedListBox
             item = (MenuItem)listBoxFirstList.SelectedItem;
             AddOrderItemToOrder();
             listBoxSelectedFoodItem.SelectedIndex = 0;
@@ -240,6 +241,7 @@ namespace ChapeauUI
 
         private void listBoxSecondList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // add selected item to selectedListBox
             item = (MenuItem)listBoxSecondList.SelectedItem;
             AddOrderItemToOrder();
             listBoxSelectedFoodItem.SelectedIndex = 0;
@@ -247,6 +249,7 @@ namespace ChapeauUI
 
         private void listBoxThirdList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // add selected item to selectedListBox
             item = (MenuItem)listBoxThirdList.SelectedItem;
             AddOrderItemToOrder();
             listBoxSelectedFoodItem.SelectedIndex = 0;
@@ -254,6 +257,7 @@ namespace ChapeauUI
 
         public void AddOrderItemToOrder()
         {
+            // add selected item to selectedListBox
             orderItem.menuItem = item;
             listBoxSelectedFoodItem.Items.Clear();
             listBoxSelectedFoodItem.Items.Add(orderItem);
@@ -262,6 +266,7 @@ namespace ChapeauUI
 
         public void AddOrderItemToOrderDrink()
         {
+            // add selected item to selectedListBox
             orderItem.menuItem = item;
             listBoxSelectedDrink.Items.Clear();
             listBoxSelectedDrink.Items.Add(orderItem);
@@ -285,12 +290,12 @@ namespace ChapeauUI
                 }
             }
 
-            if (checkGrouped == 0)
+            if (checkGrouped == 0) // add non grouped item to cart
             {
                 order.OrderItems.Add(orderItem);
                 orderItem = new OrderItem();
             }
-            if (order.OrderItems.Count >= 1)
+            if (order.OrderItems.Count >= 1) // check if cart is empty or not
             {
                 MessageBox.Show("Item has been added to cart");
             }
@@ -300,7 +305,7 @@ namespace ChapeauUI
             listBoxSelectedFoodItem.Text = "";
         }
 
-        public void ClearDrinkMenu()
+        public void ClearDrinkMenu() // clear DrinkMenu lists
         {
             listBoxDrink1.Items.Clear();
             listBoxDrink2.Items.Clear();
@@ -374,7 +379,7 @@ namespace ChapeauUI
 
         private void listBoxSelectedDrink_SelectedIndexChanged(object sender, EventArgs e)
         {
-            numericUpDownDrink.Value = 1;
+            numericUpDownDrink.Value = 1; // default selection amount
         }
 
         private void btnAddDrink_Click(object sender, EventArgs e)
@@ -394,12 +399,12 @@ namespace ChapeauUI
                 }
             }
 
-            if (checkGrouped == 0)
+            if (checkGrouped == 0) // add non grouped order to orderCart
             {
                 order.OrderItems.Add(orderItem);
                 orderItem = new OrderItem();
             }
-            if (order.OrderItems.Count >= 1)
+            if (order.OrderItems.Count >= 1) // check if orderCart is not empty
             {
                 MessageBox.Show("Item has been added to cart");
             }
@@ -410,6 +415,7 @@ namespace ChapeauUI
 
         private void listBoxDrink1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // add selected drink to the selecteddrink ListBox
             item = (MenuItem)listBoxDrink1.SelectedItem;
             AddOrderItemToOrderDrink();
             listBoxSelectedDrink.SelectedIndex = 0;
@@ -417,6 +423,7 @@ namespace ChapeauUI
 
         private void listBoxDrink2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // add selected drink to the selecteddrink ListBox
             item = (MenuItem)listBoxDrink2.SelectedItem;
             AddOrderItemToOrderDrink();
             listBoxSelectedDrink.SelectedIndex = 0;
@@ -424,10 +431,10 @@ namespace ChapeauUI
 
         private void listBoxCartName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            btnRemoveCartItem.Visible = true;
+            btnRemoveCartItem.Visible = true; // make button(remove single item) visible
         }
 
-        private void FillCart()
+        private void FillCart() // fill items in cart listboxes
         {
             ClearCart();
             lblWhereWeAre.Text = "Order Cart";
@@ -444,7 +451,7 @@ namespace ChapeauUI
             lblTotalCartPrice.Text = totalPrice.ToString("C", new CultureInfo("nl-NL"));
         }
 
-        private void ClearCart()
+        private void ClearCart() // clear cart listboxes
         {
             listBoxCartName.Items.Clear();
             listBoxCartAmount.Items.Clear();
@@ -453,6 +460,7 @@ namespace ChapeauUI
 
         private void btnRemoveCartItem_Click(object sender, EventArgs e)
         {
+            // remove single order
             OrderItem selectedCart = (OrderItem)listBoxCartName.SelectedItem;
             order.OrderItems.Remove(selectedCart);
             FillCart();
@@ -461,19 +469,19 @@ namespace ChapeauUI
         private void btnSendOrder_Click(object sender, EventArgs e)
         {
             order.Table = table;
-            orderService.SendOrder(order);
+            orderService.SendOrder(order); // send order
             btnRemoveCartItem.Visible = false;
             order.OrderItems.Clear();
             FillCart();
 
-            TablePage tableView = new TablePage(this.employee);
+            TablePage tableView = new TablePage(this.employee); // return to Table view once orde ris sent
             tableView.Show();
             Close();
         }
 
         private void btnRemoveCompleteOrder_Click(object sender, EventArgs e)
         {
-            order.OrderItems.Clear();
+            order.OrderItems.Clear(); // complete whole order
             lblTotalCartPrice.Text = 0.ToString("C", new CultureInfo("nl-NL"));
             FillCart();
         }

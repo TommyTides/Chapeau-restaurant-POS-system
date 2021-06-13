@@ -271,7 +271,7 @@ namespace ChapeauDAL
             return ReadOrderID(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        private int ReadOrderID(DataTable dataTable)
+        private int ReadOrderID(DataTable dataTable) // store orderID in a variable
         {
             int newestOrder = 0;
             foreach (DataRow dr in dataTable.Rows)
@@ -283,9 +283,8 @@ namespace ChapeauDAL
 
         public int AddOrder(Order order)
         {
-            int notPaid = 0;
-            //int tempEmployeeID = 6447;
-            int TempOrderStatus = 1;
+            int notPaid = 0; // means not paid
+            int TempOrderStatus = 1; // pending
             string query = $"INSERT INTO [ORDER](totalPrice, tableID, orderStatus, employeeID, isPaid) " +
                     $"VALUES(@totalPrice, @tableID, @orderStatus, @employeeID, @isPaid);";
             SqlParameter[] sqlParameters = new SqlParameter[5];
@@ -295,17 +294,17 @@ namespace ChapeauDAL
             sqlParameters[3] = new SqlParameter("@employeeID", order.Employee.EmployeeID);
             sqlParameters[4] = new SqlParameter("@isPaid", notPaid);
             ExecuteEditQuery(query, sqlParameters);
-            return GetNewestOrder();
+            return GetNewestOrder(); // gets newest orderID
         }
 
         public void AddOrderItem(Order order)
         {
-            DateTime orderDate = DateTime.Now;
-            
+            DateTime orderDate = DateTime.Now;          
             foreach (OrderItem orderItem in order.OrderItems)
             {
                 int place = (int)orderItem.menuItem.place;
                 int status = (int)orderItem.Status;
+                // inserting each orderItem in the database
                 string query = $"INSERT INTO [ORDER_ITEM](orderID, item_id, quantity, itemStatus, comment, orderTime, placeID) " +
                     $"VALUES(@orderID, @item_id, @quantity, @itemStatus, @comment, @orderTime, @placeID);";
 
