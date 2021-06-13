@@ -167,6 +167,7 @@ namespace ChapeauUI
             this.txtTip.Name = "txtTip";
             this.txtTip.Size = new System.Drawing.Size(100, 23);
             this.txtTip.TabIndex = 15;
+            this.txtTip.TextChanged += new System.EventHandler(this.txtTip_TextChanged);
             // 
             // lblTotalAmount
             // 

@@ -63,7 +63,7 @@ namespace ChapeauUI
                 item.SubItems.Add(orderItem.TotalPrice.ToString("€ 0.00"));
                 lstViewItems.Items.Add(item);
             }
-
+            // searching the enumeration for the types of values that are stored within and gets them 
             cmbMethod.DataSource = (Enum.GetValues(typeof(PaymentMethod)));
 
             // storing values from the database into the labels
@@ -71,8 +71,7 @@ namespace ChapeauUI
             lblBill.Text = this.Order.Total.ToString("€ 0.00");
             lblWaiter.Text = this.Order.Employee.EmployeeID.ToString();
 
-            // if the amount entered in the tip text box is greater than 0
-            // then it adds the value to the Tip property
+            // if a user devides to tip beforehand the tip can be written in the database before the payment is handed out
             if (Order.Tip > 0)
             {
                 txtTip.Text = this.Order.Tip.ToString("0.00");
@@ -102,7 +101,7 @@ namespace ChapeauUI
 
         private void btnFinalizePayment_Click(object sender, EventArgs e)
         {
-            // if feedback textbox is empty, then do not put feedback to order
+            // if the textbox is not null or empty, add whatever is in it to the value Order.Feedback
             if (!String.IsNullOrWhiteSpace(txtFeedback.Text))
             {
                 Order.Feedback = txtFeedback.Text;
@@ -151,6 +150,21 @@ namespace ChapeauUI
             {
                 MessageBox.Show("An error has occured during the payment process.");
             }
+        }
+
+        private void txtTip_TextChanged(object sender, EventArgs e)
+        {
+            double tip = 0;
+            if (chbTip.Checked)
+            {
+                // the tip gets converted into a double
+                // only digits, no letters or weird things
+                // tip is the output parameter which gets its value by assigment inside the Parse function
+                bool validTip = double.TryParse(txtTip.Text, out tip);
+                if (!validTip)
+                    return;
+            }
+            lblTotalAmount.Text = (Order.Total + Order.VATTotal + tip).ToString("€ 0.00");
         }
     }
 }
