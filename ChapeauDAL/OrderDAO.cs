@@ -286,7 +286,7 @@ namespace ChapeauDAL
             sqlParameters[0] = new SqlParameter("@totalPrice", order.CalculateTotalOrderPriceByItems());
             sqlParameters[1] = new SqlParameter("@tableID", order.Table.TableID);
             sqlParameters[2] = new SqlParameter("@orderStatus", TempOrderStatus);
-            sqlParameters[3] = new SqlParameter("@employeeID", order.Employee.employeeID);
+            sqlParameters[3] = new SqlParameter("@employeeID", order.Employee.EmployeeID);
             sqlParameters[4] = new SqlParameter("@isPaid", notPaid);
             ExecuteEditQuery(query, sqlParameters);
             return GetNewestOrder();
