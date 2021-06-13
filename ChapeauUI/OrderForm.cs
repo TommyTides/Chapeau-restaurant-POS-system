@@ -12,9 +12,9 @@ namespace ChapeauUI
         private OrderService orderService;
         private Employee employee;
 
-        public OrderForm()
+        public OrderForm(Employee employee)
         {
-            //receive the information who sign in login
+            //receive the information who sign in login in the construct from loginform
             InitializeComponent();
             orderService = new OrderService();
             this.employee = employee;
@@ -24,7 +24,7 @@ namespace ChapeauUI
         private void OrderForm_Load(object sender, EventArgs e)
         {
             WinAPI.AnimateWindow(this.Handle, 2000, WinAPI.BLEND);
-
+            
             ListViewKitchenBar();
             pictureBox4.Controls.Add(pictureBox1);
             pictureBox4.Controls.Add(pictureBox3);
@@ -46,11 +46,13 @@ namespace ChapeauUI
             {
                 orderKitchenBar = orderService.GetAllBar();
                 lblEmployee.Text = " OrderView Bar";
+                //if Barman employee sign in it will receive the Bar orders
             }
             else if (employee.Role == Role.KitchenStaff)
             {
                 orderKitchenBar = orderService.GetAllKitchen();
                 lblEmployee.Text = " OrderView Kitchen";
+                //if kitchen employee sign in it will receive the kitchen orders
             }
 
             return orderKitchenBar;
@@ -60,7 +62,7 @@ namespace ChapeauUI
         {
 
             List<Order> orderKitchenBar = Employee();
-            //foreach to display the orderitems, I used the foreach to access TableID
+            //foreach to display the orderitems, I used the double foreach to access TableID
             foreach (Order O in orderKitchenBar)
             {
                 foreach (OrderItem I in O.OrderItems)
@@ -70,8 +72,7 @@ namespace ChapeauUI
                         //if status is ready it will skip it
                         continue;
                     }
-             
-
+                    
                     ListViewItem li = new ListViewItem(I.OrderID.ToString());
                     li.SubItems.Add(I.menuItem.item_name);
                     li.SubItems.Add(I.Comment.ToString());
@@ -97,11 +98,13 @@ namespace ChapeauUI
                 return;
                 //if nothing is selected it shows the message
             }
-
+            
             if(confirmResult == DialogResult.Yes)
             { 
                 StatusChange();
+                //if status is selected
             }
+            //refresh the list if its needed.
             ListViewKitch.Items.Clear();
             ListViewKitchenBar();
         }

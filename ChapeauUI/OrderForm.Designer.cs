@@ -67,7 +67,7 @@ namespace ChapeauUI
             this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnExit.Location = new System.Drawing.Point(423, 625);
+            this.btnExit.Location = new System.Drawing.Point(423, 684);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(243, 39);
             this.btnExit.TabIndex = 9;
@@ -92,7 +92,7 @@ namespace ChapeauUI
             this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefresh.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRefresh.Location = new System.Drawing.Point(423, 682);
+            this.btnRefresh.Location = new System.Drawing.Point(423, 741);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(243, 39);
             this.btnRefresh.TabIndex = 17;
@@ -105,7 +105,7 @@ namespace ChapeauUI
             this.btnStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStatus.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnStatus.Location = new System.Drawing.Point(30, 625);
+            this.btnStatus.Location = new System.Drawing.Point(30, 684);
             this.btnStatus.Name = "btnStatus";
             this.btnStatus.Size = new System.Drawing.Size(243, 96);
             this.btnStatus.TabIndex = 16;
@@ -126,9 +126,9 @@ namespace ChapeauUI
             this.ListViewKitch.FullRowSelect = true;
             this.ListViewKitch.GridLines = true;
             this.ListViewKitch.HideSelection = false;
-            this.ListViewKitch.Location = new System.Drawing.Point(30, 60);
+            this.ListViewKitch.Location = new System.Drawing.Point(30, 43);
             this.ListViewKitch.Name = "ListViewKitch";
-            this.ListViewKitch.Size = new System.Drawing.Size(636, 520);
+            this.ListViewKitch.Size = new System.Drawing.Size(636, 463);
             this.ListViewKitch.TabIndex = 15;
             this.ListViewKitch.UseCompatibleStateImageBehavior = false;
             this.ListViewKitch.View = System.Windows.Forms.View.Details;
