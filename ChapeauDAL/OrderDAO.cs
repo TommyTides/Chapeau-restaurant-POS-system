@@ -316,10 +316,16 @@ namespace ChapeauDAL
                 sqlParameters[3] = new SqlParameter("@itemStatus", status);
                 sqlParameters[4] = new SqlParameter("@comment", orderItem.Comment);
                 sqlParameters[5] = new SqlParameter("@orderTime", orderDate);
-                sqlParameters[6] = new SqlParameter("@placeID", place/*(int)orderItem.menuItem.place)*/);
+                sqlParameters[6] = new SqlParameter("@placeID", place);
                 ExecuteEditQuery(query, sqlParameters);
+                /////////////////////// decreasing the stock
+                int decreaseAmount = orderItem.menuItem.item_id;
+                string query2 = "Update [MENU_ITEM] Set stock = stock - @stock where item_id = @item_id";
+                SqlParameter[] sqlParameters2 = new SqlParameter[2];
+                sqlParameters2[0] = new SqlParameter("@stock", orderItem.Quantity);
+                sqlParameters2[1] = new SqlParameter("@item_id", decreaseAmount);
+                ExecuteEditQuery(query2, sqlParameters2);
             }
         }
-
     }
 }
