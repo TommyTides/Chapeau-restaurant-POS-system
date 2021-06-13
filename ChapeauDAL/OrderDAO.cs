@@ -278,7 +278,7 @@ namespace ChapeauDAL
         public int AddOrder(Order order)
         {
             int notPaid = 0;
-            int tempEmployeeID = 6447;
+            //int tempEmployeeID = 6447;
             int TempOrderStatus = 1;
             string query = $"INSERT INTO [ORDER](totalPrice, tableID, orderStatus, employeeID, isPaid) " +
                     $"VALUES(@totalPrice, @tableID, @orderStatus, @employeeID, @isPaid);";
@@ -286,7 +286,7 @@ namespace ChapeauDAL
             sqlParameters[0] = new SqlParameter("@totalPrice", order.CalculateTotalOrderPriceByItems());
             sqlParameters[1] = new SqlParameter("@tableID", order.Table.TableID);
             sqlParameters[2] = new SqlParameter("@orderStatus", TempOrderStatus);
-            sqlParameters[3] = new SqlParameter("@employeeID", tempEmployeeID/*order.Employee.employeeID*/);
+            sqlParameters[3] = new SqlParameter("@employeeID", order.Employee.employeeID);
             sqlParameters[4] = new SqlParameter("@isPaid", notPaid);
             ExecuteEditQuery(query, sqlParameters);
             return GetNewestOrder();
@@ -299,16 +299,18 @@ namespace ChapeauDAL
             foreach (OrderItem orderItem in order.OrderItems)
             {
                 int place = (int)orderItem.menuItem.place;
+                int status = (int)orderItem.Status;
                 string query = $"INSERT INTO [ORDER_ITEM](orderID, item_id, quantity, itemStatus, comment, orderTime, placeID) " +
-                    $"VALUES(@orderID, @item_id, @quantity, @totalPrice, @comment, @orderTime, @placeID);";
+                    $"VALUES(@orderID, @item_id, @quantity, @itemStatus, @comment, @orderTime, @placeID);";
 
                 SqlParameter[] sqlParameters = new SqlParameter[7];
                 sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
                 sqlParameters[1] = new SqlParameter("@item_id", orderItem.menuItem.item_id);
                 sqlParameters[2] = new SqlParameter("@quantity", orderItem.Quantity);
-                sqlParameters[3] = new SqlParameter("@comment", orderItem.Comment);
-                sqlParameters[4] = new SqlParameter("@orderTime", orderDate);
-                sqlParameters[5] = new SqlParameter("@placeID", place/*(int)orderItem.menuItem.place)*/);
+                sqlParameters[3] = new SqlParameter("@itemStatus", status);
+                sqlParameters[4] = new SqlParameter("@comment", orderItem.Comment);
+                sqlParameters[5] = new SqlParameter("@orderTime", orderDate);
+                sqlParameters[6] = new SqlParameter("@placeID", place/*(int)orderItem.menuItem.place)*/);
                 ExecuteEditQuery(query, sqlParameters);
             }
         }
