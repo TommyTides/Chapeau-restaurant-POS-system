@@ -17,7 +17,7 @@ namespace ChapeauModel
         public Employee Employee { get; set; }
 
         // status of the transaction (finished or not finished)
-        public bool PaymentStatus { get; set; }
+        public bool isPaid { get; set; }
         public double Tip { get; set; }
         public List<OrderItem> OrderItems { get; set; }
 

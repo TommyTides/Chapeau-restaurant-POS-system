@@ -205,7 +205,7 @@ namespace ChapeauUI
         private void FillOrderItem()
         {
             orderItem.OrderTime = DateTime.Now;
-            orderItem.Status = ItemStatus.Preparing;
+            orderItem.Status = OrderItemStatus.Preparing;
         }
 
         private void listBoxSelectedFoodItem_SelectedIndexChanged(object sender, EventArgs e)

@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ChapeauModel
-{
-    public enum ItemStatus { Preparing = 1, Ready, Delivered }
+{	
+    public enum OrderItemStatus { Ordered = 1, Preparing , Ready, Delivered }
 
     public class OrderItem
     {
         public int OrderID { get; set; }
-        public ItemStatus Status { get; set; } // status of the order(single)
+        public OrderItemStatus Status { get; set; } // status of the order(single)
         public MenuItem menuItem { get; set; } // List of menuItems
 
         public int Quantity { get; set; }

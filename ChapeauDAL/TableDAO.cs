@@ -53,12 +53,12 @@ namespace ChapeauDAL
 
         public List<Order> GetAllRunningOrders()
         {
-            string query = "select ord.orderID, ord.totalPrice, ord.tableID, ord.orderStatus, ord.tip, ord.vat, ord.employeeID, ord.paymentStatus, ord_s.description " +
+            string query = "select ord.orderID, ord.totalPrice, ord.tableID, ord.orderStatus, ord.tip, ord.vat, ord.employeeID, ord.isPaid, ord_s.description " +
                             " FROM[ORDER] as ord " +
                             " JOIN ORDER_STATUS as ord_s ON ord.orderStatus = ord_s.orderstatusID " +
-                            " WHERE ord.paymentStatus = @paymentStatus";
+                            " WHERE ord.isPaid = @isPaid";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@paymentStatus", false);
+            sqlParameters[0] = new SqlParameter("@isPaid", false);
             return CreateOrders(ExecuteSelectQuery(query, sqlParameters));
         }
 
@@ -72,7 +72,7 @@ namespace ChapeauDAL
                 {
                     Table = new Table((int)dr["tableID"]),
                     Status = (OrderStatus)(dr["orderStatus"]),
-                    PaymentStatus = (bool)(dr["paymentStatus"]),
+                    isPaid = (bool)(dr["isPaid"]),
                     OrderID = (int)(dr["orderID"]),
                     Employee = employeeDAO.GetEmployee((int)dr["employeeID"])
                 };

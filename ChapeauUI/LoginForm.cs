@@ -15,7 +15,6 @@ namespace ChapeauUI
     public partial class LoginForm : Form
     {
         EmployeeService employeeService = new EmployeeService();
-        
         public LoginForm()
         {
             InitializeComponent();
@@ -58,7 +57,7 @@ namespace ChapeauUI
             else if (employee.Role == Role.KitchenStaff || employee.Role == Role.Barman)
             {
                 this.Hide();
-                OrderForm orderForm = new OrderForm();
+                OrderForm orderForm = new OrderForm(employee);
                 orderForm.ShowDialog();
             }
         }

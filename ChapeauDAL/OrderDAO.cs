@@ -14,21 +14,27 @@ namespace ChapeauDAL
 
         public List<Order> GetAllOrdersBar()
         {
-            string query = "select m.menu_type, m.item_name,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o JOIN [MENU_ITEM] as m ON o.item_id = m.item_id JOIN [ORDER] as R ON o.orderID = r.orderID where PlaceID = 2";
+            string query = "select m.menu_type, m.item_name,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o " +
+                "JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " +
+                "JOIN [ORDER] as R ON o.orderID = r.orderID " +
+                "where PlaceID = 2 "; 
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadKitchenBar(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<Order> GetAllOrdersKitchen()
         {
-            string query = "select m.menu_type, m.item_name,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o JOIN [MENU_ITEM] as m ON o.item_id = m.item_id JOIN [ORDER] as R ON o.orderID = r.orderID where PlaceID = 1 ";
+            string query = "select m.menu_type, m.item_name,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o " +
+                "JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " +
+                "JOIN [ORDER] as R ON o.orderID = r.orderID " +
+                "where PlaceID = 1 ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadKitchenBar(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public void UpdateOrderReady(OrderItem order)
         {
-            string query = "Update [ORDER_ITEM] Set itemStatus = 2 Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
+            string query = "Update [ORDER_ITEM] Set itemStatus = 3 Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
             SqlParameter[] sqlParameters = new SqlParameter[4];
             sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
             sqlParameters[1] = new SqlParameter("@itemStatus", order.Status);
@@ -39,7 +45,7 @@ namespace ChapeauDAL
 
         public void UpdateOrderPreparing(OrderItem order)
         {
-            string query = "Update [ORDER_ITEM] Set itemStatus = 1 Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
+            string query = "Update [ORDER_ITEM] Set itemStatus = 2 Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
             SqlParameter[] sqlParameters = new SqlParameter[4];
             sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
             sqlParameters[1] = new SqlParameter("@itemStatus", order.Status);
@@ -55,8 +61,6 @@ namespace ChapeauDAL
             foreach (DataRow dr in dataTable.Rows)
             {
                 Table table = new Table();
-
-
                 MenuItem item = new MenuItem();
 
                 item.menu_type = (MenuCategory)dr["menu_type"];
@@ -66,7 +70,7 @@ namespace ChapeauDAL
                 orderItem.OrderID = (int)dr["orderID"];
                 orderItem.Comment = (string)dr["comment"];
                 orderItem.Quantity = (int)dr["quantity"];
-                orderItem.Status = (ItemStatus)dr["itemStatus"];
+                orderItem.Status = (OrderItemStatus)dr["itemStatus"];
                 orderItem.OrderTime = (DateTime)dr["orderTime"];
                 orderItem.menuItem = item;
 
@@ -84,46 +88,10 @@ namespace ChapeauDAL
             return KitchenBarOrders;
         }
 
-        //private List<Order> ReadKitchen(DataTable dataTable)
-        //{
-        //    List<Order> Kitchen = new List<Order>();
-        //    foreach (DataRow dr in dataTable.Rows)
-        //    {
-
-        //        Order order = new Order();
-        //        order.Table.TableID = (int)dr["tableID"];
-        //        order.OrderID = (int)dr["orderID"];
-        //        foreach (DataRow dr in dataTable.Rows)
-        //        {
-
-        //        }
-
-        //        MenuItem item = new MenuItem();
-
-        //        item.menu_type = (MenuCategory)dr["menu_type"];
-        //        item.item_name = (string)dr["item_name"];
-
-
-
-        //        OrderItem orderItem = new OrderItem();
-
-        //        orderItem.Comment = (string)dr["comment"];
-        //        orderItem.Quantity = (int)dr["quantity"];
-        //        orderItem.Status = (ItemStatus)dr["itemStatus"];
-        //        orderItem.OrderTime = (DateTime)dr["orderTime"];
-        //        orderItem.menuItem = item;
-
-
-
-        //        Kitchen.Add(orderItem);
-
-        //    }
-        //    return Kitchen;
-
-        //}
-
+     
         #region Alex's part
 
+        // Alex's part
 
         private List<OrderItem> ReadOrderItems(DataTable dataTable)
         {
@@ -149,42 +117,7 @@ namespace ChapeauDAL
                     orderItem.menuItem = menu;
                     orderItem.Quantity = (int)dr["quantity"];
                     if (dr["comment"] != System.DBNull.Value) orderItem.Comment = (string)dr["comment"]; // comment can be left null in database
-                    orderItem.Status = (ItemStatus)dr["itemStatus"];
-                };
-
-                orderItems.Add(orderItem);
-            }
-            return orderItems;
-        }
-
-
-        // Alex's part
-
-        private List<OrderItem> ReadOrderItem(DataTable dataTable)
-        {
-            List<OrderItem> orderItems = new List<OrderItem>();
-
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                // read from menu item
-                // note to self: next time fill out all the fields in order to avoid errors with retrieving data
-                MenuItem menu = new MenuItem()
-                {
-                    item_id = (int)dr["item_id"],
-                    item_name = (string)dr["item_name"],
-                    item_price = (double)dr["item_price"],
-                    menu_type = (MenuCategory)dr["menu_type"],
-                    item_type = (MenuSubCategory)dr["item_type"],
-                };
-
-                // read from order item
-                OrderItem orderItem = new OrderItem();
-                {
-                    // store menu item in the order item object (menuItem)
-                    orderItem.menuItem = menu;
-                    orderItem.Quantity = (int)dr["quantity"];
-                    if (dr["comment"] != System.DBNull.Value) orderItem.Comment = (string)dr["comment"]; // comment can be left null in database
-                    orderItem.Status = (ItemStatus)dr["itemStatus"];
+                    orderItem.Status = (OrderItemStatus)dr["itemStatus"];
                 };
 
                 orderItems.Add(orderItem);
@@ -213,9 +146,9 @@ namespace ChapeauDAL
         {
             try
             {
-                string query = "INSERT INTO [PAYMENT](orderID, paymentmethodID, paymentTotal, vatTotal, tip, employeeID, feedback) " +
-                "VALUES(@id, @method, @payment, @vat, @tip, @empID, @feedback)";
-                SqlParameter[] sqlParameters = new SqlParameter[7];
+                string query = "INSERT INTO [PAYMENT](orderID, paymentmethodID, paymentTotal, vatTotal, tip, employeeID, feedback, paymentDate) " +
+                "VALUES(@id, @method, @payment, @vat, @tip, @empID, @feedback, @paymentDate)";
+                SqlParameter[] sqlParameters = new SqlParameter[8];
                 sqlParameters[0] = new SqlParameter("@id", order.OrderID);
                 sqlParameters[1] = new SqlParameter("@method", order.paymentMethod);
                 sqlParameters[2] = new SqlParameter("@payment", order.Total);
@@ -223,6 +156,7 @@ namespace ChapeauDAL
                 sqlParameters[4] = new SqlParameter("@tip", order.Tip);
                 sqlParameters[5] = new SqlParameter("@empID", order.Employee.employeeID);
                 sqlParameters[6] = new SqlParameter("@feedback", order.Feedback);
+                sqlParameters[7] = new SqlParameter("@paymentDate", order.PaymentDate);
 
 
                 ExecuteEditQuery(query, sqlParameters);
@@ -238,14 +172,14 @@ namespace ChapeauDAL
         // gets the right order corresponding to the tableID
         public Order GetOrderForTableByTableID(int tableID)
         {
-            string query = 
-                "SELECT O.orderID, O.paymentDate, O.totalPrice, O.tableID, O.employeeID, O.orderStatus, O.tip, O.vat, O.paymentStatus, "+
-                "T.capacity, T.statusID, "+
+            string query =
+                "SELECT O.orderID, O.paymentDate, O.totalPrice, O.tableID, O.employeeID, O.orderStatus, O.tip, O.vat, O.isPaid, " +
+                "T.capacity, T.statusID, " +
                 "E.employeeID, E.firstName, E.lastName, E.roleID, E.PIN " +
                 "FROM [ORDER] AS O " +
-                "JOIN [TABLE] AS T ON T.table_id = O.tableID "+
+                "JOIN [TABLE] AS T ON T.table_id = O.tableID " +
                 "JOIN [EMPLOYEE] AS E ON E.employeeID = O.employeeID " +
-                "WHERE O.tableID = @id AND O.paymentStatus = 0";
+                "WHERE O.tableID = @id AND O.isPaid = 0";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@id", tableID);
 
@@ -262,7 +196,7 @@ namespace ChapeauDAL
                 // due to the fact that they have to be filled out within the form and then updated to the database
                 order = new Order();
                 order.OrderID = (int)dr["orderID"];
-                if (dr["paymentStatus"] != System.DBNull.Value) order.PaymentStatus = (bool)dr["paymentStatus"];
+                if (dr["isPaid"] != System.DBNull.Value) order.isPaid = (bool)dr["isPaid"];
                 if (dr["orderStatus"] != System.DBNull.Value) order.Status = (OrderStatus)dr["orderStatus"];
                 if (dr["totalPrice"] != System.DBNull.Value) order.Total = (double)dr["totalPrice"];
                 if (dr["paymentDate"] != System.DBNull.Value) order.PaymentDate = (DateTime)dr["paymentDate"];
@@ -292,20 +226,23 @@ namespace ChapeauDAL
         }
 
         // when the order has been paid for, the payment status changes to true in the database
-        public void ChangePaymentStatus(Order order, bool newOrderIsPaidStatus)
+        public void UpdateOrderDetails(Order order, bool newOrderIsPaidStatus)
         {
-            string query = "UPDATE [ORDER] SET paymentStatus = @status, VAT = @vat, tip = @tip, totalPrice = @totalPrice  WHERE orderID = @ID";
-            SqlParameter[] sqlParameters = new SqlParameter[5];
-            sqlParameters[0] = new SqlParameter("@status", newOrderIsPaidStatus);
+            string query = "UPDATE [ORDER] SET isPaid = @paid, VAT = @vat, tip = @tip, totalPrice = @totalPrice, paymentDate = @paymentDate  WHERE orderID = @ID";
+            SqlParameter[] sqlParameters = new SqlParameter[6];
+            sqlParameters[0] = new SqlParameter("@paid", newOrderIsPaidStatus);
             sqlParameters[1] = new SqlParameter("@ID", order.OrderID);
             sqlParameters[2] = new SqlParameter("@vat", order.VATTotal);
             sqlParameters[3] = new SqlParameter("@tip", order.Tip);
             sqlParameters[4] = new SqlParameter("@totalPrice", order.Total);
+            sqlParameters[5] = new SqlParameter("@paymentDate", order.PaymentDate);
+
 
             ExecuteEditQuery(query, sqlParameters);
-            order.PaymentStatus = newOrderIsPaidStatus;
+            order.isPaid = newOrderIsPaidStatus;
         }
-   #endregion
+
+        #endregion
 
         // Tommy's DAO parts---------------------------------------------------------------------------
         public int GetNewestOrder() // Get newest order form the database
@@ -330,12 +267,12 @@ namespace ChapeauDAL
             // Test id for table
             order.Table.TableID = 1;
             //
-            string query = $"INSERT INTO [ORDER](tableID, employeeID, paymentStatus) " +
-                    $"VALUES(@paymentDate, @totalPrice, @tableID, #employeeID, #paymentStatus);";
+            string query = $"INSERT INTO [ORDER](tableID, employeeID, isPaid) " +
+                    $"VALUES(@paymentDate, @totalPrice, @tableID, #employeeID, #isPaid);";
             SqlParameter[] sqlParameters = new SqlParameter[5];
             sqlParameters[2] = new SqlParameter("@tableID", order.Table.TableID);
             sqlParameters[3] = new SqlParameter("@employeeID", order.Employee.employeeID);
-            sqlParameters[4] = new SqlParameter("@paymentStatus", order.PaymentStatus);
+            sqlParameters[4] = new SqlParameter("@isPaid", order.isPaid);
             ExecuteEditQuery(query, sqlParameters);
             return GetNewestOrder();
         }
