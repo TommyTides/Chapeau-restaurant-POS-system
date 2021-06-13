@@ -70,9 +70,13 @@ namespace ChapeauLogic
             orderDAO.AddOrderItem(order);
         }
 
-        public List<OrderItem> GroupOrderItem()
+        public int GroupOrderItem(Order order, int amount)
         {
-            return null;
+            foreach (OrderItem orderorderItem in order.OrderItems)
+            {
+                    return orderorderItem.Quantity += amount; // To do in logic layer.
+            }
+            return 1;
         }
     }
 }

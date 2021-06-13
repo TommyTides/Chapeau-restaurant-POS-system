@@ -47,6 +47,8 @@ namespace ChapeauUI
             order.OrderItems = new List<OrderItem>();
             menuItems = new List<MenuItem>();
             item = new MenuItem();
+            this.table = new Table();
+            table.TableID = 1;
         }
 
         private void PlaceOrderForm_Load(object sender, EventArgs e)
@@ -60,6 +62,7 @@ namespace ChapeauUI
             pnlMenuOptions.Visible = false;
             pnlFoodMenu.Visible = false;
             pnlDrinks.Visible = false;
+            pnlCart.Visible = false;
         }
 
         private void hamburgerIcon_Click(object sender, EventArgs e)
@@ -94,10 +97,14 @@ namespace ChapeauUI
 
         private void lblOrderCart_Click(object sender, EventArgs e)
         {
-            // to do...
             if (order.OrderItems.Count <= 0)
             {
                 MessageBox.Show("Add item to the cart to view the order cart!");
+            }
+            else
+            {
+                HideAllPanels();
+                pnlCart.Visible = true;
             }
         }
 
@@ -260,14 +267,14 @@ namespace ChapeauUI
             orderItem.Comment = "no comment";
             orderItem.Quantity = temp;
 
-            order.OrderItems = orderService.GroupOrderItem();
 
             foreach (OrderItem orderorderItem in order.OrderItems)
             {
                 // if the selected item and the comment is the same the item will be grouped in the excisting list of orders.
                 if (orderorderItem.menuItem.item_id == orderItem.menuItem.item_id && orderorderItem.Comment == orderItem.Comment)
                 {
-                    orderorderItem.Quantity += orderItem.Quantity;
+                    //orderorderItem.Quantity += orderItem.Quantity; // To do in logic layer.
+                    orderorderItem.Quantity = orderService.GroupOrderItem(order, orderItem.Quantity); // To do in logic layer.
                     grouped = true;
                 }
             }
@@ -299,7 +306,6 @@ namespace ChapeauUI
         {
             ClearDrinkMenu();
             pnlDrinks.Visible = true;
-            //pnlDrinks.BringToFront();
 
             // List box sizes depending on menu type.
             if (secondCategory == MenuSubCategory.wines)
@@ -335,6 +341,57 @@ namespace ChapeauUI
                     listBoxDrink2Price.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
                 }
             }
+        }
+
+        private void numericUpDownDrink_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownDrink.Value >= 1)
+            {
+                btnAddDrink.Enabled = true; // enable add button when quantity is selected.
+            }
+            else
+            {
+                btnAddDrink.Enabled = false; // disable add button
+                listBoxSelectedDrink.Items.Clear(); // clear selected item list
+            }
+        }
+
+        private void listBoxSelectedDrink_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            numericUpDownDrink.Value = 1;
+        }
+
+        private void btnAddDrink_Click(object sender, EventArgs e)
+        {
+            bool grouped = false;
+            // orderItem = (OrderItem)listBoxSelectedLunchItem.SelectedItem;
+            this.listBoxSelectedDrink.SelectedIndex = 0;
+            orderItem = (OrderItem)listBoxSelectedDrink.SelectedItem;
+            int temp = Convert.ToInt32(numericUpDownDrink.Value);
+            orderItem.Comment = "no comment";
+            orderItem.Quantity = temp;
+
+            foreach (OrderItem orderorderItem in order.OrderItems)
+            {
+                // if the selected item and the comment is the same the item will be grouped in the excisting list of orders.
+                if (orderorderItem.menuItem.item_id == orderItem.menuItem.item_id && orderorderItem.Comment == orderItem.Comment)
+                {
+                    //orderorderItem.Quantity += orderItem.Quantity; // To do in logic layer.
+                    orderorderItem.Quantity = orderService.GroupOrderItem(order, orderItem.Quantity); // To do in logic layer.
+                    grouped = true;
+                }
+            }
+            if (!grouped) // add order item to the list if they are not grouped already in the excisting list
+            {
+                order.OrderItems.Add(orderItem);
+            }
+            if (order.OrderItems.Count >= 1)
+            {
+                MessageBox.Show("Item has been added to cart");
+            }
+            numericUpDownDrink.Value = 0;
+            listBoxSelectedDrink.Items.Clear();
+            listBoxSelectedDrink.Text = "";
         }
     }
 }

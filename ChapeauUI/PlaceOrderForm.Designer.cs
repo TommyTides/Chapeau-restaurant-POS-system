@@ -30,8 +30,6 @@ namespace ChapeauUI
         private void InitializeComponent()
         {
             this.pnlStaticBar = new System.Windows.Forms.Panel();
-            this.lblBack = new System.Windows.Forms.Label();
-            this.lblForward = new System.Windows.Forms.Label();
             this.hamburgerIcon = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblApplicationSubState = new System.Windows.Forms.Label();
@@ -78,6 +76,14 @@ namespace ChapeauUI
             this.lblDrinks1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlCart = new System.Windows.Forms.Panel();
+            this.listBoxCartPrice = new System.Windows.Forms.ListBox();
+            this.listBoxCartItem = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.listBoxCartAmount = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.pnlStaticBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hamburgerIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -89,13 +95,13 @@ namespace ChapeauUI
             this.pnlDrinks.SuspendLayout();
             this.pnlDrinksInside.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDrink)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.pnlCart.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlStaticBar
             // 
             this.pnlStaticBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
-            this.pnlStaticBar.Controls.Add(this.lblBack);
-            this.pnlStaticBar.Controls.Add(this.lblForward);
             this.pnlStaticBar.Controls.Add(this.hamburgerIcon);
             this.pnlStaticBar.Controls.Add(this.pictureBox3);
             this.pnlStaticBar.Controls.Add(this.lblApplicationSubState);
@@ -104,28 +110,6 @@ namespace ChapeauUI
             this.pnlStaticBar.Name = "pnlStaticBar";
             this.pnlStaticBar.Size = new System.Drawing.Size(756, 94);
             this.pnlStaticBar.TabIndex = 0;
-            // 
-            // lblBack
-            // 
-            this.lblBack.AutoSize = true;
-            this.lblBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBack.ForeColor = System.Drawing.Color.White;
-            this.lblBack.Location = new System.Drawing.Point(270, 10);
-            this.lblBack.Name = "lblBack";
-            this.lblBack.Size = new System.Drawing.Size(41, 42);
-            this.lblBack.TabIndex = 12;
-            this.lblBack.Text = "<";
-            // 
-            // lblForward
-            // 
-            this.lblForward.AutoSize = true;
-            this.lblForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblForward.ForeColor = System.Drawing.Color.White;
-            this.lblForward.Location = new System.Drawing.Point(440, 10);
-            this.lblForward.Name = "lblForward";
-            this.lblForward.Size = new System.Drawing.Size(41, 42);
-            this.lblForward.TabIndex = 11;
-            this.lblForward.Text = ">";
             // 
             // hamburgerIcon
             // 
@@ -509,6 +493,7 @@ namespace ChapeauUI
             // 
             // pnlDrinks
             // 
+            this.pnlDrinks.Controls.Add(this.panel1);
             this.pnlDrinks.Controls.Add(this.pnlDrinksInside);
             this.pnlDrinks.Location = new System.Drawing.Point(12, 105);
             this.pnlDrinks.Name = "pnlDrinks";
@@ -543,6 +528,7 @@ namespace ChapeauUI
             this.numericUpDownDrink.Name = "numericUpDownDrink";
             this.numericUpDownDrink.Size = new System.Drawing.Size(70, 33);
             this.numericUpDownDrink.TabIndex = 93;
+            this.numericUpDownDrink.ValueChanged += new System.EventHandler(this.numericUpDownDrink_ValueChanged);
             // 
             // listBoxSelectedDrink
             // 
@@ -553,6 +539,7 @@ namespace ChapeauUI
             this.listBoxSelectedDrink.Name = "listBoxSelectedDrink";
             this.listBoxSelectedDrink.Size = new System.Drawing.Size(482, 34);
             this.listBoxSelectedDrink.TabIndex = 92;
+            this.listBoxSelectedDrink.SelectedIndexChanged += new System.EventHandler(this.listBoxSelectedDrink_SelectedIndexChanged);
             // 
             // btnAddDrink
             // 
@@ -565,6 +552,7 @@ namespace ChapeauUI
             this.btnAddDrink.TabIndex = 91;
             this.btnAddDrink.Text = "Add to cart";
             this.btnAddDrink.UseVisualStyleBackColor = false;
+            this.btnAddDrink.Click += new System.EventHandler(this.btnAddDrink_Click);
             // 
             // label1
             // 
@@ -660,13 +648,99 @@ namespace ChapeauUI
             this.label6.TabIndex = 1;
             this.label6.Text = "Price";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pnlCart);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(676, 868);
+            this.panel1.TabIndex = 15;
+            // 
+            // pnlCart
+            // 
+            this.pnlCart.BackColor = System.Drawing.Color.White;
+            this.pnlCart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlCart.Controls.Add(this.label3);
+            this.pnlCart.Controls.Add(this.listBoxCartAmount);
+            this.pnlCart.Controls.Add(this.listBoxCartPrice);
+            this.pnlCart.Controls.Add(this.listBoxCartItem);
+            this.pnlCart.Controls.Add(this.label4);
+            this.pnlCart.Controls.Add(this.label8);
+            this.pnlCart.Location = new System.Drawing.Point(27, 17);
+            this.pnlCart.Name = "pnlCart";
+            this.pnlCart.Size = new System.Drawing.Size(622, 835);
+            this.pnlCart.TabIndex = 1;
+            // 
+            // listBoxCartPrice
+            // 
+            this.listBoxCartPrice.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxCartPrice.FormattingEnabled = true;
+            this.listBoxCartPrice.ItemHeight = 30;
+            this.listBoxCartPrice.Location = new System.Drawing.Point(520, 57);
+            this.listBoxCartPrice.Name = "listBoxCartPrice";
+            this.listBoxCartPrice.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxCartPrice.Size = new System.Drawing.Size(83, 424);
+            this.listBoxCartPrice.TabIndex = 41;
+            // 
+            // listBoxCartItem
+            // 
+            this.listBoxCartItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxCartItem.FormattingEnabled = true;
+            this.listBoxCartItem.ItemHeight = 30;
+            this.listBoxCartItem.Location = new System.Drawing.Point(16, 57);
+            this.listBoxCartItem.Name = "listBoxCartItem";
+            this.listBoxCartItem.Size = new System.Drawing.Size(377, 424);
+            this.listBoxCartItem.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 24);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Item(s)";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(516, 15);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 20);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Price";
+            // 
+            // listBoxCartAmount
+            // 
+            this.listBoxCartAmount.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxCartAmount.FormattingEnabled = true;
+            this.listBoxCartAmount.ItemHeight = 30;
+            this.listBoxCartAmount.Location = new System.Drawing.Point(415, 57);
+            this.listBoxCartAmount.Name = "listBoxCartAmount";
+            this.listBoxCartAmount.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxCartAmount.Size = new System.Drawing.Size(83, 424);
+            this.listBoxCartAmount.TabIndex = 94;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(411, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(71, 20);
+            this.label3.TabIndex = 95;
+            this.label3.Text = "Amount";
+            // 
             // PlaceOrderForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(752, 985);
-            this.Controls.Add(this.pnlHamburger);
             this.Controls.Add(this.pnlDrinks);
+            this.Controls.Add(this.pnlHamburger);
             this.Controls.Add(this.pnlFoodMenu);
             this.Controls.Add(this.pnlStaticBar);
             this.Controls.Add(this.pnlMenuOptions);
@@ -691,6 +765,9 @@ namespace ChapeauUI
             this.pnlDrinksInside.ResumeLayout(false);
             this.pnlDrinksInside.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDrink)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.pnlCart.ResumeLayout(false);
+            this.pnlCart.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -713,8 +790,6 @@ namespace ChapeauUI
         private System.Windows.Forms.Button btnDinnerMenu;
         private System.Windows.Forms.Button btnDrinksNonAlcMenu;
         private System.Windows.Forms.Button btnLunchMenu;
-        private System.Windows.Forms.Label lblBack;
-        private System.Windows.Forms.Label lblForward;
         private System.Windows.Forms.Panel pnlFoodMenu;
         private System.Windows.Forms.Panel pnlAllMenuInside;
         private System.Windows.Forms.NumericUpDown numericUpDownFoodMenu;
@@ -746,5 +821,13 @@ namespace ChapeauUI
         private System.Windows.Forms.Label lblDrinks1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlCart;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox listBoxCartAmount;
+        private System.Windows.Forms.ListBox listBoxCartPrice;
+        private System.Windows.Forms.ListBox listBoxCartItem;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label8;
     }
 }
