@@ -40,13 +40,5 @@ namespace ChapeauDAL
             }
         }
 
-        public Employee GetEmployee(int employeeid)
-        {
-            string query = "SELECT employeeID, firstName, lastName, roleID FROM EMPLOYEE WHERE employeeID = @employeeID";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@employeeID", employeeid);
-            return ReadEmployee(ExecuteSelectQuery(query, sqlParameters));
-        }
-
     }
 }

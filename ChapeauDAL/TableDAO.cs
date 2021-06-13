@@ -27,58 +27,28 @@ namespace ChapeauDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                int? tableID = (dr["table_id"]) as int?;
-                int? tableStatusId = (dr["statusID"]) as int?;
-                string orderstatus = (dr["description"]) as string;
-                DateTime? timestamp = (dr["orderTime"]) as DateTime?;
+                int? TableID = (dr["table_id"]) as int?;
+                int? TableStatusId = (dr["statusID"]) as int?;
+                string CurrentOrderInfo = (dr["description"]) as string;
+                DateTime? TimeStamp = (dr["orderTime"]) as DateTime?;
 
-                if (tableID.HasValue)
+                if (TableID.HasValue)
                 {
                     // if value not present in dictionry or new value available 
-                    if (!tables.ContainsKey(tableID.Value) || (tables.ContainsKey(tableID.Value) && tables[tableID.Value].TimeStamp < timestamp))
+                    if (!tables.ContainsKey(TableID.Value) || (tables.ContainsKey(TableID.Value) && tables[TableID.Value].TimeStamp < TimeStamp))
                     {
-                        tables[tableID.Value] = new Table()
+                        tables[TableID.Value] = new Table()
                         {
-                            TableID = tableID.Value,
-                            TableStatus = (TableStatus)tableStatusId,
-                            OrderStatus = orderstatus,
-                            TimeStamp = timestamp
+                            TableID = TableID.Value,
+                            TableStatus = (TableStatus)TableStatusId,
+                            CurrentOrderInfo = CurrentOrderInfo,
+                            TimeStamp = TimeStamp
                         };
                     }
                     
                 }
             }
             return tables;
-        }
-
-        public List<Order> GetAllRunningOrders()
-        {
-            string query = "select ord.orderID, ord.totalPrice, ord.tableID, ord.orderStatus, ord.tip, ord.vat, ord.employeeID, ord.isPaid, ord_s.description " +
-                            " FROM[ORDER] as ord " +
-                            " JOIN ORDER_STATUS as ord_s ON ord.orderStatus = ord_s.orderstatusID " +
-                            " WHERE ord.isPaid = @isPaid";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@isPaid", false);
-            return CreateOrders(ExecuteSelectQuery(query, sqlParameters));
-        }
-
-        private List<Order> CreateOrders(DataTable orderdata)
-        {
-            List<Order> orders = new List<Order>();
-            EmployeeDAO employeeDAO = new EmployeeDAO();
-            foreach (DataRow dr in orderdata.Rows)
-            {
-                Order order = new Order()
-                {
-                    Table = new Table((int)dr["tableID"]),
-                    Status = (OrderStatus)(dr["orderStatus"]),
-                    isPaid = (bool)(dr["isPaid"]),
-                    OrderID = (int)(dr["orderID"]),
-                    Employee = employeeDAO.GetEmployee((int)dr["employeeID"])
-                };
-                orders.Add(order);
-            }
-            return orders;
         }
 
         public void ChangeTableStatus(int Tableid, int TableStatus)
