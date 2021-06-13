@@ -14,21 +14,27 @@ namespace ChapeauDAL
 
         public List<Order> GetAllOrdersBar()
         {
-            string query = "select m.menu_type, m.item_name,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o JOIN [MENU_ITEM] as m ON o.item_id = m.item_id JOIN [ORDER] as R ON o.orderID = r.orderID where PlaceID = 2";
+            string query = "select m.menu_type, m.item_name,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o " +
+                "JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " +
+                "JOIN [ORDER] as R ON o.orderID = r.orderID " +
+                "where PlaceID = 2 "; 
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadKitchenBar(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<Order> GetAllOrdersKitchen()
         {
-            string query = "select m.menu_type, m.item_name,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o JOIN [MENU_ITEM] as m ON o.item_id = m.item_id JOIN [ORDER] as R ON o.orderID = r.orderID where PlaceID = 1 ";
+            string query = "select m.menu_type, m.item_name,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o " +
+                "JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " +
+                "JOIN [ORDER] as R ON o.orderID = r.orderID " +
+                "where PlaceID = 1 ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadKitchenBar(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public void UpdateOrderReady(OrderItem order)
         {
-            string query = "Update [ORDER_ITEM] Set itemStatus = 2 Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
+            string query = "Update [ORDER_ITEM] Set itemStatus = 3 Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
             SqlParameter[] sqlParameters = new SqlParameter[4];
             sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
             sqlParameters[1] = new SqlParameter("@itemStatus", order.Status);
@@ -39,7 +45,7 @@ namespace ChapeauDAL
 
         public void UpdateOrderPreparing(OrderItem order)
         {
-            string query = "Update [ORDER_ITEM] Set itemStatus = 1 Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
+            string query = "Update [ORDER_ITEM] Set itemStatus = 2 Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
             SqlParameter[] sqlParameters = new SqlParameter[4];
             sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
             sqlParameters[1] = new SqlParameter("@itemStatus", order.Status);
@@ -55,8 +61,6 @@ namespace ChapeauDAL
             foreach (DataRow dr in dataTable.Rows)
             {
                 Table table = new Table();
-
-
                 MenuItem item = new MenuItem();
 
                 item.menu_type = (MenuCategory)dr["menu_type"];
@@ -84,44 +88,7 @@ namespace ChapeauDAL
             return KitchenBarOrders;
         }
 
-        //private List<Order> ReadKitchen(DataTable dataTable)
-        //{
-        //    List<Order> Kitchen = new List<Order>();
-        //    foreach (DataRow dr in dataTable.Rows)
-        //    {
-
-        //        Order order = new Order();
-        //        order.Table.TableID = (int)dr["tableID"];
-        //        order.OrderID = (int)dr["orderID"];
-        //        foreach (DataRow dr in dataTable.Rows)
-        //        {
-
-        //        }
-
-        //        MenuItem item = new MenuItem();
-
-        //        item.menu_type = (MenuCategory)dr["menu_type"];
-        //        item.item_name = (string)dr["item_name"];
-
-
-
-        //        OrderItem orderItem = new OrderItem();
-
-        //        orderItem.Comment = (string)dr["comment"];
-        //        orderItem.Quantity = (int)dr["quantity"];
-        //        orderItem.Status = (ItemStatus)dr["itemStatus"];
-        //        orderItem.OrderTime = (DateTime)dr["orderTime"];
-        //        orderItem.menuItem = item;
-
-
-
-        //        Kitchen.Add(orderItem);
-
-        //    }
-        //    return Kitchen;
-
-        //}
-
+     
         #region Alex's part
 
         // Alex's part
