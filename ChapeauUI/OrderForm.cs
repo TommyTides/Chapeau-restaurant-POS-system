@@ -98,6 +98,7 @@ namespace ChapeauUI
                 //if nothing is selected it shows the message
             }
 
+
             if (confirmResult == DialogResult.Yes)
             {
                 OrderItemChange();
@@ -112,7 +113,7 @@ namespace ChapeauUI
         public void OrderItemChange()
         {
             Order order = new Order();
-            //loop through the listviewkitchen
+
             for (int i = 0; i < ListViewKitchBar.Items.Count; i++)
             {
                 //it goes thorugh the list of items in the listview
@@ -168,13 +169,12 @@ namespace ChapeauUI
                     }
 
                     readyItem++;
-                    //store orderitem in orderid
+                    //store orderitem in order object
                     order.OrderID = I.OrderID;
                 }
-                //if item and readyitems are ready 
+                //if its equal store ready status
                 if (item == readyItem)
                 {
-                    //push order
                     order.Status = OrderStatus.Ready;
                     orderService.UpdateOrderStatus(order);
                 }
