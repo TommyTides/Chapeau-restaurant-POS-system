@@ -17,8 +17,7 @@ namespace ChapeauDAL
             string query = "select m.menu_type, m.item_name,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o " +
                 "JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " + //Selecting for menu items
                 "JOIN [ORDER] as R ON o.orderID = r.orderID " + // selecting for Order
-                "where PlaceID = 2 " +
-                "order by o.orderTime DESC"; //select  only kitchen items
+                "where PlaceID = 2 "; //select  only kitchen items
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadKitchenBar(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -29,8 +28,7 @@ namespace ChapeauDAL
             string query = "select m.menu_type, m.item_name,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o " +
                 "JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " + //Selecting for menu items
                 "JOIN [ORDER] as R ON o.orderID = r.orderID " + // selecting for Order
-                "where PlaceID = 1 " +
-                "order by o.orderTime DESC"; //select  only kitchen items
+                "where PlaceID = 1 "; //select  only kitchen items
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadKitchenBar(ExecuteSelectQuery(query, sqlParameters));
         }

@@ -147,21 +147,22 @@ namespace ChapeauUI
         {
             List<Order> orderKitchenBar = Employee();
             Order order = new Order();
-            //count of items in side order
-            int item = 0;
-
-            //count of  items which is ready inside order
-            int readyItem = 0;
+            
 
             // all our order
             foreach (Order O in orderKitchenBar)
             {
+                //count of items in side order
+                int item = 0;
+
+                //count of  items which is ready inside order
+                int readyItem = 0;
 
                 // all items inside 1 order
                 foreach (OrderItem I in O.OrderItems)
                 {
                     item++;
-
+                    
                     if (I.Status != OrderItemStatus.Ready)
                     {
                         //if status is not ready it will skip it
