@@ -179,9 +179,9 @@ namespace ChapeauDAL
         {
             try
             {
-                string query = "INSERT INTO [PAYMENT](orderID, paymentmethodID, paymentTotal, vatTotal, tip, employeeID, feedback) " +
-                "VALUES(@id, @method, @payment, @vat, @tip, @empID, @feedback)";
-                SqlParameter[] sqlParameters = new SqlParameter[7];
+                string query = "INSERT INTO [PAYMENT](orderID, paymentmethodID, paymentTotal, vatTotal, tip, employeeID, feedback, paymentDate) " +
+                "VALUES(@id, @method, @payment, @vat, @tip, @empID, @feedback, @paymentDate)";
+                SqlParameter[] sqlParameters = new SqlParameter[8];
                 sqlParameters[0] = new SqlParameter("@id", order.OrderID);
                 sqlParameters[1] = new SqlParameter("@method", order.paymentMethod);
                 sqlParameters[2] = new SqlParameter("@payment", order.Total);
@@ -189,6 +189,7 @@ namespace ChapeauDAL
                 sqlParameters[4] = new SqlParameter("@tip", order.Tip);
                 sqlParameters[5] = new SqlParameter("@empID", order.Employee.employeeID);
                 sqlParameters[6] = new SqlParameter("@feedback", order.Feedback);
+                sqlParameters[7] = new SqlParameter("@paymentDate", order.PaymentDate);
 
 
                 ExecuteEditQuery(query, sqlParameters);
@@ -258,15 +259,17 @@ namespace ChapeauDAL
         }
 
         // when the order has been paid for, the payment status changes to true in the database
-        public void ChangePaymentStatus(Order order, bool newOrderIsPaidStatus)
+        public void UpdateOrderDetails(Order order, bool newOrderIsPaidStatus)
         {
-            string query = "UPDATE [ORDER] SET paymentStatus = @status, VAT = @vat, tip = @tip, totalPrice = @totalPrice  WHERE orderID = @ID";
-            SqlParameter[] sqlParameters = new SqlParameter[5];
+            string query = "UPDATE [ORDER] SET paymentStatus = @status, VAT = @vat, tip = @tip, totalPrice = @totalPrice, paymentDate = @paymentDate  WHERE orderID = @ID";
+            SqlParameter[] sqlParameters = new SqlParameter[6];
             sqlParameters[0] = new SqlParameter("@status", newOrderIsPaidStatus);
             sqlParameters[1] = new SqlParameter("@ID", order.OrderID);
             sqlParameters[2] = new SqlParameter("@vat", order.VATTotal);
             sqlParameters[3] = new SqlParameter("@tip", order.Tip);
             sqlParameters[4] = new SqlParameter("@totalPrice", order.Total);
+            sqlParameters[5] = new SqlParameter("@paymentDate", order.PaymentDate);
+
 
             ExecuteEditQuery(query, sqlParameters);
             order.PaymentStatus = newOrderIsPaidStatus;
