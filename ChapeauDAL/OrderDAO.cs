@@ -167,7 +167,7 @@ namespace ChapeauDAL
                 sqlParameters[2] = new SqlParameter("@payment", order.Total);
                 sqlParameters[3] = new SqlParameter("@vat", order.VATTotal);
                 sqlParameters[4] = new SqlParameter("@tip", order.Tip);
-                sqlParameters[5] = new SqlParameter("@empID", order.Employee.employeeID);
+                sqlParameters[5] = new SqlParameter("@empID", order.Employee.EmployeeID);
                 sqlParameters[6] = new SqlParameter("@feedback", order.Feedback);
                 sqlParameters[7] = new SqlParameter("@paymentDate", order.PaymentDate);
 
@@ -226,7 +226,7 @@ namespace ChapeauDAL
 
                 // order.Employee = GetEmployeeByID(tmp_employeeID);
                 order.Employee = new Employee();
-                order.Employee.employeeID = (int)dr["employeeID"];
+                order.Employee.EmployeeID = (int)dr["employeeID"];
                 order.Employee.FirstName = (string)dr["firstName"];
                 order.Employee.LastName = (string)dr["lastName"];
                 order.Employee.Role = (Role)dr["roleID"];

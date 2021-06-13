@@ -34,7 +34,7 @@ namespace ChapeauUI
             menuItems = new List<MenuItem>();
             item = new MenuItem();
             this.employee = employee;
-            order.Employee.employeeID = employee.employeeID;
+            order.Employee.EmployeeID = employee.EmployeeID;
             this.table = table;
         }
 

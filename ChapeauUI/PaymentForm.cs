@@ -69,7 +69,7 @@ namespace ChapeauUI
             // storing values from the database into the labels
             lblTableNumber.Text = this.Order.Table.TableID.ToString();
             lblBill.Text = this.Order.Total.ToString("€ 0.00");
-            lblWaiter.Text = this.Order.Employee.employeeID.ToString();
+            lblWaiter.Text = this.Order.Employee.EmployeeID.ToString();
 
             // if the amount entered in the tip text box is greater than 0
             // then it adds the value to the Tip property
