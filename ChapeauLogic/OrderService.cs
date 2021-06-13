@@ -2,9 +2,6 @@
 using ChapeauModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChapeauLogic
 {
@@ -19,31 +16,35 @@ namespace ChapeauLogic
 
         public void UpdateOrderPreparing(OrderItem order)
         {
+            //Get selected information
             orderDAO.UpdateOrderPreparing(order);
         }
 
         public void UpdateOrderReady(OrderItem order)
         {
+            //Get selected information
             orderDAO.UpdateOrderReady(order);
-
         }
-        public List<Order> GetAllKitchen()
-        { 
 
+        public List<Order> GetAllKitchen()
+        {
+            //send info for kitchen to UI
             return orderDAO.GetAllOrdersKitchen();
         }
 
         public List<Order> GetAllBar()
         {
+            //send info for Bar to UI
             return orderDAO.GetAllOrdersBar();
         }
 
         public void UpdateOrderStatus(Order order)
         {
+            //Get selected information
             orderDAO.UpdateOrderStatus(order);
         }
 
-    #region Alex's part
+        #region Alex's part
 
         public bool ExecuteOrderPayment(Order order)
         {
@@ -66,7 +67,7 @@ namespace ChapeauLogic
             return orderDAO.GetOrderForTableByTableID(tableID);
         }
 
-    #endregion Alex's part
+        #endregion Alex's part
 
         // Tommy Service parts
         public void SendOrder(Order order)
@@ -77,7 +78,7 @@ namespace ChapeauLogic
 
         public int GroupOrderItem(int amount1, int amount2)
         {
-            return (amount1 + amount2); 
+            return (amount1 + amount2);
         }
     }
 }

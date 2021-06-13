@@ -42,13 +42,11 @@ namespace ChapeauUI
             this.TimeOrder = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Tablev2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblEmployee = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlLunchMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
@@ -64,12 +62,12 @@ namespace ChapeauUI
             // 
             // btnExit
             // 
-            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnExit.BackColor = System.Drawing.Color.Silver;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnExit.Location = new System.Drawing.Point(423, 684);
+            this.btnExit.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnExit.Location = new System.Drawing.Point(607, 26);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(243, 39);
+            this.btnExit.Size = new System.Drawing.Size(110, 53);
             this.btnExit.TabIndex = 9;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -81,7 +79,6 @@ namespace ChapeauUI
             this.pnlLunchMenu.Controls.Add(this.btnRefresh);
             this.pnlLunchMenu.Controls.Add(this.btnStatus);
             this.pnlLunchMenu.Controls.Add(this.ListViewKitch);
-            this.pnlLunchMenu.Controls.Add(this.btnExit);
             this.pnlLunchMenu.Location = new System.Drawing.Point(-2, 92);
             this.pnlLunchMenu.Name = "pnlLunchMenu";
             this.pnlLunchMenu.Size = new System.Drawing.Size(686, 894);
@@ -92,9 +89,9 @@ namespace ChapeauUI
             this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefresh.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRefresh.Location = new System.Drawing.Point(423, 741);
+            this.btnRefresh.Location = new System.Drawing.Point(423, 684);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(243, 39);
+            this.btnRefresh.Size = new System.Drawing.Size(243, 96);
             this.btnRefresh.TabIndex = 17;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = false;
@@ -126,9 +123,9 @@ namespace ChapeauUI
             this.ListViewKitch.FullRowSelect = true;
             this.ListViewKitch.GridLines = true;
             this.ListViewKitch.HideSelection = false;
-            this.ListViewKitch.Location = new System.Drawing.Point(30, 43);
+            this.ListViewKitch.Location = new System.Drawing.Point(30, 64);
             this.ListViewKitch.Name = "ListViewKitch";
-            this.ListViewKitch.Size = new System.Drawing.Size(636, 591);
+            this.ListViewKitch.Size = new System.Drawing.Size(636, 570);
             this.ListViewKitch.TabIndex = 15;
             this.ListViewKitch.UseCompatibleStateImageBehavior = false;
             this.ListViewKitch.View = System.Windows.Forms.View.Details;
@@ -139,8 +136,8 @@ namespace ChapeauUI
             // 
             // Itemorder
             // 
-            this.Itemorder.Text = "itemorder";
-            this.Itemorder.Width = 125;
+            this.Itemorder.Text = "Itemorder";
+            this.Itemorder.Width = 138;
             // 
             // Commentv2
             // 
@@ -166,16 +163,6 @@ namespace ChapeauUI
             // 
             this.Status.Text = "Status";
             this.Status.Width = 240;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ChapeauUI.Properties.Resources.hamburger_menu;
-            this.pictureBox1.Location = new System.Drawing.Point(683, -2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(71, 94);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
             // 
             // pictureBox4
             // 
@@ -216,7 +203,7 @@ namespace ChapeauUI
             this.Controls.Add(this.lblEmployee);
             this.Controls.Add(this.pnlLunchMenu);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -226,7 +213,6 @@ namespace ChapeauUI
             this.Load += new System.EventHandler(this.OrderForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlLunchMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
@@ -239,7 +225,6 @@ namespace ChapeauUI
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel pnlLunchMenu;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lblEmployee;

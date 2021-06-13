@@ -159,7 +159,16 @@ namespace ChapeauUI
         {
             ClearFoodMenu();
             pnlFoodMenu.Visible = true; // make menu panel visible
-
+            if (category == MenuCategory.Lunch)
+            {
+                lblWhereWeAre.Text = "Lunch Menu";
+                lblApplicationSubState.Text = "Select an Item";
+            }
+            else
+            {
+                lblWhereWeAre.Text = "Dinner Menu";
+                lblApplicationSubState.Text = "Select an Item";
+            }
             // List box sizes depending on menu type.
             if (category == MenuCategory.Lunch)
                 SetListBoxSize(124, 124, 124, 124);
@@ -304,6 +313,8 @@ namespace ChapeauUI
         private void FillDrinksMenu(MenuSubCategory firstCategory, MenuSubCategory secondCategory)
         {
             ClearDrinkMenu();
+            lblWhereWeAre.Text = "Drinks";
+            lblApplicationSubState.Text = "Select a Drink";
             pnlDrinks.Visible = true;
 
             // List box sizes depending on menu type.
@@ -419,6 +430,8 @@ namespace ChapeauUI
         private void FillCart()
         {
             ClearCart();
+            lblWhereWeAre.Text = "Order Cart";
+            lblApplicationSubState.Text = "Check Order";
             btnRemoveCartItem.Visible = false;
             double totalPrice = 0;
             foreach (OrderItem orderItemee in order.OrderItems) // Adding items tot the listboxes
@@ -449,10 +462,13 @@ namespace ChapeauUI
         {
             order.Table = table;
             orderService.SendOrder(order);
-
             btnRemoveCartItem.Visible = false;
             order.OrderItems.Clear();
             FillCart();
+
+            TablePage tableView = new TablePage(this.employee);
+            tableView.Show();
+            Close();
         }
 
         private void btnRemoveCompleteOrder_Click(object sender, EventArgs e)
