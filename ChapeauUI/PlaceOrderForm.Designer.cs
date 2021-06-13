@@ -65,7 +65,19 @@ namespace ChapeauUI
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.pnlDrinks = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.pnlDrinksInside = new System.Windows.Forms.Panel();
+            this.numericUpDownDrink = new System.Windows.Forms.NumericUpDown();
+            this.listBoxSelectedDrink = new System.Windows.Forms.ListBox();
+            this.btnAddDrink = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listBoxDrink2Price = new System.Windows.Forms.ListBox();
+            this.listBoxDrink1Price = new System.Windows.Forms.ListBox();
+            this.lblDrinks2 = new System.Windows.Forms.Label();
+            this.listBoxDrink2 = new System.Windows.Forms.ListBox();
+            this.listBoxDrink1 = new System.Windows.Forms.ListBox();
+            this.lblDrinks1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.pnlStaticBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hamburgerIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -75,6 +87,8 @@ namespace ChapeauUI
             this.pnlAllMenuInside.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFoodMenu)).BeginInit();
             this.pnlDrinks.SuspendLayout();
+            this.pnlDrinksInside.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDrink)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlStaticBar
@@ -495,29 +509,165 @@ namespace ChapeauUI
             // 
             // pnlDrinks
             // 
-            this.pnlDrinks.Controls.Add(this.label2);
+            this.pnlDrinks.Controls.Add(this.pnlDrinksInside);
             this.pnlDrinks.Location = new System.Drawing.Point(12, 105);
             this.pnlDrinks.Name = "pnlDrinks";
             this.pnlDrinks.Size = new System.Drawing.Size(676, 868);
             this.pnlDrinks.TabIndex = 14;
             // 
-            // label2
+            // pnlDrinksInside
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "label2";
+            this.pnlDrinksInside.BackColor = System.Drawing.Color.White;
+            this.pnlDrinksInside.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlDrinksInside.Controls.Add(this.numericUpDownDrink);
+            this.pnlDrinksInside.Controls.Add(this.listBoxSelectedDrink);
+            this.pnlDrinksInside.Controls.Add(this.btnAddDrink);
+            this.pnlDrinksInside.Controls.Add(this.label1);
+            this.pnlDrinksInside.Controls.Add(this.listBoxDrink2Price);
+            this.pnlDrinksInside.Controls.Add(this.listBoxDrink1Price);
+            this.pnlDrinksInside.Controls.Add(this.lblDrinks2);
+            this.pnlDrinksInside.Controls.Add(this.listBoxDrink2);
+            this.pnlDrinksInside.Controls.Add(this.listBoxDrink1);
+            this.pnlDrinksInside.Controls.Add(this.lblDrinks1);
+            this.pnlDrinksInside.Controls.Add(this.label5);
+            this.pnlDrinksInside.Controls.Add(this.label6);
+            this.pnlDrinksInside.Location = new System.Drawing.Point(27, 17);
+            this.pnlDrinksInside.Name = "pnlDrinksInside";
+            this.pnlDrinksInside.Size = new System.Drawing.Size(622, 835);
+            this.pnlDrinksInside.TabIndex = 1;
+            // 
+            // numericUpDownDrink
+            // 
+            this.numericUpDownDrink.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.numericUpDownDrink.Location = new System.Drawing.Point(520, 697);
+            this.numericUpDownDrink.Name = "numericUpDownDrink";
+            this.numericUpDownDrink.Size = new System.Drawing.Size(70, 33);
+            this.numericUpDownDrink.TabIndex = 93;
+            // 
+            // listBoxSelectedDrink
+            // 
+            this.listBoxSelectedDrink.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            this.listBoxSelectedDrink.FormattingEnabled = true;
+            this.listBoxSelectedDrink.ItemHeight = 30;
+            this.listBoxSelectedDrink.Location = new System.Drawing.Point(16, 697);
+            this.listBoxSelectedDrink.Name = "listBoxSelectedDrink";
+            this.listBoxSelectedDrink.Size = new System.Drawing.Size(482, 34);
+            this.listBoxSelectedDrink.TabIndex = 92;
+            // 
+            // btnAddDrink
+            // 
+            this.btnAddDrink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnAddDrink.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddDrink.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAddDrink.Location = new System.Drawing.Point(406, 754);
+            this.btnAddDrink.Name = "btnAddDrink";
+            this.btnAddDrink.Size = new System.Drawing.Size(187, 49);
+            this.btnAddDrink.TabIndex = 91;
+            this.btnAddDrink.Text = "Add to cart";
+            this.btnAddDrink.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 668);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 20);
+            this.label1.TabIndex = 89;
+            this.label1.Text = "Selected Drink";
+            // 
+            // listBoxDrink2Price
+            // 
+            this.listBoxDrink2Price.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxDrink2Price.FormattingEnabled = true;
+            this.listBoxDrink2Price.ItemHeight = 30;
+            this.listBoxDrink2Price.Location = new System.Drawing.Point(520, 348);
+            this.listBoxDrink2Price.Name = "listBoxDrink2Price";
+            this.listBoxDrink2Price.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxDrink2Price.Size = new System.Drawing.Size(83, 184);
+            this.listBoxDrink2Price.TabIndex = 42;
+            // 
+            // listBoxDrink1Price
+            // 
+            this.listBoxDrink1Price.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxDrink1Price.FormattingEnabled = true;
+            this.listBoxDrink1Price.ItemHeight = 30;
+            this.listBoxDrink1Price.Location = new System.Drawing.Point(520, 57);
+            this.listBoxDrink1Price.Name = "listBoxDrink1Price";
+            this.listBoxDrink1Price.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxDrink1Price.Size = new System.Drawing.Size(83, 214);
+            this.listBoxDrink1Price.TabIndex = 41;
+            // 
+            // lblDrinks2
+            // 
+            this.lblDrinks2.AutoSize = true;
+            this.lblDrinks2.BackColor = System.Drawing.Color.Transparent;
+            this.lblDrinks2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDrinks2.Location = new System.Drawing.Point(12, 312);
+            this.lblDrinks2.Name = "lblDrinks2";
+            this.lblDrinks2.Size = new System.Drawing.Size(96, 24);
+            this.lblDrinks2.TabIndex = 8;
+            this.lblDrinks2.Text = "Hot Drinks";
+            // 
+            // listBoxDrink2
+            // 
+            this.listBoxDrink2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxDrink2.FormattingEnabled = true;
+            this.listBoxDrink2.ItemHeight = 30;
+            this.listBoxDrink2.Location = new System.Drawing.Point(16, 348);
+            this.listBoxDrink2.Name = "listBoxDrink2";
+            this.listBoxDrink2.Size = new System.Drawing.Size(482, 184);
+            this.listBoxDrink2.TabIndex = 6;
+            // 
+            // listBoxDrink1
+            // 
+            this.listBoxDrink1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxDrink1.FormattingEnabled = true;
+            this.listBoxDrink1.ItemHeight = 30;
+            this.listBoxDrink1.Location = new System.Drawing.Point(16, 57);
+            this.listBoxDrink1.Name = "listBoxDrink1";
+            this.listBoxDrink1.Size = new System.Drawing.Size(482, 214);
+            this.listBoxDrink1.TabIndex = 5;
+            // 
+            // lblDrinks1
+            // 
+            this.lblDrinks1.AutoSize = true;
+            this.lblDrinks1.BackColor = System.Drawing.Color.Transparent;
+            this.lblDrinks1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDrinks1.Location = new System.Drawing.Point(12, 15);
+            this.lblDrinks1.Name = "lblDrinks1";
+            this.lblDrinks1.Size = new System.Drawing.Size(98, 24);
+            this.lblDrinks1.TabIndex = 3;
+            this.lblDrinks1.Text = "Soft Drinks";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(519, 664);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 20);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Quantity";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(516, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 20);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Price";
             // 
             // PlaceOrderForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(752, 985);
+            this.Controls.Add(this.pnlHamburger);
             this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.pnlFoodMenu);
-            this.Controls.Add(this.pnlHamburger);
             this.Controls.Add(this.pnlStaticBar);
             this.Controls.Add(this.pnlMenuOptions);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -538,7 +688,9 @@ namespace ChapeauUI
             this.pnlAllMenuInside.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFoodMenu)).EndInit();
             this.pnlDrinks.ResumeLayout(false);
-            this.pnlDrinks.PerformLayout();
+            this.pnlDrinksInside.ResumeLayout(false);
+            this.pnlDrinksInside.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDrink)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -581,6 +733,18 @@ namespace ChapeauUI
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel pnlDrinks;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel pnlDrinksInside;
+        private System.Windows.Forms.NumericUpDown numericUpDownDrink;
+        private System.Windows.Forms.ListBox listBoxSelectedDrink;
+        private System.Windows.Forms.Button btnAddDrink;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox listBoxDrink2Price;
+        private System.Windows.Forms.ListBox listBoxDrink1Price;
+        private System.Windows.Forms.Label lblDrinks2;
+        private System.Windows.Forms.ListBox listBoxDrink2;
+        private System.Windows.Forms.ListBox listBoxDrink1;
+        private System.Windows.Forms.Label lblDrinks1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

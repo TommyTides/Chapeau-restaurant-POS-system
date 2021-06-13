@@ -8,7 +8,7 @@ namespace ChapeauModel
 {
     public enum Place { Kitchen = 1, Bar }
     public enum MenuCategory { Lunch = 1, Dinner, Drinks }
-    public enum MenuSubCategory { lunchMain = 1, specials, bites, starters, mains, desserts, soft, hot, alcohol }
+    public enum MenuSubCategory { lunchMain = 1, specials, bites, starters, mains, desserts, soft, hot, alcohol, wines }
 
     public class MenuItem
     {
