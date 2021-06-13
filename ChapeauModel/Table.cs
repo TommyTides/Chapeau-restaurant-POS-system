@@ -14,11 +14,6 @@ namespace ChapeauModel
 
         public DateTime? TimeStamp { get; set; }
 
-        public Table(int tableid)
-        {
-            this.TableID = tableid;
-        }
-
         // default constructor
         public Table()
         {
