@@ -36,20 +36,20 @@ namespace ChapeauUI
             this.employee = employee;
             this.table = table;
         }
-        public PlaceOrderForm() // constructor for test runs only
-        {
-            InitializeComponent();
-            HideAllPanels();
+        //public PlaceOrderForm() // constructor for test runs only
+        //{
+        //    InitializeComponent();
+        //    HideAllPanels();
 
-            menuItemService = new MenuItemService();
-            order = new Order();
-            orderItem = new OrderItem();
-            order.OrderItems = new List<OrderItem>();
-            menuItems = new List<MenuItem>();
-            item = new MenuItem();
-            this.table = new Table();
-            table.TableID = 1;
-        }
+        //    menuItemService = new MenuItemService();
+        //    order = new Order();
+        //    orderItem = new OrderItem();
+        //    order.OrderItems = new List<OrderItem>();
+        //    menuItems = new List<MenuItem>();
+        //    item = new MenuItem();
+        //    this.table = new Table();
+        //    table.TableID = 1;
+        //}
 
         private void PlaceOrderForm_Load(object sender, EventArgs e)
         {
@@ -86,7 +86,7 @@ namespace ChapeauUI
         {
             TablePage tableView = new TablePage(this.employee);
             tableView.Show();
-            this.Close();
+            Close();
         }
 
         private void lblMenuOptions_Click(object sender, EventArgs e)
@@ -105,6 +105,7 @@ namespace ChapeauUI
             {
                 HideAllPanels();
                 pnlCart.Visible = true;
+                FillCart();
             }
         }
 
@@ -257,36 +258,46 @@ namespace ChapeauUI
             listBoxSelectedFoodItem.SelectedIndex = 0;
         }
 
+        public void AddOrderItemToOrderDrink()
+        {
+            orderItem.menuItem = item;
+            listBoxSelectedDrink.Items.Clear();
+            listBoxSelectedDrink.Items.Add(orderItem);
+            listBoxSelectedDrink.SelectedIndex = 0;
+        }
+
         private void btnAddFoodItem_Click(object sender, EventArgs e) // add item to cart
         {
-            bool grouped = false;
-            // orderItem = (OrderItem)listBoxSelectedLunchItem.SelectedItem;
             this.listBoxSelectedFoodItem.SelectedIndex = 0;
+            orderItem = new OrderItem();
             orderItem = (OrderItem)listBoxSelectedFoodItem.SelectedItem;
             int temp = Convert.ToInt32(numericUpDownFoodMenu.Value);
             orderItem.Comment = "no comment";
             orderItem.Quantity = temp;
+            int checkGrouped = 0;
 
-
-            foreach (OrderItem orderorderItem in order.OrderItems)
+            if (order.OrderItems.Contains(orderItem))
             {
-                // if the selected item and the comment is the same the item will be grouped in the excisting list of orders.
-                if (orderorderItem.menuItem.item_id == orderItem.menuItem.item_id && orderorderItem.Comment == orderItem.Comment)
+                foreach (OrderItem orderOrderItem in order.OrderItems)
                 {
-                    //orderorderItem.Quantity += orderItem.Quantity; // To do in logic layer.
-                    orderorderItem.Quantity = orderService.GroupOrderItem(order, orderItem.Quantity); // To do in logic layer.
-                    grouped = true;
+                    if (orderOrderItem.menuItem.item_name == orderItem.menuItem.item_name)
+                    {
+                        orderOrderItem.Quantity = orderService.GroupOrderItem(orderOrderItem.Quantity, orderItem.Quantity);
+                        checkGrouped = 1;
+                    }
                 }
             }
-            if (!grouped) // add order item to the list if they are not grouped already in the excisting list
+            
+            if (checkGrouped == 0)
             {
+                //order.OrderItems.Add(orderItem);
                 order.OrderItems.Add(orderItem);
             }
             if (order.OrderItems.Count >= 1)
             {
                 MessageBox.Show("Item has been added to cart");
             }
-
+            listBoxSelectedFoodItem.Items.Clear();
             numericUpDownFoodMenu.Value = 0;
             listBoxSelectedFoodItem.Items.Clear();
             listBoxSelectedFoodItem.Text = "";
@@ -363,27 +374,28 @@ namespace ChapeauUI
 
         private void btnAddDrink_Click(object sender, EventArgs e)
         {
-            bool grouped = false;
-            // orderItem = (OrderItem)listBoxSelectedLunchItem.SelectedItem;
             this.listBoxSelectedDrink.SelectedIndex = 0;
             orderItem = (OrderItem)listBoxSelectedDrink.SelectedItem;
             int temp = Convert.ToInt32(numericUpDownDrink.Value);
             orderItem.Comment = "no comment";
             orderItem.Quantity = temp;
+            int checkGroupedDrink = 0;
 
-            foreach (OrderItem orderorderItem in order.OrderItems)
+            if (order.OrderItems.Contains(orderItem))
             {
-                // if the selected item and the comment is the same the item will be grouped in the excisting list of orders.
-                if (orderorderItem.menuItem.item_id == orderItem.menuItem.item_id && orderorderItem.Comment == orderItem.Comment)
+                foreach (OrderItem orderOrderItem in order.OrderItems)
                 {
-                    //orderorderItem.Quantity += orderItem.Quantity; // To do in logic layer.
-                    orderorderItem.Quantity = orderService.GroupOrderItem(order, orderItem.Quantity); // To do in logic layer.
-                    grouped = true;
+                    if (orderItem.menuItem.item_name == orderItem.menuItem.item_name)
+                    {
+                        orderOrderItem.Quantity = orderService.GroupOrderItem(orderOrderItem.Quantity, orderItem.Quantity);
+                        checkGroupedDrink = 1;
+                    }
                 }
             }
-            if (!grouped) // add order item to the list if they are not grouped already in the excisting list
+            
+            if (checkGroupedDrink == 0)
             {
-                order.OrderItems.Add(orderItem);
+                order.OrderItems.Add((OrderItem)listBoxSelectedDrink.SelectedItem);
             }
             if (order.OrderItems.Count >= 1)
             {
@@ -392,6 +404,59 @@ namespace ChapeauUI
             numericUpDownDrink.Value = 0;
             listBoxSelectedDrink.Items.Clear();
             listBoxSelectedDrink.Text = "";
+        }
+
+        private void listBoxDrink1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillOrderItem();
+            item = (MenuItem)listBoxDrink1.SelectedItem;
+            AddOrderItemToOrderDrink();
+            listBoxSelectedDrink.SelectedIndex = 0;
+        }
+
+        private void listBoxDrink2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillOrderItem();
+            item = (MenuItem)listBoxDrink2.SelectedItem;
+            AddOrderItemToOrderDrink();
+            listBoxSelectedDrink.SelectedIndex = 0;
+        }
+
+        private void listBoxCartName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnRemoveCartItem.Visible = true;
+        }
+
+        private void FillCart()
+        {
+            ClearCart();
+            btnRemoveCartItem.Visible = false;
+            foreach (OrderItem orderItemee in order.OrderItems) // Adding items tot the listboxes
+            {
+                listBoxCartName.Items.Add(orderItemee.menuItem.item_name);
+                listBoxCartAmount.Items.Add(orderItemee.Quantity);
+                listBoxCartPrice.Items.Add(orderItemee.TotalPrice.ToString("C", new CultureInfo("nl-NL")));
+            }
+        }
+
+        private void ClearCart()
+        {
+            listBoxCartName.Items.Clear();
+            listBoxCartAmount.Items.Clear();
+            listBoxCartPrice.Items.Clear();
+        }
+
+        private void btnRemoveCartItem_Click(object sender, EventArgs e)
+        {
+            listBoxCartName.Items.Remove(listBoxCartName.SelectedItem);
+        }
+
+        private void btnSendOrder_Click(object sender, EventArgs e)
+        {
+            btnRemoveCartItem.Visible = false;
+
+            order = new Order();
+            order.OrderItems.Clear();
         }
     }
 }

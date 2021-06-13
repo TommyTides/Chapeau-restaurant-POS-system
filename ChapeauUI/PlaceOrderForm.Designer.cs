@@ -76,14 +76,18 @@ namespace ChapeauUI
             this.lblDrinks1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlCart = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSendOrder = new System.Windows.Forms.Button();
             this.listBoxCartPrice = new System.Windows.Forms.ListBox();
-            this.listBoxCartItem = new System.Windows.Forms.ListBox();
+            this.listBoxCartName = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.listBoxCartAmount = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnRemoveCartItem = new System.Windows.Forms.Button();
             this.pnlStaticBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hamburgerIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -95,8 +99,8 @@ namespace ChapeauUI
             this.pnlDrinks.SuspendLayout();
             this.pnlDrinksInside.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDrink)).BeginInit();
-            this.panel1.SuspendLayout();
             this.pnlCart.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlStaticBar
@@ -493,7 +497,6 @@ namespace ChapeauUI
             // 
             // pnlDrinks
             // 
-            this.pnlDrinks.Controls.Add(this.panel1);
             this.pnlDrinks.Controls.Add(this.pnlDrinksInside);
             this.pnlDrinks.Location = new System.Drawing.Point(12, 105);
             this.pnlDrinks.Name = "pnlDrinks";
@@ -524,7 +527,7 @@ namespace ChapeauUI
             // numericUpDownDrink
             // 
             this.numericUpDownDrink.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
-            this.numericUpDownDrink.Location = new System.Drawing.Point(520, 697);
+            this.numericUpDownDrink.Location = new System.Drawing.Point(520, 614);
             this.numericUpDownDrink.Name = "numericUpDownDrink";
             this.numericUpDownDrink.Size = new System.Drawing.Size(70, 33);
             this.numericUpDownDrink.TabIndex = 93;
@@ -535,7 +538,7 @@ namespace ChapeauUI
             this.listBoxSelectedDrink.Font = new System.Drawing.Font("Segoe UI", 15.75F);
             this.listBoxSelectedDrink.FormattingEnabled = true;
             this.listBoxSelectedDrink.ItemHeight = 30;
-            this.listBoxSelectedDrink.Location = new System.Drawing.Point(16, 697);
+            this.listBoxSelectedDrink.Location = new System.Drawing.Point(16, 614);
             this.listBoxSelectedDrink.Name = "listBoxSelectedDrink";
             this.listBoxSelectedDrink.Size = new System.Drawing.Size(482, 34);
             this.listBoxSelectedDrink.TabIndex = 92;
@@ -546,7 +549,7 @@ namespace ChapeauUI
             this.btnAddDrink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnAddDrink.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddDrink.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAddDrink.Location = new System.Drawing.Point(406, 754);
+            this.btnAddDrink.Location = new System.Drawing.Point(406, 671);
             this.btnAddDrink.Name = "btnAddDrink";
             this.btnAddDrink.Size = new System.Drawing.Size(187, 49);
             this.btnAddDrink.TabIndex = 91;
@@ -558,7 +561,7 @@ namespace ChapeauUI
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 668);
+            this.label1.Location = new System.Drawing.Point(12, 585);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 20);
             this.label1.TabIndex = 89;
@@ -606,6 +609,7 @@ namespace ChapeauUI
             this.listBoxDrink2.Name = "listBoxDrink2";
             this.listBoxDrink2.Size = new System.Drawing.Size(482, 184);
             this.listBoxDrink2.TabIndex = 6;
+            this.listBoxDrink2.SelectedIndexChanged += new System.EventHandler(this.listBoxDrink2_SelectedIndexChanged);
             // 
             // listBoxDrink1
             // 
@@ -616,6 +620,7 @@ namespace ChapeauUI
             this.listBoxDrink1.Name = "listBoxDrink1";
             this.listBoxDrink1.Size = new System.Drawing.Size(482, 214);
             this.listBoxDrink1.TabIndex = 5;
+            this.listBoxDrink1.SelectedIndexChanged += new System.EventHandler(this.listBoxDrink1_SelectedIndexChanged);
             // 
             // lblDrinks1
             // 
@@ -632,7 +637,7 @@ namespace ChapeauUI
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(519, 664);
+            this.label5.Location = new System.Drawing.Point(519, 581);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 20);
             this.label5.TabIndex = 2;
@@ -648,49 +653,67 @@ namespace ChapeauUI
             this.label6.TabIndex = 1;
             this.label6.Text = "Price";
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.pnlCart);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(676, 868);
-            this.panel1.TabIndex = 15;
-            // 
             // pnlCart
             // 
-            this.pnlCart.BackColor = System.Drawing.Color.White;
-            this.pnlCart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlCart.Controls.Add(this.label3);
-            this.pnlCart.Controls.Add(this.listBoxCartAmount);
-            this.pnlCart.Controls.Add(this.listBoxCartPrice);
-            this.pnlCart.Controls.Add(this.listBoxCartItem);
-            this.pnlCart.Controls.Add(this.label4);
-            this.pnlCart.Controls.Add(this.label8);
-            this.pnlCart.Location = new System.Drawing.Point(27, 17);
+            this.pnlCart.Controls.Add(this.panel1);
+            this.pnlCart.Location = new System.Drawing.Point(5, 102);
             this.pnlCart.Name = "pnlCart";
-            this.pnlCart.Size = new System.Drawing.Size(622, 835);
-            this.pnlCart.TabIndex = 1;
+            this.pnlCart.Size = new System.Drawing.Size(683, 622);
+            this.pnlCart.TabIndex = 15;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnRemoveCartItem);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.listBoxCartAmount);
+            this.panel1.Controls.Add(this.btnSendOrder);
+            this.panel1.Controls.Add(this.listBoxCartPrice);
+            this.panel1.Controls.Add(this.listBoxCartName);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Location = new System.Drawing.Point(30, 18);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(622, 585);
+            this.panel1.TabIndex = 2;
+            // 
+            // btnSendOrder
+            // 
+            this.btnSendOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnSendOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSendOrder.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSendOrder.Location = new System.Drawing.Point(401, 503);
+            this.btnSendOrder.Name = "btnSendOrder";
+            this.btnSendOrder.Size = new System.Drawing.Size(206, 49);
+            this.btnSendOrder.TabIndex = 91;
+            this.btnSendOrder.Text = "Send Order";
+            this.btnSendOrder.UseVisualStyleBackColor = false;
+            this.btnSendOrder.Click += new System.EventHandler(this.btnSendOrder_Click);
             // 
             // listBoxCartPrice
             // 
-            this.listBoxCartPrice.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxCartPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxCartPrice.FormattingEnabled = true;
-            this.listBoxCartPrice.ItemHeight = 30;
+            this.listBoxCartPrice.ItemHeight = 17;
             this.listBoxCartPrice.Location = new System.Drawing.Point(520, 57);
             this.listBoxCartPrice.Name = "listBoxCartPrice";
             this.listBoxCartPrice.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.listBoxCartPrice.Size = new System.Drawing.Size(83, 424);
+            this.listBoxCartPrice.Size = new System.Drawing.Size(83, 361);
             this.listBoxCartPrice.TabIndex = 41;
             // 
-            // listBoxCartItem
+            // listBoxCartName
             // 
-            this.listBoxCartItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxCartItem.FormattingEnabled = true;
-            this.listBoxCartItem.ItemHeight = 30;
-            this.listBoxCartItem.Location = new System.Drawing.Point(16, 57);
-            this.listBoxCartItem.Name = "listBoxCartItem";
-            this.listBoxCartItem.Size = new System.Drawing.Size(377, 424);
-            this.listBoxCartItem.TabIndex = 5;
+            this.listBoxCartName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxCartName.FormattingEnabled = true;
+            this.listBoxCartName.ItemHeight = 17;
+            this.listBoxCartName.Location = new System.Drawing.Point(16, 57);
+            this.listBoxCartName.Name = "listBoxCartName";
+            this.listBoxCartName.Size = new System.Drawing.Size(417, 361);
+            this.listBoxCartName.TabIndex = 5;
+            this.listBoxCartName.SelectedIndexChanged += new System.EventHandler(this.listBoxCartName_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -699,9 +722,9 @@ namespace ChapeauUI
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(12, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 24);
+            this.label4.Size = new System.Drawing.Size(98, 24);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Item(s)";
+            this.label4.Text = "Soft Drinks";
             // 
             // label8
             // 
@@ -715,30 +738,64 @@ namespace ChapeauUI
             // 
             // listBoxCartAmount
             // 
-            this.listBoxCartAmount.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxCartAmount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxCartAmount.FormattingEnabled = true;
-            this.listBoxCartAmount.ItemHeight = 30;
-            this.listBoxCartAmount.Location = new System.Drawing.Point(415, 57);
+            this.listBoxCartAmount.ItemHeight = 17;
+            this.listBoxCartAmount.Location = new System.Drawing.Point(435, 57);
             this.listBoxCartAmount.Name = "listBoxCartAmount";
             this.listBoxCartAmount.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.listBoxCartAmount.Size = new System.Drawing.Size(83, 424);
-            this.listBoxCartAmount.TabIndex = 94;
+            this.listBoxCartAmount.Size = new System.Drawing.Size(83, 361);
+            this.listBoxCartAmount.TabIndex = 92;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(431, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 20);
+            this.label2.TabIndex = 93;
+            this.label2.Text = "Amount";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(411, 15);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(397, 455);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 20);
-            this.label3.TabIndex = 95;
-            this.label3.Text = "Amount";
+            this.label3.Size = new System.Drawing.Size(99, 20);
+            this.label3.TabIndex = 94;
+            this.label3.Text = "Total Price:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label7.Location = new System.Drawing.Point(508, 455);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(54, 20);
+            this.label7.TabIndex = 95;
+            this.label7.Text = "$ 100";
+            // 
+            // btnRemoveCartItem
+            // 
+            this.btnRemoveCartItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnRemoveCartItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveCartItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnRemoveCartItem.Location = new System.Drawing.Point(20, 503);
+            this.btnRemoveCartItem.Name = "btnRemoveCartItem";
+            this.btnRemoveCartItem.Size = new System.Drawing.Size(206, 49);
+            this.btnRemoveCartItem.TabIndex = 96;
+            this.btnRemoveCartItem.Text = "Remove Item";
+            this.btnRemoveCartItem.UseVisualStyleBackColor = false;
+            this.btnRemoveCartItem.Click += new System.EventHandler(this.btnRemoveCartItem_Click);
             // 
             // PlaceOrderForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(752, 985);
+            this.Controls.Add(this.pnlCart);
             this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.pnlHamburger);
             this.Controls.Add(this.pnlFoodMenu);
@@ -765,9 +822,9 @@ namespace ChapeauUI
             this.pnlDrinksInside.ResumeLayout(false);
             this.pnlDrinksInside.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDrink)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.pnlCart.ResumeLayout(false);
-            this.pnlCart.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -821,13 +878,17 @@ namespace ChapeauUI
         private System.Windows.Forms.Label lblDrinks1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnlCart;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ListBox listBoxCartAmount;
+        private System.Windows.Forms.Button btnSendOrder;
         private System.Windows.Forms.ListBox listBoxCartPrice;
-        private System.Windows.Forms.ListBox listBoxCartItem;
+        private System.Windows.Forms.ListBox listBoxCartName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnRemoveCartItem;
     }
 }
