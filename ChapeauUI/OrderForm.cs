@@ -12,7 +12,7 @@ namespace ChapeauUI
         private OrderService orderService;
         private Employee employee;
 
-        public OrderForm(Employee employee)
+        public OrderForm()
         {
             //receive the information who sign in login
             InitializeComponent();

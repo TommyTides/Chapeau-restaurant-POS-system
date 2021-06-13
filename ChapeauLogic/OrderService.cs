@@ -47,7 +47,7 @@ namespace ChapeauLogic
                 // in real life - we need to perform interaction with PaymentSystem here to get payment processed by bank and confirmed
                 // if(PerformBankTransaction() == false) throw new Exception("Payment refused by bank");
                 orderDAO.SaveOrderPaymentInfo(order);
-                orderDAO.ChangePaymentStatus(order,/*newStatus=*/true);
+                orderDAO.UpdateOrderDetails(order,/*newStatus=*/true);
                 return true;
             }
             catch (Exception exp)
