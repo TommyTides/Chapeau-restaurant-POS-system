@@ -126,9 +126,9 @@ namespace ChapeauUI
             this.ListViewKitch.FullRowSelect = true;
             this.ListViewKitch.GridLines = true;
             this.ListViewKitch.HideSelection = false;
-            this.ListViewKitch.Location = new System.Drawing.Point(30, 43);
+            this.ListViewKitch.Location = new System.Drawing.Point(30, 64);
             this.ListViewKitch.Name = "ListViewKitch";
-            this.ListViewKitch.Size = new System.Drawing.Size(636, 591);
+            this.ListViewKitch.Size = new System.Drawing.Size(636, 570);
             this.ListViewKitch.TabIndex = 15;
             this.ListViewKitch.UseCompatibleStateImageBehavior = false;
             this.ListViewKitch.View = System.Windows.Forms.View.Details;
@@ -139,8 +139,8 @@ namespace ChapeauUI
             // 
             // Itemorder
             // 
-            this.Itemorder.Text = "itemorder";
-            this.Itemorder.Width = 125;
+            this.Itemorder.Text = "Itemorder";
+            this.Itemorder.Width = 138;
             // 
             // Commentv2
             // 
