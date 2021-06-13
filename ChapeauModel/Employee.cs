@@ -8,7 +8,7 @@ namespace ChapeauModel
 {
     public class Employee
     {
-        public int employeeID { get; set; }
+        public int EmployeeID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Role Role { get; set; }
@@ -20,18 +20,6 @@ namespace ChapeauModel
         public Employee()
         {
 
-        }
-
-        public Employee(Role role)
-        {
-            this.Role = role;
-        }
-
-        public Employee(string firstname, string lastname, Role role)
-        {
-            this.FirstName = firstname;
-            this.LastName = lastname;
-            this.Role = role;
         }
     }
 
