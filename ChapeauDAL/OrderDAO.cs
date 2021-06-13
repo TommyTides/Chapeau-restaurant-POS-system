@@ -156,7 +156,7 @@ namespace ChapeauDAL
                 sqlParameters[4] = new SqlParameter("@tip", order.Tip);
                 sqlParameters[5] = new SqlParameter("@empID", order.Employee.employeeID);
                 sqlParameters[6] = new SqlParameter("@feedback", order.Feedback);
-                sqlParameters[7] = new SqlParameter("@paymentDate", order.PaymentDate);
+                sqlParameters[7] = new SqlParameter("@paymentDate", DateTime.Now);
 
 
                 ExecuteEditQuery(query, sqlParameters);
@@ -235,7 +235,7 @@ namespace ChapeauDAL
             sqlParameters[2] = new SqlParameter("@vat", order.VATTotal);
             sqlParameters[3] = new SqlParameter("@tip", order.Tip);
             sqlParameters[4] = new SqlParameter("@totalPrice", order.Total);
-            sqlParameters[5] = new SqlParameter("@paymentDate", order.PaymentDate);
+            sqlParameters[5] = new SqlParameter("@paymentDate", DateTime.Now);
 
 
             ExecuteEditQuery(query, sqlParameters);
