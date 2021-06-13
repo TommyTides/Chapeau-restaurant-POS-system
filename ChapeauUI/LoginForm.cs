@@ -14,10 +14,11 @@ namespace ChapeauUI
 {
     public partial class LoginForm : Form
     {
-        EmployeeService employeeService = new EmployeeService();
+        EmployeeService employeeService;
         public LoginForm()
         {
             InitializeComponent();
+            employeeService = new EmployeeService();
             txtlogincode.PasswordChar = '*';
         }
 
@@ -40,6 +41,7 @@ namespace ChapeauUI
         {
             Employee employee = employeeService.GetEmployeeByCode(int.Parse(txtlogincode.Text));
 
+            // check if employee is null otherwise let the employee log into the application based on his role.
             if(employee == null)
             {
                 txtlogincode.Text = "";

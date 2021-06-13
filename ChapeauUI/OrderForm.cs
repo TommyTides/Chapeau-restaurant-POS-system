@@ -120,17 +120,62 @@ namespace ChapeauUI
                 {
                    OrderItem item = (OrderItem)ListViewKitch.Items[i].Tag;
                     
-                    if(item.Status.ToString() == "Ordered")
+                    if(item.Status == OrderItemStatus.Ordered)
                     {
                         orderService.UpdateOrderPreparing((OrderItem)ListViewKitch.Items[i].Tag);
+                        
                     }
-                    else if (item.Status.ToString() == "Preparing")
+                    else if (item.Status == OrderItemStatus.Preparing)
                     {
                         orderService.UpdateOrderReady((OrderItem)ListViewKitch.Items[i].Tag);
+                        OrderStatus();
                     }
                 }
             }
         }
+
+        public void  OrderStatus()
+        {
+            List<Order> orderKitchenBar = Employee();
+            
+            // all our order
+            foreach (Order O in orderKitchenBar)
+            {
+                //count of items in side order
+                int item = 0;
+
+                //count of  items which is ready inside order
+                int readyItem = 0;
+                Order order = new Order();
+
+                // all items inside 1 order 
+                foreach (OrderItem I in O.OrderItems)
+                {
+                    item++;
+
+                    if (I.Status != OrderItemStatus.Ready)
+                    {
+                        //if status is not ready it will skip it
+                        continue;
+                    }
+
+                    readyItem++;
+
+
+                    order.OrderID = I.OrderID;
+                }
+                if (item==readyItem)
+                {
+                   
+                    order.Status = ChapeauModel.OrderStatus.Ready;
+                    orderService.UpdateOrderStatus(order);
+                }
+            }
+            
+
+        }
+
+
 
         private void btnRefresh_Click(object sender, EventArgs e) 
         {

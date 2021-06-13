@@ -34,7 +34,8 @@ namespace ChapeauDAL
 
         public void UpdateOrderReady(OrderItem order)
         {
-            string query = "Update [ORDER_ITEM] Set itemStatus = 3 Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
+            string query = "Update [ORDER_ITEM] Set itemStatus = 3" +
+                " Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
             SqlParameter[] sqlParameters = new SqlParameter[4];
             sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
             sqlParameters[1] = new SqlParameter("@itemStatus", order.Status);
@@ -45,7 +46,8 @@ namespace ChapeauDAL
 
         public void UpdateOrderPreparing(OrderItem order)
         {
-            string query = "Update [ORDER_ITEM] Set itemStatus = 2 Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
+            string query = "Update [ORDER_ITEM] Set itemStatus = 2" +
+                " Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
             SqlParameter[] sqlParameters = new SqlParameter[4];
             sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
             sqlParameters[1] = new SqlParameter("@itemStatus", order.Status);
@@ -53,6 +55,17 @@ namespace ChapeauDAL
             sqlParameters[3] = new SqlParameter("@orderTime", order.OrderTime);
             ExecuteEditQuery(query, sqlParameters);
         }
+
+        public void UpdateOrderStatus(Order order)
+        {
+            string query = "Update [ORDER] Set orderStatus = @orderStatus where orderID = @orderID"; 
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@orderStatus", order.Status);
+            sqlParameters[1] = new SqlParameter("@orderID", order.OrderID);
+   ;
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
 
         private List<Order> ReadKitchenBar(DataTable dataTable)
         {

@@ -128,7 +128,7 @@ namespace ChapeauUI
             this.ListViewKitch.HideSelection = false;
             this.ListViewKitch.Location = new System.Drawing.Point(30, 43);
             this.ListViewKitch.Name = "ListViewKitch";
-            this.ListViewKitch.Size = new System.Drawing.Size(636, 463);
+            this.ListViewKitch.Size = new System.Drawing.Size(636, 591);
             this.ListViewKitch.TabIndex = 15;
             this.ListViewKitch.UseCompatibleStateImageBehavior = false;
             this.ListViewKitch.View = System.Windows.Forms.View.Details;
