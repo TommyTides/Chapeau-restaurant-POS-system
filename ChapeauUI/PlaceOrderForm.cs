@@ -462,10 +462,13 @@ namespace ChapeauUI
         {
             order.Table = table;
             orderService.SendOrder(order);
-
             btnRemoveCartItem.Visible = false;
             order.OrderItems.Clear();
             FillCart();
+
+            TablePage tableView = new TablePage(this.employee);
+            tableView.Show();
+            Close();
         }
 
         private void btnRemoveCompleteOrder_Click(object sender, EventArgs e)
