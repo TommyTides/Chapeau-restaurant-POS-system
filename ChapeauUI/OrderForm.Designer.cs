@@ -34,7 +34,7 @@ namespace ChapeauUI
             this.pnlLunchMenu = new System.Windows.Forms.Panel();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnStatus = new System.Windows.Forms.Button();
-            this.ListViewKitch = new System.Windows.Forms.ListView();
+            this.ListViewKitchBar = new System.Windows.Forms.ListView();
             this.OrderID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Itemorder = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Commentv2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -78,7 +78,7 @@ namespace ChapeauUI
             this.pnlLunchMenu.BackColor = System.Drawing.Color.White;
             this.pnlLunchMenu.Controls.Add(this.btnRefresh);
             this.pnlLunchMenu.Controls.Add(this.btnStatus);
-            this.pnlLunchMenu.Controls.Add(this.ListViewKitch);
+            this.pnlLunchMenu.Controls.Add(this.ListViewKitchBar);
             this.pnlLunchMenu.Location = new System.Drawing.Point(-2, 92);
             this.pnlLunchMenu.Name = "pnlLunchMenu";
             this.pnlLunchMenu.Size = new System.Drawing.Size(686, 894);
@@ -110,9 +110,9 @@ namespace ChapeauUI
             this.btnStatus.UseVisualStyleBackColor = false;
             this.btnStatus.Click += new System.EventHandler(this.btnstatus_Click);
             // 
-            // ListViewKitch
+            // ListViewKitchBar
             // 
-            this.ListViewKitch.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ListViewKitchBar.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.OrderID,
             this.Itemorder,
             this.Commentv2,
@@ -120,15 +120,15 @@ namespace ChapeauUI
             this.TimeOrder,
             this.Tablev2,
             this.Status});
-            this.ListViewKitch.FullRowSelect = true;
-            this.ListViewKitch.GridLines = true;
-            this.ListViewKitch.HideSelection = false;
-            this.ListViewKitch.Location = new System.Drawing.Point(30, 64);
-            this.ListViewKitch.Name = "ListViewKitch";
-            this.ListViewKitch.Size = new System.Drawing.Size(636, 570);
-            this.ListViewKitch.TabIndex = 15;
-            this.ListViewKitch.UseCompatibleStateImageBehavior = false;
-            this.ListViewKitch.View = System.Windows.Forms.View.Details;
+            this.ListViewKitchBar.FullRowSelect = true;
+            this.ListViewKitchBar.GridLines = true;
+            this.ListViewKitchBar.HideSelection = false;
+            this.ListViewKitchBar.Location = new System.Drawing.Point(30, 64);
+            this.ListViewKitchBar.Name = "ListViewKitchBar";
+            this.ListViewKitchBar.Size = new System.Drawing.Size(636, 570);
+            this.ListViewKitchBar.TabIndex = 15;
+            this.ListViewKitchBar.UseCompatibleStateImageBehavior = false;
+            this.ListViewKitchBar.View = System.Windows.Forms.View.Details;
             // 
             // OrderID
             // 
@@ -228,7 +228,7 @@ namespace ChapeauUI
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lblEmployee;
-        private System.Windows.Forms.ListView ListViewKitch;
+        private System.Windows.Forms.ListView ListViewKitchBar;
         private System.Windows.Forms.ColumnHeader OrderID;
         private System.Windows.Forms.ColumnHeader Itemorder;
         private System.Windows.Forms.ColumnHeader Commentv2;

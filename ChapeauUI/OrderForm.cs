@@ -81,7 +81,7 @@ namespace ChapeauUI
                     li.SubItems.Add(O.Table.TableID.ToString());
                     li.SubItems.Add(I.Status.ToString());
                     li.Tag = I; // this is saving our object to the Item tag
-                    ListViewKitch.Items.Add(li);
+                    ListViewKitchBar.Items.Add(li);
                 }
             }
         }
@@ -91,7 +91,7 @@ namespace ChapeauUI
             //message box will be saved in confirmResult
             var confirmResult = MessageBox.Show("Do you want to change the orderstatus", "Confirm Order Status", MessageBoxButtons.YesNo);
 
-            if (ListViewKitch.SelectedItems.Count <= 0)
+            if (ListViewKitchBar.SelectedItems.Count <= 0)
             {
                 MessageBox.Show($"Order is not selected");
                 return;
@@ -104,7 +104,7 @@ namespace ChapeauUI
                 //if status is selected
 
                 //refresh the list if its needed.
-                ListViewKitch.Items.Clear();
+                ListViewKitchBar.Items.Clear();
                 ListViewKitchenBar();
             }
         }
@@ -112,19 +112,19 @@ namespace ChapeauUI
         public void OrderItemChange()
         {
             Order order = new Order();
-
-            for (int i = 0; i < ListViewKitch.Items.Count; i++)
+            //loop through the listviewkitchen
+            for (int i = 0; i < ListViewKitchBar.Items.Count; i++)
             {
                 //it goes thorugh the list of items in the listview
-                if (ListViewKitch.Items[i].Selected)
+                if (ListViewKitchBar.Items[i].Selected)
                 {
                     //convert selected item to a orderitem object
-                    OrderItem orderItem = (OrderItem)ListViewKitch.Items[i].Tag;
+                    OrderItem orderItem = (OrderItem)ListViewKitchBar.Items[i].Tag;
 
                     if (orderItem.Status == OrderItemStatus.Ordered)
                     {
                         //selected item preparing it will update
-                        orderService.UpdateOrderPreparing((OrderItem)ListViewKitch.Items[i].Tag);
+                        orderService.UpdateOrderPreparing((OrderItem)ListViewKitchBar.Items[i].Tag);
 
                         //Store the ordid and orderstatus and send to change status
                         order.OrderID = orderItem.OrderID;
@@ -134,7 +134,7 @@ namespace ChapeauUI
                     else if (orderItem.Status == OrderItemStatus.Preparing)
                     {
                         //selected item preparing it will update
-                        orderService.UpdateOrderReady((OrderItem)ListViewKitch.Items[i].Tag);
+                        orderService.UpdateOrderReady((OrderItem)ListViewKitchBar.Items[i].Tag);
                         //if preparing ic changed to ready call methode
                         OrderStatusChange();
                     }
@@ -168,11 +168,13 @@ namespace ChapeauUI
                     }
 
                     readyItem++;
-
+                    //store orderitem in orderid
                     order.OrderID = I.OrderID;
                 }
+                //if item and readyitems are ready 
                 if (item == readyItem)
                 {
+                    //push order
                     order.Status = OrderStatus.Ready;
                     orderService.UpdateOrderStatus(order);
                 }
@@ -182,7 +184,7 @@ namespace ChapeauUI
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             //Refresh for the Button for ListView
-            ListViewKitch.Items.Clear();
+            ListViewKitchBar.Items.Clear();
             ListViewKitchenBar();
         }
     }
