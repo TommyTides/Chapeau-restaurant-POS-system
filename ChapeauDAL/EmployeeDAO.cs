@@ -13,7 +13,7 @@ namespace ChapeauDAL
     {
         public Employee GetEmployeeByCode(int pin)
         {
-            string query = " SELECT e.firstName, e.lastName, e.roleID ,r.description FROM EMPLOYEE as e " +
+            string query = " SELECT e.employeeID, e.firstName, e.lastName, e.roleID ,r.description FROM EMPLOYEE as e " +
             " JOIN ROLE as r ON e.roleID = r.roleID " +
             " WHERE PIN = @PIN";
             SqlParameter[] sqlParameters = new SqlParameter[1];
@@ -32,6 +32,7 @@ namespace ChapeauDAL
                 DataRow dr = table.Rows[0];
                 Employee employee = new Employee()
                 {
+                    EmployeeID = (int)(dr["employeeID"]),
                     FirstName = (string)(dr["firstname"]),
                     LastName = (string)(dr["lastname"]),
                     Role = (Role)(dr["roleID"])

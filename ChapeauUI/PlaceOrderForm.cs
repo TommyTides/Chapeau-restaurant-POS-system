@@ -30,26 +30,13 @@ namespace ChapeauUI
             order = new Order();
             orderItem = new OrderItem();
             order.OrderItems = new List<OrderItem>();
+            order.Employee = employee;
             menuItems = new List<MenuItem>();
             item = new MenuItem();
-            this.employee = new Employee();
             this.employee = employee;
+            order.Employee.EmployeeID = employee.EmployeeID;
             this.table = table;
         }
-        //public PlaceOrderForm() // constructor for test runs only
-        //{
-        //    InitializeComponent();
-        //    HideAllPanels();
-
-        //    menuItemService = new MenuItemService();
-        //    order = new Order();
-        //    orderItem = new OrderItem();
-        //    order.OrderItems = new List<OrderItem>();
-        //    menuItems = new List<MenuItem>();
-        //    item = new MenuItem();
-        //    this.table = new Table();
-        //    table.TableID = 1;
-        //}
 
         private void PlaceOrderForm_Load(object sender, EventArgs e)
         {
@@ -188,24 +175,32 @@ namespace ChapeauUI
                 if (item.item_type == firstCategory)
                 {
                     listBoxFirstList.Items.Add(item);
-                    listBoxFirstListPrice.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
+                    if (item.stock <= 0)
+                        listBoxFirstListPrice.Items.Add("out of stock");
+                    else
+                        listBoxFirstListPrice.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));               
                 }
                 else if (item.item_type == secondCategory)
                 {
                     listBoxSecondList.Items.Add(item);
-                    listBoxSecondListPrice.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
+                    if (item.stock <= 0)
+                        listBoxSecondListPrice.Items.Add("out of stock");
+                    else
+                        listBoxSecondListPrice.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
                 }
                 else if (item.item_type == ThirdCategory)
                 {
                     listBoxThirdList.Items.Add(item);
-                    listBoxThirdListPrice.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
+                    if (item.stock <= 0)
+                        listBoxThirdListPrice.Items.Add("out of stock");
+                    else
+                        listBoxThirdListPrice.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
                 }
             }
         }
 
         private void FillOrderItem()
         {
-            orderItem.OrderTime = DateTime.Now;
             orderItem.Status = OrderItemStatus.Preparing;
         }
 
@@ -222,21 +217,20 @@ namespace ChapeauUI
             }
             else
             {
-                btnAddFoodItem.Enabled = false; // disable add button
+                btnAddFoodItem.Enabled = false; // disable add button when amount <= 0
                 listBoxSelectedFoodItem.Items.Clear(); // clear selected item list
             }
         }
 
         private void listBoxFirstList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FillOrderItem();
             item = (MenuItem)listBoxFirstList.SelectedItem;
             AddOrderItemToOrder();
+            listBoxSelectedFoodItem.SelectedIndex = 0;
         }
 
         private void listBoxSecondList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FillOrderItem();
             item = (MenuItem)listBoxSecondList.SelectedItem;
             AddOrderItemToOrder();
             listBoxSelectedFoodItem.SelectedIndex = 0;
@@ -244,7 +238,6 @@ namespace ChapeauUI
 
         private void listBoxThirdList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FillOrderItem();
             item = (MenuItem)listBoxThirdList.SelectedItem;
             AddOrderItemToOrder();
             listBoxSelectedFoodItem.SelectedIndex = 0;
@@ -268,30 +261,25 @@ namespace ChapeauUI
 
         private void btnAddFoodItem_Click(object sender, EventArgs e) // add item to cart
         {
-            this.listBoxSelectedFoodItem.SelectedIndex = 0;
-            orderItem = new OrderItem();
-            orderItem = (OrderItem)listBoxSelectedFoodItem.SelectedItem;
             int temp = Convert.ToInt32(numericUpDownFoodMenu.Value);
             orderItem.Comment = "no comment";
             orderItem.Quantity = temp;
+            FillOrderItem();
             int checkGrouped = 0;
 
-            if (order.OrderItems.Contains(orderItem))
+            foreach (OrderItem orderOrderItem in order.OrderItems) // groupinng same items together in the order cart
             {
-                foreach (OrderItem orderOrderItem in order.OrderItems)
+                if (orderOrderItem.menuItem.item_name == orderItem.menuItem.item_name)
                 {
-                    if (orderOrderItem.menuItem.item_name == orderItem.menuItem.item_name)
-                    {
-                        orderOrderItem.Quantity = orderService.GroupOrderItem(orderOrderItem.Quantity, orderItem.Quantity);
-                        checkGrouped = 1;
-                    }
+                    orderOrderItem.Quantity = orderService.GroupOrderItem(orderOrderItem.Quantity, orderItem.Quantity);
+                    checkGrouped = 1;
                 }
             }
-            
+
             if (checkGrouped == 0)
             {
-                //order.OrderItems.Add(orderItem);
                 order.OrderItems.Add(orderItem);
+                orderItem = new OrderItem();
             }
             if (order.OrderItems.Count >= 1)
             {
@@ -343,13 +331,19 @@ namespace ChapeauUI
             {
                 if (item.item_type == firstCategory)
                 {
-                    listBoxDrink1.Items.Add(item);
-                    listBoxDrink1Price.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
+                    listBoxDrink1.Items.Add(item);    
+                    if (item.stock == 0)
+                        listBoxDrink1Price.Items.Add("out of stock");
+                    else
+                        listBoxDrink1Price.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
                 }
                 else if (item.item_type == secondCategory)
                 {
                     listBoxDrink2.Items.Add(item);
-                    listBoxDrink2Price.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
+                    if (item.stock == 0)
+                        listBoxDrink2Price.Items.Add("out of stock");
+                    else
+                        listBoxDrink2Price.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
                 }
             }
         }
@@ -374,28 +368,25 @@ namespace ChapeauUI
 
         private void btnAddDrink_Click(object sender, EventArgs e)
         {
-            this.listBoxSelectedDrink.SelectedIndex = 0;
-            orderItem = (OrderItem)listBoxSelectedDrink.SelectedItem;
             int temp = Convert.ToInt32(numericUpDownDrink.Value);
             orderItem.Comment = "no comment";
             orderItem.Quantity = temp;
-            int checkGroupedDrink = 0;
+            FillOrderItem();
+            int checkGrouped = 0;
 
-            if (order.OrderItems.Contains(orderItem))
+            foreach (OrderItem orderOrderItem in order.OrderItems) // groupinng same items together in the order cart
             {
-                foreach (OrderItem orderOrderItem in order.OrderItems)
+                if (orderOrderItem.menuItem.item_name == orderItem.menuItem.item_name)
                 {
-                    if (orderItem.menuItem.item_name == orderItem.menuItem.item_name)
-                    {
-                        orderOrderItem.Quantity = orderService.GroupOrderItem(orderOrderItem.Quantity, orderItem.Quantity);
-                        checkGroupedDrink = 1;
-                    }
+                    orderOrderItem.Quantity = orderService.GroupOrderItem(orderOrderItem.Quantity, orderItem.Quantity);
+                    checkGrouped = 1;
                 }
             }
-            
-            if (checkGroupedDrink == 0)
+
+            if (checkGrouped == 0)
             {
-                order.OrderItems.Add((OrderItem)listBoxSelectedDrink.SelectedItem);
+                order.OrderItems.Add(orderItem);
+                orderItem = new OrderItem();
             }
             if (order.OrderItems.Count >= 1)
             {
@@ -408,7 +399,6 @@ namespace ChapeauUI
 
         private void listBoxDrink1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FillOrderItem();
             item = (MenuItem)listBoxDrink1.SelectedItem;
             AddOrderItemToOrderDrink();
             listBoxSelectedDrink.SelectedIndex = 0;
@@ -416,7 +406,6 @@ namespace ChapeauUI
 
         private void listBoxDrink2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FillOrderItem();
             item = (MenuItem)listBoxDrink2.SelectedItem;
             AddOrderItemToOrderDrink();
             listBoxSelectedDrink.SelectedIndex = 0;
@@ -431,12 +420,15 @@ namespace ChapeauUI
         {
             ClearCart();
             btnRemoveCartItem.Visible = false;
+            double totalPrice = 0;
             foreach (OrderItem orderItemee in order.OrderItems) // Adding items tot the listboxes
             {
-                listBoxCartName.Items.Add(orderItemee.menuItem.item_name);
+                listBoxCartName.Items.Add(orderItemee);
                 listBoxCartAmount.Items.Add(orderItemee.Quantity);
                 listBoxCartPrice.Items.Add(orderItemee.TotalPrice.ToString("C", new CultureInfo("nl-NL")));
+                totalPrice += orderItemee.TotalPrice;
             }
+            lblTotalCartPrice.Text = totalPrice.ToString("C", new CultureInfo("nl-NL"));
         }
 
         private void ClearCart()
@@ -448,15 +440,26 @@ namespace ChapeauUI
 
         private void btnRemoveCartItem_Click(object sender, EventArgs e)
         {
-            listBoxCartName.Items.Remove(listBoxCartName.SelectedItem);
+            OrderItem selectedCart = (OrderItem)listBoxCartName.SelectedItem;
+            order.OrderItems.Remove(selectedCart);
+            FillCart();
         }
 
         private void btnSendOrder_Click(object sender, EventArgs e)
         {
-            btnRemoveCartItem.Visible = false;
+            order.Table = table;
+            orderService.SendOrder(order);
 
-            order = new Order();
+            btnRemoveCartItem.Visible = false;
             order.OrderItems.Clear();
+            FillCart();
+        }
+
+        private void btnRemoveCompleteOrder_Click(object sender, EventArgs e)
+        {
+            order.OrderItems.Clear();
+            lblTotalCartPrice.Text = 0.ToString("C", new CultureInfo("nl-NL"));
+            FillCart();
         }
     }
 }
