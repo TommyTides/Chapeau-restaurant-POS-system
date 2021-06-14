@@ -79,6 +79,8 @@ namespace ChapeauUI
         private void lblMenuOptions_Click(object sender, EventArgs e)
         {
             HideAllPanels();
+            lblWhereWeAre.Text = "Menu Options";
+            lblApplicationSubState.Text = "Select a Menu";
             pnlMenuOptions.Visible = true;
         }
 
