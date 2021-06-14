@@ -112,6 +112,8 @@ namespace ChapeauDAL
 
         // Alex's part
 
+
+        // used joins so that i am able to read from both menuitem and orderitem (they are connected)
         private List<OrderItem> ReadOrderItems(DataTable dataTable)
         {
             List<OrderItem> orderItems = new List<OrderItem>();
@@ -145,6 +147,7 @@ namespace ChapeauDAL
         }
 
         // gets the right orderitem that is related to the orderID
+        // this function read the right orderItems for the list in the listview
         public List<OrderItem> GetOrderItemsForOrderID(int orderID)
         {
             List<OrderItem> orderItems = new List<OrderItem>();
@@ -239,7 +242,7 @@ namespace ChapeauDAL
                 order.Employee.LoginCode = (int)dr["PIN"];
 
                 order.OrderItems = GetOrderItemsForOrderID(order.OrderID);
-                order.paymentMethod = PaymentMethod.Cash; // PaymentMethod { get; set; }
+                order.paymentMethod = PaymentMethod.Cash; // PaymentMethod { get; set; } assign a default value bc paymentMethod doesnt exist in order table, but in payment table
             }
             return order;
         }

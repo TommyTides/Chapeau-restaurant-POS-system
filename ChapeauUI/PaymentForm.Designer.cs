@@ -132,7 +132,7 @@ namespace ChapeauUI
             this.groupBox1.Size = new System.Drawing.Size(773, 208);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Billing";
+            this.groupBox1.Text = "Invoice";
             // 
             // label9
             // 
@@ -285,7 +285,7 @@ namespace ChapeauUI
             this.txtFeedback.Location = new System.Drawing.Point(13, 95);
             this.txtFeedback.Multiline = true;
             this.txtFeedback.Name = "txtFeedback";
-            this.txtFeedback.Size = new System.Drawing.Size(369, 168);
+            this.txtFeedback.Size = new System.Drawing.Size(369, 262);
             this.txtFeedback.TabIndex = 2;
             // 
             // lblFeedback
