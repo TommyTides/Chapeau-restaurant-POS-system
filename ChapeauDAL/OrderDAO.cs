@@ -285,7 +285,7 @@ namespace ChapeauDAL
         public int AddOrder(Order order)
         {
             int notPaid = 0; // means not paid
-            int TempOrderStatus = 1; // pending
+            int TempOrderStatus = 1; // Ordered status
             string query = $"INSERT INTO [ORDER](totalPrice, tableID, orderStatus, employeeID, isPaid) " +
                     $"VALUES(@totalPrice, @tableID, @orderStatus, @employeeID, @isPaid);";
             SqlParameter[] sqlParameters = new SqlParameter[5];
