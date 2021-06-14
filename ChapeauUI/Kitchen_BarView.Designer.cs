@@ -46,7 +46,6 @@ namespace ChapeauUI
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblEmployee = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlLunchMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -71,14 +70,13 @@ namespace ChapeauUI
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(110, 53);
             this.btnExit.TabIndex = 9;
-            this.btnExit.Text = "Exit";
+            this.btnExit.Text = "Log Out";
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // pnlLunchMenu
             // 
             this.pnlLunchMenu.BackColor = System.Drawing.Color.White;
-            this.pnlLunchMenu.Controls.Add(this.button1);
             this.pnlLunchMenu.Controls.Add(this.btnPreparing);
             this.pnlLunchMenu.Controls.Add(this.btnRefresh);
             this.pnlLunchMenu.Controls.Add(this.btnReady);
@@ -95,9 +93,9 @@ namespace ChapeauUI
             this.btnPreparing.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnPreparing.Location = new System.Drawing.Point(30, 657);
             this.btnPreparing.Name = "btnPreparing";
-            this.btnPreparing.Size = new System.Drawing.Size(173, 38);
+            this.btnPreparing.Size = new System.Drawing.Size(147, 51);
             this.btnPreparing.TabIndex = 18;
-            this.btnPreparing.Text = "Preparing";
+            this.btnPreparing.Text = "Preparing Item";
             this.btnPreparing.UseVisualStyleBackColor = false;
             this.btnPreparing.Click += new System.EventHandler(this.btnPreparing_Click);
             // 
@@ -106,7 +104,7 @@ namespace ChapeauUI
             this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefresh.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRefresh.Location = new System.Drawing.Point(266, 716);
+            this.btnRefresh.Location = new System.Drawing.Point(519, 657);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(147, 51);
             this.btnRefresh.TabIndex = 17;
@@ -119,9 +117,9 @@ namespace ChapeauUI
             this.btnReady.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnReady.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReady.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnReady.Location = new System.Drawing.Point(253, 657);
+            this.btnReady.Location = new System.Drawing.Point(273, 657);
             this.btnReady.Name = "btnReady";
-            this.btnReady.Size = new System.Drawing.Size(180, 37);
+            this.btnReady.Size = new System.Drawing.Size(147, 51);
             this.btnReady.TabIndex = 16;
             this.btnReady.Text = "Ready Item";
             this.btnReady.UseVisualStyleBackColor = false;
@@ -140,7 +138,7 @@ namespace ChapeauUI
             this.ListViewKitchBar.FullRowSelect = true;
             this.ListViewKitchBar.GridLines = true;
             this.ListViewKitchBar.HideSelection = false;
-            this.ListViewKitchBar.Location = new System.Drawing.Point(30, 64);
+            this.ListViewKitchBar.Location = new System.Drawing.Point(30, 32);
             this.ListViewKitchBar.Name = "ListViewKitchBar";
             this.ListViewKitchBar.Size = new System.Drawing.Size(636, 570);
             this.ListViewKitchBar.TabIndex = 15;
@@ -213,19 +211,7 @@ namespace ChapeauUI
             this.lblEmployee.Text = "Orderview";
             this.lblEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(486, 657);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 37);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Ready as Serve";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // OrderForm
+            // Kitchen_BarView
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(752, 985);
@@ -236,7 +222,7 @@ namespace ChapeauUI
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "OrderForm";
+            this.Name = "Kitchen_BarView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OrderForm";
             this.Load += new System.EventHandler(this.OrderForm_Load);
@@ -268,6 +254,5 @@ namespace ChapeauUI
         private System.Windows.Forms.Button btnReady;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnPreparing;
-        private System.Windows.Forms.Button button1;
     }
 }

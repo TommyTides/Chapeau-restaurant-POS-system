@@ -101,7 +101,7 @@ namespace ChapeauUI
             }
 
             //message box will be saved in confirmResult
-            var confirmResult = MessageBox.Show("Do you want to change the ready", "Confirm Order Status", MessageBoxButtons.YesNo);
+            var confirmResult = MessageBox.Show("Do you want to mark it as ready", "Confirm Order Status", MessageBoxButtons.YesNo);
 
             if (confirmResult == DialogResult.Yes)
             {
@@ -115,7 +115,6 @@ namespace ChapeauUI
 
         public void OrderItemChange()
         {
-            Order order = new Order();
 
             for (int i = 0; i < ListViewKitchBar.Items.Count; i++)
             {
@@ -186,7 +185,7 @@ namespace ChapeauUI
             Order order = new Order();
 
             //message box will be saved in confirmResult
-            var confirmResult = MessageBox.Show("Do you want to change the preparing", "Confirm Order Status", MessageBoxButtons.YesNo);
+            var confirmResult = MessageBox.Show("Do you want to mark it as Preparing", "Confirm Order Status", MessageBoxButtons.YesNo);
 
             if (ListViewKitchBar.SelectedItems.Count <= 0)
             {
