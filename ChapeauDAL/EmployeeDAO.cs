@@ -20,7 +20,6 @@ namespace ChapeauDAL
             sqlParameters[0] = new SqlParameter("@PIN", pin);
             return ReadEmployee(ExecuteSelectQuery(query, sqlParameters));
         }
-
         private Employee ReadEmployee(DataTable table)
         {
             if (table.Rows.Count == 0)
