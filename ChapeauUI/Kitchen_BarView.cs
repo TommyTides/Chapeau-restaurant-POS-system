@@ -7,12 +7,12 @@ using System.Windows.Forms;
 
 namespace ChapeauUI
 {
-    public partial class OrderForm : Form
+    public partial class Kitchen_BarView : Form
     {
         private OrderService orderService;
         private Employee employee;
 
-        public OrderForm(Employee employee)
+        public Kitchen_BarView(Employee employee)
         {
             //receive the information who sign in login in the construct from loginform
             InitializeComponent();
