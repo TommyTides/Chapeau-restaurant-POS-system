@@ -31,7 +31,7 @@ namespace ChapeauUI
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
-            LoadTables();
+            LoadOrderDetails();
 
             // at the start of the form, the tip checkbox is disabled
             txtTip.Enabled = false;
@@ -43,9 +43,9 @@ namespace ChapeauUI
         }
 
         // this method displays the tables that are yet to be paid (when the payment form loads)
-        private void LoadTables()
+        private void LoadOrderDetails()
         {
-            // gets the order based on the tableID
+            // gets the order based on the tableID from the database and stores it into the order field
             this.Order = orderService.GetOrderForTableByTableID(TableID);
 
             // gets the total price for every item times the quantity and stores it into Order.Total
@@ -71,7 +71,7 @@ namespace ChapeauUI
             lblBill.Text = this.Order.Total.ToString("€ 0.00");
             lblWaiter.Text = this.Order.Employee.EmployeeID.ToString();
 
-            // if a user devides to tip beforehand the tip can be written in the database before the payment is handed out
+            // if a user decides to tip beforehand the tip can be written in the database before the payment is handed out
             if (Order.Tip > 0)
             {
                 txtTip.Text = this.Order.Tip.ToString("0.00");
