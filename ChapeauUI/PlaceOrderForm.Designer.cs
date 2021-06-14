@@ -659,7 +659,7 @@ namespace ChapeauUI
             this.pnlCart.Controls.Add(this.panel1);
             this.pnlCart.Location = new System.Drawing.Point(5, 102);
             this.pnlCart.Name = "pnlCart";
-            this.pnlCart.Size = new System.Drawing.Size(683, 622);
+            this.pnlCart.Size = new System.Drawing.Size(691, 622);
             this.pnlCart.TabIndex = 15;
             // 
             // panel1
@@ -677,7 +677,7 @@ namespace ChapeauUI
             this.panel1.Controls.Add(this.listBoxCartName);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Location = new System.Drawing.Point(30, 18);
+            this.panel1.Location = new System.Drawing.Point(58, 20);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(622, 585);
             this.panel1.TabIndex = 2;

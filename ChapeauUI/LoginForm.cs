@@ -52,7 +52,7 @@ namespace ChapeauUI
             {
                 this.Hide();
                 TablePage page = new TablePage(employee);
-                page.ShowDialog();
+                page.Show();
                 
             }
 
@@ -60,7 +60,7 @@ namespace ChapeauUI
             {
                 this.Hide();
                 OrderForm orderForm = new OrderForm(employee);
-                orderForm.ShowDialog();
+                orderForm.Show();
             }
         }
 

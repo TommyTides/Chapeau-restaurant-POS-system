@@ -49,7 +49,7 @@ namespace ChapeauUI
             this.previousPage.Hide();
 
             PlaceOrderForm form = new PlaceOrderForm(table, employee);
-            form.ShowDialog();
+            form.Show();
             this.Close();
         }
 
