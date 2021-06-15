@@ -204,10 +204,10 @@ namespace ChapeauUI
                         //convert selected item to a orderitem object
                         OrderItem orderItem = (OrderItem)ListViewKitchBar.Items[i].Tag;
 
-                        if (orderItem.Status == OrderItemStatus.Ordered)
+                        if (orderItem.Status == OrderItemStatus.Pending)
                         {
                             //selected item preparing it will update
-                            orderService.UpdateOrderPreparing((OrderItem)ListViewKitchBar.Items[i].Tag);
+                            orderService.UpdateOrderPreparing(orderItem);
 
                             //Store the ordid and orderstatus and send to change status
                             order.OrderID = orderItem.OrderID;

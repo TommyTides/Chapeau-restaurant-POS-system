@@ -37,10 +37,10 @@ namespace ChapeauDAL
         {
             //change status to preparing
             string query = "Update [ORDER_ITEM] Set itemStatus = 3" +
-                " Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
+                " Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime AND Quantity= @Quantity";
             SqlParameter[] sqlParameters = new SqlParameter[4];
             sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
-            sqlParameters[1] = new SqlParameter("@itemStatus", order.Status);
+            sqlParameters[1] = new SqlParameter("@Quantity", order.Quantity);
             sqlParameters[2] = new SqlParameter("@comment", order.Comment);
             sqlParameters[3] = new SqlParameter("@orderTime", order.OrderTime);
             ExecuteEditQuery(query,sqlParameters);
@@ -50,10 +50,10 @@ namespace ChapeauDAL
         {
             //change status to preparing where id is equal.
             string query = "Update [ORDER_ITEM] Set itemStatus = 2" +
-                " Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime";
+                " Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime AND Quantity= @Quantity ";
             SqlParameter[] sqlParameters = new SqlParameter[4];
             sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
-            sqlParameters[1] = new SqlParameter("@itemStatus", order.Status);
+            sqlParameters[1] = new SqlParameter("@Quantity", order.Quantity);
             sqlParameters[2] = new SqlParameter("@comment", order.Comment);
             sqlParameters[3] = new SqlParameter("@orderTime", order.OrderTime);
             ExecuteEditQuery(query, sqlParameters);

@@ -212,7 +212,7 @@ namespace ChapeauUI
 
         private void FillOrderItem()
         {
-            orderItem.Status = OrderItemStatus.Ordered; // set order status
+            orderItem.Status = OrderItemStatus.Pending; // set order status
         }
 
         private void listBoxSelectedFoodItem_SelectedIndexChanged(object sender, EventArgs e)

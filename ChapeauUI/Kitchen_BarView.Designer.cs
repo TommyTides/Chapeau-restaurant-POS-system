@@ -95,7 +95,7 @@ namespace ChapeauUI
             this.btnPreparing.Name = "btnPreparing";
             this.btnPreparing.Size = new System.Drawing.Size(147, 51);
             this.btnPreparing.TabIndex = 18;
-            this.btnPreparing.Text = "Preparing Item";
+            this.btnPreparing.Text = "Preparing Order";
             this.btnPreparing.UseVisualStyleBackColor = false;
             this.btnPreparing.Click += new System.EventHandler(this.btnPreparing_Click);
             // 
@@ -121,7 +121,7 @@ namespace ChapeauUI
             this.btnReady.Name = "btnReady";
             this.btnReady.Size = new System.Drawing.Size(147, 51);
             this.btnReady.TabIndex = 16;
-            this.btnReady.Text = "Ready Item";
+            this.btnReady.Text = "Ready Order";
             this.btnReady.UseVisualStyleBackColor = false;
             this.btnReady.Click += new System.EventHandler(this.btnready_Click);
             // 
@@ -151,7 +151,7 @@ namespace ChapeauUI
             // 
             // Itemorder
             // 
-            this.Itemorder.Text = "Itemorder";
+            this.Itemorder.Text = "item name";
             this.Itemorder.Width = 138;
             // 
             // Commentv2
