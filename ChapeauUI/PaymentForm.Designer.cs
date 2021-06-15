@@ -90,7 +90,7 @@ namespace ChapeauUI
             // 
             this.paymnetLabel.AutoSize = true;
             this.paymnetLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.paymnetLabel.ForeColor = System.Drawing.Color.White;
+            this.paymnetLabel.ForeColor = System.Drawing.Color.Black;
             this.paymnetLabel.Location = new System.Drawing.Point(273, 35);
             this.paymnetLabel.Name = "paymnetLabel";
             this.paymnetLabel.Size = new System.Drawing.Size(121, 31);
@@ -271,7 +271,7 @@ namespace ChapeauUI
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
             this.panel2.Controls.Add(this.txtFeedback);
             this.panel2.Controls.Add(this.lblFeedback);
             this.panel2.Controls.Add(this.label2);
@@ -308,7 +308,7 @@ namespace ChapeauUI
             // 
             // btnFinalizePayment
             // 
-            this.btnFinalizePayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnFinalizePayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
             this.btnFinalizePayment.Font = new System.Drawing.Font("Yu Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFinalizePayment.ForeColor = System.Drawing.Color.Black;
             this.btnFinalizePayment.Location = new System.Drawing.Point(224, 781);
@@ -329,7 +329,7 @@ namespace ChapeauUI
             this.lstViewItems.HideSelection = false;
             this.lstViewItems.Location = new System.Drawing.Point(42, 360);
             this.lstViewItems.Name = "lstViewItems";
-            this.lstViewItems.Size = new System.Drawing.Size(352, 396);
+            this.lstViewItems.Size = new System.Drawing.Size(352, 400);
             this.lstViewItems.TabIndex = 10;
             this.lstViewItems.UseCompatibleStateImageBehavior = false;
             this.lstViewItems.View = System.Windows.Forms.View.Details;
