@@ -334,7 +334,7 @@ namespace ChapeauUI
             menuItems = menuItemService.GetAllMenuItems(); // Gets list of menuItems form database
             btnAddDrink.Enabled = false;
 
-            if (firstCategory == MenuSubCategory.wines) // Change label names
+            if (secondCategory == MenuSubCategory.wines) // Change label names
             {
                 lblDrinks1.Text = "Beers";
                 lblDrinks2.Text = "Wines";
