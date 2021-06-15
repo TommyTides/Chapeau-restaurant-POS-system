@@ -30,10 +30,10 @@ namespace ChapeauUI
         private void InitializeComponent()
         {
             this.pnlStaticBar = new System.Windows.Forms.Panel();
+            this.lblWhereWeAre = new System.Windows.Forms.Label();
+            this.lblApplicationSubState = new System.Windows.Forms.Label();
             this.hamburgerIcon = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.lblApplicationSubState = new System.Windows.Forms.Label();
-            this.lblWhereWeAre = new System.Windows.Forms.Label();
             this.pnlHamburger = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.lblOrderCart = new System.Windows.Forms.Label();
@@ -107,14 +107,38 @@ namespace ChapeauUI
             // pnlStaticBar
             // 
             this.pnlStaticBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
+            this.pnlStaticBar.Controls.Add(this.lblWhereWeAre);
+            this.pnlStaticBar.Controls.Add(this.lblApplicationSubState);
             this.pnlStaticBar.Controls.Add(this.hamburgerIcon);
             this.pnlStaticBar.Controls.Add(this.pictureBox3);
-            this.pnlStaticBar.Controls.Add(this.lblApplicationSubState);
-            this.pnlStaticBar.Controls.Add(this.lblWhereWeAre);
             this.pnlStaticBar.Location = new System.Drawing.Point(-1, -1);
             this.pnlStaticBar.Name = "pnlStaticBar";
             this.pnlStaticBar.Size = new System.Drawing.Size(756, 94);
             this.pnlStaticBar.TabIndex = 0;
+            // 
+            // lblWhereWeAre
+            // 
+            this.lblWhereWeAre.AutoSize = true;
+            this.lblWhereWeAre.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.lblWhereWeAre.ForeColor = System.Drawing.Color.White;
+            this.lblWhereWeAre.Location = new System.Drawing.Point(317, 10);
+            this.lblWhereWeAre.Name = "lblWhereWeAre";
+            this.lblWhereWeAre.Size = new System.Drawing.Size(117, 42);
+            this.lblWhereWeAre.TabIndex = 0;
+            this.lblWhereWeAre.Text = "Home";
+            // 
+            // lblApplicationSubState
+            // 
+            this.lblApplicationSubState.AutoSize = true;
+            this.lblApplicationSubState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
+            this.lblApplicationSubState.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApplicationSubState.ForeColor = System.Drawing.Color.White;
+            this.lblApplicationSubState.Location = new System.Drawing.Point(320, 52);
+            this.lblApplicationSubState.Name = "lblApplicationSubState";
+            this.lblApplicationSubState.Size = new System.Drawing.Size(136, 24);
+            this.lblApplicationSubState.TabIndex = 8;
+            this.lblApplicationSubState.Text = "Welcome back";
+            this.lblApplicationSubState.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // hamburgerIcon
             // 
@@ -138,30 +162,6 @@ namespace ChapeauUI
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 9;
             this.pictureBox3.TabStop = false;
-            // 
-            // lblApplicationSubState
-            // 
-            this.lblApplicationSubState.AutoSize = true;
-            this.lblApplicationSubState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
-            this.lblApplicationSubState.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApplicationSubState.ForeColor = System.Drawing.Color.White;
-            this.lblApplicationSubState.Location = new System.Drawing.Point(320, 52);
-            this.lblApplicationSubState.Name = "lblApplicationSubState";
-            this.lblApplicationSubState.Size = new System.Drawing.Size(136, 24);
-            this.lblApplicationSubState.TabIndex = 8;
-            this.lblApplicationSubState.Text = "Welcome back";
-            this.lblApplicationSubState.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblWhereWeAre
-            // 
-            this.lblWhereWeAre.AutoSize = true;
-            this.lblWhereWeAre.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.lblWhereWeAre.ForeColor = System.Drawing.Color.White;
-            this.lblWhereWeAre.Location = new System.Drawing.Point(317, 10);
-            this.lblWhereWeAre.Name = "lblWhereWeAre";
-            this.lblWhereWeAre.Size = new System.Drawing.Size(117, 42);
-            this.lblWhereWeAre.TabIndex = 0;
-            this.lblWhereWeAre.Text = "Home";
             // 
             // pnlHamburger
             // 
