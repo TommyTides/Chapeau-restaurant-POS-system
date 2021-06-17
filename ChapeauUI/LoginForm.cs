@@ -52,7 +52,7 @@ namespace ChapeauUI
             {
                 this.Hide();
                 TablePage page = new TablePage(employee);
-                page.Show();
+                page.ShowDialog();
                 
             }
 

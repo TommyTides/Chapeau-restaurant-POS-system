@@ -21,5 +21,9 @@ namespace ChapeauLogic
         {
             return employeeDAO.GetEmployeeByCode(logincode);
         }
+        public Employee GetEmployeeById(int employeeId)
+        {
+            return employeeDAO.GetEmployeeId(employeeId);
+        }
     }
 }

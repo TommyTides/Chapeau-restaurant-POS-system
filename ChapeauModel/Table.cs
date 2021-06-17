@@ -19,6 +19,11 @@ namespace ChapeauModel
         {
 
         }
+
+        public Table(int tableID)
+        {
+            this.TableID = tableID;
+        }
     }
 
     public enum TableStatus { Free = 1, Occupied = 2, Reserved = 3 }

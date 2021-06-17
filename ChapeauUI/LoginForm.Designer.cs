@@ -79,7 +79,7 @@ namespace ChapeauUI
             this.lbllogin.ForeColor = System.Drawing.Color.White;
             this.lbllogin.Location = new System.Drawing.Point(273, 35);
             this.lbllogin.Name = "lbllogin";
-            this.lbllogin.Size = new System.Drawing.Size(197, 31);
+            this.lbllogin.Size = new System.Drawing.Size(237, 38);
             this.lbllogin.TabIndex = 2;
             this.lbllogin.Text = "Chapeau Login";
             // 
@@ -96,25 +96,25 @@ namespace ChapeauUI
             // txtlogincode
             // 
             this.txtlogincode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtlogincode.Location = new System.Drawing.Point(315, 252);
+            this.txtlogincode.Location = new System.Drawing.Point(351, 284);
             this.txtlogincode.Name = "txtlogincode";
-            this.txtlogincode.Size = new System.Drawing.Size(179, 26);
+            this.txtlogincode.Size = new System.Drawing.Size(179, 30);
             this.txtlogincode.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(107, 252);
+            this.label1.Location = new System.Drawing.Point(142, 274);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 20);
+            this.label1.Size = new System.Drawing.Size(164, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Enter Login Code";
             // 
             // btn1
             // 
             this.btn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn1.Location = new System.Drawing.Point(69, 382);
+            this.btn1.Location = new System.Drawing.Point(147, 382);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(91, 74);
             this.btn1.TabIndex = 4;
@@ -125,7 +125,7 @@ namespace ChapeauUI
             // btn2
             // 
             this.btn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn2.Location = new System.Drawing.Point(315, 382);
+            this.btn2.Location = new System.Drawing.Point(311, 382);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(91, 74);
             this.btn2.TabIndex = 5;
@@ -136,7 +136,7 @@ namespace ChapeauUI
             // btn3
             // 
             this.btn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn3.Location = new System.Drawing.Point(572, 382);
+            this.btn3.Location = new System.Drawing.Point(469, 382);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(91, 74);
             this.btn3.TabIndex = 6;
@@ -147,7 +147,7 @@ namespace ChapeauUI
             // btn4
             // 
             this.btn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn4.Location = new System.Drawing.Point(69, 550);
+            this.btn4.Location = new System.Drawing.Point(147, 550);
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(91, 74);
             this.btn4.TabIndex = 7;
@@ -158,7 +158,7 @@ namespace ChapeauUI
             // btn5
             // 
             this.btn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn5.Location = new System.Drawing.Point(315, 550);
+            this.btn5.Location = new System.Drawing.Point(311, 550);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(91, 74);
             this.btn5.TabIndex = 8;
@@ -169,7 +169,7 @@ namespace ChapeauUI
             // btn6
             // 
             this.btn6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn6.Location = new System.Drawing.Point(572, 550);
+            this.btn6.Location = new System.Drawing.Point(469, 550);
             this.btn6.Name = "btn6";
             this.btn6.Size = new System.Drawing.Size(91, 74);
             this.btn6.TabIndex = 9;
@@ -180,7 +180,7 @@ namespace ChapeauUI
             // btn7
             // 
             this.btn7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn7.Location = new System.Drawing.Point(69, 730);
+            this.btn7.Location = new System.Drawing.Point(147, 730);
             this.btn7.Name = "btn7";
             this.btn7.Size = new System.Drawing.Size(91, 74);
             this.btn7.TabIndex = 10;
@@ -191,7 +191,7 @@ namespace ChapeauUI
             // btn8
             // 
             this.btn8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn8.Location = new System.Drawing.Point(315, 730);
+            this.btn8.Location = new System.Drawing.Point(311, 730);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(91, 74);
             this.btn8.TabIndex = 11;
@@ -202,7 +202,7 @@ namespace ChapeauUI
             // btn9
             // 
             this.btn9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn9.Location = new System.Drawing.Point(572, 730);
+            this.btn9.Location = new System.Drawing.Point(469, 730);
             this.btn9.Name = "btn9";
             this.btn9.Size = new System.Drawing.Size(91, 74);
             this.btn9.TabIndex = 12;
@@ -213,7 +213,7 @@ namespace ChapeauUI
             // btn0
             // 
             this.btn0.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn0.Location = new System.Drawing.Point(315, 877);
+            this.btn0.Location = new System.Drawing.Point(311, 877);
             this.btn0.Name = "btn0";
             this.btn0.Size = new System.Drawing.Size(91, 74);
             this.btn0.TabIndex = 13;
@@ -224,7 +224,7 @@ namespace ChapeauUI
             // btndelete
             // 
             this.btndelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btndelete.Location = new System.Drawing.Point(572, 877);
+            this.btndelete.Location = new System.Drawing.Point(469, 877);
             this.btndelete.Name = "btndelete";
             this.btndelete.Size = new System.Drawing.Size(91, 74);
             this.btndelete.TabIndex = 14;

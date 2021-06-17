@@ -47,6 +47,14 @@ namespace ChapeauUI
                     case 1:
                         ChangeColorByTableStatus(rndbutton1, table.TableStatus);
                         lbltable1status.Text = table.CurrentOrderInfo;
+                        if (table.CurrentOrderInfo == "Pending")
+                        {
+                            lbltable1status.Text = "Kitchen/Bar is preparing the order";
+                        }
+                        if (table.CurrentOrderInfo == "Ready")
+                        {
+                            lbltable1status.Text = "Order is ready to be served";
+                        }
                         break;
                     case 2:
                         ChangeColorByTableStatus(rndbutton2, table.TableStatus);
@@ -66,7 +74,14 @@ namespace ChapeauUI
                         break;
                     case 6:
                         ChangeColorByTableStatus(rndbutton6, table.TableStatus);
-                        lbltable6status.Text = table.CurrentOrderInfo;
+                        if (table.CurrentOrderInfo == "Pending")
+                        {
+                            lbltable6status.Text = "Kitchen is preparing the order";
+                        }
+                        if (table.CurrentOrderInfo == "Ready")
+                        {
+                            lbltable6status.Text = "Order is ready to be served";
+                        }
                         break;
                     case 7:
                         ChangeColorByTableStatus(rndbutton7, table.TableStatus);

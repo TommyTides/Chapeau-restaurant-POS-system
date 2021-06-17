@@ -51,6 +51,35 @@ namespace ChapeauDAL
             return tables;
         }
 
+        public List<Order> GetAllRunningOrders()
+        {
+            string query = "SELECT * FROM [ORDER] WHERE isPaid = @isPaid";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@isPaid", false);
+            return CreateOrders(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+
+        public List<Order> CreateOrders(DataTable orderData)
+        {
+            List<Order> orders = new List<Order>();
+            EmployeeDAO employeeDAO = new EmployeeDAO();
+
+            foreach (DataRow dr  in orderData.Rows)
+            {
+                Order order = new Order()
+                {
+                    Table = new Table((int)dr["tableID"]),
+                    Status = (OrderStatus)(dr["orderStatus"]),
+                    isPaid = (bool)(dr["paidOrders"]),
+                    OrderID = (int)(dr["orderID"]),
+                    Employee = employeeDAO.GetEmployeeId((int)dr["employeeID"])
+                };
+                orders.Add(order);
+            }
+            return orders;
+        }
+
         public void ChangeTableStatus(int Tableid, int TableStatus)
         {
             string query = "UPDATE [TABLE] " +
