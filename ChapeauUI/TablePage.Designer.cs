@@ -90,7 +90,7 @@ namespace ChapeauUI
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(-2, -2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(766, 129);
+            this.panel1.Size = new System.Drawing.Size(820, 129);
             this.panel1.TabIndex = 0;
             // 
             // label8
@@ -117,7 +117,7 @@ namespace ChapeauUI
             // btnLogout
             // 
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Location = new System.Drawing.Point(590, 39);
+            this.btnLogout.Location = new System.Drawing.Point(607, 39);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(136, 66);
             this.btnLogout.TabIndex = 2;
@@ -158,7 +158,7 @@ namespace ChapeauUI
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Green;
-            this.panel2.Location = new System.Drawing.Point(12, 195);
+            this.panel2.Location = new System.Drawing.Point(12, 207);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(55, 37);
             this.panel2.TabIndex = 2;
@@ -177,7 +177,7 @@ namespace ChapeauUI
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(103, 207);
+            this.label3.Location = new System.Drawing.Point(103, 212);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 25);
             this.label3.TabIndex = 4;
@@ -215,7 +215,7 @@ namespace ChapeauUI
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Cyan;
-            this.panel4.Location = new System.Drawing.Point(494, 207);
+            this.panel4.Location = new System.Drawing.Point(511, 207);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(55, 37);
             this.panel4.TabIndex = 4;
@@ -224,7 +224,7 @@ namespace ChapeauUI
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(567, 212);
+            this.label6.Location = new System.Drawing.Point(590, 212);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(24, 25);
             this.label6.TabIndex = 7;
@@ -234,7 +234,7 @@ namespace ChapeauUI
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(591, 212);
+            this.label7.Location = new System.Drawing.Point(637, 212);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(150, 25);
             this.label7.TabIndex = 8;
@@ -354,7 +354,7 @@ namespace ChapeauUI
             // 
             this.lbltable1status.AutoSize = true;
             this.lbltable1status.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltable1status.Location = new System.Drawing.Point(112, 356);
+            this.lbltable1status.Location = new System.Drawing.Point(62, 356);
             this.lbltable1status.Name = "lbltable1status";
             this.lbltable1status.Size = new System.Drawing.Size(61, 29);
             this.lbltable1status.TabIndex = 19;
@@ -374,7 +374,7 @@ namespace ChapeauUI
             // 
             this.lbltable3status.AutoSize = true;
             this.lbltable3status.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltable3status.Location = new System.Drawing.Point(112, 503);
+            this.lbltable3status.Location = new System.Drawing.Point(62, 493);
             this.lbltable3status.Name = "lbltable3status";
             this.lbltable3status.Size = new System.Drawing.Size(61, 29);
             this.lbltable3status.TabIndex = 21;
@@ -394,7 +394,7 @@ namespace ChapeauUI
             // 
             this.lbltable5status.AutoSize = true;
             this.lbltable5status.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltable5status.Location = new System.Drawing.Point(112, 627);
+            this.lbltable5status.Location = new System.Drawing.Point(62, 615);
             this.lbltable5status.Name = "lbltable5status";
             this.lbltable5status.Size = new System.Drawing.Size(61, 29);
             this.lbltable5status.TabIndex = 23;
@@ -414,7 +414,7 @@ namespace ChapeauUI
             // 
             this.lbltable7status.AutoSize = true;
             this.lbltable7status.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltable7status.Location = new System.Drawing.Point(112, 772);
+            this.lbltable7status.Location = new System.Drawing.Point(62, 768);
             this.lbltable7status.Name = "lbltable7status";
             this.lbltable7status.Size = new System.Drawing.Size(61, 29);
             this.lbltable7status.TabIndex = 25;
@@ -434,7 +434,7 @@ namespace ChapeauUI
             // 
             this.lbltable9status.AutoSize = true;
             this.lbltable9status.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltable9status.Location = new System.Drawing.Point(112, 899);
+            this.lbltable9status.Location = new System.Drawing.Point(62, 884);
             this.lbltable9status.Name = "lbltable9status";
             this.lbltable9status.Size = new System.Drawing.Size(61, 29);
             this.lbltable9status.TabIndex = 27;
@@ -543,7 +543,7 @@ namespace ChapeauUI
             // TablePage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(762, 1012);
+            this.ClientSize = new System.Drawing.Size(818, 997);
             this.Controls.Add(this.rndbutton10);
             this.Controls.Add(this.rndbuttons9);
             this.Controls.Add(this.rndbutton8);

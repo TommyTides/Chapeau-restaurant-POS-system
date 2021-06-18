@@ -17,11 +17,20 @@ namespace ChapeauUI
         private Employee employee;
         private TableServices tableServices;
         Dictionary<int, Table> tables;
+
+        private Dictionary<string, string> tablestatustext; // first part recieve the status from db, second part show text.
         public TablePage(Employee employee)
         {
             InitializeComponent();
             this.employee = employee;
             tableServices = new TableServices();
+            tablestatustext = new Dictionary<string, string>();
+            tablestatustext.Add("Pending", "Order not taken");
+            tablestatustext.Add("Preparing", "Kitchen/Bar is preparing the order");
+            tablestatustext.Add("Ready", "Order is ready to serve");
+            tablestatustext.Add("Served", "Order is served to the table");
+            tablestatustext.Add("", "");
+
         }
         
         private void TablePage_Load(object sender, EventArgs e)
@@ -46,56 +55,94 @@ namespace ChapeauUI
                 {
                     case 1:
                         ChangeColorByTableStatus(rndbutton1, table.TableStatus);
-                        if (table.CurrentOrderInfo == "Pending")
-                        {
-                            lbltable1status.Text = "Kitchen is preparing the order";
-                        }
-                        if (table.CurrentOrderInfo == "Ready")
-                        {
-                            lbltable1status.Text = "Order is ready to be served";
-                        }
+                        //if (table.TableStatus == TableStatus.Free)
+                        //{
+                        //    lbltable1status.Text = "";
+                        //}
+                        //lbltable1status.Text = tablestatustext[table.CurrentOrderInfo];
+                        lbltable1status.Text = table.CurrentOrderInfo;
                         break;
                     case 2:
                         ChangeColorByTableStatus(rndbutton2, table.TableStatus);
+                        //if (table.TableStatus == TableStatus.Free)
+                        //{
+                        //    lbltable2status.Text = "";
+                        //}
+                        //lbltable2status.Text = tablestatustext[table.CurrentOrderInfo];
                         lbltable2status.Text = table.CurrentOrderInfo;
                         break;
                     case 3:
                         ChangeColorByTableStatus(rndbutton3, table.TableStatus);
+                        //if (table.TableStatus == TableStatus.Free)
+                        //{
+                        //    lbltable3status.Text = "";
+                        //}
+                        //lbltable3status.Text = tablestatustext[table.CurrentOrderInfo];
                         lbltable3status.Text = table.CurrentOrderInfo;
                         break;
                     case 4:
                         ChangeColorByTableStatus(rndbutton4, table.TableStatus);
+                        //if (table.TableStatus == TableStatus.Free)
+                        //{
+                        //    lbltable4status.Text = "";
+                        //}
+                        //lbltable4status.Text = tablestatustext[table.CurrentOrderInfo];
                         lbltable4status.Text = table.CurrentOrderInfo;
                         break;
                     case 5:
                         ChangeColorByTableStatus(rndbutton5, table.TableStatus);
+                        //if (table.TableStatus == TableStatus.Free)
+                        //{
+                        //    lbltable5status.Text = "";
+                        //}
+                        //lbltable5status.Text = tablestatustext[table.CurrentOrderInfo];
                         lbltable5status.Text = table.CurrentOrderInfo;
                         break;
                     case 6:
                         ChangeColorByTableStatus(rndbutton6, table.TableStatus);
-                        if (table.CurrentOrderInfo == "Pending")
-                        {
-                            lbltable6status.Text = "Kitchen is preparing the order";
-                        }
-                        if (table.CurrentOrderInfo == "Ready")
-                        {
-                            lbltable6status.Text = "Order is ready to be served";
-                        }
+                        //if (table.TableStatus == TableStatus.Free)
+                        //{
+                        //    lbltable6status.Text = "";
+                        //}
+                        //lbltable6status.Text = tablestatustext[table.CurrentOrderInfo];
+                        lbltable6status.Text = table.CurrentOrderInfo;
                         break;
                     case 7:
                         ChangeColorByTableStatus(rndbutton7, table.TableStatus);
+                        //if (table.TableStatus == TableStatus.Free)
+                        //{
+                        //    lbltable7status.Text = "";
+                        //}
+                        //lbltable7status.Text = tablestatustext[table.CurrentOrderInfo];
                         lbltable7status.Text = table.CurrentOrderInfo;
                         break;
                     case 8:
                         ChangeColorByTableStatus(rndbutton8, table.TableStatus);
+                        //if (table.TableStatus == TableStatus.Free)
+                        //{
+                        //    lbltable8status.Text = "";
+                        //}
+                        //else
+                        //{
+                        //    lbltable8status.Text = tablestatustext[table.CurrentOrderInfo];
+                        //}
                         lbltable8status.Text = table.CurrentOrderInfo;
                         break;
                     case 9:
                         ChangeColorByTableStatus(rndbuttons9, table.TableStatus);
+                        //if (table.TableStatus == TableStatus.Free)
+                        //{
+                        //    lbltable9status.Text = "";
+                        //}
+                        //else
+                        //{
+                        //    lbltable9status.Text = tablestatustext[table.CurrentOrderInfo];
+                        //}
                         lbltable9status.Text = table.CurrentOrderInfo;
                         break;
                     case 10:
                         ChangeColorByTableStatus(rndbutton10, table.TableStatus);
+                        //lbltable10status.Text = tablestatustext[table.CurrentOrderInfo];
                         lbltable10status.Text = table.CurrentOrderInfo;
                         break;
                 }
