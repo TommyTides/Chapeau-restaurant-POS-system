@@ -78,11 +78,11 @@ namespace ChapeauUI
             // btntakeOrder
             // 
             this.btntakeOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
-            this.btntakeOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntakeOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btntakeOrder.ForeColor = System.Drawing.Color.White;
             this.btntakeOrder.Location = new System.Drawing.Point(29, 401);
             this.btntakeOrder.Name = "btntakeOrder";
-            this.btntakeOrder.Size = new System.Drawing.Size(134, 44);
+            this.btntakeOrder.Size = new System.Drawing.Size(159, 44);
             this.btntakeOrder.TabIndex = 3;
             this.btntakeOrder.Text = "Start Ordering";
             this.btntakeOrder.UseVisualStyleBackColor = false;
@@ -91,11 +91,11 @@ namespace ChapeauUI
             // btnReserveTable
             // 
             this.btnReserveTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
-            this.btnReserveTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReserveTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReserveTable.ForeColor = System.Drawing.Color.White;
             this.btnReserveTable.Location = new System.Drawing.Point(28, 484);
             this.btnReserveTable.Name = "btnReserveTable";
-            this.btnReserveTable.Size = new System.Drawing.Size(137, 44);
+            this.btnReserveTable.Size = new System.Drawing.Size(160, 44);
             this.btnReserveTable.TabIndex = 4;
             this.btnReserveTable.Text = "Reserve Table";
             this.btnReserveTable.UseVisualStyleBackColor = false;
@@ -104,11 +104,11 @@ namespace ChapeauUI
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.Location = new System.Drawing.Point(305, 484);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(123, 44);
+            this.btnCancel.Size = new System.Drawing.Size(202, 44);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -152,7 +152,7 @@ namespace ChapeauUI
             this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(540, 104);
+            this.panel1.Size = new System.Drawing.Size(548, 104);
             this.panel1.TabIndex = 9;
             // 
             // pictureBox1
@@ -168,11 +168,11 @@ namespace ChapeauUI
             // btnPayment
             // 
             this.btnPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
-            this.btnPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPayment.ForeColor = System.Drawing.Color.White;
             this.btnPayment.Location = new System.Drawing.Point(305, 401);
             this.btnPayment.Name = "btnPayment";
-            this.btnPayment.Size = new System.Drawing.Size(128, 44);
+            this.btnPayment.Size = new System.Drawing.Size(202, 44);
             this.btnPayment.TabIndex = 10;
             this.btnPayment.Text = "Proceed to Payment";
             this.btnPayment.UseVisualStyleBackColor = false;
@@ -181,7 +181,7 @@ namespace ChapeauUI
             // TableDialog
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(540, 540);
+            this.ClientSize = new System.Drawing.Size(548, 559);
             this.Controls.Add(this.btnPayment);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbltablestatus);
