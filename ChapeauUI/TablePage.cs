@@ -26,7 +26,7 @@ namespace ChapeauUI
             tableServices = new TableServices();
             tablestatustext = new Dictionary<string, string>();
             tablestatustext.Add("Pending", "Order sent to kitchen");
-            tablestatustext.Add("Preparing", "Kitchen/Bar is preparing the order");
+            tablestatustext.Add("Preparing", "Kitchen preparing order");
             tablestatustext.Add("Ready", "Order is ready to serve");
             tablestatustext.Add("Served", "Order is served to the table");
 

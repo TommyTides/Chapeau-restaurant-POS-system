@@ -49,9 +49,9 @@ namespace ChapeauUI
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 173);
+            this.label1.Location = new System.Drawing.Point(61, 173);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 29);
+            this.label1.Size = new System.Drawing.Size(129, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Table number";
             // 
@@ -59,9 +59,9 @@ namespace ChapeauUI
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(24, 262);
+            this.label2.Location = new System.Drawing.Point(61, 262);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(148, 29);
+            this.label2.Size = new System.Drawing.Size(113, 24);
             this.label2.TabIndex = 1;
             this.label2.Text = "Table Status";
             // 
@@ -69,9 +69,9 @@ namespace ChapeauUI
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(24, 336);
+            this.label3.Location = new System.Drawing.Point(61, 335);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(290, 29);
+            this.label3.Size = new System.Drawing.Size(224, 24);
             this.label3.TabIndex = 2;
             this.label3.Text = "Select appropriate option:";
             // 
@@ -80,7 +80,7 @@ namespace ChapeauUI
             this.btntakeOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
             this.btntakeOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btntakeOrder.ForeColor = System.Drawing.Color.White;
-            this.btntakeOrder.Location = new System.Drawing.Point(29, 401);
+            this.btntakeOrder.Location = new System.Drawing.Point(65, 401);
             this.btntakeOrder.Name = "btntakeOrder";
             this.btntakeOrder.Size = new System.Drawing.Size(159, 44);
             this.btntakeOrder.TabIndex = 3;
@@ -93,7 +93,7 @@ namespace ChapeauUI
             this.btnReserveTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
             this.btnReserveTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReserveTable.ForeColor = System.Drawing.Color.White;
-            this.btnReserveTable.Location = new System.Drawing.Point(28, 484);
+            this.btnReserveTable.Location = new System.Drawing.Point(64, 484);
             this.btnReserveTable.Name = "btnReserveTable";
             this.btnReserveTable.Size = new System.Drawing.Size(160, 44);
             this.btnReserveTable.TabIndex = 4;
@@ -106,7 +106,7 @@ namespace ChapeauUI
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(305, 484);
+            this.btnCancel.Location = new System.Drawing.Point(272, 484);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(202, 44);
             this.btnCancel.TabIndex = 5;
@@ -121,7 +121,7 @@ namespace ChapeauUI
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(233, 35);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(200, 36);
+            this.label4.Size = new System.Drawing.Size(166, 29);
             this.label4.TabIndex = 6;
             this.label4.Text = "Table Options";
             // 
@@ -129,9 +129,9 @@ namespace ChapeauUI
             // 
             this.lbltablenumber.AutoSize = true;
             this.lbltablenumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltablenumber.Location = new System.Drawing.Point(288, 173);
+            this.lbltablenumber.Location = new System.Drawing.Point(314, 173);
             this.lbltablenumber.Name = "lbltablenumber";
-            this.lbltablenumber.Size = new System.Drawing.Size(53, 29);
+            this.lbltablenumber.Size = new System.Drawing.Size(40, 24);
             this.lbltablenumber.TabIndex = 7;
             this.lbltablenumber.Text = "-----";
             // 
@@ -139,9 +139,9 @@ namespace ChapeauUI
             // 
             this.lbltablestatus.AutoSize = true;
             this.lbltablestatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltablestatus.Location = new System.Drawing.Point(288, 262);
+            this.lbltablestatus.Location = new System.Drawing.Point(314, 262);
             this.lbltablestatus.Name = "lbltablestatus";
-            this.lbltablestatus.Size = new System.Drawing.Size(53, 29);
+            this.lbltablestatus.Size = new System.Drawing.Size(40, 24);
             this.lbltablestatus.TabIndex = 8;
             this.lbltablestatus.Text = "-----";
             // 
@@ -170,7 +170,7 @@ namespace ChapeauUI
             this.btnPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
             this.btnPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPayment.ForeColor = System.Drawing.Color.White;
-            this.btnPayment.Location = new System.Drawing.Point(305, 401);
+            this.btnPayment.Location = new System.Drawing.Point(272, 401);
             this.btnPayment.Name = "btnPayment";
             this.btnPayment.Size = new System.Drawing.Size(202, 44);
             this.btnPayment.TabIndex = 10;
@@ -192,7 +192,7 @@ namespace ChapeauUI
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "TableDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TableDialog";
