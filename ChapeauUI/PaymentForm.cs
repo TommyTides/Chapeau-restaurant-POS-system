@@ -35,6 +35,7 @@ namespace ChapeauUI
 
             // at the start of the form, the tip checkbox is disabled
             txtTip.Enabled = false;
+            txtRoundUp.Enabled = false;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -68,17 +69,18 @@ namespace ChapeauUI
 
             // storing values from the database into the labels
             lblTableNumber.Text = this.Order.Table.TableID.ToString();
-            lblBill.Text = this.Order.Total.ToString("€ 0.00");
+            lblBill.Text = (Order.Total + Order.VATTotal).ToString("€ 0.00");
             lblWaiter.Text = this.Order.Employee.EmployeeID.ToString();
 
             // if a user decides to tip beforehand the tip can be written in the database before the payment is handed out
             if (Order.Tip > 0)
             {
                 txtTip.Text = this.Order.Tip.ToString("0.00");
+                txtRoundUp.Text = this.Order.Tip.ToString("0.00");
                 chbTip.Checked = true;
             }
 
-            lblTotalVAT.Text = Order.VATTotal.ToString("€ 0.00");
+            //lblTotalVAT.Text = Order.VATTotal.ToString("€ 0.00");
 
             // calculating the total price by adding the total order price + the total vat + the tip
             lblTotalAmount.Text = (Order.Total + Order.VATTotal + Order.Tip).ToString("€ 0.00");
@@ -90,12 +92,16 @@ namespace ChapeauUI
             if (chbTip.Checked)
             {
                 txtTip.Enabled = true;
+                txtRoundUp.Enabled = true;
             }
 
             else
             {
                 txtTip.Enabled = false;
                 txtTip.Text = "0";
+
+                txtRoundUp.Enabled = false;
+                txtRoundUp.Text = "";
             }
         }
 
@@ -108,11 +114,13 @@ namespace ChapeauUI
             }
 
             double tip = 0;
+            double roundUpTip = 0;
             if (chbTip.Checked)
             {
                 // if the tip if empty, it's automatically assigned the value 0
                 if (txtTip.Text.Trim() == "")
                     txtTip.Text = "0";
+
                 // the tip gets converted into a double
                 // only digits, no letters or weird things
                 // tip is the output parameter which gets its value by assigment inside the Parse function
@@ -128,6 +136,7 @@ namespace ChapeauUI
             }
             // after inserting a tip, update the price and store it into the TotalAmount
             Order.Tip = tip;
+
             lblTotalAmount.Text = (Order.Total + Order.VATTotal + Order.Tip).ToString("€ 0.00");
 
             Order.paymentMethod = (PaymentMethod)cmbMethod.SelectedItem;
@@ -152,19 +161,58 @@ namespace ChapeauUI
             }
         }
 
+        bool bDisableOnTextChanged = false;
         private void txtTip_TextChanged(object sender, EventArgs e)
         {
-            double tip = 0;
-            if (chbTip.Checked)
+            if (bDisableOnTextChanged)
+                return;
+            try
             {
-                // the tip gets converted into a double
-                // only digits, no letters or weird things
-                // tip is the output parameter which gets its value by assigment inside the Parse function
-                bool validTip = double.TryParse(txtTip.Text, out tip);
-                if (!validTip)
-                    return;
+                bDisableOnTextChanged = true;
+                double tip = 0;
+                if (chbTip.Checked)
+                {
+                    // the tip gets converted into a double
+                    // only digits, no letters or weird things
+                    // tip is the output parameter which gets its value by assigment inside the Parse function
+                    bool validTip = double.TryParse(txtTip.Text, out tip);
+                    if (!validTip)
+                        return;
+                }
+                lblTotalAmount.Text = (Order.Total + Order.VATTotal + tip).ToString("€ 0.00");
+                string totalAmountToPay = (Order.Total + Order.VATTotal + tip).ToString("0.00");
+                txtRoundUp.Text = totalAmountToPay;
             }
-            lblTotalAmount.Text = (Order.Total + Order.VATTotal + tip).ToString("€ 0.00");
+            finally
+            {
+                bDisableOnTextChanged = false;
+            }
+        }
+
+        private void txtRoundUp_TextChanged(object sender, EventArgs e)
+        {
+            if (bDisableOnTextChanged)
+                return;
+            try
+            {
+                bDisableOnTextChanged = true;
+                double roundUp = 0;
+                if (chbTip.Checked)
+                {
+                    bool validRoundUp = double.TryParse(txtRoundUp.Text, out roundUp);
+                    if (!validRoundUp)
+                        return;
+                }
+                if (roundUp < Order.Total + Order.VATTotal)
+                    return;
+                lblTotalAmount.Text = roundUp.ToString("€ 0.00");
+                string strTip = (roundUp - Order.Total - Order.VATTotal).ToString("0.00");
+                txtTip.Text = strTip;
+            }
+            finally
+            {
+                bDisableOnTextChanged = false;
+            }
         }
     }
 }
