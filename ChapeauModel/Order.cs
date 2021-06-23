@@ -30,6 +30,12 @@ namespace ChapeauModel
 
         public string Feedback { get; set; }
 
+        public Order()
+        {
+            Table = new Table();
+            OrderItems = new List<OrderItem>();
+        }
+
         // total price for a certain item (depending on quantity) excluding the VAT
         public double CalculateTotalOrderPriceByItems()
         {

@@ -12,100 +12,64 @@ namespace ChapeauDAL
    public class OrderDAO : BaseDao
     {
 
-        public List<Order> GetAllOrdersBar()
+        public List<Order> GetAllOrders(Place place)
         {
-            string query = "select m.menu_type, m.item_name,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o " +
-                "JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " + //Selecting for menu items
-                "JOIN [ORDER] as R ON o.orderID = r.orderID " + // selecting for Order
-                "where PlaceID = 2 "; //select  only kitchen items
-            SqlParameter[] sqlParameters = new SqlParameter[0];
+            string query = "select m.menu_type, m.item_name,m.item_id,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o " +
+                " JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " +
+                " JOIN [ORDER] as R ON o.orderID = r.orderID " +
+                " where placeID = @placeID AND itemStatus = 1 OR itemStatus = 2";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@placeID", place);
             return ReadKitchenBar(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public List<Order> GetAllOrdersKitchen()
+        public void UpdateOrderItemStatus(OrderItem orderItem)
         {
-           
-            string query = "select m.menu_type, m.item_name,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o " +
-                "JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " + //Selecting for menu items
-                "JOIN [ORDER] as R ON o.orderID = r.orderID " + // selecting for Order
-                "where PlaceID = 1 "; //select  only kitchen items
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadKitchenBar(ExecuteSelectQuery(query, sqlParameters));
-        }
-
-        public void UpdateOrderReady(OrderItem order)
-        {
-            //change status to preparing
-            string query = "Update [ORDER_ITEM] Set itemStatus = 3" +
-                " Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime AND Quantity= @Quantity";
-            SqlParameter[] sqlParameters = new SqlParameter[4];
-            sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
-            sqlParameters[1] = new SqlParameter("@Quantity", order.Quantity);
-            sqlParameters[2] = new SqlParameter("@comment", order.Comment);
-            sqlParameters[3] = new SqlParameter("@orderTime", order.OrderTime);
-            ExecuteEditQuery(query,sqlParameters);
-        }
-
-        public void UpdateOrderPreparing(OrderItem order)
-        {
-            //change status to preparing where id is equal.
-            string query = "Update [ORDER_ITEM] Set itemStatus = 2" +
-                " Where orderID = @orderID AND comment = @comment AND orderTime = @orderTime AND Quantity= @Quantity ";
-            SqlParameter[] sqlParameters = new SqlParameter[4];
-            sqlParameters[0] = new SqlParameter("@orderID", order.OrderID);
-            sqlParameters[1] = new SqlParameter("@Quantity", order.Quantity);
-            sqlParameters[2] = new SqlParameter("@comment", order.Comment);
-            sqlParameters[3] = new SqlParameter("@orderTime", order.OrderTime);
+            string query = "Update [ORDER_ITEM] Set itemStatus = @itemStatus" +
+                " Where orderID = @orderID AND  item_id = @item_id";
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+            sqlParameters[0] = new SqlParameter("@orderID", orderItem.OrderID);
+            sqlParameters[1] = new SqlParameter("@itemStatus", orderItem.Status);
+            sqlParameters[2] = new SqlParameter("@item_id", orderItem.menuItem.item_id);
             ExecuteEditQuery(query, sqlParameters);
         }
 
         public void UpdateOrderStatus(Order order)
         {
             //receiving what needs to be changed in orderstatus
-            string query = "Update [ORDER] Set orderStatus = @orderStatus where orderID = @orderID"; 
+            string query = "Update [ORDER] Set orderStatus = @orderStatus where orderID = @orderID";
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@orderStatus", order.Status);
             sqlParameters[1] = new SqlParameter("@orderID", order.OrderID);
-   ;
             ExecuteEditQuery(query, sqlParameters);
         }
 
 
         private List<Order> ReadKitchenBar(DataTable dataTable)
         {
-            List<Order> KitchenBarOrders = new List<Order>();
+            List<Order> Orders = new List<Order>();
             //reading from datbase the data
             foreach (DataRow dr in dataTable.Rows)
             {
-                Table table = new Table();
-                MenuItem item = new MenuItem();
-
-                item.menu_type = (MenuCategory)dr["menu_type"];
-                item.item_name = (string)dr["item_name"];
-
                 OrderItem orderItem = new OrderItem();
+                orderItem.menuItem.menu_type = (MenuCategory)dr["menu_type"];
+                orderItem.menuItem.item_name = (string)dr["item_name"];
+                orderItem.menuItem.item_id = (int)dr["item_id"];
                 orderItem.OrderID = (int)dr["orderID"];
                 orderItem.Comment = (string)dr["comment"];
                 orderItem.Quantity = (int)dr["quantity"];
                 orderItem.Status = (OrderItemStatus)dr["itemStatus"];
                 orderItem.OrderTime = (DateTime)dr["orderTime"];
-                orderItem.menuItem = item;
 
                 Order order = new Order();
-                order.OrderItems = new List<OrderItem>(); //I did it because the list will be null otherwise.
-                table.TableID = (int)dr["tableID"];
-                order.Table = table;
+                order.Table.TableID = (int)dr["tableID"];
                 order.OrderItems.Add(orderItem);
-
-
-
-                KitchenBarOrders.Add(order);
-
+                Orders.Add(order);
             }
-            return KitchenBarOrders;
+            return Orders;
         }
 
-     
+
         #region Alex's part
 
         // Alex's part

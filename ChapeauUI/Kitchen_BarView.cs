@@ -11,68 +11,61 @@ namespace ChapeauUI
     {
         private OrderService orderService;
         private Employee employee;
-
+        private Order order;
+        public List<Order> RunningOrders;
         public Kitchen_BarView(Employee employee)
         {
-            //receive the information who sign in login in the construct from loginform
             InitializeComponent();
             orderService = new OrderService();
             this.employee = employee;
+            order = new Order();
+
+            // need to check this one
+            if (employee.Role == Role.KitchenStaff)
+            {
+                lblEmployee.Text = " OrderView Bar";
+            }
+            else if (employee.Role == Role.KitchenStaff)
+            {
+                lblEmployee.Text = " OrderView Kitchen";
+            }
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
         {
             WinAPI.AnimateWindow(this.Handle, 2000, WinAPI.BLEND);
-            //load in instantly ListViewKitchenBar
-            ListViewKitchenBar();
-            //pictureBox4.Controls.Add(pictureBox1);
+            FillOrderView();
             pictureBox4.Controls.Add(pictureBox3);
-            //pictureBox1.BackColor = Color.Transparent;
             pictureBox3.BackColor = Color.Transparent;
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private List<Order> GetRunningOrders()
         {
-            //if exit button is clicked,
-            LoginForm loginForm = new LoginForm();
-            loginForm.ShowDialog();
-            Application.Exit();
-        }
+            Place place = new Place();
 
-        private List<Order> Employee()
-        {
-            List<Order> orderKitchenBar = null;
             if (employee.Role == Role.Barman)
             {
-                orderKitchenBar = orderService.GetAllBar();
-                lblEmployee.Text = " OrderView Bar";
-                //if Barman employee sign in it will receive the Bar orders
+                place = Place.Bar;
             }
             else if (employee.Role == Role.KitchenStaff)
             {
-                orderKitchenBar = orderService.GetAllKitchen();
-                lblEmployee.Text = " OrderView Kitchen";
-                //if kitchen employee sign in it will receive the kitchen orders
+                place = Place.Kitchen;
             }
 
-            return orderKitchenBar;
+            List<Order> RunningOrders = orderService.GetAllOrders(place);
+            return RunningOrders;
         }
 
-        private void ListViewKitchenBar()
+
+        private void FillOrderView()
         {
-            //get employee information for kitchen or bar
-            List<Order> orderKitchenBar = Employee();
-            //foreach to display the orderitems, I used the double foreach to access TableID
-            foreach (Order O in orderKitchenBar)
+
+            RunningOrders = GetRunningOrders();
+
+            foreach (Order O in RunningOrders)
             {
                 foreach (OrderItem I in O.OrderItems)
                 {
-                    if (I.Status == OrderItemStatus.Ready)
-                    {
-                        //if status is ready it will skip it
-                        continue;
-                    }
-
                     ListViewItem li = new ListViewItem(I.OrderID.ToString());
                     li.SubItems.Add(I.menuItem.item_name);
                     li.SubItems.Add(I.Comment.ToString());
@@ -80,92 +73,111 @@ namespace ChapeauUI
                     li.SubItems.Add(I.OrderTime.ToString("HH:mm"));
                     li.SubItems.Add(O.Table.TableID.ToString());
                     li.SubItems.Add(I.Status.ToString());
+                    li.SubItems.Add(I.menuItem.item_id.ToString());
                     li.Tag = I; // this is saving our object to the Item tag
+
                     if (I.Status == OrderItemStatus.Preparing)
                     {
                         li.ForeColor = Color.Blue;
                     }
-                    ListViewKitchBar.Items.Add(li);
+
+                    ListViewOrders.Items.Add(li);
                 }
             }
         }
 
-        private void btnready_Click(object sender, EventArgs e)
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            ListViewOrders.Items.Clear();
+            FillOrderView();
+        }
+
+        private void btnReady_Click(object sender, EventArgs e)
+        {
+            if (ListViewOrders.SelectedItems.Count <= 0)
+            {
+                MessageBox.Show($"Order is not selected");
+                return;
+            }
+            else
+            {
+                bool OrderItemChange = false;
+                OrderItemStatusChange(OrderItemChange);
+                ListViewOrders.Items.Clear();
+                FillOrderView();
+            }
+        }
+
+        private void btnPreparing_Click(object sender, EventArgs e)
         {
 
-            if (ListViewKitchBar.SelectedItems.Count <= 0)
+            if (ListViewOrders.SelectedItems.Count <= 0)
             {
                 MessageBox.Show($"Order is not selected");
                 return;
                 //if nothing is selected it shows the message
             }
-
-            //message box will be saved in confirmResult
-            var confirmResult = MessageBox.Show("Do you want to mark it as ready", "Confirm Order Status", MessageBoxButtons.YesNo);
-
-            if (confirmResult == DialogResult.Yes)
+            else
             {
-                OrderItemChange();
-                //if status is selected
-                //refresh the list if its needed.
-                ListViewKitchBar.Items.Clear();
-                ListViewKitchenBar();
+                bool OrderItemChange = true;
+                OrderItemStatusChange(OrderItemChange);
+                ListViewOrders.Items.Clear();
+                FillOrderView();
             }
         }
 
-        public void OrderItemChange()
+        private void OrderItemStatusChange(bool OrderItemChange)
         {
-
-            for (int i = 0; i < ListViewKitchBar.Items.Count; i++)
+            for (int i = 0; i < ListViewOrders.Items.Count; i++)
             {
                 //it goes thorugh the list of items in the listview
-                if (ListViewKitchBar.Items[i].Selected)
+                if (ListViewOrders.Items[i].Selected)
                 {
                     //convert selected item to a orderitem object
-                    OrderItem orderItem = (OrderItem)ListViewKitchBar.Items[i].Tag;
+                    OrderItem orderItem = (OrderItem)ListViewOrders.Items[i].Tag;
 
-                    if (orderItem.Status == OrderItemStatus.Preparing)
+                    if (orderItem.Status == OrderItemStatus.Pending && OrderItemChange)
                     {
                         //selected item preparing it will update
-                        orderService.UpdateOrderReady((OrderItem)ListViewKitchBar.Items[i].Tag);
-                        //if preparing ic changed to ready call methode
-                        OrderStatusChange();
+                        orderItem.Status = OrderItemStatus.Preparing;
+                        orderService.UpdateOrderItemStatus(orderItem);
+
+                        //-------------------------------------------------
+                        order.OrderID = orderItem.OrderID;
+                        order.Status = OrderStatus.Preparing;
+                        orderService.UpdateOrderStatus(order);
+                        //-------------------------------------------------
                     }
+                    else if (orderItem.Status == OrderItemStatus.Preparing && OrderItemChange == false)
+                    {
+                        orderItem.Status = OrderItemStatus.Ready;
+                        orderService.UpdateOrderItemStatus(orderItem);
+                        //if preparing is changed to ready call methode
+                        OrderStatusReady();
+                    }
+                    else
+                        MessageBox.Show($"Wrong button selected");
                 }
             }
         }
 
-        public void OrderStatusChange()
+        private void OrderStatusReady()
         {
-            List<Order> orderKitchenBar = Employee();
-            Order order = new Order();
 
-            // all our order
-            foreach (Order O in orderKitchenBar)
+            foreach (Order O in RunningOrders)
             {
-                //count of items in side order
-                int item = 0;
-
-                //count of  items which is ready inside order
-                int readyItem = 0;
-
-                // all items inside 1 order
+                bool ReadyStatus = true;
                 foreach (OrderItem I in O.OrderItems)
                 {
-                    item++;
+                    order.OrderID = I.OrderID;
 
                     if (I.Status != OrderItemStatus.Ready)
                     {
-                        //if status is not ready it will skip it
-                        continue;
+                        ReadyStatus = false;
+                        break;
                     }
-
-                    readyItem++;
-                    //store orderitem in order object
-                    order.OrderID = I.OrderID;
                 }
-                //if its equal store ready status
-                if (item == readyItem)
+                if (ReadyStatus)
                 {
                     order.Status = OrderStatus.Ready;
                     orderService.UpdateOrderStatus(order);
@@ -173,54 +185,12 @@ namespace ChapeauUI
             }
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
-            //Refresh for the Button for ListView
-            ListViewKitchBar.Items.Clear();
-            ListViewKitchenBar();
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
+            Application.Exit();
         }
 
-        private void btnPreparing_Click(object sender, EventArgs e)
-        {
-            Order order = new Order();
-
-            //message box will be saved in confirmResult
-            var confirmResult = MessageBox.Show("Do you want to mark it as Preparing", "Confirm Order Status", MessageBoxButtons.YesNo);
-
-            if (ListViewKitchBar.SelectedItems.Count <= 0)
-            {
-                MessageBox.Show($"Order is not selected");
-                return;
-                //if nothing is selected it shows the message
-            }
-
-            if (confirmResult == DialogResult.Yes)
-            {
-                for (int i = 0; i < ListViewKitchBar.Items.Count; i++)
-                {
-                    //it goes thorugh the list of items in the listview
-                    if (ListViewKitchBar.Items[i].Selected)
-                    {
-                        //convert selected item to a orderitem object
-                        OrderItem orderItem = (OrderItem)ListViewKitchBar.Items[i].Tag;
-
-                        if (orderItem.Status == OrderItemStatus.Pending)
-                        {
-                            //selected item preparing it will update
-                            orderService.UpdateOrderPreparing(orderItem);
-
-                            //Store the ordid and orderstatus and send to change status
-                            order.OrderID = orderItem.OrderID;
-                            order.Status = OrderStatus.Preparing;
-                            orderService.UpdateOrderStatus(order);
-                        }
-                        //refresh the list if its needed.
-                        ListViewKitchBar.Items.Clear();
-                        ListViewKitchenBar();
-                    }
-                }
-            }
-
-        }
     }
 }
