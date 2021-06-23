@@ -32,7 +32,13 @@ namespace ChapeauModel
             this.Quantity = Quantity;
         }
 
-        public OrderItem() { } // Empty constructor
+
+
+
+        public OrderItem()
+        {
+            menuItem = new MenuItem();
+        }
 
         public override string ToString()
         {
