@@ -35,7 +35,11 @@ namespace ChapeauUI
             {
                 btnReserveTable.Text = "Release Table";
             }
-            btnPayment.Enabled = (table.TableStatus == TableStatus.Occupied);
+            if (table.TableStatus != TableStatus.Occupied)
+            {
+                btnPayment.Enabled = false;
+                btnPayment.BackColor = Color.FromArgb(147, 165, 172);
+            }
             FillFormData();
         }
 

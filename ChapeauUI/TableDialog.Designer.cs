@@ -41,6 +41,9 @@ namespace ChapeauUI
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnPayment = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +54,7 @@ namespace ChapeauUI
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(61, 173);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 24);
+            this.label1.Size = new System.Drawing.Size(164, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Table number";
             // 
@@ -61,7 +64,7 @@ namespace ChapeauUI
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(61, 262);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 24);
+            this.label2.Size = new System.Drawing.Size(148, 29);
             this.label2.TabIndex = 1;
             this.label2.Text = "Table Status";
             // 
@@ -71,7 +74,7 @@ namespace ChapeauUI
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(61, 335);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(224, 24);
+            this.label3.Size = new System.Drawing.Size(290, 29);
             this.label3.TabIndex = 2;
             this.label3.Text = "Select appropriate option:";
             // 
@@ -121,7 +124,7 @@ namespace ChapeauUI
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(233, 35);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(166, 29);
+            this.label4.Size = new System.Drawing.Size(200, 36);
             this.label4.TabIndex = 6;
             this.label4.Text = "Table Options";
             // 
@@ -131,7 +134,7 @@ namespace ChapeauUI
             this.lbltablenumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltablenumber.Location = new System.Drawing.Point(314, 173);
             this.lbltablenumber.Name = "lbltablenumber";
-            this.lbltablenumber.Size = new System.Drawing.Size(40, 24);
+            this.lbltablenumber.Size = new System.Drawing.Size(53, 29);
             this.lbltablenumber.TabIndex = 7;
             this.lbltablenumber.Text = "-----";
             // 
@@ -141,7 +144,7 @@ namespace ChapeauUI
             this.lbltablestatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltablestatus.Location = new System.Drawing.Point(314, 262);
             this.lbltablestatus.Name = "lbltablestatus";
-            this.lbltablestatus.Size = new System.Drawing.Size(40, 24);
+            this.lbltablestatus.Size = new System.Drawing.Size(53, 29);
             this.lbltablestatus.TabIndex = 8;
             this.lbltablestatus.Text = "-----";
             // 
@@ -178,10 +181,37 @@ namespace ChapeauUI
             this.btnPayment.UseVisualStyleBackColor = false;
             this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
+            this.panel2.Location = new System.Drawing.Point(537, 101);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(11, 466);
+            this.panel2.TabIndex = 11;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
+            this.panel3.Location = new System.Drawing.Point(0, 548);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(548, 19);
+            this.panel3.TabIndex = 12;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
+            this.panel4.Location = new System.Drawing.Point(0, 101);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(13, 463);
+            this.panel4.TabIndex = 13;
+            // 
             // TableDialog
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(548, 559);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnPayment);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbltablestatus);
@@ -218,5 +248,8 @@ namespace ChapeauUI
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnPayment;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
     }
 }

@@ -78,6 +78,8 @@ namespace ChapeauUI
             this.label6 = new System.Windows.Forms.Label();
             this.pnlCart = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBoxNewAmount = new System.Windows.Forms.ComboBox();
+            this.lblNewAmount = new System.Windows.Forms.Label();
             this.btnRemoveCompleteOrder = new System.Windows.Forms.Button();
             this.btnRemoveCartItem = new System.Windows.Forms.Button();
             this.lblTotalCartPrice = new System.Windows.Forms.Label();
@@ -338,6 +340,11 @@ namespace ChapeauUI
             // 
             this.numericUpDownFoodMenu.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
             this.numericUpDownFoodMenu.Location = new System.Drawing.Point(520, 697);
+            this.numericUpDownFoodMenu.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.numericUpDownFoodMenu.Name = "numericUpDownFoodMenu";
             this.numericUpDownFoodMenu.Size = new System.Drawing.Size(70, 33);
             this.numericUpDownFoodMenu.TabIndex = 93;
@@ -363,7 +370,7 @@ namespace ChapeauUI
             this.btnAddFoodItem.Name = "btnAddFoodItem";
             this.btnAddFoodItem.Size = new System.Drawing.Size(187, 49);
             this.btnAddFoodItem.TabIndex = 91;
-            this.btnAddFoodItem.Text = "Add to cart";
+            this.btnAddFoodItem.Text = "Add to order";
             this.btnAddFoodItem.UseVisualStyleBackColor = false;
             this.btnAddFoodItem.Click += new System.EventHandler(this.btnAddFoodItem_Click);
             // 
@@ -529,6 +536,11 @@ namespace ChapeauUI
             // 
             this.numericUpDownDrink.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
             this.numericUpDownDrink.Location = new System.Drawing.Point(520, 614);
+            this.numericUpDownDrink.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.numericUpDownDrink.Name = "numericUpDownDrink";
             this.numericUpDownDrink.Size = new System.Drawing.Size(70, 33);
             this.numericUpDownDrink.TabIndex = 93;
@@ -554,7 +566,7 @@ namespace ChapeauUI
             this.btnAddDrink.Name = "btnAddDrink";
             this.btnAddDrink.Size = new System.Drawing.Size(187, 49);
             this.btnAddDrink.TabIndex = 91;
-            this.btnAddDrink.Text = "Add to cart";
+            this.btnAddDrink.Text = "Add to order";
             this.btnAddDrink.UseVisualStyleBackColor = false;
             this.btnAddDrink.Click += new System.EventHandler(this.btnAddDrink_Click);
             // 
@@ -666,6 +678,8 @@ namespace ChapeauUI
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.comboBoxNewAmount);
+            this.panel1.Controls.Add(this.lblNewAmount);
             this.panel1.Controls.Add(this.btnRemoveCompleteOrder);
             this.panel1.Controls.Add(this.btnRemoveCartItem);
             this.panel1.Controls.Add(this.lblTotalCartPrice);
@@ -681,6 +695,36 @@ namespace ChapeauUI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(622, 585);
             this.panel1.TabIndex = 2;
+            // 
+            // comboBoxNewAmount
+            // 
+            this.comboBoxNewAmount.FormattingEnabled = true;
+            this.comboBoxNewAmount.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.comboBoxNewAmount.Location = new System.Drawing.Point(200, 456);
+            this.comboBoxNewAmount.Name = "comboBoxNewAmount";
+            this.comboBoxNewAmount.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxNewAmount.TabIndex = 100;
+            this.comboBoxNewAmount.SelectedIndexChanged += new System.EventHandler(this.comboBoxNewAmount_SelectedIndexChanged);
+            // 
+            // lblNewAmount
+            // 
+            this.lblNewAmount.AutoSize = true;
+            this.lblNewAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.lblNewAmount.Location = new System.Drawing.Point(15, 451);
+            this.lblNewAmount.Name = "lblNewAmount";
+            this.lblNewAmount.Size = new System.Drawing.Size(176, 24);
+            this.lblNewAmount.TabIndex = 99;
+            this.lblNewAmount.Text = "Select new amount:";
             // 
             // btnRemoveCompleteOrder
             // 
@@ -906,5 +950,7 @@ namespace ChapeauUI
         private System.Windows.Forms.Label lblTotalCartPrice;
         private System.Windows.Forms.Button btnRemoveCartItem;
         private System.Windows.Forms.Button btnRemoveCompleteOrder;
+        private System.Windows.Forms.Label lblNewAmount;
+        private System.Windows.Forms.ComboBox comboBoxNewAmount;
     }
 }
