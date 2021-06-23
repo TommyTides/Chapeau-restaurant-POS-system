@@ -434,14 +434,33 @@ namespace ChapeauUI
         private void listBoxCartName_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnRemoveCartItem.Visible = true; // make button(remove single item) visible
+
+            comboBoxNewAmount.Visible = true;
+            lblNewAmount.Visible = true;
         }
 
         private void FillCart() // fill items in cart listboxes
         {
             ClearCart();
+            comboBoxNewAmount.Visible = false;
+            lblNewAmount.Visible = false;
             lblWhereWeAre.Text = "Order Cart";
             lblApplicationSubState.Text = "Check Order";
             btnRemoveCartItem.Visible = false;
+            double totalPrice = 0;
+            foreach (OrderItem orderItemee in order.OrderItems) // Adding items tot the listboxes
+            {
+                listBoxCartName.Items.Add(orderItemee);
+                listBoxCartAmount.Items.Add(orderItemee.Quantity);
+                listBoxCartPrice.Items.Add(orderItemee.TotalPrice.ToString("C", new CultureInfo("nl-NL")));
+                totalPrice += orderItemee.TotalPrice;
+            }
+            lblTotalCartPrice.Text = totalPrice.ToString("C", new CultureInfo("nl-NL"));
+        }
+
+        private void FillCartItems()
+        {
+            ClearCart();
             double totalPrice = 0;
             foreach (OrderItem orderItemee in order.OrderItems) // Adding items tot the listboxes
             {
@@ -486,6 +505,15 @@ namespace ChapeauUI
             order.OrderItems.Clear(); // complete whole order
             lblTotalCartPrice.Text = 0.ToString("C", new CultureInfo("nl-NL"));
             FillCart();
+        }
+
+        private void comboBoxNewAmount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int temp = int.Parse(comboBoxNewAmount.Text);
+            order.OrderItems[listBoxCartName.SelectedIndex].Quantity = temp;
+            FillCartItems();
+            lblNewAmount.Visible = false;
+            comboBoxNewAmount.Visible = false;
         }
     }
 }
