@@ -13,6 +13,8 @@ namespace ChapeauUI
         private Employee employee;
         private Order order;
         public List<Order> RunningOrders;
+        private Place place;
+
         public Kitchen_BarView(Employee employee)
         {
             InitializeComponent();
@@ -20,14 +22,15 @@ namespace ChapeauUI
             this.employee = employee;
             order = new Order();
 
-            // need to check this one
             if (employee.Role == Role.KitchenStaff)
             {
-                lblEmployee.Text = " OrderView Bar";
-            }
-            else if (employee.Role == Role.KitchenStaff)
-            {
                 lblEmployee.Text = " OrderView Kitchen";
+                place = Place.Kitchen;
+            }
+            else if (employee.Role == Role.Barman)
+            {
+                lblEmployee.Text = " OrderView Bar";
+                place = Place.Bar;
             }
         }
 
@@ -41,25 +44,12 @@ namespace ChapeauUI
 
         private List<Order> GetRunningOrders()
         {
-            Place place = new Place();
-
-            if (employee.Role == Role.Barman)
-            {
-                place = Place.Bar;
-            }
-            else if (employee.Role == Role.KitchenStaff)
-            {
-                place = Place.Kitchen;
-            }
-
             List<Order> RunningOrders = orderService.GetAllOrders(place);
             return RunningOrders;
         }
 
-
         private void FillOrderView()
         {
-
             RunningOrders = GetRunningOrders();
 
             foreach (Order O in RunningOrders)
@@ -74,7 +64,7 @@ namespace ChapeauUI
                     li.SubItems.Add(O.Table.TableID.ToString());
                     li.SubItems.Add(I.Status.ToString());
                     li.SubItems.Add(I.menuItem.item_id.ToString());
-                    li.Tag = I; // this is saving our object to the Item tag
+                    li.Tag = I; 
 
                     if (I.Status == OrderItemStatus.Preparing)
                     {
@@ -92,6 +82,22 @@ namespace ChapeauUI
             FillOrderView();
         }
 
+        private void btnPreparing_Click(object sender, EventArgs e)
+        {
+            if (ListViewOrders.SelectedItems.Count <= 0)
+            {
+                MessageBox.Show($"Order is not selected");
+                return;
+                //if nothing is selected it shows the message
+            }
+            else
+            {
+                OrderItemStatusChange(true);
+                ListViewOrders.Items.Clear();
+                FillOrderView();
+            }
+        }
+
         private void btnReady_Click(object sender, EventArgs e)
         {
             if (ListViewOrders.SelectedItems.Count <= 0)
@@ -101,87 +107,60 @@ namespace ChapeauUI
             }
             else
             {
-                bool OrderItemChange = false;
-                OrderItemStatusChange(OrderItemChange);
+                OrderItemStatusChange(false);
                 ListViewOrders.Items.Clear();
                 FillOrderView();
             }
         }
 
-        private void btnPreparing_Click(object sender, EventArgs e)
-        {
-
-            if (ListViewOrders.SelectedItems.Count <= 0)
-            {
-                MessageBox.Show($"Order is not selected");
-                return;
-                //if nothing is selected it shows the message
-            }
-            else
-            {
-                bool OrderItemChange = true;
-                OrderItemStatusChange(OrderItemChange);
-                ListViewOrders.Items.Clear();
-                FillOrderView();
-            }
-        }
+      
 
         private void OrderItemStatusChange(bool OrderItemChange)
         {
-            for (int i = 0; i < ListViewOrders.Items.Count; i++)
+            for (int i = 0; i < ListViewOrders.SelectedItems.Count; i++)
             {
-                //it goes thorugh the list of items in the listview
-                if (ListViewOrders.Items[i].Selected)
+                OrderItem orderItem = (OrderItem)ListViewOrders.SelectedItems[i].Tag;
+
+                if (orderItem.Status == OrderItemStatus.Pending && OrderItemChange)
                 {
-                    //convert selected item to a orderitem object
-                    OrderItem orderItem = (OrderItem)ListViewOrders.Items[i].Tag;
+                    //selected item preparing it will update
+                    orderItem.Status = OrderItemStatus.Preparing;
+                    orderService.UpdateOrderItemStatus(orderItem);
 
-                    if (orderItem.Status == OrderItemStatus.Pending && OrderItemChange)
-                    {
-                        //selected item preparing it will update
-                        orderItem.Status = OrderItemStatus.Preparing;
-                        orderService.UpdateOrderItemStatus(orderItem);
-
-                        //-------------------------------------------------
-                        order.OrderID = orderItem.OrderID;
-                        order.Status = OrderStatus.Preparing;
-                        orderService.UpdateOrderStatus(order);
-                        //-------------------------------------------------
-                    }
-                    else if (orderItem.Status == OrderItemStatus.Preparing && OrderItemChange == false)
-                    {
-                        orderItem.Status = OrderItemStatus.Ready;
-                        orderService.UpdateOrderItemStatus(orderItem);
-                        //if preparing is changed to ready call methode
-                        OrderStatusReady();
-                    }
-                    else
-                        MessageBox.Show($"Wrong button selected");
+                    //-------------------------------------------------
+                    order.OrderID = orderItem.OrderID;
+                    order.Status = OrderStatus.Preparing;
+                    orderService.UpdateOrderStatus(order);
+                    //-------------------------------------------------
                 }
+                else if (orderItem.Status == OrderItemStatus.Preparing && OrderItemChange == false)
+                {
+                    orderItem.Status = OrderItemStatus.Ready;
+                    orderService.UpdateOrderItemStatus(orderItem);
+                    OrderStatusReady(orderItem.OrderID);
+                }
+                else
+                    MessageBox.Show($"Wrong button selected");
             }
         }
 
-        private void OrderStatusReady()
+        private void OrderStatusReady(int orderID)
         {
-
-            foreach (Order O in RunningOrders)
+            Order order = orderService.GetOrderByID(orderID, place);
+            bool ReadyStatus = true;
+            foreach (OrderItem I in order.OrderItems)
             {
-                bool ReadyStatus = true;
-                foreach (OrderItem I in O.OrderItems)
+                if (I.Status != OrderItemStatus.Ready)
                 {
-                    order.OrderID = I.OrderID;
-
-                    if (I.Status != OrderItemStatus.Ready)
-                    {
-                        ReadyStatus = false;
-                        break;
-                    }
+                    ReadyStatus = false;
+                    break;
                 }
-                if (ReadyStatus)
-                {
-                    order.Status = OrderStatus.Ready;
-                    orderService.UpdateOrderStatus(order);
-                }
+            }
+            if (ReadyStatus)
+            {
+                order.OrderID = orderID;
+                order.Status = OrderStatus.Ready;
+                orderService.UpdateOrderStatus(order);
             }
         }
 
@@ -191,6 +170,5 @@ namespace ChapeauUI
             loginForm.ShowDialog();
             Application.Exit();
         }
-
     }
 }
