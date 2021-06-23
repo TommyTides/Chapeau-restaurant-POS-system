@@ -17,6 +17,7 @@ namespace ChapeauUI
         private Employee employee;
         private TableServices tableServices;
         Dictionary<int, Table> tables;
+        OrderService orderService;
 
         private Dictionary<string, string> tablestatustext; // first part recieve the status from db, second part show text.
         public TablePage(Employee employee)
@@ -24,6 +25,7 @@ namespace ChapeauUI
             InitializeComponent();
             this.employee = employee;
             tableServices = new TableServices();
+            orderService = new OrderService();
             tablestatustext = new Dictionary<string, string>();
             tablestatustext.Add("Pending", "Order sent to kitchen");
             tablestatustext.Add("Preparing", "Kitchen preparing order");
@@ -54,17 +56,7 @@ namespace ChapeauUI
                 {
                     case 1:
                         ChangeColorByTableStatus(rndbutton1, table.TableStatus);
-                        //if (table.TableStatus == TableStatus.Free || table.TableStatus == TableStatus.Reserved)
-                        //{
-                        //    lbltable1status.Text = "";
-                        //}
-                        //else
-                        //{
-                        //    lbltable1status.Text = table.CurrentOrderInfo == null || table.CurrentOrderInfo == "" 
-                        //    ? "Order not taken" : tablestatustext[table.CurrentOrderInfo];
-                        //}
                         DisplayOrderStatus(lbltable1status, table.TableStatus, table.CurrentOrderInfo);
-                        //lbltable1status.Text = table.CurrentOrderInfo;
                         break;
                     case 2:
                         ChangeColorByTableStatus(rndbutton2, table.TableStatus);
