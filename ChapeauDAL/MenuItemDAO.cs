@@ -51,5 +51,13 @@ namespace ChapeauDAL
             sqlParameters[6] = new SqlParameter("@item_id", item.item_id);
             ExecuteEditQuery(query, sqlParameters);
         }
+
+        public void RemoveMenuItem(MenuItem item)
+        {
+            string query = "DELETE FROM MENU_ITEM WHERE item_id = @item_id";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            sqlParameters[0] = new SqlParameter("@item_id", item.item_id);
+            ExecuteEditQuery(query, sqlParameters);
+        }
     }
 }

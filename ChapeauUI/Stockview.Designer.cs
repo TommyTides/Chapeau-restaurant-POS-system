@@ -386,6 +386,7 @@
             this.buttonDeleteItem.TabIndex = 25;
             this.buttonDeleteItem.Text = "Delete Item";
             this.buttonDeleteItem.UseVisualStyleBackColor = false;
+            this.buttonDeleteItem.Click += new System.EventHandler(this.buttonDeleteItem_Click);
             // 
             // txtStock
             // 

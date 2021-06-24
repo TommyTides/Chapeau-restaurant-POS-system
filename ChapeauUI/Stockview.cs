@@ -117,5 +117,11 @@ namespace ChapeauUI
             menuItemService.EditMenuItem(newItem);
             FillStockView();
         }
+
+        private void buttonDeleteItem_Click(object sender, EventArgs e)
+        {
+            MenuItem selectedItem = lstMenu.SelectedItems[0].Tag as MenuItem;
+            menuItemService.RemoveMenuItem(selectedItem);
+        }
     }
 }

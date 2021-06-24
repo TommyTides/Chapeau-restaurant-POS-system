@@ -36,6 +36,10 @@ namespace ChapeauUI
             this.employee = employee;
             order.Employee.EmployeeID = employee.EmployeeID;
             this.table = table;
+
+            lblWhereWeAre.Text = "Menu Options";
+            lblApplicationSubState.Text = "Select a Menu";
+            pnlMenuOptions.Visible = true;
         }
 
         private void PlaceOrderForm_Load(object sender, EventArgs e)

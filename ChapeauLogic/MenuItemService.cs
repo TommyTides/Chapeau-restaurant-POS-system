@@ -29,5 +29,10 @@ namespace ChapeauLogic
         {
             menuItemDAO.EditMenuItem(item);
         }
+
+        public void RemoveMenuItem(MenuItem item)
+        {
+            menuItemDAO.RemoveMenuItem(item);
+        }
     }
 }
