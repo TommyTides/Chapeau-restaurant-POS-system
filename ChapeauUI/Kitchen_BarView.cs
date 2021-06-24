@@ -10,7 +10,6 @@ namespace ChapeauUI
     public partial class Kitchen_BarView : Form
     {
         private OrderService orderService;
-        private Employee employee;
         private Order order;
         private Place place;
 
@@ -18,8 +17,8 @@ namespace ChapeauUI
         {
             InitializeComponent();
             orderService = new OrderService();
-            this.employee = employee;
             order = new Order();
+
             //It will give the label and the place depends who signed in
             if (employee.Role == Role.KitchenStaff)
             {
