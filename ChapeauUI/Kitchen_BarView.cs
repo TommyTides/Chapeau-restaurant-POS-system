@@ -55,12 +55,10 @@ namespace ChapeauUI
                 {
                     ListViewItem li = new ListViewItem(I.OrderID.ToString());
                     li.SubItems.Add(I.menuItem.item_name);
-
                     if (I.Comment == "no comment")
                     {
                         I.Comment = "";
                     }
-
                     li.SubItems.Add(I.Comment.ToString());
                     li.SubItems.Add(I.Quantity.ToString());
                     li.SubItems.Add(I.OrderTime.ToString("HH:mm"));
@@ -96,7 +94,7 @@ namespace ChapeauUI
             else
             {
                 //if preparing is selected it gives true
-                OrderItemStatusChange(true);
+                UpdateOrderItemStatus(true);
                 FillOrderView();
             }
         }
@@ -112,12 +110,12 @@ namespace ChapeauUI
             else
             {
                 //if preparing is selected it gives false
-                OrderItemStatusChange(false);
+                UpdateOrderItemStatus(false);
                 FillOrderView();
             }
         }
 
-        private void OrderItemStatusChange(bool OrderItemsState)
+        private void UpdateOrderItemStatus(bool OrderItemsState)
         {
             //loop over the selected items int the listview
             for (int i = 0; i < ListViewOrders.SelectedItems.Count; i++)
