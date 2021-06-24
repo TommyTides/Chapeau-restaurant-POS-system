@@ -12,7 +12,6 @@ namespace ChapeauUI
         private OrderService orderService;
         private Employee employee;
         private Order order;
-        public List<Order> RunningOrders;
         private Place place;
 
         public Kitchen_BarView(Employee employee)
@@ -42,15 +41,10 @@ namespace ChapeauUI
             pictureBox3.BackColor = Color.Transparent;
         }
 
-        private List<Order> GetRunningOrders()
-        {
-            List<Order> RunningOrders = orderService.GetAllOrders(place);
-            return RunningOrders;
-        }
-
         private void FillOrderView()
         {
-            RunningOrders = GetRunningOrders();
+
+            List<Order> RunningOrders = orderService.GetAllOrders(place);
 
             foreach (Order O in RunningOrders)
             {
@@ -113,27 +107,27 @@ namespace ChapeauUI
             }
         }
 
-      
 
-        private void OrderItemStatusChange(bool OrderItemChange)
+        private void OrderItemStatusChange(bool OrderItemsState)
         {
             for (int i = 0; i < ListViewOrders.SelectedItems.Count; i++)
             {
                 OrderItem orderItem = (OrderItem)ListViewOrders.SelectedItems[i].Tag;
 
-                if (orderItem.Status == OrderItemStatus.Pending && OrderItemChange)
+                if (orderItem.Status == OrderItemStatus.Pending && OrderItemsState)
                 {
                     //selected item preparing it will update
                     orderItem.Status = OrderItemStatus.Preparing;
                     orderService.UpdateOrderItemStatus(orderItem);
 
                     //-------------------------------------------------
+
                     order.OrderID = orderItem.OrderID;
                     order.Status = OrderStatus.Preparing;
                     orderService.UpdateOrderStatus(order);
                     //-------------------------------------------------
                 }
-                else if (orderItem.Status == OrderItemStatus.Preparing && OrderItemChange == false)
+                else if (orderItem.Status == OrderItemStatus.Preparing && OrderItemsState == false)
                 {
                     orderItem.Status = OrderItemStatus.Ready;
                     orderService.UpdateOrderItemStatus(orderItem);
@@ -146,6 +140,7 @@ namespace ChapeauUI
 
         private void OrderStatusReady(int orderID)
         {
+
             Order order = orderService.GetOrderByID(orderID, place);
             bool ReadyStatus = true;
             foreach (OrderItem I in order.OrderItems)
