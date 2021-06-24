@@ -17,7 +17,6 @@ namespace ChapeauUI
         private Employee employee;
         private TableServices tableServices;
         Dictionary<int, Table> tables;
-        OrderService orderService;
 
         private Dictionary<string, string> tablestatustext; // first part recieve the status from db, second part show text.
         public TablePage(Employee employee)
@@ -25,7 +24,6 @@ namespace ChapeauUI
             InitializeComponent();
             this.employee = employee;
             tableServices = new TableServices();
-            orderService = new OrderService();
             tablestatustext = new Dictionary<string, string>();
             tablestatustext.Add("Pending", "Order sent to kitchen");
             tablestatustext.Add("Preparing", "Kitchen preparing order");

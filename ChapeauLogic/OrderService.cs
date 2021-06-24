@@ -32,6 +32,11 @@ namespace ChapeauLogic
             orderDAO.UpdateOrderStatus(order);
         }
 
+        public Order GetOrderByID(int orderID, Place place)
+        {
+            return orderDAO.GetOrderByID(orderID,place);
+        }
+
         #region Alex's part
 
         public bool ExecuteOrderPayment(Order order)

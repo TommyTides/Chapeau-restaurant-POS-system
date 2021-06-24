@@ -16,11 +16,25 @@ namespace ChapeauDAL
         {
             string query = "select m.menu_type, m.item_name,m.item_id,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o " +
                 " JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " +
-                " JOIN [ORDER] as R ON o.orderID = r.orderID " +
+                " JOIN [ORDER] as r ON o.orderID = r.orderID " +
                 " where placeID = @placeID AND itemStatus = 1 OR itemStatus = 2";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@placeID", place);
             return ReadKitchenBar(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public Order GetOrderByID(int orderID, Place place)
+        {
+            string query = "select m.menu_type, m.item_name,m.item_id,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o " +
+                " JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " +
+                " JOIN [ORDER] as r ON o.orderID = r.orderID " +
+                " where placeID = @placeID AND o.orderID = @orderID";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@placeID", place);
+            sqlParameters[1] = new SqlParameter("@orderID", orderID);
+
+            List<Order> orders = ReadKitchenBar(ExecuteSelectQuery(query, sqlParameters));
+            return orders[0];
         }
 
         public void UpdateOrderItemStatus(OrderItem orderItem)

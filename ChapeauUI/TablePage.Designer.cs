@@ -167,7 +167,7 @@ namespace ChapeauUI
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(73, 207);
+            this.label2.Location = new System.Drawing.Point(91, 212);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(18, 20);
             this.label2.TabIndex = 3;
@@ -177,7 +177,7 @@ namespace ChapeauUI
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(103, 212);
+            this.label3.Location = new System.Drawing.Point(128, 212);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 20);
             this.label3.TabIndex = 4;
@@ -186,7 +186,7 @@ namespace ChapeauUI
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Red;
-            this.panel3.Location = new System.Drawing.Point(218, 207);
+            this.panel3.Location = new System.Drawing.Point(229, 207);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(55, 37);
             this.panel3.TabIndex = 3;
@@ -195,7 +195,7 @@ namespace ChapeauUI
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(288, 212);
+            this.label4.Location = new System.Drawing.Point(307, 212);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(18, 20);
             this.label4.TabIndex = 5;
@@ -205,7 +205,7 @@ namespace ChapeauUI
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(326, 212);
+            this.label5.Location = new System.Drawing.Point(349, 212);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(119, 20);
             this.label5.TabIndex = 6;
@@ -215,7 +215,7 @@ namespace ChapeauUI
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Cyan;
-            this.panel4.Location = new System.Drawing.Point(471, 207);
+            this.panel4.Location = new System.Drawing.Point(495, 207);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(55, 37);
             this.panel4.TabIndex = 4;
@@ -224,7 +224,7 @@ namespace ChapeauUI
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(556, 212);
+            this.label6.Location = new System.Drawing.Point(577, 212);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(18, 20);
             this.label6.TabIndex = 7;
@@ -234,7 +234,7 @@ namespace ChapeauUI
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(601, 212);
+            this.label7.Location = new System.Drawing.Point(621, 212);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 20);
             this.label7.TabIndex = 8;
@@ -456,7 +456,6 @@ namespace ChapeauUI
             this.rndbutton10.Name = "rndbutton10";
             this.rndbutton10.Size = new System.Drawing.Size(59, 50);
             this.rndbutton10.TabIndex = 40;
-            this.rndbutton10.Text = "10";
             this.rndbutton10.UseVisualStyleBackColor = true;
             // 
             // rndbuttons9
@@ -465,7 +464,6 @@ namespace ChapeauUI
             this.rndbuttons9.Name = "rndbuttons9";
             this.rndbuttons9.Size = new System.Drawing.Size(59, 50);
             this.rndbuttons9.TabIndex = 39;
-            this.rndbuttons9.Text = "9";
             this.rndbuttons9.UseVisualStyleBackColor = true;
             // 
             // rndbutton8
@@ -474,7 +472,6 @@ namespace ChapeauUI
             this.rndbutton8.Name = "rndbutton8";
             this.rndbutton8.Size = new System.Drawing.Size(59, 50);
             this.rndbutton8.TabIndex = 38;
-            this.rndbutton8.Text = "8";
             this.rndbutton8.UseVisualStyleBackColor = true;
             // 
             // rndbutton7
@@ -483,7 +480,6 @@ namespace ChapeauUI
             this.rndbutton7.Name = "rndbutton7";
             this.rndbutton7.Size = new System.Drawing.Size(59, 50);
             this.rndbutton7.TabIndex = 37;
-            this.rndbutton7.Text = "7";
             this.rndbutton7.UseVisualStyleBackColor = true;
             // 
             // rndbutton6
@@ -492,7 +488,6 @@ namespace ChapeauUI
             this.rndbutton6.Name = "rndbutton6";
             this.rndbutton6.Size = new System.Drawing.Size(59, 50);
             this.rndbutton6.TabIndex = 36;
-            this.rndbutton6.Text = "6";
             this.rndbutton6.UseVisualStyleBackColor = true;
             // 
             // rndbutton5
@@ -501,7 +496,6 @@ namespace ChapeauUI
             this.rndbutton5.Name = "rndbutton5";
             this.rndbutton5.Size = new System.Drawing.Size(59, 50);
             this.rndbutton5.TabIndex = 35;
-            this.rndbutton5.Text = "5";
             this.rndbutton5.UseVisualStyleBackColor = true;
             // 
             // rndbutton4
@@ -510,7 +504,6 @@ namespace ChapeauUI
             this.rndbutton4.Name = "rndbutton4";
             this.rndbutton4.Size = new System.Drawing.Size(59, 50);
             this.rndbutton4.TabIndex = 34;
-            this.rndbutton4.Text = "4";
             this.rndbutton4.UseVisualStyleBackColor = true;
             // 
             // rndbutton3
@@ -519,7 +512,6 @@ namespace ChapeauUI
             this.rndbutton3.Name = "rndbutton3";
             this.rndbutton3.Size = new System.Drawing.Size(59, 50);
             this.rndbutton3.TabIndex = 33;
-            this.rndbutton3.Text = "3";
             this.rndbutton3.UseVisualStyleBackColor = true;
             // 
             // rndbutton2
@@ -528,7 +520,6 @@ namespace ChapeauUI
             this.rndbutton2.Name = "rndbutton2";
             this.rndbutton2.Size = new System.Drawing.Size(59, 50);
             this.rndbutton2.TabIndex = 32;
-            this.rndbutton2.Text = "2";
             this.rndbutton2.UseVisualStyleBackColor = true;
             // 
             // rndbutton1
@@ -537,7 +528,6 @@ namespace ChapeauUI
             this.rndbutton1.Name = "rndbutton1";
             this.rndbutton1.Size = new System.Drawing.Size(59, 50);
             this.rndbutton1.TabIndex = 31;
-            this.rndbutton1.Text = "1";
             this.rndbutton1.UseVisualStyleBackColor = true;
             // 
             // TablePage
