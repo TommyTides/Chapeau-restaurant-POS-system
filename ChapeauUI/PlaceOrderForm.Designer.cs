@@ -854,9 +854,9 @@ namespace ChapeauUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(752, 985);
+            this.Controls.Add(this.pnlHamburger);
             this.Controls.Add(this.pnlCart);
             this.Controls.Add(this.pnlDrinks);
-            this.Controls.Add(this.pnlHamburger);
             this.Controls.Add(this.pnlFoodMenu);
             this.Controls.Add(this.pnlStaticBar);
             this.Controls.Add(this.pnlMenuOptions);
