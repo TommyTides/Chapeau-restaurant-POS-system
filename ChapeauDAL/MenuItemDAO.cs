@@ -36,5 +36,28 @@ namespace ChapeauDAL
             }
             return menuItems;
         }
+
+        public void EditMenuItem(MenuItem item)
+        {
+            string query = "UPDATE MENU_ITEM SET menu_type = @menu_type, item_type = @item_type, " +
+                "item_name = @item_name, item_price = @item_price, stock = @stock, place = @place WHERE item_id = @item_id";
+            SqlParameter[] sqlParameters = new SqlParameter[7];
+            sqlParameters[0] = new SqlParameter("@menu_type", (int)item.menu_type);
+            sqlParameters[1] = new SqlParameter("@item_type", (int)item.item_type);
+            sqlParameters[2] = new SqlParameter("@item_name", item.item_name);
+            sqlParameters[3] = new SqlParameter("@item_price", item.item_price);
+            sqlParameters[4] = new SqlParameter("@stock", item.stock);
+            sqlParameters[5] = new SqlParameter("@place", (int)item.place);
+            sqlParameters[6] = new SqlParameter("@item_id", item.item_id);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public void RemoveMenuItem(MenuItem item)
+        {
+            string query = "DELETE FROM MENU_ITEM WHERE item_id = @item_id";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            sqlParameters[0] = new SqlParameter("@item_id", item.item_id);
+            ExecuteEditQuery(query, sqlParameters);
+        }
     }
 }

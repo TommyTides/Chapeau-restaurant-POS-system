@@ -48,7 +48,7 @@ namespace ChapeauUI
                 MessageBox.Show("Entered pincode is not valid!");
             }
 
-            else if (employee.Role == Role.Waiter || employee.Role == Role.Manager)
+            else if (employee.Role == Role.Waiter)
             {
                 this.Hide();
                 TablePage page = new TablePage(employee);
@@ -61,6 +61,13 @@ namespace ChapeauUI
                 this.Hide();
                 Kitchen_BarView orderForm = new Kitchen_BarView(employee);
                 orderForm.Show();
+            }
+
+            else if (employee.Role == Role.Manager)
+            {
+                this.Hide();
+                Stockview stockview = new Stockview();
+                stockview.Show();
             }
         }
 

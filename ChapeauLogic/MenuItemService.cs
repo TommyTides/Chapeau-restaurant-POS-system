@@ -22,6 +22,17 @@ namespace ChapeauLogic
         {
             List<MenuItem> menuItems = menuItemDAO.GetAllMenuItems();
             return menuItems;
-        } 
+        }
+
+        // Edit Item
+        public void EditMenuItem(MenuItem item)
+        {
+            menuItemDAO.EditMenuItem(item);
+        }
+
+        public void RemoveMenuItem(MenuItem item)
+        {
+            menuItemDAO.RemoveMenuItem(item);
+        }
     }
 }

@@ -34,6 +34,7 @@ namespace ChapeauLogic
 
         public Order GetOrderByID(int orderID, Place place)
         {
+            //send info for kitchen to UI
             return orderDAO.GetOrderByID(orderID,place);
         }
 

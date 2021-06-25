@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Stockview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stockview.Designer.cs">
+      <DependentUpon>Stockview.cs</DependentUpon>
+    </Compile>
     <Compile Include="PaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
       <DependentUpon>TablePage.cs</DependentUpon>
     </Compile>
     <Compile Include="WinAPI.cs" />
+    <EmbeddedResource Include="Stockview.resx">
+      <DependentUpon>Stockview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -14,6 +14,7 @@ namespace ChapeauDAL
 
         public List<Order> GetAllOrders(Place place)
         {
+            //filling for the listview
             string query = "select m.menu_type, m.item_name,m.item_id,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o " +
                 " JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " +
                 " JOIN [ORDER] as r ON o.orderID = r.orderID " +
@@ -25,6 +26,7 @@ namespace ChapeauDAL
 
         public Order GetOrderByID(int orderID, Place place)
         {
+            //to get only the orders with the orderid
             string query = "select m.menu_type, m.item_name,m.item_id,o.orderID,o.quantity,o.orderTime,o.itemStatus,o.comment,r.tableID from [ORDER_ITEM] as o " +
                 " JOIN [MENU_ITEM] as m ON o.item_id = m.item_id " +
                 " JOIN [ORDER] as r ON o.orderID = r.orderID " +
@@ -39,6 +41,7 @@ namespace ChapeauDAL
 
         public void UpdateOrderItemStatus(OrderItem orderItem)
         {
+            //update itemstatus in database depends on what has been given
             string query = "Update [ORDER_ITEM] Set itemStatus = @itemStatus" +
                 " Where orderID = @orderID AND  item_id = @item_id";
             SqlParameter[] sqlParameters = new SqlParameter[3];
@@ -50,7 +53,7 @@ namespace ChapeauDAL
 
         public void UpdateOrderStatus(Order order)
         {
-            //receiving what needs to be changed in orderstatus
+            //update orderstatus in database depends on what has been givens
             string query = "Update [ORDER] Set orderStatus = @orderStatus where orderID = @orderID";
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@orderStatus", order.Status);
