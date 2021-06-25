@@ -79,7 +79,7 @@ namespace ChapeauUI
             this.lbllogin.ForeColor = System.Drawing.Color.White;
             this.lbllogin.Location = new System.Drawing.Point(237, 33);
             this.lbllogin.Name = "lbllogin";
-            this.lbllogin.Size = new System.Drawing.Size(290, 46);
+            this.lbllogin.Size = new System.Drawing.Size(235, 37);
             this.lbllogin.TabIndex = 2;
             this.lbllogin.Text = "Chapeau Login";
             // 
@@ -96,18 +96,18 @@ namespace ChapeauUI
             // txtlogincode
             // 
             this.txtlogincode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtlogincode.Location = new System.Drawing.Point(359, 274);
+            this.txtlogincode.Location = new System.Drawing.Point(368, 276);
             this.txtlogincode.Name = "txtlogincode";
-            this.txtlogincode.Size = new System.Drawing.Size(179, 30);
+            this.txtlogincode.Size = new System.Drawing.Size(179, 26);
             this.txtlogincode.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(95, 274);
+            this.label1.Location = new System.Drawing.Point(156, 276);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 29);
+            this.label1.Size = new System.Drawing.Size(158, 24);
             this.label1.TabIndex = 3;
             this.label1.Text = "Enter Login Code";
             // 
