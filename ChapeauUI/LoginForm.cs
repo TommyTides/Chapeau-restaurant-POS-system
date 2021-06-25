@@ -59,8 +59,8 @@ namespace ChapeauUI
             else if (employee.Role == Role.KitchenStaff || employee.Role == Role.Barman)
             {
                 this.Hide();
-                Kitchen_BarView orderForm = new Kitchen_BarView(employee);
-                orderForm.Show();
+                Kitchen_BarView kitchen_BarView = new Kitchen_BarView(employee);
+                kitchen_BarView.Show();
             }
 
             else if (employee.Role == Role.Manager)
