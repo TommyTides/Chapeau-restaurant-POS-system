@@ -198,9 +198,9 @@ namespace ChapeauUI
             this.lblOrderCart.ForeColor = System.Drawing.Color.White;
             this.lblOrderCart.Location = new System.Drawing.Point(30, 189);
             this.lblOrderCart.Name = "lblOrderCart";
-            this.lblOrderCart.Size = new System.Drawing.Size(142, 31);
+            this.lblOrderCart.Size = new System.Drawing.Size(133, 31);
             this.lblOrderCart.TabIndex = 3;
-            this.lblOrderCart.Text = "Order Cart";
+            this.lblOrderCart.Text = "Order List";
             this.lblOrderCart.Click += new System.EventHandler(this.lblOrderCart_Click);
             // 
             // lblMenuOptions

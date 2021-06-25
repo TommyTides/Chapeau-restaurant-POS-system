@@ -92,7 +92,7 @@ namespace ChapeauUI
         {
             if (order.OrderItems.Count <= 0)
             {
-                MessageBox.Show("Add item to the cart to view the order cart!");
+                MessageBox.Show("Add item to the cart to view the Order List!");
             }
             else
             {
@@ -303,7 +303,7 @@ namespace ChapeauUI
             }
             if (order.OrderItems.Count >= 1) // check if cart is empty or not
             {
-                MessageBox.Show("Item has been added to cart");
+                MessageBox.Show("Item has been added to the Order");
             }
             listBoxSelectedFoodItem.Items.Clear();
             numericUpDownFoodMenu.Value = 0;
@@ -412,7 +412,7 @@ namespace ChapeauUI
             }
             if (order.OrderItems.Count >= 1) // check if orderCart is not empty
             {
-                MessageBox.Show("Item has been added to cart");
+                MessageBox.Show("Item has been added to the Order");
             }
             numericUpDownDrink.Value = 0;
             listBoxSelectedDrink.Items.Clear();
@@ -448,7 +448,7 @@ namespace ChapeauUI
             ClearCart();
             comboBoxNewAmount.Visible = false;
             lblNewAmount.Visible = false;
-            lblWhereWeAre.Text = "Order Cart";
+            lblWhereWeAre.Text = "Order List";
             lblApplicationSubState.Text = "Check Order";
             btnRemoveCartItem.Visible = false;
             double totalPrice = 0;
