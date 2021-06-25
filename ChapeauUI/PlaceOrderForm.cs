@@ -354,7 +354,7 @@ namespace ChapeauUI
                 if (item.item_type == firstCategory)
                 {
                     listBoxDrink1.Items.Add(item);    
-                    if (item.stock == 0)
+                    if (item.stock <= 0)
                         listBoxDrink1Price.Items.Add("out of stock");
                     else
                         listBoxDrink1Price.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
@@ -362,7 +362,7 @@ namespace ChapeauUI
                 else if (item.item_type == secondCategory)
                 {
                     listBoxDrink2.Items.Add(item);
-                    if (item.stock == 0)
+                    if (item.stock <= 0)
                         listBoxDrink2Price.Items.Add("out of stock");
                     else
                         listBoxDrink2Price.Items.Add(item.item_price.ToString("C", new CultureInfo("nl-NL")));
