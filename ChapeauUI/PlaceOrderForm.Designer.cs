@@ -168,11 +168,11 @@ namespace ChapeauUI
             // pnlHamburger
             // 
             this.pnlHamburger.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(150)))), ((int)(((byte)(44)))));
+            this.pnlHamburger.Controls.Add(this.lblHome);
             this.pnlHamburger.Controls.Add(this.button1);
             this.pnlHamburger.Controls.Add(this.lblOrderCart);
             this.pnlHamburger.Controls.Add(this.lblMenuOptions);
             this.pnlHamburger.Controls.Add(this.lblTableView);
-            this.pnlHamburger.Controls.Add(this.lblHome);
             this.pnlHamburger.Location = new System.Drawing.Point(538, 93);
             this.pnlHamburger.Name = "pnlHamburger";
             this.pnlHamburger.Size = new System.Drawing.Size(233, 897);
@@ -855,10 +855,10 @@ namespace ChapeauUI
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(752, 985);
             this.Controls.Add(this.pnlHamburger);
+            this.Controls.Add(this.pnlStaticBar);
             this.Controls.Add(this.pnlCart);
             this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.pnlFoodMenu);
-            this.Controls.Add(this.pnlStaticBar);
             this.Controls.Add(this.pnlMenuOptions);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
